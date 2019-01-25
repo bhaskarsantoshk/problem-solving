@@ -13,5 +13,6 @@ public class MinimalTree {
         TreeNode node = new TreeNode(array[mid]);
         node.left = createMinimalBST(array, start, mid-1);
         node.right = createMinimalBST(array, mid+1, end);
+        return node;
     }
 }
