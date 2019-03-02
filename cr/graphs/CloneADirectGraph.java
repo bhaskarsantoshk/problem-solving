@@ -9,12 +9,54 @@ public class CloneADirectGraph {
     public static void main(String[] args){
         ArrayList<Node> vertices = create_test_graph_undirected(7,18);
         print_graph(vertices.get(0));
+        Node cp = Graph.clone(vertices.get(0));
+        System.out.println();
+        HashSet<Node> set = new HashSet<Node>();
+        System.out.println(are_graphs_equal_rec(vertices.get(0), cp, set));
+    }
 
+    private static boolean are_graphs_equal_rec(Node root1, Node root2, HashSet<Node> visited) {
+        if(root1== null && root2== null){
+            return true;
+        }
+
+        if(root1 == null || root2 == null){
+            return false;
+        }
+
+        if(root1.data != root2.data){
+            return false;
+        }
+
+        if(root1.neighbors.size() != root2.neighbors.size()){
+            return false;
+        }
+
+        for (Node nbr1: root1.neighbors){
+            boolean found = false;
+            for(Node nbr2: root2.neighbors){
+
+                if(nbr1.data == nbr2.data){
+                    if(!visited.contains(nbr1)) {
+                        visited.add(nbr1);
+                        are_graphs_equal_rec(nbr1, nbr2, visited);
+                    }
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return false;
+            }
+        }
+
+        return  true;
     }
 
     private static void print_graph(Node root) {
         HashSet<Node> visited_nodes = new HashSet<>();
         print_graph(root, visited_nodes);
+
     }
 
     private static void print_graph(Node root, HashSet<Node> visited_nodes){
