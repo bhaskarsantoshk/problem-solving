@@ -5,7 +5,7 @@ public class CheckSortedArrayRec {
         if(A.length == 1 || index==1){
             return 1;
         }
-        return (A[index-1]<A[index-2])?0:isArrayInSortedOrder(A, index-1);
+        return (A[index-1] < A[index-2])? 0 : isArrayInSortedOrder(A, index-1);
     }
 
     public static void main(String[] args){

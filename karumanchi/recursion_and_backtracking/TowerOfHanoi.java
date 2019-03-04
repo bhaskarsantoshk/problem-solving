@@ -13,5 +13,4 @@ public class TowerOfHanoi {
         //Move n-1 discs from B to C using A as aux
         TowersOfHanoi(n-1, auxpeg, topeg, frompeg);
     }
-
 }
