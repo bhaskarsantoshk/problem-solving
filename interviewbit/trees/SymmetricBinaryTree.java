@@ -1,18 +1,6 @@
 package interviewbit.trees;
 
 public class SymmetricBinaryTree {
-    class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x){
-            this.val = x;
-            left = null;
-            right = null;
-        }
-    }
-
     public int isSymmetric(TreeNode A) {
         if (A == null){
             return 1;
