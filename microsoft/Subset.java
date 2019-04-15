@@ -1,8 +1,6 @@
 package microsoft;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class Subset {
     public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> a) {
@@ -12,7 +10,8 @@ public class Subset {
         return result;
     }
 
-    private void backtrack(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> tempList, ArrayList<Integer> a, int start) {
+    private void backtrack(ArrayList<ArrayList<Integer>> result,ArrayList<Integer> tempList, ArrayList<Integer> a, int start) {
+
         result.add(new ArrayList<>(tempList));
         for(int i=start; i<a.size(); i++){
             tempList.add(a.get(i));
