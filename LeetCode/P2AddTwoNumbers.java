@@ -1,4 +1,4 @@
-package LeetCode.TopInterviewQuestions;
+package LeetCode;
 
 public class P2AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

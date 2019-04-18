@@ -1,4 +1,4 @@
-package LeetCode.TopInterviewQuestions;
+package LeetCode;
 
 import java.util.HashMap;
 import java.util.Map;
