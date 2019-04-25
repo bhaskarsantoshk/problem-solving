@@ -12,7 +12,8 @@ public class P589NaryTreePreorderTraversal {
     }
 
     private void preorder(Node root, List<Integer> result) {
-        result.add(root.val)
+        if(root == null ) return;
+        result.add(root.val);
         List<Node> list = root.children;
         if(!list.isEmpty()){
             for(int i=0;i<list.size(); i++){
