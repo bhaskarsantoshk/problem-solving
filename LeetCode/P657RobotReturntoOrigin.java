@@ -3,7 +3,7 @@ package LeetCode;
 public class P657RobotReturntoOrigin {
     public boolean judgeCircle(String moves) {
         int x = 0, y= 0;
-        for(char move= moves.toCharArray()){
+        for(char move: moves.toCharArray()){
             switch(move){
                 case 'L':
                     x--;
