@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 import java.util.ArrayList;
 public class AntiDiagonals {
     public ArrayList<ArrayList<Integer>> diagonal(ArrayList<ArrayList<Integer>> A) {

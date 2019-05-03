@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class TrailingZerosinFactorial {
     public int trailingZeroes(int A) {

@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class EditDistance {
     public int minDistance(String A, String B) {

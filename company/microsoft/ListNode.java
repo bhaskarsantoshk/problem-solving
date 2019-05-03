@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class ListNode {
     public int val;

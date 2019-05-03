@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 import java.util.SortedSet;
 import java.util.TreeSet;

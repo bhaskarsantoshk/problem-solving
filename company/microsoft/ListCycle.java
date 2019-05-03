@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class ListCycle {
     public ListNode detectCycle(ListNode a) {

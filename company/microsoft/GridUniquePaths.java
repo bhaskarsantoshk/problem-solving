@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class GridUniquePaths {
     public int uniquePaths(int A, int B) {

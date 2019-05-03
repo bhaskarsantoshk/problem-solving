@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 import java.util.ArrayList;
 import java.util.List;

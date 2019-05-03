@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class ReorderList {
     public ListNode reorderList(ListNode head) {

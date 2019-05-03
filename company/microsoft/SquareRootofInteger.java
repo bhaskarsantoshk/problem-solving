@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class SquareRootofInteger {
     public int sqrt(int a) {

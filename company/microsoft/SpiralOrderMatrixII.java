@@ -1,7 +1,6 @@
-package microsoft;
+package company.microsoft;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SpiralOrderMatrixII {
     public static void main(String[] args){

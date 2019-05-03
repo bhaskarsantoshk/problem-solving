@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class RemoveDuplicatesfromSortedList {
     public ListNode deleteDuplicates(ListNode head) {

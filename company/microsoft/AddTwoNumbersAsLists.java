@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class AddTwoNumbersAsLists {
     public ListNode addTwoNumbers(ListNode a, ListNode b) {

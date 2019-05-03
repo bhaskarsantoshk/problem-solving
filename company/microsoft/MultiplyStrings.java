@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class MultiplyStrings {
     public String multiply(String A, String B) {

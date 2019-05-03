@@ -1,4 +1,4 @@
-package microsoft;
+package company.microsoft;
 
 public class MaxDepthofBinaryTree {
     public int maxDepth(TreeNode A) {
