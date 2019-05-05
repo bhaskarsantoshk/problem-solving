@@ -2,6 +2,7 @@ package LeetCode;
 
 public class P287FindtheDuplicateNumber {
     public int findDuplicate(int[] nums) {
+        //Finding Loop in a Linked List approach
         if(nums.length > 1){
             int slow = nums[0];
             int fast = nums[nums[0]];
