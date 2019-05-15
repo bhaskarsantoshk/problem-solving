@@ -6,9 +6,8 @@ public class PriceReductionRule extends Rule{
     private String productCode;
     private double newPrice;
 
-    public PriceReductionRule(int numberOfProductsToBeBought, double totalCostUponRuleApplied, String productCode, double newPrice) {
+    public PriceReductionRule(int numberOfProductsToBeBought,  String productCode, double newPrice) {
         this.numberOfProductsToBeBought = numberOfProductsToBeBought;
-        this.totalCostUponRuleApplied = totalCostUponRuleApplied;
         this.productCode = productCode;
         this.newPrice = newPrice;
     }
@@ -16,12 +15,15 @@ public class PriceReductionRule extends Rule{
 
     @Override
     public double apply(String product_code, int numberOfProductsPurchased, double price ) {
+        if(!productCode.equals(product_code)) {
+            return 0;
+        }
         if(productCode.equals(product_code) &&
                 numberOfProductsPurchased >= numberOfProductsToBeBought){
             totalCostUponRuleApplied = numberOfProductsPurchased * newPrice;
         }
         else{
-            totalCostUponRuleApplied = numberOfProductsPurchased * price;
+            totalCostUponRuleApplied = -1;
         }
         return totalCostUponRuleApplied;
     }
