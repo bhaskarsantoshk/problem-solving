@@ -17,12 +17,15 @@ public class DiscountRule extends Rule {
 
     @Override
     public double apply(String product_code, int numberOfProductsPurchased, double price) {
+        if(!productCode.equals(product_code)) {
+            return 0;
+        }
         if(productCode.equals(product_code) &&
                 numberOfProductsPurchased >= numberOfProductsToBeBought){
             totalCostUponRuleApplied = ((numberOfProductsPurchased * (100D-discount))/100) * price;
         }
         else{
-            totalCostUponRuleApplied = numberOfProductsPurchased * price;
+            totalCostUponRuleApplied = -1;
         }
         return totalCostUponRuleApplied;
     }
