@@ -1,4 +1,4 @@
-package object_oriented_design;
+package object_oriented_design.online_store;
 
 import java.util.*;
 

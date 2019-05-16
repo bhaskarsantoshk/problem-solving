@@ -1,4 +1,4 @@
-package object_oriented_design;
+package object_oriented_design.online_store;
 
 public class BuyXProductsGetYProducts extends Rule{
     private int x ; //buy x

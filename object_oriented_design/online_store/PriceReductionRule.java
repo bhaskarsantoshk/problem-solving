@@ -1,4 +1,4 @@
-package object_oriented_design;
+package object_oriented_design.online_store;
 
 public class PriceReductionRule extends Rule{
     private int numberOfProductsToBeBought ;

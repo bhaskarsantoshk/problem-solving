@@ -1,4 +1,4 @@
-package object_oriented_design;
+package object_oriented_design.online_store;
 
 public class DiscountRule extends Rule {
     //Assuming If you buy X products or more , you will get discount on each product
