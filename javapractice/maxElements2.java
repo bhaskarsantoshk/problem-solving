@@ -16,8 +16,9 @@ public class maxElements2 {
         int temp = nums[indexOfMaxOne];
         nums[indexOfMaxOne] = nums[length-1];
         nums[length-1] = temp;
-        // Since the second max is at last position ,
-        // Now find the second max
+        // Since the first max is at last position ,
+        // Now find the second max before it
+        
         int maxTwo = nums[0];
         for(int i=0; i<length-1; i++){
             if(maxOne > nums[i] ){
