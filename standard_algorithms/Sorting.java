@@ -1,9 +1,25 @@
 package standard_algorithms;
 
 public class Sorting {
+
+    public static void main(String[] args){
+        int a[]= {5,2,3,1};
+        Sorting sort = new Sorting();
+        sort.quicksort(a, 0, a.length-1);
+
+    }
+
+    public static  void printArray(int a[]){
+        for(int i=0; i<a.length; i++){
+            System.out.print(a[i] +" ");
+        }
+    }
     public void quicksort(int array[], int start, int end){
         if(start < end) {
             int partitionIndex = partition(array, start, end);
+            System.out.println("PI : " + partitionIndex);
+            //printArray(array);
+            //System.out.println();
             quicksort(array, start, partitionIndex - 1);
             quicksort(array, partitionIndex + 1, end);
         }
@@ -12,7 +28,7 @@ public class Sorting {
     private int partition(int[] array, int start, int end) {
         int pIndex = start;
         int pivot = array[end];
-        for(int i= start ; i<end-1; i++){
+        for(int i= start ; i<=end-1; i++){
             if(array[i] <= pivot){
                 swap(array, i, pIndex);
                 pIndex+=1;
