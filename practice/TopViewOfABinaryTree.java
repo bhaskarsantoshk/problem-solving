@@ -29,7 +29,6 @@ public class TopViewOfABinaryTree {
             }
         }
 
-    }
 
     class TreeNode{
         int val;
