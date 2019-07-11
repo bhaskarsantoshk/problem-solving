@@ -19,13 +19,18 @@ public class MaxSumContiguousSubarray {
     }
 
     private static int maxSubArray(ArrayList<Integer> a) {
-        int localMaxSum = a.get(0);
-        int globalMaxSum = a.get(0);
+        int localSum = a.get(0);
+        int globalSum = a.get(0);
 
-        for(int i=1;i<a.size();i++){
-            localMaxSum = Math.max(localMaxSum+a.get(i), a.get(i));
-            globalMaxSum = Math.max(localMaxSum, globalMaxSum);
+        for ( int i=1; i< a.size(); i++){
+           if ( localSum + a.get(i) > 0 ){
+               localSum += a.get(i);
+           }
+           else{
+               localSum = 0;
+           }
+           globalSum= Math.max( localSum, globalSum);
         }
-        return globalMaxSum;
+        return globalSum;
     }
 }
