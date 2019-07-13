@@ -41,7 +41,6 @@ public class IterativePreInPostOrder {
             }
             root = root.right;
         }
-
         return root.val;
     }
 
