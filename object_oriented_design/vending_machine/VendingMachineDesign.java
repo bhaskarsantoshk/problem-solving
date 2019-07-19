@@ -73,11 +73,4 @@ public class VendingMachineDesign {
     public class SoldOutException extends Exception {}
     public class NotEnoughChangeException extends Exception {}
 }
-public class Inventory {
-    public static int getQuantity(VendingMachineDesign.Product product) {
-        return 0;
-    }
-    public static void addProduct(VendingMachineDesign.Product product, int amount) {}
-    public static void deductProduct(VendingMachineDesign.Product product) {}
-    public static void hasItem(VendingMachineDesign.Product product) {}
-}
+
