@@ -1,3 +1,4 @@
+package LeetCode;
 import java.util.*;
 
 class P1431KidsWithTheGreatestNumberOfCandies {
