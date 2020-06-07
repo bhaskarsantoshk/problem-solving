@@ -1,3 +1,5 @@
+package LeetCode;
+
 class P1342NumberofStepstoReduceaNumbertoZero {
     public int numberOfSteps (int num) {
         int res = 0;
