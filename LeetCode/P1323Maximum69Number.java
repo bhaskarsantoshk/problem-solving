@@ -12,6 +12,7 @@ public class P1323Maximum69Number {
                 break;
             }
         }
+        
         return Integer.parseInt(String.valueOf(c));
     }
 }
