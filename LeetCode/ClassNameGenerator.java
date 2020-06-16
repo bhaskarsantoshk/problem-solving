@@ -32,7 +32,7 @@ public class ClassNameGenerator {
 
     public static void main(String[] args){
         String s = "392. Is Subsequence\n";
-        // Expected Output : P1313DecompressRunLengthEncodedList
+        // Expected Output : P392IsSubsequence
         System.out.println(getClassName(s));
     }
 }
