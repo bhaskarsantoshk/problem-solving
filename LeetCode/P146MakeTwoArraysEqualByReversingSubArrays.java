@@ -1,4 +1,5 @@
 package LeetCode;
+import java.util.Arrays;
 
 public class P146MakeTwoArraysEqualByReversingSubArrays {
     public boolean canBeEqual(int[] target, int[] arr) {
