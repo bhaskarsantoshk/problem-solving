@@ -4,7 +4,7 @@ class P139DecryptStringFromAlphabetToIntegerMapping {
         for(int i = 0; i < s.length(); ) {
             if(i < s.length() - 2 && s.charAt(i + 2) == '#') {
                 int num = Integer.parseInt(s.substring(i, i + 2));
-                char c = (char)(num + 'a');
+                char c = (char)(num + 'a'-1);
                 sb.append(c+"");
                 i = i + 3;
                 continue;
