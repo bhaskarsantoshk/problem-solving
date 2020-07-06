@@ -46,3 +46,50 @@ Reference : [Algorithms Course - Graph Theory Tutorial from a Google Engineer](h
 ### Complete Graph:    
 > A complete graph is one in which there is unique edge between evcery pair of nodes.     
 > A complete graph with n vertices is denoted as Kn. 
+
+## Representation of Graphs:   
+### Adjacency Matrix: 
+> It's very simple way of representing a graph.   
+> The idea is that each cell in the matrix m[i][j] represents edge weight of going from node i to node j.    
+> It's often assumed that edge of going from node to itself has a cost of 0. 
+
+| Pros | Cons |
+| ----------- | ----------- |
+| Space efficient for representing dense graphs | Requires O(V^2) space |
+| Edge weight lookup is O(1) | Iterating over all edges takes O(V^2) time |
+| Simplest Graph representation |  |
+
+### Adjacency List: 
+> It's a way to represent a graph as a map from nodes to lists of edges.    
+
+> Example: 
+```
+A -> [(B,4), (C,1)]
+B -> [(C,6)]
+C -> [(A,4), (B,1), (D,2)]
+D -> []
+
+# Node C can reach A at cost of 4, B at cost of 1 and D at cost of 2.
+```
+
+| Pros | Cons |
+| ----------- | ----------- |
+| Space efficient for representing sparse graphs | Less space efficient for representing dense graphs |
+| Iterating over all edges is efficient | Edge weight lookup is O(E) |
+| | Slightly more complex Graph representation  |
+
+
+### Edge List: 
+> It's a way to represent a graph simply as an unordered lists of edges.  
+> It's seldomly used due to unordered structure
+
+> Example: 
+```
+[(C,A,4), (A,C,1), (B,C,6), (A,B,4)]
+```
+
+| Pros | Cons |
+| ----------- | ----------- |
+| Space efficient for representing sparse graphs | Less space efficient for representing dense graphs |
+| Iterating over all edges is efficient | Edge weight lookup is O(E) |
+|Simple Graph representation |  |
