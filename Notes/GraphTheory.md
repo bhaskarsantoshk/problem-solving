@@ -93,3 +93,11 @@ D -> []
 | Space efficient for representing sparse graphs | Less space efficient for representing dense graphs |
 | Iterating over all edges is efficient | Edge weight lookup is O(E) |
 |Simple Graph representation |  |
+
+## Common Graph Theory Problems
+#### Ask yourself the following:
+> Is the graph directed or undirected ?      
+> Are the edges of the graph weighted ?
+> Is the graph I will encounter likely to be sparse or dense with edges ?
+> Should I use adjacency matrix , adjacency list, edge list or other structures to represent the graph efficiently?
+
