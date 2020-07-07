@@ -101,3 +101,37 @@ D -> []
 > Is the graph I will encounter likely to be sparse or dense with edges ?
 > Should I use adjacency matrix , adjacency list, edge list or other structures to represent the graph efficiently?
 
+* Shortest Path Problem:     
+> Given a weighted graph, find the shortest path of edges from A to B.   
+> Algorithms: BFS (Unweighted graph), Dijkstra's, Bellman Ford, Floyd-Warshall, A*, and many more. 
+
+* Connectivity:    
+> Does there exist a path between A and B?    
+> Typical Solution: Use union find data structure or any search algorithm (e.g. DFS)
+
+* Negative Cycles:    
+> Does my weighted digraph have any negative cycles? If so, where ?
+> Typical Solution: Bellman Ford and Floyd-Warshall
+
+* Strongly Connected Components:   
+> self-contained cycles within a directed graph where every vertex in a given cycle can reach every other vertex in the same cycle. 
+> Algorithms: Tarjan's and Kosaraju's Algorithm.   
+* Travelling Salesman Problem:   
+> Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city and returns to the origin city?    
+> Held-Karp, Branch and Bound , many approximation algorithms.  
+> TSP is NP-hard, meaning computationally very challenging problem. 
+
+* Bridges:   
+> a bridge or cut edge is an edge in a graph whose removal increases the number of connected components. 
+> they indicate or hint at weak points, vulnerabilities and bottlenecks in a graph.   
+
+* Articulation Point:    
+> an articulation point or cut vertex is a vertex in a graph whose removal increases the number of connected components.    
+> they indicate or hint at weak points, vulnerabilities and bottlenecks in a graph.   
+
+* Minimum Spanning Tree:   
+> A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight. 
+
+> Kruskal's, Prim's and Borůvka's Algorithms. 
+
+
