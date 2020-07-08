@@ -132,6 +132,14 @@ D -> []
 * Minimum Spanning Tree:   
 > A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight. 
 
+> MTS are seen in many applications including: designing a least cost network, circuit design, transporatation networks, etc. 
+
 > Kruskal's, Prim's and Borůvka's Algorithms. 
+
+* Network Flow: max flow:    
+> with infinite input source, how much flow can we put through network?   
+> Suppose the edges are roads with cars, pipes with water or hallways packed with people, Flow represents the volume of water allowed to flow through pipes, the number of cars on the road can sustain in traffic, and the max amount of people that can navigate through hallways.    
+> Algorithms : Ford-Fulkerson, Edmonds-Karp & Dinic's Algorithm. 
+
 
 
