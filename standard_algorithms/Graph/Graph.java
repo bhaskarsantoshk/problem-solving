@@ -33,6 +33,8 @@ public class Graph {
         System.out.println();
         System.out.println("BFS: ");
         g.BFS(2);
+        System.out.println("Connected Components");
+        g.connectedComponents(4);
     }
 
     private void BFS(int s) {
@@ -72,5 +74,18 @@ public class Graph {
                 DFSUtil(neighbour, visited);
             }
         }
+    }
+    
+     public void connectedComponents(int numOfVertices){
+        boolean[] visited = new boolean[numOfVertices];
+        int count = 0;
+        for ( int v=0; v<numOfVertices; v++){
+            if (!visited[v]){
+                count++;
+                DFSUtil(v, visited);
+                System.out.println();
+            }
+        }
+        System.out.println(count);
     }
 }
