@@ -1,41 +1,76 @@
 package standard_algorithms.Graph;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Graph {
-    public static void main(String[] args){
-        int numOfVertices = 5;
-        ArrayList<ArrayList<Integer>> adjacencyList = new ArrayList<>(numOfVertices);
+    private int numOfVertices;
+    private LinkedList<Integer> adjacencyList[];
 
+    public Graph(int numOfVertices){
+        this.numOfVertices = numOfVertices;
+        adjacencyList = new LinkedList[numOfVertices];
         for ( int i=0; i<numOfVertices; i++){
-            adjacencyList.add(new ArrayList<Integer>());
+            adjacencyList[i] = new LinkedList<>();
         }
-
-        // Adding edges one by one 
-        addEdge(adjacencyList, 0, 1);
-        addEdge(adjacencyList, 0, 4);
-        addEdge(adjacencyList, 1, 2);
-        addEdge(adjacencyList, 1, 3);
-        addEdge(adjacencyList, 1, 4);
-        addEdge(adjacencyList, 2, 3);
-        addEdge(adjacencyList, 3, 4);
-
-        displayGraph(adjacencyList);
-
     }
 
-    private static void displayGraph(ArrayList<ArrayList<Integer>> adjacencyList) {
-        for ( int i=0; i<adjacencyList.size(); i++){
-            System.out.print(i +"-> ");
-            for ( int neighbour : adjacencyList.get(i)){
-                System.out.print(neighbour+", ");
+    void addEdge(int u, int v){
+        adjacencyList[u].add(v);
+    }
+
+    public static void main(String[] args){
+        Graph g = new Graph(4);
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+
+        System.out.println("DFS: ");
+        g.DFS();
+        System.out.println();
+        System.out.println("BFS: ");
+        g.BFS(2);
+    }
+
+    private void BFS(int s) {
+        boolean[] visited = new boolean[numOfVertices];
+        LinkedList<Integer> queue = new LinkedList<>();
+        visited[s] = true;
+        queue.add(s);
+
+        while (queue.size() != 0){
+            int v = queue.poll();
+            System.out.print(v+" ");
+            Iterator<Integer> itr = adjacencyList[v].listIterator();
+            while (itr.hasNext()){
+                int neighbour = itr.next();
+                if(!visited[neighbour]){
+                    visited[neighbour] = true;
+                    queue.add(neighbour);
+                }
             }
-            System.out.println();
         }
     }
 
-    private static void addEdge(ArrayList<ArrayList<Integer>> adjacencyList, int u, int v) {
-        adjacencyList.get(u).add(v);
-        adjacencyList.get(v).add(u);
+    private void DFS() {
+        boolean visited[] = new boolean[numOfVertices];
+        for ( int i=0; i<numOfVertices; i++) {
+            if(!visited[i]) DFSUtil(i, visited);
+        }
+    }
+
+    private void DFSUtil(int v, boolean[] visited) {
+        visited[v] = true;
+        System.out.print(v+" ");
+        Iterator<Integer> itr = adjacencyList[v].listIterator();
+        while (itr.hasNext()){
+            int neighbour = itr.next();
+            if (!visited[neighbour]){
+                DFSUtil(neighbour, visited);
+            }
+        }
     }
 }
