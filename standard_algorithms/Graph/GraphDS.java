@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Graph<T>{
+public class GraphDS<T>{
 
     private List<Edge<T>> allEdges;
     private Map<Long,Vertex<T>> allVertex;
     boolean isDirected = false;
 
-    public Graph(boolean isDirected){
+    public GraphDS(boolean isDirected){
         allEdges = new ArrayList<Edge<T>>();
         allVertex = new HashMap<Long,Vertex<T>>();
         this.isDirected = isDirected;
