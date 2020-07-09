@@ -144,4 +144,4 @@ D -> []
 
 # Graph Theory Implementations
 
-* DFS, BFS and Connected Components using DFS [Graph.java](https://github.com/bhaskarsantoshk/problem-solving/blob/master/standard_algorithms/Graph/Graph.java) (Majority part of the code is referred from [GFG](https://www.geeksforgeeks.org/))
+* DFS, BFS and Connected Components using DFS :    [Graph.java](https://github.com/bhaskarsantoshk/problem-solving/blob/master/standard_algorithms/Graph/Graph.java) (Majority part of the code is referred from [GFG](https://www.geeksforgeeks.org/))
