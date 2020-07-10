@@ -2,6 +2,7 @@ package standard_algorithms.Graph;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
     private int numOfVertices;
@@ -35,6 +36,8 @@ public class Graph {
         g.BFS(2);
         System.out.println("Connected Components");
         g.connectedComponents(4);
+        System.out.println("Topological Sort");
+        g.topologicalSort();
     }
 
     private void BFS(int s) {
@@ -75,8 +78,9 @@ public class Graph {
             }
         }
     }
-    
-     public void connectedComponents(int numOfVertices){
+
+
+    public void connectedComponents(int numOfVertices){
         boolean[] visited = new boolean[numOfVertices];
         int count = 0;
         for ( int v=0; v<numOfVertices; v++){
@@ -87,5 +91,33 @@ public class Graph {
             }
         }
         System.out.println(count);
+    }
+
+
+    public void topologicalSort(){
+        Stack stack = new Stack();
+        boolean[] visited = new boolean[numOfVertices];
+        for (int i=0; i<numOfVertices; i++){
+            if (!visited[i]){
+                topologicalUtil(i, visited, stack);
+            }
+        }
+        while (!stack.isEmpty()){
+            System.out.print(stack.pop()+" ");
+        }
+
+    }
+
+    private void topologicalUtil(int v, boolean[] visited, Stack stack) {
+        visited[v] = true;
+        Integer i;
+        Iterator<Integer> itr = adjacencyList[v].listIterator();
+        while (itr.hasNext()){
+            i = itr.next();
+            if (!visited[i]){
+                topologicalUtil(i, visited, stack);
+            }
+        }
+        stack.push(new Integer(v));
     }
 }
