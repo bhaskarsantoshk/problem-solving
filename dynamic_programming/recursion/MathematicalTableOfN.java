@@ -7,7 +7,6 @@ public class MathematicalTableOfN {
         }
     }
     public static void main(String[] args){
-        //printTable(10);
         printTableRec(10, 1);
     }
 
