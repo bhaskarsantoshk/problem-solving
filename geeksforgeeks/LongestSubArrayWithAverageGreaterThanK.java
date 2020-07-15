@@ -6,7 +6,7 @@ public class LongestSubArrayWithAverageGreaterThanK {
         int prefixSum[] = calculatePrefixSumArray(a);
         return maxIndexDiff(prefixSum);
     }
-
+    
     private int maxIndexDiff(int[] a) {
         int len = a.length;
         int maxDiff;
