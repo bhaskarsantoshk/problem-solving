@@ -7,3 +7,4 @@
 ### geeksforgeeks
 ### InterviewBit
 ### Hacakerrank
+### Standard Algorithms
