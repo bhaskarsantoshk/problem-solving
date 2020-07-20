@@ -1,5 +1,4 @@
 package bytebybyte;
-
 import java.util.Arrays;
 
 public class MakingChange {
