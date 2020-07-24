@@ -10,3 +10,4 @@
 ### Standard Algorithms
 ### Programming Interviews Exposed 
 ### Notes
+### Dynamic Programming
