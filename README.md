@@ -11,3 +11,4 @@
 ### Programming Interviews Exposed 
 ### Notes
 ### Dynamic Programming
+### Algorithms Part 1
