@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.Stack;
+
 public class P1475FinalPricesWithASpecialDiscountInAShop {
     public int[] finalPrices(int[] prices) {
         Stack<Integer> stack = new Stack<>();
