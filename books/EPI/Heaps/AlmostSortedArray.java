@@ -39,3 +39,4 @@ public class AlmostSortedArray {
 
 // GIST: as the numbers are placed at max k positions from their actual sorted positions, 
 //you need to read at max k+1 elements to find the min element for that window
+// O (N log K) Time, O(K) Space
