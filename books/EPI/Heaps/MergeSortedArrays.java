@@ -42,3 +42,5 @@ public class MergeSortedArrays {
         }
     }
 }
+
+// O (N log K) Time, O(K) Space
