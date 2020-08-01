@@ -35,3 +35,5 @@ public class ClosestKStars {
         }
     }
 }
+
+// O (N log K) Time, O(K) Space
