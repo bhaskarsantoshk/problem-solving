@@ -22,3 +22,4 @@ public class TopKStrings {
 // GIST: As we process the input, we want to track k longest strings so far. 
 // Out of these k strings, the string to be evicted when a longer string is to be added is the shortest one.
 // A min heap is the right data structure
+// O (N log K) Time, O(K) Space
