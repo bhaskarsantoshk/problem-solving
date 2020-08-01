@@ -26,7 +26,7 @@ public class MergeSortedArrays {
             ArrayEntry headEntry = minHeap.poll();
             result.add(headEntry.value);
             if(iterators.get(headEntry.arrayId).hasNext()){
-                minHeap.add(new ArrayEntry(iterators.get(headEntry.arrayId).next(), headEntry.arrayId);
+                minHeap.add(new ArrayEntry(iterators.get(headEntry.arrayId).next(), headEntry.arrayId));
             }
         }
         return result;
