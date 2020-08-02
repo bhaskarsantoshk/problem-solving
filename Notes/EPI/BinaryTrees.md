@@ -30,3 +30,20 @@
 
 * Right-Skewed Tree:
 > A tree in which no node has a left child. 
+
+### Traversals: 
+
+* Inorder: 
+> Traverse the left subtree, visit the root, then traverse the right subtree. 
+
+* Preorder:
+> Visit the root, traverse the left subtree, then traverse the right subtree.
+
+* Postorder:
+> Traverse the left subtree, traverse the right subtree, and then visit the root. 
+
+* Time and Space Complexities:
+> Let T be a binary tree of n nodes, with the height h. Implemented recursively, these traversals have O(n) time complexity and O(h) additional space complexity. 
+> The space complexity is due to the maximum depth of the function call stack. 
+> If each node has a parent field, then the traversal can be done with O(1) space complexity. 
+
