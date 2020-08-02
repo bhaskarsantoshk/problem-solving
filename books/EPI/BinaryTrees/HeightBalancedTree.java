@@ -34,3 +34,9 @@ public class HeightBalancedTree {
         }
     }
 }
+
+
+// Variants: 
+// 1. Write a program to return the size of the largest subtree that is complete.
+// 2. Design an algorithm that takes as input a binary tree and positive integer k, 
+//    and returns a node in the binary tree that is not k-balanced but all of its descendants are k-balanced. 
