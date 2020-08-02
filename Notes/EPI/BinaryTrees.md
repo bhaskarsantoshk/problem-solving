@@ -25,6 +25,12 @@
 
 * A complete binary tree of n nodes has height log<sub>2</sub>(n)
 
+* A binary tree is said to be height-balanced if for each node in the tree, the difference in the height of its left and right subtrees is atmost one. 
+
+* A perfect binary tree is height-balanced, as is a complete binary tree. 
+
+* A height-balanced tree does not have to be perfect or complete. 
+
 * Left-Skewed Tree: 
 > A tree in which no node has a right child. 
 
@@ -45,5 +51,5 @@
 * Time and Space Complexities:
 > Let T be a binary tree of n nodes, with the height h. Implemented recursively, these traversals have O(n) time complexity and O(h) additional space complexity. 
 > The space complexity is due to the maximum depth of the function call stack. 
-> If each node has a parent field, then the traversal can be done with O(1) space complexity. 
+> If each node has a parent field, then the traversal can be done with O(1) space complexity.
 
