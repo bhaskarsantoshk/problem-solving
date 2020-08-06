@@ -12,7 +12,7 @@ public class FirstOccurenceOfK {
                 end = mid-1;
                 result = mid;
             }
-            else if (a.get(mid) > key ){
+            else if ( a.get(mid) > key ){
                 end = mid-1;
             }
             else{
