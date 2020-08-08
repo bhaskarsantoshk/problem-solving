@@ -13,7 +13,6 @@ Reference : [Algorithms Course - Graph Theory Tutorial from a Google Engineer](h
 > The Edge (u,v) is identical to Edge (v,u).     
 > Example: Cities as nodes and bi directional roads as edges.    
 
-
 ### Directed Graph ( Digraph ) :    
 > Directed Graph or Digraph is a graph in which edges have orientation.
 > For example, the edge (u,v) represents an edge from node u to node v.
@@ -140,7 +139,6 @@ D -> []
 > with infinite input source, how much flow can we put through network?   
 > Suppose the edges are roads with cars, pipes with water or hallways packed with people, Flow represents the volume of water allowed to flow through pipes, the number of cars on the road can sustain in traffic, and the max amount of people that can navigate through hallways.    
 > Algorithms : Ford-Fulkerson, Edmonds-Karp & Dinic's Algorithm. 
-
 
 # Graph Theory Implementations
 
