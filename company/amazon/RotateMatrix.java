@@ -1,4 +1,4 @@
-public class Solution {
+public class RotateMatrix {
     public void rotate(ArrayList<ArrayList<Integer>> a) {
         transpose(a);
         reverseRows(a);
