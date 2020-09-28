@@ -2,8 +2,8 @@ public class Solution {
     // DO NOT MODIFY THE LIST
     public int repeatedNumber(final List<Integer> a) {
       if ( a == null || a.size() == 0 || a.size() == 1) return -1;
-      int slow = a.get(0);
-      int fast = a.get(0);
+      int slow = 0;
+      int fast = 0;
       do{
           slow = a.get(slow);
           fast = a.get(a.get(fast));
