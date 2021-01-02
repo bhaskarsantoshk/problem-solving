@@ -1,0 +1,19 @@
+package Leetcode.explore.recursion;
+
+import java.util.HashMap;
+
+public class FibonacciNumber {
+    public int fib(int n) {
+        HashMap<Integer,Integer> cache = new HashMap<>();
+        cache.put(0,0);
+        cache.put(1,1);
+        return helper(cache, n);
+    }
+
+    private int helper(HashMap<Integer, Integer> cache, int n) {
+        if (cache.containsKey(n)) return cache.get(n);
+        int ans = helper(cache, n-1) + helper(cache, n-2);
+        cache.put(n, ans);
+        return ans;
+    }
+}
