@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +24,6 @@ public class PascalsTriangleII {
 2. Use head recursion
 3. Calculate the current list based on previous list.
 
-URL: https://leetcode.com/explore/featured/card/recursion-i/251/scenario-i-recurrence-relation/3234/
+URL: https://LeetCode.com/explore/featured/card/recursion-i/251/scenario-i-recurrence-relation/3234/
 
 */

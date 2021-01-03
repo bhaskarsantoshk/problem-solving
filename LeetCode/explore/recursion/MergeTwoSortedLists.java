@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 public class MergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

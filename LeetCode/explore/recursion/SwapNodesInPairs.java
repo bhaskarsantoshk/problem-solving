@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 public class  SwapNodesInPairs {
     public ListNode swapPairs(ListNode head) {
@@ -12,7 +12,7 @@ public class  SwapNodesInPairs {
 
 /*
 
-URL: https://leetcode.com/explore/featured/card/recursion-i/250/principle-of-recursion/1681/
+URL: https://LeetCode.com/explore/featured/card/recursion-i/250/principle-of-recursion/1681/
 
 */
 

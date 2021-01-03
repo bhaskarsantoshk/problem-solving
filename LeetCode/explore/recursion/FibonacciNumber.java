@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 import java.util.HashMap;
 

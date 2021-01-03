@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 public class PowXN {
     public double myPow(double x, int n) {

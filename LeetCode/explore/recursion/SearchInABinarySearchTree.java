@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 public class SearchInABinarySearchTree {
     public TreeNode searchBST(TreeNode root, int val) {
@@ -13,6 +13,6 @@ public class SearchInABinarySearchTree {
 
 /*
 
-url: https://leetcode.com/explore/featured/card/recursion-i/251/scenario-i-recurrence-relation/3233/
+url: https://LeetCode.com/explore/featured/card/recursion-i/251/scenario-i-recurrence-relation/3233/
 
 */

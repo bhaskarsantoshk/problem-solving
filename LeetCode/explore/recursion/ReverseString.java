@@ -1,4 +1,4 @@
-package Leetcode.explore.recursion;
+package LeetCode.explore.recursion;
 
 import java.util.Arrays;
 
@@ -36,5 +36,5 @@ Output:
 [m, h, t, i, r, o, g, l, a]
 
 
-https://leetcode.com/explore/featured/card/recursion-i/250/principle-of-recursion/1440/
+https://LeetCode.com/explore/featured/card/recursion-i/250/principle-of-recursion/1440/
 */

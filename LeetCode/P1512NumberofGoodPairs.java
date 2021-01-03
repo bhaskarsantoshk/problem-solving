@@ -1,4 +1,4 @@
-package Leetcode;
+package LeetCode;
 
 class P1512NumberofGoodPairs {
     public int numIdenticalPairs(int[] nums) {
