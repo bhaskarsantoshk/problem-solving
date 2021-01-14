@@ -2,7 +2,7 @@ package LeetCode.explore.recursion;
 
 public class ListNode {
          int val;
-         ListNode next;
+         public ListNode next;
          ListNode() {}
          
          ListNode(int val) { 
