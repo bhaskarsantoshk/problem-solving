@@ -48,5 +48,39 @@
     - In Multi threaded programming, each thread has it's own stack and instruction pointer - all the rest of the components are shared by all threads.  
     - Stack - a region in memory where local variables are stored, and passed into functions.   
     - Instruction Pointer - address of the next instruction to execute  
-     
+    - Each instance from application run independantly from other processes
+    - Each process may have one or more threads competing with each other to be executed  
+    - The act of stopping one thread, scheduling it's out, scheduling another thread's in, starting thread 2 - is called a context switch  
+
+* Context Switch cost:
+
+    - context switch is not cheap, it's the price for multitasking (concurrency)  
+    - Each thread consumes resources in the CPU and memory  
+    - When we switch to a different thread - store the data from one thread, restore the data from another thread into memory.   
+
+* Context Switch - key take aways:
+    - Too many threads - thrashing, spending more time in management than real production work.  
+    - Threads consume less resources than processes. 
+    - CS between two threads from the same process is cheaper than context switch between two threads from different processes.  
+    
+* Thread Scheduling :
+
+    - FCFS 
+    - SJF
+    - Epochs ( OS divides the time into moderately sized peices called epochs - For each epoch , a different time slice for each thread is allocated by OS - dynamic priority ~~  static priority + bonus) - preference will be given to interactive threads and also the computational threads that need to be completed.
+
+
+## Threads vs Process
+
+
+### When to prefer multithreaded architecture: 
+
+* prefer if the tasks share a lot of data
+* Threads are much faster to create and destroy
+* Shorter context switches if the threads are from same process. 
+
+### When to prefer multi process architecture
+
+* Security and Stability are of high importance
+* Tasks are unrelated to eaxh other.
 
