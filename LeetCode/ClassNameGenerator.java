@@ -2,7 +2,7 @@ package LeetCode;
 
 public class ClassNameGenerator {
     static String getClassName(String s){
-        StringBuilder sb = new StringBuilder("P");
+        StringBuilder sb = new StringBuilder("");
         for ( int i=0; i<s.length(); i++){
             char c = s.charAt(i);
             if ( (i == 0 || !isAlpahabet(s.charAt(i-1))) && (isAlpahabet(c)) ){
@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s = "392. Is Subsequence\n";
+        String s = "Linked List Cycle II\n";
         // Expected Output : P392IsSubsequence
         System.out.println(getClassName(s));
     }
