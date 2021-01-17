@@ -84,3 +84,11 @@
 * Security and Stability are of high importance
 * Tasks are unrelated to eaxh other.
 
+# Thread Creation Notes
+
+* Thread class encapsulates all thread related functionality
+* Two ways to run a thread:
+    > Implement Runnable interface, and pass to a new Thread object.                            
+     Extend Thread class, and create an object of that class
+ ---
+                 
