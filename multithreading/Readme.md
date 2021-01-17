@@ -84,11 +84,44 @@
 * Security and Stability are of high importance
 * Tasks are unrelated to eaxh other.
 
-# Thread Creation Notes
+## Thread Creation Notes
 
 * Thread class encapsulates all thread related functionality
 * Two ways to run a thread:
     > Implement Runnable interface, and pass to a new Thread object.                            
      Extend Thread class, and create an object of that class
- ---
+## Thread Termination - Why and When
+
+* Threads consume resources
+    > Memory and Kernel resources
+
+    > CPU cycles and Cache memory
+* If a thread finishes it's work, but the application is still running, 
+we want to clean up the thread's resources.
+* If a thread is misbehaving, we want to stop it.
+* By default, the application will not stop 
+as long as at least one thread is still running
+
+## Thread.interrupt() - when can we interrupt a thread ?
+1. If the thread is executing a method that throws an InterruptedException
+2. If the thread's code is handling the interrupt signal explicitly.
+
+## Daemon Threads
+
+* Background threads that do not prevent 
+the application from exiting if the main thread terminates
+
+### Daemon Threads Scenario 1
+
+* Background tasks, that should not block our application from terminating
+
+    Example: File saving thread in Text Editor
+
+### Daemon Threads Scenario 2
+
+* Code in a worker thread is not in our control, and we do not want it to 
+block our application from terminating.
+
+    Example: Worker thread that uses an external library
+ 
                  
