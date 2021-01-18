@@ -124,4 +124,33 @@ block our application from terminating.
 
     Example: Worker thread that uses an external library
  
+ ### Thread Coordination - Why do we need it 
+ 
+ * Different threads run independently
+ * Order of execution is out of control
+ 
+ ### Thread Coordination - dependency 
+ 
+ * What if one thread depends on the another thread - 
+    * Naive solution : Thread B runs in a loop and 
+    keeps checking if Thread A's result is ready 
+    this solution is inefficient. 
+    Thread B is going to burn CPU cycles just for doing checks
+    
+    * Desired Solution: Thread B checks and goes to sleep, 
+    Thread A completes, Thread B wakes up. Thread.join() will achive this.
+    
+  * Thread.join() 
+    * More control over worker threads
+    * Safely collect and aggregate results
+    * Gracefully handle runaway threads using Thread.join(timeout)
+ ### Key takeaways
+ 
+ * Never rely on the order of execution of threads
+ * Always use Thread coordination
+ * Design Code for worst case scenarios
+ * Threads make take unreasonably long time
+ * Stop the thread if it's not done by certain timeout
+ 
+ 
                  
