@@ -152,5 +152,52 @@ block our application from terminating.
  * Threads make take unreasonably long time
  * Stop the thread if it's not done by certain timeout
  
+ ## Performance Criteria
+ Performance definition varies with different systems
+ 
+ * For a High Speeding trading system - Latency is a performance metric
+ * For a Video player - Correct and Precise frame rate (precision and accuracy)
+ * For an application that performance on large volume of data - the more data that system can ingest will be the metric 
+ (because the more the data- the better the recommendation will be) latency or lack of gitter is not important here
+ 
+ * In general, we talk about only two types of performance definitions - latency and throughput.
+  
+ ### Latency
+ The time to completion of a task, measured in time units.
+ 
+ * If a task can be achieved in T time, and 
+ if we divide the task into n sub tasks to run in parallel , the latency is theoretically T/N. 
+ * N should be as closest possible number of cores. (to truly run in parallel)
+ * additional threads reduce the performance by pushing threads back and forth doing context switches
+ * \# threads = \# cores  is optimal only if all threads are runnable and 
+ can run without interruption ( no IO /blocking calls/sleep etc)
+ * the assumption is nothing else is running in the system that consumes a lot of CPU
+ * Hyperthreading - Virtual Cores vs Physical Cores
+ (virtual threads- the concept of having some part of hardware units shared by two threads - 
+ one core will be divided into two virtual cores  )
+ 
+ * Inherent cost of parallelization and aggregation :  
+ Breaking the task into multiple tasks +  
+ Thread creation , passing tasks to threads +  
+ Time between thread.start() to thread getting scheduled +  
+ Time until the last thread finishes and signals the aggregating thread +  
+ Time until the aggregation thread runs  +  
+ Aggregation of subresults into single artifact
+ * small and trivial tasks are not worth breaking and running in multithreads
+ * the longer the task - it will be more suited for dividing and running the subtasks in parallel
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ ### Throughput
+ 
+ The amount of tasks completed in a given period. measured in tasks/time unit
+ 
+ 
+ 
  
                  
