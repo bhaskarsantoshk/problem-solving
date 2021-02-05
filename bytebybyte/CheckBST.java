@@ -8,19 +8,16 @@ public class CheckBST {
         private Node right;
     }
 
-    public boolean isBST(Node n){
-
-        return isBST(n, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public boolean isBST(Node root){
+        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    public boolean isBST(Node n, int min, int max){
-        if ( n == null ){
-            return true;
-        }
-
-        if ( n.value < min || n.value > max ){
+    private boolean isBST(Node root, int minValue, int maxValue) {
+        if ( root == null ) return true;
+        if (root.value < minValue || root.value > maxValue){
             return false;
         }
-        return isBST(n.left, min, n.value) && isBST(n.right, n.value+1, max);
+        return isBST(root.left, minValue, root.value) && isBST(root.right , root.value+1, maxValue);
     }
+
 }
