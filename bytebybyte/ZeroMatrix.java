@@ -48,7 +48,7 @@ public class ZeroMatrix {
 
         // going through each row in the first column,if it's true, we are setting whole row to be true
 
-        for ( int i=0; i<matrix.length; i++){
+        for ( int i=1; i<matrix.length; i++){
             if ( matrix[i][0] ){
                 for ( int j=1; j<matrix[i].length; j++){
                     matrix[i][j] = true;
@@ -56,7 +56,7 @@ public class ZeroMatrix {
             }
         }
 
-        for ( int j=0; j<matrix[0].length; j++){
+        for ( int j=1; j<matrix[0].length; j++){
             if ( matrix[0][j]){
                 for ( int i=1; i<matrix.length; i++){
                     matrix[i][j] = true;
