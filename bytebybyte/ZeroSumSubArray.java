@@ -18,9 +18,10 @@ public class ZeroSumSubArray {
                 sum+=arr[i];
             }
             else{
-                return Arrays.copyOfRange(arr, oldIndex, i)
+                return Arrays.copyOfRange(arr, oldIndex, i);
             }
         }
+        return null;
     }
 
 }
