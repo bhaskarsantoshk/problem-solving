@@ -7,4 +7,13 @@ public class Factorial {
         }
         return n * factorial(n-1);
     }
+
+
+    private static int factorialIterative ( int n){
+        int res = 1;
+        for ( int i=1; i<= n; i++){
+            res *= i;
+        }
+        return res;
+    }
 }
