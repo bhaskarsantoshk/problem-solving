@@ -12,5 +12,10 @@ public class Print {
             System.out.print(num+" ");
         }
     }
+    public static void print(char[] a){
+        for(char c: a){
+            System.out.println(c+" ");
+        }
+    }
 }
 
