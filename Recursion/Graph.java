@@ -2,6 +2,7 @@ package Recursion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Graph {
     int numVertices;
@@ -31,5 +32,30 @@ public class Graph {
                 dfs(neighbour, visited);
             }
         }
+    }
+
+    public void topologicalSorting() {
+        boolean[] visited = new boolean[numVertices];
+        Stack<Integer> stack = new Stack<>();
+
+        for ( int i=0; i<numVertices; i++){
+            if (!visited[i]){
+                topologicalSorting(i, visited, stack);
+            }
+        }
+        System.out.println("Topo sort: ");
+        while (!stack.isEmpty()){
+            System.out.println(stack.pop());
+        }
+    }
+
+    private void topologicalSorting(int start, boolean[] visited, Stack<Integer> stack) {
+        visited[start] = true;
+        for (int neighbour: neighbours[start]){
+            if (!visited[neighbour]){
+                topologicalSorting(neighbour, visited, stack);
+            }
+        }
+        stack.push(start);
     }
 }
