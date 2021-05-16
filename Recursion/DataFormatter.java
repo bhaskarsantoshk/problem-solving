@@ -1,6 +1,6 @@
 package Recursion;
 
-public class Print {
+public class DataFormatter {
     public static void print(int x){
         System.out.println(x);
     }
@@ -14,8 +14,19 @@ public class Print {
     }
     public static void print(char[] a){
         for(char c: a){
-            System.out.println(c+" ");
+            System.out.print(c+" ");
         }
+        System.out.println();
+    }
+    public static void swap(char[] a, int i, int j){
+        char temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+    public static void swap(int[] a, int i, int j){
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 }
 

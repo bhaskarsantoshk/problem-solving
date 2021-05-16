@@ -1,6 +1,6 @@
 package Recursion;
 
-import static Recursion.Print.print;
+import static Recursion.DataFormatter.print;
 
 public class DigitCount {
     public static int countDigits(int n){
