@@ -43,5 +43,6 @@ public class Frequency {
                 end = mid-1;
             }
         }
+        return result;
     }
 }
