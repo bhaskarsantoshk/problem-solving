@@ -1,4 +1,4 @@
-package Recursion;
+package data_structures.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
