@@ -15,4 +15,3 @@ public class SmallestSubArrayWithGivenSum {
         return minWindowSize != Integer.MAX_VALUE ? minWindowSize: -1;
     }
 }
-
