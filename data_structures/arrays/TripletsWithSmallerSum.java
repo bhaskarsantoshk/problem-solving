@@ -1,7 +1,6 @@
 package data_structures.arrays;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class TripletsWithSmallerSum {
     public static int getTripletsWithSmallerSum(int[] nums, int targetSum){
