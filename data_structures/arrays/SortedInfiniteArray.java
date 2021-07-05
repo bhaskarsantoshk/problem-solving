@@ -31,7 +31,7 @@ public class SortedInfiniteArray {
                 end = mid - 1;
             } else if (key > reader.get(mid)) {
                 start = mid + 1;
-            } else { 
+            } else {
                 return mid;
             }
         }
