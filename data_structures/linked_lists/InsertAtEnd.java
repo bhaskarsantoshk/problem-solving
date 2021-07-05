@@ -2,15 +2,6 @@ package data_structures.linked_lists;
 
 public class InsertAtEnd<T> {
     public Node head;
-    class Node{
-        public T data;
-        Node next;
-
-        public Node(T data){
-            this.data = data;
-            this.next = null;
-        }
-    }
 
     public void insertAtEnd(T data) {
         if ( head == null ){
