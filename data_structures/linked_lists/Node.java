@@ -9,6 +9,10 @@ public class Node<T> {
         this.next = null;
     }
 
+    public Node(){
+
+    }
+
     public static void printList(Node head) {
         if ( head == null ) return;
         Node cur = head;
