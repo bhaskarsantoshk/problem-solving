@@ -40,7 +40,7 @@ public class PalindromeFinder {
             count+= getPalindromes(s, i-1, i+1);
             count+= getPalindromes(s, i, i+1);
         }
-
+        return count;
     }
 
     private static int getPalindromes(String s, int j, int k) {
