@@ -19,6 +19,36 @@ public class RegexMatcher {
         }
     }
 
-    private static boolean regexMatch(String s1, String s2) {
+    private static boolean regexMatch(String text, String pattern) {
+        return regexMatch(text, pattern, 0, 0);
+    }
+
+    private static boolean regexMatch(String text, String pattern, int textIndex, int patternIndex) {
+        // Both text and pattern reached the ends
+        if ( text.length() == textIndex && pattern.length() == patternIndex){
+            return true;
+        }
+        // Compare the characters at each index
+        // First check is about "*" and second will be "."
+        if ( patternIndex < pattern.length()-1 && pattern.charAt(patternIndex+1) == '*'){
+            for ( int i= textIndex; i<= text.length(); i++){
+                // example : a* can be empty string , a or aa, aaa etc.
+                if ( regexMatch(text, pattern, i, patternIndex+2)){
+                    return true;
+                }
+                if ( i >= pattern.length() ){
+                    return false;
+                }
+                if ( pattern.charAt(patternIndex) != '.' && pattern.charAt(patternIndex) != text.charAt(i)){
+                    return false;
+                }
+            }
+        } else if ( textIndex < text.length() && patternIndex < pattern.length() ){
+            // If it's a '.', we can match with anything. If it's not a '.', characters should match
+            if ( pattern.charAt(patternIndex) == '.' || pattern.charAt(patternIndex) == text.charAt(textIndex)){
+                return regexMatch(text, pattern, textIndex+1, patternIndex+1);
+            }
+        }
+        return false;
     }
 }
