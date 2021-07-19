@@ -25,4 +25,25 @@ public class PalindromePartitioning {
         }
         return true;
     }
+
+    public int getMinCutsForPalindromeDP (String s){
+        Integer[][] memo = new Integer[s.length()+1][s.length()+1];
+        return getMinCutsForPalindromeDP(memo, s, 0, s.length()-1);
+    }
+
+    private int getMinCutsForPalindromeDP(Integer[][] memo, String s, int start, int end) {
+        if (start >= end || isPalindrome(s, start, end)){
+            return 0;
+        }
+        if ( memo[start][end] == null ){
+            int minCuts = end-start;
+            for ( int i=start; i<=end; i++){
+                if ( isPalindrome(s, start, i)){
+                    minCuts = Math.min(minCuts, 1+ getMinCutsForPalindromeDP(memo, s, i=1, end));
+                }
+            }
+            memo[start][end] = minCuts;
+        }
+        return memo[start][end];
+    }
 }
