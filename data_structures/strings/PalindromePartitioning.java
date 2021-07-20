@@ -39,8 +39,8 @@ public class PalindromePartitioning {
         if ( memo[start][end] == null ){
             int minCuts = end-start;
             for ( int i=start; i<=end; i++){
-                if ( isPalindrome(s, start, i)){
-                    minCuts = Math.min(minCuts, 1+ getMinCutsForPalindromeDP(memo, s, i=1, end));
+                if ( isPalindromeDP(memoPalindrome, s, start, i)){
+                    minCuts = Math.min(minCuts, 1+ getMinCutsForPalindromeDP(memo,memoPalindrome, s, i+1, end));
                 }
             }
             memo[start][end] = minCuts;
