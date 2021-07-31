@@ -3,6 +3,11 @@ package data_structures.trees;
 public class ConvertBinaryTreeToDoublyLinkedList {
     public static TreeNode convertTreeToDoublyLinkedList (TreeNode root){
         TreeNode head = convertTreeToDoublyLinkedListRec(root);
+        if (head != null && head.left != null) {
+            head.left.right = null;
+            head.left = null;
+        }
+        return head;
     }
 
     private static TreeNode convertTreeToDoublyLinkedListRec(TreeNode root) {
