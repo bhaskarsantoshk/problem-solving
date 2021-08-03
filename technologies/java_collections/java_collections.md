@@ -67,4 +67,34 @@ when the array is full, a new array with n+n/2+1 is created.
 * `list.stream().sorted().collect(Collectors.toList())`
 * `Collections.sort(list, Collections.reverseOrder())`
 * `list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList())`
+
+#### Comparable Interface
+* Each wrapper class(Integer, Double, or Long), String class, and Date class implements an interface called Comparable.
+
+### LinkedList 
+* Implements List and Deque interface
+* Elements are stored in order of insertion. 
+* allows duplicate and null elements.
+* Internal Implementation:
+    * The LinkedList class has a static inner class called Node. 
+    * This class contains three fields: 
+        * item (value of current element)
+        * next
+        * prev
+    * When a node at index i is removed, the next field of node at index i-1 is set to the node at index i+1. 
+    Similarly, the prev field of node at index i+1 is set to node i-1.
     
+    * Time complexities: 
+        * adding an element: O(1)
+        * removing an element: O(1)
+        * searching an element : O(1)
+    * Creating a LinkedList:
+        * `List<Integer> list = new LinkedList<>()`
+        * `List<Integer> list = new LinkedList<>(oldList)`
+    * Inserting an element:
+        * `add (E e)` or `addLast(E e)` inserts at the end of list.
+        * `addFirst(E e)` inserts at the beginning
+        * `add(int index, E element)` inserts at the particular index.
+        * `list.addAll(anotherList)` inserts multiple elements from another collection at the end
+        * `addAll(int index, Collection c)` inserts multiple elements from another collection at the particular index
+        
