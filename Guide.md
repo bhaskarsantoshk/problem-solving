@@ -90,6 +90,11 @@
     * Create a stack, iterate through all characters, for each open bracket - push the respective closed bracket.
     * For every closed bracket , check if stack is not empty and popped value is matching else return false
     * at the end, return true if stack is empty.
+8. Merge k Sorted Lists
+    * Create a MinHeap with size equal to length of the lists. 
+    * Add all the first nodes of lists.
+    * Create the res pointer and cur pointer, For each poll, add the next elements. 
+    * return res.next
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
