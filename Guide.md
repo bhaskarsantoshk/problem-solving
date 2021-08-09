@@ -95,6 +95,10 @@
     * Add all the first nodes of lists.
     * Create the res pointer and cur pointer, For each poll, add the next elements. 
     * return res.next
+9. Valid Sudoku
+    * Create a HashSet 
+    * iterate through rows and cols, check if we already added a num in same row(i)/col(j)/grid (i/3+" "+j/3)
+   
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
