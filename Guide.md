@@ -47,4 +47,24 @@
     > First check will be divisible by both
 50. Missing Number
     > XOR of all numbers and then xor with 1 to n
-51.                                          
+51.    
+
+# Leetcode Amazon Interview Questions
+
+###Sources:
+
+* https://leetcode.com/discuss/study-guide/1149636/Amazon-LPs-Compiled
+* https://leetcode.com/discuss/interview-experience/1148076/amazon-sde2-bangalore-april-2021-offer-repost
+
+### Problems
+
+1. Merge two sorted lists
+    * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
+    if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
+    * https://leetcode.com/submissions/detail/436004130/
+    
+    * Iterative approach: base conditions, create a cur pointer with -1 as val, assign it to result
+    move the cur pointer based on the l1.val and l2.val. do this until l1 and l2 are not null, later cur.next will be the leftover list.
+    at the end, return result.next. 
+    
+    * https://leetcode.com/submissions/detail/540793128/                                 
