@@ -55,10 +55,14 @@
 
 * https://leetcode.com/discuss/study-guide/1149636/Amazon-LPs-Compiled
 * https://leetcode.com/discuss/interview-experience/1148076/amazon-sde2-bangalore-april-2021-offer-repost
-
+* [Amazon Final Interview Questions | SDE1](https://leetcode.com/discuss/interview-question/488887/Amazon-Final-Interview-Questions-or-SDE1)
+* []
 ### Problems
 
-1. Merge two sorted lists
+1. Two Sum
+    * use Map to store index as key and value as number, for each number check if target - num exists. if yes, return res [map.get(target-num), current index]
+
+2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
     * https://leetcode.com/submissions/detail/436004130/
