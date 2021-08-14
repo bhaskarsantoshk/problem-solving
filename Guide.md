@@ -80,6 +80,12 @@
     * Remember L C D M for 50,100,500,1000
     * Loop through the above numbers in descending order,Append roman strings to result for the respective values while dedcuting the value
     * If the number is less, move to next value 
+6. Roman to Integer
+    * Store I,V,X,L,C,D,M and their respective values in a map
+    * Store A with 0
+    * initially assign A to prev. Iterate through all roman chars in the string left to right, if map.get(c) is greater than map.get(prev), sum -= 2* map.get(c)
+    * add map.get(c) to sum, prev = c.
+    * reason for deducting twice is because we are adding blindly the value in next step.
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
