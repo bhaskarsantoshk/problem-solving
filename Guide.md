@@ -61,7 +61,14 @@
 
 1. Two Sum
     * use Map to store index as key and value as number, for each number check if target - num exists. if yes, return res [map.get(target-num), current index]
-
+2. Median of two sorted arrays
+    * Do a binary search on the smaller array to find a partition point such that 
+    every element on the left side is less than or equal to every element on the right side for two arrays
+    * [explanation](https://www.youtube.com/watch?v=LPFhl65R7ww)
+3. Longest Palindromic Substring
+    * Approach 1: O ( N^2 ): Create a 2 d array, row will be start , column will be end of string. 
+    fill the diagonal i.e single length palindromes, the diagonal above the main one will be two length palindromes
+    the fill the table for length more than 3, keep track of max length and sub string.
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
