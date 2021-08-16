@@ -74,6 +74,12 @@
     calculate sign
     check until you get digits, keep calculating the number while checking overflow, 
     if overflow , return INT_MAX/MIN based on the sign.
+5. Integer to Roman 
+    * Have a string array of roman numbers for 1000,900,500,400,100,90,50,40,10,9,5,4,1
+    * 900,400, 90, 40, 4 - because these are exceptions
+    * Remember L C D M for 50,100,500,1000
+    * Loop through the above numbers in descending order,Append roman strings to result for the respective values while dedcuting the value
+    * If the number is less, move to next value 
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
