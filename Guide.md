@@ -69,6 +69,11 @@
     * Approach 1: O ( N^2 ): Create a 2 d array, row will be start , column will be end of string. 
     fill the diagonal i.e single length palindromes, the diagonal above the main one will be two length palindromes
     the fill the table for length more than 3, keep track of max length and sub string.
+4. String to Integer (atoi)
+    * First check for empty string, trim both trailing and ending spaces, 
+    calculate sign
+    check until you get digits, keep calculating the number while checking overflow, 
+    if overflow , return INT_MAX/MIN based on the sign.
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
