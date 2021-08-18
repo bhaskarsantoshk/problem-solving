@@ -20,5 +20,14 @@ public class IteratorDemo {
         // forEachRemaining()
         Iterator<Integer> newIterator = list.iterator();
         newIterator.forEachRemaining( o -> System.out.println(o));
+
+        Iterator<Integer> iteratorToRemove = list.iterator();
+        while (iteratorToRemove.hasNext()) {
+            int next = iteratorToRemove.next();
+            if (next == 30) {
+                // list.remove(Integer.valueOf(2)); will throw Exception
+                newIterator.remove();
+            }
+        }
     }
 }
