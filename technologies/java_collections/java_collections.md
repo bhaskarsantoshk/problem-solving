@@ -45,6 +45,26 @@ when the array is full, a new array with n+n/2+1 is created.
 * Lookup:
     * to check if an element exists: `contains(Object o)`
     * to search an element: `indexOf(Object o), lastIndexOf(Object o)`
-    
+* Iterator
+    * If we try removing an element from list while iterating, it will throw ConcurrentModificationException
+    * To avoid the exception, we need to use remove() method in iterator.
+    * If we add an element to the ArrayList after the iterator is created then also ConcurrentModificationException will be thrown.    
+#### List Iterator
+* The `listIterator()` method returns an object of type ListIterator which can then be used to iterate the ArrayList.
+* Methods in ListIterator interface:
+    * hasNext()
+    * next()
+    * hasPrevious()
+    * previous()
+    * nextIndex()
+    * previousIndex()
+    * remove() 
+    * set(E e)
+    * add(E e)
 
+#### Sorting
+* `Collections.sort(list)`
+* `list.stream().sorted().collect(Collectors.toList())`
+* `Collections.sort(list, Collections.reverseOrder())`
+* `list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList())`
     
