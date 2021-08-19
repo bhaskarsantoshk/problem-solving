@@ -18,8 +18,13 @@ public class Solution {
         List<String> employeesAgedOver50 = getEmployeesAgedOverGivenNumber(list, 50);
         System.out.println(employeesAgedOver50);
 
+        System.out.println("Solution using streams");
+        list.stream().filter(emp -> emp.age > 50).map(emp -> emp.name).forEach(System.out::println);
+
         List<String> employeesFromUSA = getEmployeesFromCountry(list, "USA");
         System.out.println(employeesFromUSA);
+        list.stream().filter(emp -> emp.country.equals("USA")).map(emp -> emp.name).forEach(System.out::println);
+
 
         // Sort employees by country
         Collections.sort(list, new Comparator<Employee>() {
