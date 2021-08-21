@@ -103,7 +103,9 @@
     * create a res, temp list, start as 0, remaining as target
     * inside backtrack, see if remain is 0, then add list to res. if rem is less than 0, return.
     * loop through start to length of nums, each time remove cand[i] from rem.
-       
+11. Permutations
+    * backtracking
+    * base condition is when start >= len, swap, backtrack, swap
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
