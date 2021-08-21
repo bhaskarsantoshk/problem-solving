@@ -106,6 +106,10 @@
 11. Permutations
     * backtracking
     * base condition is when start >= len, swap, backtrack, swap
+12. Merge Intervals
+    * sort the intervals based on first element
+    * create a list of arrays, add the first array. compare every new array's 2nd element with the 1st elemnt of the array before.
+    * if it's more, merge. else add the new interval to res. 
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
