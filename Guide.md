@@ -120,6 +120,15 @@
     * call recursive function on height-1, width-1 i.e bottom right cell
     * base case is 0,0
     * recusrive function gets called on row 0, col 0 or non zero row and col. 
+15. Word Search
+    * for each character in the cell, call a rec function on 4 directions once the first character matches
+    * base condition will be when the index matches word length or if i and j are out of boundaries    
+    DP: 
+    * Bottom up
+    * if row == 0 and col == 0, continue
+    * fill zeroth row and zeroth column straight away by adding prev cell vcalue
+    * fill non zeroth row and col by adding min of top and left cell value.
+    * return the last cell ( bottom right) 
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
