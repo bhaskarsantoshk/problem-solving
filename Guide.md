@@ -115,6 +115,11 @@
     * rotate - fast.next = res.next
     * res.next = slow.next ( modified head)
     * slow.next = null // cut the cycle
+14. Minimum Path Sum
+    Approach 1:
+    * call recursive function on height-1, width-1 i.e bottom right cell
+    * base case is 0,0
+    * recusrive function gets called on row 0, col 0 or non zero row and col. 
 2. Merge two sorted lists
     * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
     if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
