@@ -147,4 +147,9 @@
     * recurive call on root.left, long.min , root.val && root.right, root.val , long.max
     
     * Approach 2: Iterative
+    
+    [Learn Iterative way of Inorder traversal and tackle several tree problems.](https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)) 
+    
+    * follow iterative inorder way, before going for root.right, check if pre is not null , if yes, check if root.val <= pre.val - return false
+
                               
