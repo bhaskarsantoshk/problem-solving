@@ -159,5 +159,8 @@
     * Approach 2: Iterative
     * Use a Queue. add p and q.
     * while q is empty, poll two nodes, and check if the values are equal. add f.left, s.left and f.right s.right to queue.
-18. 
+18. Symmetric Tree
+    * Approach 1: Recursive
+    * Call rec on left and right sub trees
+    * s.val == t.val && isSymmetric(s.left, t.right) && isSymmetric(s.right, t.left)
                               
