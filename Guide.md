@@ -151,5 +151,13 @@
     [Learn Iterative way of Inorder traversal and tackle several tree problems.](https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)) 
     
     * follow iterative inorder way, before going for root.right, check if pre is not null , if yes, check if root.val <= pre.val - return false
-
+17. Same Tree
+    * Approach 1: Recursion
+    * base cases: if p is null or q is null, return p is null && q is null.
+    * p.val == q.val && call rec on p.left, q.left && p.right && q.right
+    
+    * Approach 2: Iterative
+    * Use a Queue. add p and q.
+    * while q is empty, poll two nodes, and check if the values are equal. add f.left, s.left and f.right s.right to queue.
+18. 
                               
