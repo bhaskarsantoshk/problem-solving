@@ -59,6 +59,16 @@
 * []
 ### Problems
 
+0. Merge two sorted lists
+       * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
+       if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
+       * https://leetcode.com/submissions/detail/436004130/
+       
+       * Iterative approach: base conditions, create a cur pointer with -1 as val, assign it to result
+       move the cur pointer based on the l1.val and l2.val. do this until l1 and l2 are not null, later cur.next will be the leftover list.
+       at the end, return result.next. 
+       
+       * https://leetcode.com/submissions/detail/540793128/   
 1. Two Sum
     * use Map to store index as key and value as number, for each number check if target - num exists. if yes, return res [map.get(target-num), current index]
 2. Median of two sorted arrays
@@ -129,13 +139,12 @@
     * fill zeroth row and zeroth column straight away by adding prev cell vcalue
     * fill non zeroth row and col by adding min of top and left cell value.
     * return the last cell ( bottom right) 
-2. Merge two sorted lists
-    * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
-    if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
-    * https://leetcode.com/submissions/detail/436004130/
+16. Validate Binary Search Tree
+    * Approach 1: Recursive.
+    * Make a rec call with root, long.min and long.max
+    * base case is when root is null ( return true ) 
+    * if root.val is less than or equal to long.min or greater than or equal to long.max - return false
+    * recurive call on root.left, long.min , root.val && root.right, root.val , long.max
     
-    * Iterative approach: base conditions, create a cur pointer with -1 as val, assign it to result
-    move the cur pointer based on the l1.val and l2.val. do this until l1 and l2 are not null, later cur.next will be the leftover list.
-    at the end, return result.next. 
-    
-    * https://leetcode.com/submissions/detail/540793128/                                 
+    * Approach 2: Iterative
+                              
