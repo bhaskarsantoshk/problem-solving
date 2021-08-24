@@ -171,3 +171,8 @@
     * Create a Queue, add root
     * while queue is not empty, loop through queue size (also level size), add val of popped node to temp list, add left and right of popped node to queue
     * each time loop ends, add temp list to res
+
+20. Convert Sorted List to Binary Search Tree
+    * Use Recursion, pass the head and null in main call
+    * find the mid point, create the root, call rec function on root.left = rec(head, mid), root.right = rec(mid.next, tail)
+    * return root
