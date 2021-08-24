@@ -165,4 +165,9 @@
         * s.val == t.val && isSymmetric(s.left, t.right) && isSymmetric(s.right, t.left)
     * Approach 2: Iterative
         * Use a Queue. add p and q.
-        * while q is empty, poll two nodes, and check if the values are equal. add f.left, s.right and f.right s.left to queue.                        
+       * while q is empty, poll two nodes, and check if the values are equal. add f.left, s.right and f.right s.left to queue.                        
+19. Binary Tree Level Order Traversal
+    * Create a List<List>
+    * Create a Queue, add root
+    * while queue is not empty, loop through queue size (also level size), add val of popped node to temp list, add left and right of popped node to queue
+    * each time loop ends, add temp list to res
