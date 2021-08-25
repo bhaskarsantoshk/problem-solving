@@ -185,3 +185,9 @@
             * check if cur.right is not null and cur.next is not null, if yes, cur.right.next = cur.next.left
             * move cur to cur.next
         * move start to start.left (i.e next level)
+
+22. Best Time to Buy and Sell Stock
+    * Use Kadane algorithm
+    * initially minPrice = prices[0], maxProfit = 0
+    * keep track of minPrice and maxProfit through i = 1 to N
+    * return maxProfit
