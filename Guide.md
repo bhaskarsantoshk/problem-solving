@@ -176,3 +176,12 @@
     * Use Recursion, pass the head and null in main call
     * find the mid point, create the root, call rec function on root.left = rec(head, mid), root.right = rec(mid.next, tail)
     * return root
+21. Populating Next Right Pointers in Each Node
+    * The gist is to connect all nodes by moving to each level
+    * Call a helper function with root which will connect the nodes
+    * start = root, while start is not null, cur = start, 
+        * while cur is not null, 
+            * check if cur.left is not null, if yes, cur.left.next = cur.right
+            * check if cur.right is not null and cur.next is not null, if yes, cur.right.next = cur.next.left
+            * move cur to cur.next
+        * move start to start.left (i.e next level)
