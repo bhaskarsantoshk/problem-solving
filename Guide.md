@@ -191,3 +191,21 @@
     * initially minPrice = prices[0], maxProfit = 0
     * keep track of minPrice and maxProfit through i = 1 to N
     * return maxProfit
+23. Word Ladder II
+    * Pre-requisite : Word Ladder I
+24. Word Ladder I
+    * BFS is the main algorithm
+    * Create a Set with all the words given in the list
+    * Create a set to go by each level. first level will have only beginWord.
+    * distance = 1
+    * For all words in the level: 
+        * create a set to store next level words
+        * from str[] i 0 till n:
+            * from c 'a' to 'z':
+                * form a string with str[i] = c
+                * check if it's part of dictionary, if yes, add to nextLevel set
+        * if next level is empty, return 0
+        * distance++
+        * level = nextLevel
+    * return distance
+
