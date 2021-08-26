@@ -227,3 +227,8 @@
     * top() : return head.val
     * getMin() : return head.min
 
+27. Number of Islands
+    * go through each char on the grid, if you find '1', call DFS , increase num of Islands 
+    * dfs(): check for boundary conditions, mark grid[i][j] = '0', call dfs on all 4 directions
+    * return num of islands  
+
