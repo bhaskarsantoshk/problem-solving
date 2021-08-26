@@ -193,6 +193,9 @@
     * return maxProfit
 23. Word Ladder II
     * Pre-requisite : Word Ladder I
+    * calculate nodeNeighbors , distanceFromBeginWord using BFS
+    * Use DFS to calculate the solution
+    * see the solution if you can't recall / solve
 24. Word Ladder I
     * BFS is the main algorithm
     * Create a Set with all the words given in the list
@@ -208,4 +211,19 @@
         * distance++
         * level = nextLevel
     * return distance
+25. LRU Cache
+    * Initial setup: Constructor, put and get methods
+    * member variables: HashTable (cache) with integer (key), DLL as value, count (size), capacity (max size).
+    * two DLL Nodes head, tail
+    
+26. Min Stack  
+    * Using a Linked List
+    * operations: push, pop, top, getMin
+    * Create a Node with val, min and Next.
+    * For push, append node at the front. 
+        *  head = new Node(val, Math.min(val, head.min), head) if head is not null)
+        * head = new Node(val, val, null) if head is null
+    * pop() : head = head.next
+    * top() : return head.val
+    * getMin() : return head.min
 
