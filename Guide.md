@@ -239,5 +239,14 @@
     * now while queue is not empty:
         * take out a course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
     * return completedCourses == numOfCourses ( boolean )
+29. Course Schedule II
+    * Create a Graph  ( an array of array lists )
+    * degree of each nodes  
+    * add all independent courses to queue ( i.e degree of course is 0)
+    * create res[] with size numOfCourses
+    * completedCoursess =0, this keeps track of each completed course
+    * now while queue is not empty:
+        * take out a course, res[completedCourses] = course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
+    * return completedCourses == numOfCourses ? res: new int[0]
     
 
