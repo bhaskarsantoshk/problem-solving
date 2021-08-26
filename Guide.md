@@ -230,5 +230,14 @@
 27. Number of Islands
     * go through each char on the grid, if you find '1', call DFS , increase num of Islands 
     * dfs(): check for boundary conditions, mark grid[i][j] = '0', call dfs on all 4 directions
-    * return num of islands  
+    * return num of islands
+28. Course Schedule
+    * Create a Graph  ( an array of array lists )
+    * degree of each nodes  
+    * add all independent courses to queue ( i.e degree of course is 0)
+    * completedCoursess =0, this keeps track of each completed course
+    * now while queue is not empty:
+        * take out a course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
+    * return completedCourses == numOfCourses ( boolean )
+    
 
