@@ -248,5 +248,24 @@
     * now while queue is not empty:
         * take out a course, res[completedCourses] = course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
     * return completedCourses == numOfCourses ? res: new int[0]
+30.
+
+31.
+
+32.
+
+33.
+
+34. Find Median from Data Stream
+    * Median will likely between max of lower half and min of upper half
+    * store lower values in minHeap and higher values in maxHeap
+    * Solution:
+        * initalize min and max heap
+        * store num in maxHeap if it's empty or maxHeap.poll() > num ( this means we are storing lower values)
+        * else store in minHeap
+        * if you see any of min or max heap size is greater than +1 of the other, poll one num and add it
+        * the above step is to make sure both will have same size or only a gap of 1.
+        * at the end if maxHeap size is high , return maxHeap.peek() else if - vice -versa
+        * if both are equal , return (peek+peek)/2.0
     
 
