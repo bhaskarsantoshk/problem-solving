@@ -280,5 +280,12 @@
     * while calculating maxDepth of each node, update max ( = Math.max(left+right, max), where left and right are maxDepths)
     * by definition, Diameter is the max num of edges between two nodes,not the num of nodes hence we are not adding a +1
     * maxDepth = num of nodes until it's leaf ( Math.max (left, right) + 1)
-        
+    
+40. Reorganize String
+    * create a hash[26]
+    * Find maxRepeatedLetter and it's count, if count > (len+1)/2, return ""
+    * create a res[len of string]
+    * update index=0 to count ( index+=2)
+    * update each character at index (index+=2, if index reaches max, index=1)
+         
 
