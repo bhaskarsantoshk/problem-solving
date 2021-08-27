@@ -267,5 +267,17 @@
         * the above step is to make sure both will have same size or only a gap of 1.
         * at the end if maxHeap size is high , return maxHeap.peek() else if - vice -versa
         * if both are equal , return (peek+peek)/2.0
-    
+35.
+
+36.
+
+37.
+
+38.
+
+39. Diameter of Binary Tree
+    * Use maxDepth approach
+    * while calculating maxDepth of each node, update max ( = Math.max(left+right, max), where left and right are maxDepths)
+    * maxDepth = num of nodes until it's leaf
+        
 
