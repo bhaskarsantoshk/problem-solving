@@ -278,6 +278,7 @@
 39. Diameter of Binary Tree
     * Use maxDepth approach
     * while calculating maxDepth of each node, update max ( = Math.max(left+right, max), where left and right are maxDepths)
-    * maxDepth = num of nodes until it's leaf
+    * by definition, Diameter is the max num of edges between two nodes,not the num of nodes hence we are not adding a +1
+    * maxDepth = num of nodes until it's leaf ( Math.max (left, right) + 1)
         
 
