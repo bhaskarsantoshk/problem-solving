@@ -267,7 +267,13 @@
         * the above step is to make sure both will have same size or only a gap of 1.
         * at the end if maxHeap size is high , return maxHeap.peek() else if - vice -versa
         * if both are equal , return (peek+peek)/2.0
-35.
+35. Longest Increasing Subsequence
+    * create a lis[] array
+    * fill 1 since all elements are lis of size 1
+    * traverse each element:
+        * traverse all it's prev elements to update lis
+        * keep track of max
+    * return max
 
 36.
 
