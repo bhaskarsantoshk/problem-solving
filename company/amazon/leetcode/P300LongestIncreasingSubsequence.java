@@ -9,7 +9,7 @@ public class P300LongestIncreasingSubsequence {
         }
         int[] lis = new int[nums.length];
         Arrays.fill(lis, 1);
-        int max = 0;
+        int max = 1;
         for ( int i =0; i<nums.length; i++){
             for ( int j=0; j<i; j++){
                 if ( nums[i] > nums[j] && lis[j]+1 > lis[i]){
