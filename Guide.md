@@ -270,6 +270,7 @@
 35. Longest Increasing Subsequence
     * create a lis[] array
     * fill 1 since all elements are lis of size 1
+    * initialize max with 1
     * traverse each element:
         * traverse all it's prev elements to update lis
         * keep track of max
