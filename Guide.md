@@ -248,7 +248,21 @@
     * now while queue is not empty:
         * take out a course, res[completedCourses] = course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
     * return completedCourses == numOfCourses ? res: new int[0]
-30.
+30. Add and Search Word - Data structure design
+    * Create a TrieNode class with member varaibles - children (= new TrieNode[26]), isWord = false;
+    * Add word : assign node = root, 
+        * go through each char, 
+            * if there is no trieNode within node's children, if it's null, create one
+            * move node to node.children[c-'a]
+            * at the end of loop, node.isWord = true
+        * Search :
+            * call match(word.toCharArray(), 0, root)
+            * if index == len, return node.isWord
+            * if word[index] == '.'
+                * Go through all children of node, and see if node.children[i] != null and match(,index+1,) is true:
+                    * return true
+            * else: return node.children[c-'a'] != null && match (,index+1,) 
+            * return false at the end
 
 31.
 
