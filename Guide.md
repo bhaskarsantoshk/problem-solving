@@ -266,7 +266,14 @@
 
 31.
 
-32.
+32. Integer to English Words 
+    * create ones [ "", "one", "two" ... "nine"]
+    * create tens ["", "ten", "twenty", ... "ninety"]
+    * create a helper function which has if conditions with num < billion, million, thousand, hundren, twenty and ten
+    * inside if, call the fun recursively num/billion + " Billion "+ func(num%billion) and so on
+    * base case will be one[num] based
+    * make sure the string formation works better ( go with trim wherever required)
+    
 
 33.
 
