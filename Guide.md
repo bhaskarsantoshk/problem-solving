@@ -301,7 +301,13 @@
 
 37.
 
-38.
+38. Mine Sweeper
+    * if borad[x][y] == 'M', mark it as 'X' and return
+    * else call dfs (board, x, y, m ,n, dirs-8 directions)
+    * Inside dfs: return if x and y are boundaries and board[x][y] !='E'
+    * get mineCount 
+    * if mineCount is positive, update it and return
+    * if mineCount 0, call dfs on 8 directions
 
 39. Diameter of Binary Tree
     * Use maxDepth approach
