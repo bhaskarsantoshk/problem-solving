@@ -32,11 +32,41 @@ x();
 ```
 
 output:
+
 ```text
 ReferenceError: Cannot access 'v' before initialization
     at x (HelloWorld.js:3:17)
 ```
 
+2. Difference between \"\=\=\" and "===" ?
+
+* They both are comparison operators.
+* \"\==" compares the value, not the type, "===" compares value and type. 
+
+```javascript
+'1' == 1
+true
+
+'1' === 1
+false
+```
+
+3. Difference between "let" and "const" ?
+
+* once you assign a value with const, you can't change the value or type anymore. let would allow change of type and value. 
+
+```javascript
+const c;
+VM118:1 Uncaught SyntaxError: Missing initializer in const declaration
+
+const c; c= 5; c =10
+VM152:1 Uncaught SyntaxError: Missing initializer in const declaration
+
+const c = 10; console.log(c);
+10
 
 
-
+let l=1; console.log(l); l=2; console.log(l);
+VM456:1 1
+VM456:1 2
+```
