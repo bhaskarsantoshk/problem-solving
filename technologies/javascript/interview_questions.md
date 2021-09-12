@@ -70,3 +70,13 @@ let l=1; console.log(l); l=2; console.log(l);
 VM456:1 1
 VM456:1 2
 ```
+
+const would allow modification to an object, but you can't re assign.
+
+const c = [1,2]; c.push(3); console.log(c);
+VM569:1 (3) [1, 2, 3]
+
+const c = [1,2]; c=[1,2,3]
+VM605:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:19
+
