@@ -213,8 +213,13 @@
     * return distance
 25. LRU Cache
     * Initial setup: Constructor, put and get methods
-    * member variables: HashTable (cache) with integer (key), DLL as value, count (size), capacity (max size).
-    * two DLL Nodes head, tail
+    * Member variables : head, tail ( for boundaries ), HashMap to act as cache, capacity( max size)
+    * Constructor: assign capacity, head and tail.
+    * Create a Node ( int: key, val, Node: prev, next)
+    * get: if cache contains the key, remove the node, insert node back , return node.value . else return -1.
+    * insert: cache.put(node.key, node), insert the node between head and tail
+    * remove: cache.remove(node.key), remove node between head and tail
+    * put : check if cache contains key, remove it. check if cache size reaches capacity: remove the node. insert the node.
     
 26. Min Stack  
     * Using a Linked List
@@ -264,7 +269,11 @@
             * else: return node.children[c-'a'] != null && match (,index+1,) 
             * return false at the end
 
-31.
+31. Word Search II
+    * Build a Trie: 
+        * have a TrieNode class - member variables: 26 Childs, String word
+        * traverse each word, build trieNode tree, at the end, set the String word to word.
+    * Go through each cell in the board, and use trie to check if we can form the word with adjacent cells using DFS, if the word is found ( make sure to handle going through cycle / not visiting the same node again), add the word to result, and mark the word to null in the trie. 
 
 32. Integer to English Words 
     * create ones [ "", "one", "two" ... "nine"]
