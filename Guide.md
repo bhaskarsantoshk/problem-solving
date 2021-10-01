@@ -284,7 +284,19 @@
     * make sure the string formation works better ( go with trim wherever required)
     
 
-33.
+33. Game of Life
+    * Brute Force: Create a new 2 D array, count live cells for each cell in board for 8 adjecent cells and fill the values by applying the rules.
+    * Optimized Solution:
+        * Update the board in place , consider the below state changes:
+            * live to dead -> 2
+            * dead to live -> 3
+            * live to live -> 1
+            * dead to dead -> 0
+        * if live cells are 3 and borad[i][j] = 0, it becomes live in the next transition, but marking this as 1 will disturb the results. similarly, if live cells are less than 2 or more than 3 and board[i][j] = 1, it becomes 0 in the next iteration , so we will mark it as 2 . and we use the strategy of board[i][j]%2 at the end of iterating the whole board.
+        * since we mark live cell as 2 in a condition, we will count live cells for both 1 and 2 values. 
+        * board[i][j]%=2;
+        * Look at the code for more information
+
 
 34. Find Median from Data Stream
     * Median will likely between max of lower half and min of upper half
