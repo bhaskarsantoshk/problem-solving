@@ -275,3 +275,193 @@ public boolean isSymmetric(TreeNode root) {
 }
 ```
 
+## Letter Combinations of a Phone Number
+
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/84/recursion/521/
+  * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+* Explanation:
+  * Backtracking
+  * Create a letter map with key as number character and array of letters as value
+  * Use backtracking with prefix ( an empty string buiulder), digits , result ( array list) and map as arguements
+```
+public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
+        if ( digits == null || digits.length() == 0) return result;
+        Map<Character, char[]> letterMap = new HashMap<>();
+        letterMap.put('0', new char[]{});
+        letterMap.put('1', new char[]{});
+        letterMap.put('2', new char[]{'a','b','c'});
+        letterMap.put('3', new char[]{'d','e','f'});
+        letterMap.put('4', new char[]{'g','h','i'});
+        letterMap.put('5', new char[]{'j','k','l'});
+        letterMap.put('6', new char[]{'m','n','o'});
+        letterMap.put('7', new char[]{'p','q','r','s'});
+        letterMap.put('8', new char[]{'t','u','v'});
+        letterMap.put('9', new char[]{'w','x','y','z'});
+        StringBuilder sb = new StringBuilder();
+        backtrack(sb, digits, letterMap, result);
+        return result;
+}
+    
+private void backtrack(StringBuilder prefix, String digits, Map<Character,char[]> letterMap, List<String> result){
+        if ( prefix.length() == digits.length() ){
+            result.add(prefix.toString());
+            return;
+        }
+        for ( char c: letterMap.get(digits.charAt(prefix.length()))) {
+            prefix.append(c);
+            backtrack(prefix, digits, letterMap, result);
+            prefix.deleteCharAt(prefix.length()-1);
+        }
+    }
+```
+
+## Generate Parentheses
+* URL: 
+  * https://leetcode.com/explore/interview/card/amazon/84/recursion/2988/
+* Explanation:
+  * Think of the possible number of open and closed braces
+  * We can add "(" as long as the number of open braces are less than n
+  * String can't start with ")"
+  * We can add ")" if and only if number of closed are less than open braces
+  * By considering the above conditions , apply backtracking
+```
+public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<String>();
+        backtrack(result, "", 0, 0, n);
+        return result;
+}
+    
+private void backtrack(List<String> result, String prefix, int open, int closed, int max){
+        if ( open + closed == 2 * max ){
+            result.add(prefix);
+        }
+        if ( open < max ){
+            backtrack(result, prefix+"(", open+1, closed, max);
+        }
+        if ( closed < open ){
+            backtrack(result, prefix+")", open, closed+1, max);
+        }
+}
+```
+
+## Median of Two Sorted Arrays
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/79/sorting-and-searching/2991/
+  * https://leetcode.com/problems/median-of-two-sorted-arrays/
+* Explanation:
+  * Use Binary Search on the smallest array
+  * Partition the arrays in such a way that number of elemts on the left and right side are equal
+  * Apply binary search to find the right partition
+```
+public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if ( nums1.length > nums2.length ){
+            return findMedianSortedArrays(nums2, nums1);
+        }
+        int x = nums1.length;
+        int y = nums2.length;
+
+        int start = 0, end = x;
+        while ( start <= end ){
+            int partitionX = (start+end)/2;
+            int partitionY = ( x+y+1)/2 - partitionX;
+            int maxLeftX = ( partitionX == 0 ) ? Integer.MIN_VALUE: nums1[partitionX-1];
+            int minRightX= ( partitionX == x ) ? Integer.MAX_VALUE: nums1[partitionX];
+            int maxLeftY = ( partitionY == 0 ) ? Integer.MIN_VALUE: nums2[partitionY-1];
+            int minRightY= ( partitionY == y ) ? Integer.MAX_VALUE: nums2[partitionY];
+
+            if ( maxLeftX <= minRightY && maxLeftY <= minRightX ){
+                if ( (x+y) % 2 == 0 ) {
+                    return ( Math.max (maxLeftX, maxLeftY) + Math.min( minRightX, minRightY)) / 2.0;
+                } else {
+                    return (Math.max (maxLeftX, maxLeftY));
+                }
+            } else if (maxLeftX > minRightY){
+                end = partitionX-1;
+            } else {
+                start = partitionX+1;
+            }
+        }
+        return -1;
+}
+```
+
+## Search in Rotated Sorted Array
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/79/sorting-and-searching/2992/
+  * https://leetcode.com/problems/search-in-rotated-sorted-array/
+* Explanation:
+  * Tweak the binary search
+  * initialize start and end
+  * while start is less than or equal to end:
+    * mid = ( start + end )/2
+    * if a[mid] == key, return mid
+    * Explore left / right region
+    * Check if a[mid] >= a[start]:
+      * If yes
+        * now check the key position
+        * if the key is greater than a[mid] and a[start]:
+          * end = mid-1
+        * else: start = mid+1
+      * Else:
+        * if the key is greater than a[mid] and less than a[end]:
+          * start = mid+1;
+        * else: end = mid-1
+  * return -1
+```
+public int search(int[] nums, int target) {
+        int start = 0, end = nums.length-1;
+        while ( start <= end ){
+            int mid = (start+end)/2;
+            if ( nums[mid] == target ) return mid;
+            if ( nums[start] <= nums[mid] ){
+                if ( target < nums[mid] && target >= nums[start]){
+                    end = mid-1;
+                } else {
+                    start = mid+1;
+                }
+            } else {
+                if ( target > nums[mid] && target <= nums[end] ){
+                    start = mid+1;
+                } else {
+                    end = mid-1;
+                }
+            }
+        }
+        return -1;
+}
+```
+
+## Longest Palindromic Substring
+* URL:
+  * https://leetcode.com/problems/longest-palindromic-substring/
+  * https://leetcode.com/explore/interview/card/amazon/80/dynamic-programming/489/
+* Explanation:
+* Extending Palindrome approach O(N^2):
+  * For index=0 to length:
+    * extend the string by keeping s[index] as mid point ( odd length )
+    * extend the string by keeping s[index], s[index+1] as mid point ( even length)
+    * get the max of both
+  * return the max of all
+```
+public String longestPalindrome(String s) {
+        String max = "";
+        for ( int i=0; i<s.length(); i++){
+            String s1= extend(s, i, i);
+            String s2= extend(s, i, i+1);
+            if ( max.length() < s1.length() ) max = s1;
+            if ( max.length() < s2.length() ) max = s2;
+        }
+        return max;
+}
+    
+private String extend(String s, int i, int j){
+        while ( i>= 0 && j<= s.length()-1){
+            if ( s.charAt(i) != s.charAt(j) ) break;
+            i--;
+            j++;
+        }
+        return s.substring(i+1, j);
+}
+```
