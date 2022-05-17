@@ -465,3 +465,357 @@ private String extend(String s, int i, int j){
         return s.substring(i+1, j);
 }
 ```
+
+* DP Solutiion:
+  * Watch https://www.youtube.com/watch?v=UflHuQj6MVA
+
+## Maximum Subarray
+
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/80/dynamic-programming/899/
+  * https://leetcode.com/problems/maximum-subarray/
+* Explanation:
+  * take sum and max and initialize them to nums[0]
+  * Traverse from i -> 1 to n:
+    * sum = MAX ( summ+ nums[i], nums[i])
+    * max = MAX ( sum, max)
+  * return max
+```
+public int maxSubArray(int[] nums) {
+        if ( nums == null || nums.length == 0) return 0;
+        int sum = nums[0], max= nums[0];
+        for ( int i=1; i<nums.length; i++ ){
+            sum = Math.max( sum+nums[i], nums[i]);
+            max = Math.max( sum, max);
+        }
+        return max;
+}
+```
+
+## LRU Cache
+
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/81/design/478/
+  * https://leetcode.com/problems/lru-cache/
+* Explanation:
+  * Initial Setup: Empty Constructor, get and put
+  * Member variables: Node head, tail ( for boundaries), HashMap for cache, capacity
+  * Node contains ke, val, next, prev, constructor (key, val)
+  * get(key):
+    * check if cache contains key
+      * if yes: 
+        * node = cache.get(key)
+        * remove ( node )
+        * insert ( node )
+        * return node.value
+      * else: return -1
+  * put ( key , value ):
+    * if cache.contains(key):
+      * remove(cache.get(key))
+    * if cache.size() == capacity:
+      * remove(tail.prev)
+    * insert(new Node(key, value))
+  * insert(node):
+    * cache.put(node.key, node.value)
+    * Node next = head.next
+    * head.next = node.next
+    * node.next = next
+    * node.prev = head
+    * next.prev = node
+  * remove (node):
+    * cache.remove(node)
+    * node.prev.next = node.next
+    * node.next.prev = node.prev
+```
+class LRUCache {
+    
+    class Node{
+        int key, value;
+        Node next, prev;
+        
+        Node ( int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    
+    int capacity;
+    Node head = new Node (0,0);
+    Node tail = new Node (0,0);
+    Map<Integer, Node> cache = new HashMap<>();
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        head.next = tail;
+        tail.prev = head;
+    }
+    
+    public int get(int key) {
+        if ( cache.containsKey(key)){
+            Node node = cache.get(key);
+            remove(node);
+            insert(node);
+            return node.value;
+        }
+        return -1;
+    }
+    
+    public void put(int key, int value) {
+        if (cache.containsKey(key)){
+            remove(cache.get(key));
+        }
+        if ( cache.size() == capacity ){
+            remove(tail.prev);
+        }
+        insert (new Node(key, value));
+    }
+    
+    private void insert(Node node ){
+        cache.put(node.key, node);
+        Node next = head.next;
+        head.next = node;
+        node.prev = head;
+        node.next = next;
+        next.prev = node;
+    }
+    
+    private void remove( Node node ){
+        cache.remove(node.key);
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+}
+```
+
+## Min Stack
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/81/design/503/
+  * https://leetcode.com/problems/min-stack/
+* Explanation:
+  * Use LinkedList
+  * Craete a Node with val, min and next
+  * Initiatlize Node top = null
+  * getMin() -> return top.min
+  * pop() -> top = top.next
+  * for both methods above, return if top is null
+  * push() :
+    * Node node = new Node(val)
+    * if top == null:
+      * top = node
+    * else:
+      * node.min = Math.min( top.min, val)
+      * node.next = top
+      * top = node
+```
+public class MinStack {
+    private Node top = null;
+    public MinStack() {
+
+    }
+
+    public void push(int val) {
+        Node node = new Node(val);
+        if ( top == null ){
+            top = node;
+        } else {
+            node.min = Math.min(top.min, val);
+            node.next = top;
+        }
+        top = node;
+    }
+
+    public void pop() {
+        if ( top == null ) return;
+        top = top.next;
+    }
+
+    public int top() {
+        if ( top == null ) return -1;
+        return top.val;
+    }
+
+    public int getMin() {
+        if ( top == null ) return -1;
+        return top.min;
+    }
+
+    class Node {
+        int val;
+        int min;
+        Node next;
+        Node (int val){
+            this.val = val;
+            this.min = val;
+        }
+    }
+}
+```
+
+## Word Search
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/84/recursion/2989/
+* Explanation:
+  * dfs
+```
+public boolean exist(char[][] board, String word) {
+        if ( word == null || word.length() == 0 ) return true;
+        if ( board == null || board.length == 0 ) {
+            return false;
+        }
+        for ( int i=0; i<board.length; i++){
+            for ( int j=0; j<board[0].length; j++ ){
+                if ( exist(board, i, j, word, 0) ){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean exist(char[][] board, int i, int j, String word, int index) {
+        if (index == word.length()) return true;
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(index)) {
+            return false;
+        }
+        char c = board[i][j];
+        board[i][j] = '#';
+        boolean exists = exist(board, i + 1, j, word, index + 1)
+                || exist(board, i, j + 1, word, index + 1)
+                || exist(board, i-1, j, word, index+1)
+                || exist(board, i, j-1, word, index+1);
+        board[i][j] = c;
+        return exists;
+    }
+```
+
+## Word Search II
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/84/recursion/2990/
+* Explanation:
+  * DFS + Trie
+```
+class Solution {
+    public List<String> findWords(char[][] board, String[] words) {
+        List<String> result = new ArrayList<>();
+        if ( board == null || board.length == 0 ) return result;
+        Trie root = buildTrie(words);
+        for ( int i=0; i<board.length; i++){
+            for ( int j=0; j<board[0].length; j++){
+                dfs(board, i, j, result, root);
+            }
+        }
+        return result;
+    }
+    
+    private void dfs(char[][] board, int i, int j, List<String> result, Trie p){
+        if ( i <0 || i>= board.length || j<0 || j>= board[0].length ){
+            return;
+        }
+        char c= board[i][j];
+        if ( c == '#' || p.next[c-'a'] == null ) return;
+        if ( p.next[c-'a'].word != null ){
+            result.add(p.next[c-'a'].word);
+            p.next[c-'a'].word = null;
+        }
+        board[i][j] = '#';
+        p = p.next[c-'a'];
+        dfs ( board, i+1, j, result, p);
+        dfs ( board, i, j+1, result, p);
+        dfs ( board, i-1, j, result, p);
+        dfs ( board, i, j-1, result, p);
+        board[i][j] = c;
+    }
+    
+    private Trie buildTrie(String[] words ){
+        Trie root = new Trie();
+        for ( String word: words){
+            Trie p = root;
+            for ( char c: word.toCharArray() ){
+                if ( p.next[c-'a'] == null ){
+                    p.next[c-'a'] = new Trie();
+                }
+                p = p.next[c-'a'];
+            }
+            p.word = word;
+        }
+        return root;
+    }
+    
+    class Trie{
+        String word;
+        Trie[] next = new Trie[26];
+    }
+}
+```
+
+## Partitiion Labels
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/82/others/3004/
+* Explanatiion:
+  * create a lastIndex[26] and fill the array
+  * keep updating prev and max
+  * when max == i:
+    * add the size ( max- prev ) to result
+```
+public List<Integer> partitionLabels(String s) {
+        int[] lastIndex = new int[26];
+        for ( int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            lastIndex[c-'a'] = i;
+        }
+        int max = 0;
+        int prev= -1;
+        List<Integer> res = new ArrayList<>();
+        for ( int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            max = Math.max( max, lastIndex[c-'a']);
+            if ( max == i){
+                res.add(max-prev);
+                prev = max;
+            }
+        }
+        return res;
+}
+```
+
+## Prison Cells After N Days
+* URL:
+  * https://leetcode.com/explore/interview/card/amazon/82/others/3005/
+* Explanation:
+  * To be added
+```
+public int[] prisonAfterNDays(int[] cells, int n) {
+        int index = 0;
+        Map<String, Integer> map = new HashMap<>();
+        int remaining = 0;
+        int cycle = 0;
+        
+        while ( index < n){
+            String key = Arrays.toString(cells);
+            if ( map.containsKey(key) ){
+                cycle = index - map.get(key);
+                remaining = ( n - index ) % cycle;
+                break;
+            }
+            map.put(key, index);
+            cells = getNext(cells);
+            index++;
+        }
+        
+        while ( remaining != 0){
+            cells = getNext(cells);
+            remaining--;
+        }
+        return cells;
+}
+    
+private int[] getNext(int[] cells){
+        int[] ans = new int[cells.length];
+        for ( int i=1; i<cells.length-1; i++){
+            if ( cells[i-1] == cells[i+1]){
+                ans[i]=1;
+            }
+        }
+        return ans;
+}
+```
