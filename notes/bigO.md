@@ -8,15 +8,6 @@ for (int i=0; i<n; i++){
     }
 }
 ```
-* Time Comlexity of below snippet is O(N)
-```java
-for (int i=0; i<n; i++){
-    i*=2;
-    for (int j=0; j<i; j++){
-        // C
-    }
-}
-```
 
 * Time Complexity of below snippet is O(N)
 ```JAVA
