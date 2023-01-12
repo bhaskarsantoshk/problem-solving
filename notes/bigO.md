@@ -18,5 +18,6 @@ do {
     }
 } while (i < N);
 ```
+* Counting Sort and Radix Sort  algorithms have the same best, worst and average case complexities.
 
 
