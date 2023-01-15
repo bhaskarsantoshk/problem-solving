@@ -21,5 +21,6 @@ do {
 * Counting Sort and Radix Sort  algorithms have the same best, worst and average case complexities.
 
 * 3 way merge vs 2 way merge sort : Though the number of recursion calls are less in 3-way merge sort ( O (log<sub>3</sub><sup>N</sup>) < O (log<sub>2</sub><sup>N</sup>)), the number of comparisons during merge are more. So, Subdeviding into more parts won't necessarily improve the run time on an algorithm.
+* Hashtable - Time complexity of Insert and Get operation takes O(N), average case is O(1)
 
 
