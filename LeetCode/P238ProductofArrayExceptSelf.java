@@ -33,4 +33,20 @@ public class P238ProductofArrayExceptSelf {
         P238ProductofArrayExceptSelf obj = new P238ProductofArrayExceptSelf();
         printArray(obj.productExceptSelf(a));
     }
+
+    public int[] productExceptSelfConstantSpace(int[] nums) {
+        int res[] = new int[nums.length];
+        res[0] = 1;
+        for ( int i=1; i<nums.length; i++){
+            res[i] = res[i-1] * nums[i-1];
+        }
+        // 1 1 2 6
+        int product = 1;
+        for ( int i= nums.length-1; i>0; i--){
+            res[i] = res[i] * product;
+            product *= nums[i];
+        }
+        res[0] = product;
+        return res;
+    }
 }
