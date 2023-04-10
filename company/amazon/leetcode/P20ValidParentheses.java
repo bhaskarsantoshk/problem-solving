@@ -4,19 +4,22 @@ import java.util.Stack;
 
 public class P20ValidParentheses {
     public boolean isValid(String s) {
-        if ( s.isEmpty() ) return true;
         Stack<Character> stack = new Stack<>();
         for ( char c: s.toCharArray()){
-            if ( c == '('){
-                stack.push(')');
-            } else if (c == '{'){
-                stack.push('}');
-            } else if ( c == '['){
-                stack.push(']');
+            if ( c == '(' || c == '{' || c == '[' ){
+                stack.push(c);
             } else {
-                if (stack.isEmpty() || stack.pop() != c){
-                    return false;
+                if ( stack.isEmpty() ) return false;
+                if ( c == ')' ) {
+                    if ( stack.peek() != '(') return false;
                 }
+                if ( c == '}' ) {
+                    if ( stack.peek() != '{') return false;
+                }
+                if ( c == ']' ) {
+                    if ( stack.peek() != '[') return false;
+                }
+                stack.pop();
             }
         }
         return stack.isEmpty();
