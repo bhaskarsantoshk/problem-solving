@@ -29,3 +29,75 @@
 
 ## Edge Weight
 - Each edge has a weight, default unit weight is 1.
+
+# Graph Representation
+
+## Input Format
+- **Directed/Undirected:** Mentioned in the question.
+- **Nodes:** n (number of nodes).
+- **Edges:** m (number of edges).
+- **Edge Descriptions:** m lines representing edges.
+
+### Example
+Consider a graph with 5 nodes and 6 edges:
+
+**Input:**
+**Undirected**
+5
+6
+1 2
+2 3
+3 4
+4 5
+5 1
+2 5
+
+
+## Matrix Representation
+- Create a 2D array G of size (n+1) x (n+1).
+- If there is an edge between nodes i and j, set G[i][j] and G[j][i] to 1.
+
+### Java Code
+```java
+int n = 5; // Number of nodes
+int m = 6; // Number of edges
+int[][] G = new int[n + 1][n + 1];
+
+// Read edges
+for (int i = 0; i < m; i++) {
+    int x = scanner.nextInt();
+    int y = scanner.nextInt();
+    G[x][y] = 1;
+    G[y][x] = 1;
+}
+```
+**Space Complexity:** O(n^2)
+
+## Adjacency List Representation
+Create an array of lists, where each index represents a node.
+Each list contains the nodes adjacent to the corresponding node.
+
+**Java Code:**
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+int n = 5; // Number of nodes
+int m = 6; // Number of edges
+List<Integer>[] adjList = new ArrayList[n + 1];
+
+// Initialize the adjacency list
+for (int i = 1; i <= n; i++) {
+    adjList[i] = new ArrayList<>();
+}
+
+// Read edges
+for (int i = 0; i < m; i++) {
+    int x = scanner.nextInt();
+    int y = scanner.nextInt();
+    adjList[x].add(y);
+    adjList[y].add(x);
+}
+```
+**Space Complexity:** O(n + m), where n is the number of nodes and m is the number of edges.
+
