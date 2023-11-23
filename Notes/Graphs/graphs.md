@@ -42,15 +42,17 @@
 Consider a graph with 5 nodes and 6 edges:
 
 **Input:**
-**Undirected**
-5
-6
-1 2
-2 3
-3 4
-4 5
-5 1
+
+**Undirected**  
+5  
+6  
+1 2  
+2 3  
+3 4  
+4 5  
+5 1  
 2 5
+
 
 
 ## Matrix Representation
