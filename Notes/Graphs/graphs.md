@@ -103,3 +103,46 @@ for (int i = 0; i < m; i++) {
 ```
 **Space Complexity:** O(n + m), where n is the number of nodes and m is the number of edges.
 
+## Weighted Graph Adjacency List Representation in Java
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class WeightedGraph {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = 5; // Number of nodes
+        int m = 6; // Number of edges
+        List<Edge>[] adjList = new ArrayList[n + 1];
+
+        // Initialize the adjacency list
+        for (int i = 1; i <= n; i++) {
+            adjList[i] = new ArrayList<>();
+        }
+
+        // Read edges and weights
+        for (int i = 0; i < m; i++) {
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
+            int weight = scanner.nextInt();
+
+            adjList[x].add(new Edge(y, weight));
+            adjList[y].add(new Edge(x, weight));
+        }
+    }
+}
+
+class Edge {
+    int destination;
+    int weight;
+
+    public Edge(int destination, int weight) {
+        this.destination = destination;
+        this.weight = weight;
+    }
+}
+
+
