@@ -179,6 +179,33 @@ class Edge {
   - Social Network Analysis
   - Component Labeling in Computer Vision
 
+## Breadth-First Search (BFS)
 
+- **Starting Node:** Begins at level 0.
+
+- **Node Levels:** Nodes are assigned levels based on their distance from the starting node.
+
+- **Dynamic Levels:** Changing the starting node alters the levels.
+
+- **Traversal Pattern:** BFS traverses nodes level-wise.
+
+- **Order Flexibility:** Nodes within a level can be traversed in any order.
+
+### Example:
+
+Starting Node: A
+
+Levels:
+- 0: A
+- 1: B, C
+- 2: D, E, F
+- 3: G
+
+
+### Key Points:
+
+- BFS explores neighboring nodes before moving to the next level.
+- Well-suited for finding the shortest path in unweighted graphs.
+- Utilizes a queue data structure for efficient implementation.
 
 
