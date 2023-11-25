@@ -145,4 +145,40 @@ class Edge {
     }
 }
 
+# Connected Components in Graphs
+
+- **Definition:** A connected component in a graph is a subgraph where every pair of vertices has a path between them, and there are no paths outside the subgraph.
+
+- **Characteristics:**
+  - Graph in Pieces: Represented by distinct subgraphs.
+  - Single Graph, Multiple Components: A graph can have several connected components.
+
+- **Traversal Approach:**
+  - **Visited Array:** During any traversal algorithm, use a visited array to mark explored nodes.
+  - **Isolation of Components:** Traversal algorithms ensure isolation of components by not reaching nodes outside the current component.
+  - **Algorithmic Design:** Designed to traverse all nodes within a connected component, marking them as visited.
+  - **Repetition:** Repeat the traversal algorithm for unvisited nodes to discover multiple components.
+
+- **Implementation Overview:**
+  - Utilize any traversal algorithm (e.g., DFS, BFS).
+  - Maintain a visited array to track explored nodes.
+  - Traverse and mark nodes, creating distinct components.
+  - Repeat for unvisited nodes to find additional components.
+
+- **Example:**
+  - Graph:
+    ```
+    0 -- 1    2 -- 3
+        |    |
+    4 -- 5    6
+    ```
+  - Connected Components: [\[0, 1, 5, 4\], \[2, 3, 6\]]
+
+- **Applications:**
+  - Image Segmentation
+  - Social Network Analysis
+  - Component Labeling in Computer Vision
+
+
+
 
