@@ -144,8 +144,8 @@ class Edge {
         this.weight = weight;
     }
 }
-
-# Connected Components in Graphs
+```
+## Connected Components in Graphs
 
 - **Definition:** A connected component in a graph is a subgraph where every pair of vertices has a path between them, and there are no paths outside the subgraph.
 
