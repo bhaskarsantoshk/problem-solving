@@ -395,3 +395,37 @@ public class DFS {
     }
 }
 
+## Time Complexity of DFS
+
+The time complexity of Depth-First Search (DFS) is typically expressed in terms of the number of vertices (nodes) and edges in the graph.
+
+- **Time Complexity:** O(V + E)
+  - V: Number of vertices (nodes) in the graph.
+  - E: Number of edges in the graph.
+
+DFS traverses each vertex and each edge once, resulting in a linear time complexity proportional to the sum of vertices and edges.
+
+### Explanation
+
+**Stack or Recursion Operations:**
+- Each vertex is pushed and popped from the stack or enters and exits the recursive call stack at most once.
+- Push, pop, enter, and exit operations take O(1) time.
+
+**Adjacency List Processing:**
+- Visiting neighbors of a vertex takes O(deg(v)) time, where deg(v) is the degree of vertex v (the number of edges incident to v).
+- Summing up the degrees of all vertices gives the total number of edges in the graph.
+
+**Overall Complexity:**
+- The main loop runs O(V) times, as each vertex is processed once.
+- The inner loop processes each edge once, resulting in O(E) time complexity for adjacency list processing.
+
+**Total Time Complexity:**
+- O(V + E)
+
+### Key Points
+
+- DFS is efficient for dense graphs with more edges.
+- Recursive implementation is elegant but might face stack overflow for large graphs; iterative implementation using a stack is an alternative.
+- DFS can be used to find paths, connected components, and strongly connected components in a graph.
+
+
