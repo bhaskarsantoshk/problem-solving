@@ -309,3 +309,89 @@ BFS traverses each vertex and each edge once, resulting in a linear time complex
 - BFS is efficient for sparse graphs with fewer edges.
 - The constant factor in the time complexity is relatively small, making BFS practical for many real-world applications.
 - For dense graphs (where E is close to V^2), adjacency matrix representation might be more suitable.
+
+## Depth-First Search (DFS)
+
+- **Starting Node:** Begins at the specified starting node.
+
+- **Node Visitation:** Marks nodes as visited during traversal.
+
+- **Traversal Pattern:** DFS explores as far as possible along each branch before backtracking.
+
+- **Stack Usage:** Typically implemented using a stack or recursion.
+
+### Example:
+
+Starting Node: A
+
+Traversal Order: A, B, D, E, F, C, G
+
+### Key Points:
+
+- DFS explores as deeply as possible before backtracking.
+- Well-suited for topological sorting and detecting cycles in a graph.
+- Recursive or stack-based implementation.
+
+  
+## Depth-First Search (DFS) Algorithm
+
+DFS is a graph traversal algorithm that explores as far as possible along each branch before backtracking. It uses a stack or recursion for efficient processing. Here's a concise explanation:
+
+1. **Initialization:**
+   - Start with an empty stack (or recursion) and mark all nodes as unvisited.
+   - Choose a starting node and push it onto the stack (or call the recursive function).
+
+2. **Traversal Loop:**
+   - While the stack (or recursion) is not empty:
+     - Pop a node from the stack (or return from the recursive call).
+     - If the node is not visited:
+       - Mark the node as visited.
+       - Process the node.
+       - Push all unvisited neighbors onto the stack (or call the recursive function).
+
+3. **Traversal Order:**
+   - Nodes are processed in the order they are popped from the stack or return from recursion.
+
+4. **Implementation Overview:**
+   - Utilize an adjacency list to represent the graph.
+   - Check the visited array to avoid processing a node more than once.
+```java
+import java.util.LinkedList;
+
+public class DFS {
+    public static void dfs(int start, LinkedList<Integer>[] graph, boolean[] visited) {
+        // Implementing DFS using recursion
+        if (!visited[start]) {
+            visited[start] = true;
+            System.out.print(start + " "); // Process the current node
+
+            for (int neighbor : graph[start]) {
+                dfs(neighbor, graph, visited);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        int numNodes = 7; // Number of nodes in the graph
+        LinkedList<Integer>[] graph = new LinkedList[numNodes + 1];
+
+        // Initialize the adjacency list (1-based indexing)
+        for (int i = 1; i <= numNodes; i++) {
+            graph[i] = new LinkedList<>();
+        }
+
+        // Example edges for the graph
+        graph[1].add(2);
+        graph[1].add(3);
+        graph[2].add(4);
+        graph[2].add(5);
+        graph[3].add(6);
+        graph[3].add(7);
+
+        boolean[] visited = new boolean[numNodes + 1];
+        System.out.println("DFS Traversal:");
+        dfs(1, graph, visited);
+    }
+}
+
