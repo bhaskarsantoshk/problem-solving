@@ -1,4 +1,10 @@
-class P1002FindCommonCharacters {
+package LeetCode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class P1002_FindCommonCharacters {
     public List<String> commonChars(String[] words) {
         int gc[] = new int[26];
         Arrays.fill(gc, Integer.MAX_VALUE);
