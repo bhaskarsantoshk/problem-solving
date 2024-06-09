@@ -1,3 +1,9 @@
+package LeetCode;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 class P1125SmallestSufficientTeam {
     public int[] smallestSufficientTeam(String[] req_skills, List<List<String>> people) {
         int n = req_skills.length, m = people.size();
