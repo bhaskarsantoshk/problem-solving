@@ -1,6 +1,10 @@
+package LeetCode;
+
+import java.util.Arrays;
+
 class P1751MaximumNumberofEventsThatCanBeAttendedII {
     public int maxValue(int[][] events, int k) {
-        Arrays.sort(events, (e1,e2)-> (e1[0]==e2[0] ? e1[1]-e2[1]: e1[0]-e2[0]));
+        Arrays.sort(events, (e1, e2)-> (e1[0]==e2[0] ? e1[1]-e2[1]: e1[0]-e2[0]));
         return maxValue(events, 0, k, 0, new int[k+1][events.length]);
     }
     private int maxValue(int[][] events, int index, int remainingEvents, int lastEventEndDay, int[][] dp) {
