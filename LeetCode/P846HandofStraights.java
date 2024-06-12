@@ -1,3 +1,7 @@
+package LeetCode;
+
+import java.util.PriorityQueue;
+
 class P846HandofStraights {
     public boolean isNStraightHand(int[] hand, int groupSize) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
