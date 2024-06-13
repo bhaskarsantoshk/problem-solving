@@ -56,3 +56,6 @@ public class P237MinimumNumberOfMovesToSeatEveryone {
         return max;
     }
 }
+
+
+// Proof : https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/solutions/5305223/greedy-figure-proof-sort-counting-sort-1-liner-0ms-beats-100/
