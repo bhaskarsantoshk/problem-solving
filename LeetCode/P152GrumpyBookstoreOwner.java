@@ -27,7 +27,7 @@ public class P152GrumpyBookstoreOwner {
 
     // Optimized 1
 
-    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
+    public int maxSatisfiedOptimized(int[] customers, int[] grumpy, int minutes) {
         int maxCustomers = 0;
 
         int totalCustomers = 0;
@@ -51,5 +51,25 @@ public class P152GrumpyBookstoreOwner {
             }
         }
         return totalCustomers;
+    }
+
+
+    // O(N) solution
+    public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
+        int totalCustomers = 0;
+        int extra = 0;
+        int maxExtraCustomers = 0;
+        for ( int i=0; i<customers.length; i++ ) {
+            if ( grumpy[i] == 0 ) {
+                totalCustomers += customers[i];
+            } else {
+                extra += customers[i]; // find maximum extra for a window between 0 - minutes
+            }
+            if ( i>= minutes && grumpy[i-minutes] == 1){
+                extra -= customers[i-minutes];
+            }
+            maxExtraCustomers = Math.max(maxExtraCustomers, extra);
+        }
+        return totalCustomers+maxExtraCustomers;
     }
 }
