@@ -1,26 +1,43 @@
 package LeetCode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
-public class P350IntersectionofTwoArraysII {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<nums1.length; i++){
-            map.put(nums1[i], map.getOrDefault(nums1[i],0)+1);
+public class P35IntersectionOfTwoArraysII {
+    public int[] intersectionBruteForce(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> count = new HashMap<>();
+        for (int num : nums1) {
+            count.put(num, count.getOrDefault(num, 0) + 1);
         }
-        ArrayList<Integer> al = new ArrayList<>();
-        for(int i=0; i<nums2.length; i++){
-            if(map.containsKey(nums2[i]) && map.get(nums2[i])>0){
-                al.add(nums2[i]);
-                map.put(nums2[i], map.get(nums2[i])-1);
+        List<Integer> res = new ArrayList<>();
+        for (int num : nums2) {
+            if (count.containsKey(num) && count.get(num) > 0) {
+                res.add(num);
+                count.put(num, count.get(num) - 1);
             }
         }
-        int res[]= new int[al.size()];
-        for(int i=0; i< res.length; i++){
-            res[i]=al.get(i);
+        int[] resArr = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            resArr[i] = res.get(i);
         }
-        return res;
+        return resArr;
+    }
+
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        List<Integer> res = new ArrayList<>();
+        int i=0,j=0;
+        while(i<nums1.length && j<nums2.length){
+            if ( nums1[i]==nums2[j]){
+                res.add(nums1[i]);
+                i++;
+                j++;
+            } else if (nums1[i]<nums2[j]){
+                i++;
+            } else {
+                j++;
+            }
+        }
+        return res.stream().mapToInt(k->k).toArray();
     }
 }
