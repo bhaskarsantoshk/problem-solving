@@ -37,4 +37,15 @@ public class UniqueEmailAddresses {
         }
         return sb.toString();
     }
+
+    public int numUniqueEmailsOptimized(String[] emails) {
+        Set<String> emailSet = new HashSet<>();
+        for (String email : emails){
+            String[] parts = email.split("@");
+            String username = parts[0].split("\\+")[0];
+            username = username.replace(".", "");
+            emailSet.add(username+"@"+parts[1]);
+        }
+        return emailSet.size();
+    }
 }
