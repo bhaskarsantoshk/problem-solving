@@ -4,27 +4,18 @@ public class ListCycle {
     public ListNode detectCycle(ListNode a) {
         ListNode slow = a;
         ListNode fast = a;
-        boolean hasCycle = false;
-        while(fast.next!=null && fast.next.next!=null){
-            if(fast.equals(slow)){
-                hasCycle= true;
-                break;
+        while ( fast != null && fast.next != null ) {
+            slow = slow.next;
+            fast = fast.next.next;;
+            if ( slow == fast ) {
+                slow = a;
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
             }
-            slow= slow.next;
-            fast= fast.next.next;
         }
-
-        if(!hasCycle){
-            return null;
-        }
-
-        fast = a;
-
-        while(!slow.equals(fast)){
-            slow=slow.next;
-            fast=fast.next;
-        }
-
-        return fast;
+        return null;
     }
 }
