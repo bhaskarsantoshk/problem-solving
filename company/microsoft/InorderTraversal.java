@@ -4,25 +4,17 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class InorderTraversal {
-    ArrayList<Integer> result = new ArrayList<Integer>();
-    public ArrayList<Integer> inorderTraversal(TreeNode a) {
-        if(a!=null){
-            inorderRec(a);
-        }
+    ArrayList<Integer> result = new ArrayList<>();
+    public ArrayList<Integer> inorderTraversal(TreeNode A) {
+        inorder(A);
         return result;
     }
-
-    private void inorderRec(TreeNode root) {
-        if(root== null){
-            return;
-        }
-        if(root.left!=null) {
-            inorderRec(root.left);
-        }
+    
+    private void inorderRec(TreeNode root){
+        if ( root == null ) return;
+        inorderRec(root.left);
         result.add(root.val);
-        if(root.right!=null){
-            inorderRec(root.right);
-        }
+        inorderRec(root.right);
     }
 
     public ArrayList<Integer> inOrderIterative(TreeNode root) {
