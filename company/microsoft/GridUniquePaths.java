@@ -4,9 +4,12 @@ public class GridUniquePaths {
     public int uniquePaths(int A, int B) {
         int gridUniquePaths[][] = new int[A][B];
 
+        // first row
         for(int i=0;i<B;i++){
             gridUniquePaths[0][i]=1;
         }
+        
+        // first column
         for(int i=0;i<A;i++){
             gridUniquePaths[i][0] = 1;
         }
