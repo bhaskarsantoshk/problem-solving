@@ -1,3 +1,7 @@
+package LeetCode;
+
+import java.util.Stack;
+
 class P71SimplifyPath {
     public String simplifyPath(String path) {
         Stack<String> stack = new Stack();

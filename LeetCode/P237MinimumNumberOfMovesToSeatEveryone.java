@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.Arrays;
+
 public class P237MinimumNumberOfMovesToSeatEveryone {
 
     // 1 3 5

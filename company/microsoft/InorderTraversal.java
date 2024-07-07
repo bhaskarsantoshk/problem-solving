@@ -6,7 +6,7 @@ import java.util.Stack;
 public class InorderTraversal {
     ArrayList<Integer> result = new ArrayList<>();
     public ArrayList<Integer> inorderTraversal(TreeNode A) {
-        inorder(A);
+        inorderRec(A);
         return result;
     }
     

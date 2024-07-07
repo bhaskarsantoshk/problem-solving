@@ -1,3 +1,7 @@
+package company.microsoft.linkedlists;
+
+import company.microsoft.ListNode;
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -6,7 +10,7 @@
  *     ListNode(int x) { val = x; next = null; }
  * }
  */
-public class Solution {
+public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode A, ListNode B) {
         ListNode dummy = new ListNode(0);
         ListNode p = dummy;

@@ -1,3 +1,8 @@
+package striver_sde_sheet.arrays;
+
+import java.util.ArrayList;
+import java.util.List;
+
 class PascalsTriangle {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();

@@ -1,6 +1,12 @@
+package striver_sde_sheet.arrays;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class MergeOverlappingSubIntervals {
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a1,a2)-> Integer.compare(a1[0], a2[0]));
+        Arrays.sort(intervals, (a1, a2)-> Integer.compare(a1[0], a2[0]));
         List<int[]> res = new ArrayList<>();
         int newInterval[] = intervals[0];
         res.add(newInterval);

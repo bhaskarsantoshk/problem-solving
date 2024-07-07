@@ -1,4 +1,6 @@
-class Solution {
+package LeetCode.company.google;
+
+class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
         String prefix = strs[0];
         for ( String str : strs){

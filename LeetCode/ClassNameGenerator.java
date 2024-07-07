@@ -2,10 +2,10 @@ package LeetCode;
 
 public class ClassNameGenerator {
     static String getClassName(String s){
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         for ( int i=0; i<s.length(); i++){
             char c = s.charAt(i);
-            if ( (i == 0 || !isAlpahabet(s.charAt(i-1))) && (isAlpahabet(c)) ){
+            if ( (i == 0 || !isAlphabet(s.charAt(i-1))) && (isAlphabet(c)) ){
                 if ( c >= 'a' && c <= 'z'){
                     c = (char)(c & 0x5f) ;
                 }
@@ -13,7 +13,7 @@ public class ClassNameGenerator {
                 sb.append(c);
             }
             else if ( isSpecialCharacter(c)){
-                // do nothing
+                continue;
             }
             else{
                 sb.append(c);
@@ -23,10 +23,10 @@ public class ClassNameGenerator {
     }
 
     private static boolean isSpecialCharacter(char c) {
-        return !isAlpahabet(c) && !(c>='1' && c<='9') ;
+        return !isAlphabet(c) && !(c>='1' && c<='9') ;
     }
 
-    private static boolean isAlpahabet(char c) {
+    private static boolean isAlphabet(char c) {
         return ((c>='a' && c<='z') || (c>='A' && c<='Z'));
     }
 

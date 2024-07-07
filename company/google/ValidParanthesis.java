@@ -1,4 +1,8 @@
-class Solution {
+package LeetCode.company.google;
+
+import java.util.Stack;
+
+class ValidParanthesis {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         for ( char c : s.toCharArray() ){

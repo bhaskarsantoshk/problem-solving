@@ -13,7 +13,7 @@ public class CanConstruct {
         for ( String word: words) {
             if ( targetWord.startsWith(word) ) {
                 String suffix = targetWord.substring(word.length());
-                if ( canConstructRec(suffix, words) == true ){
+                if (canConstructRec(suffix, words)){
                     return true;
                 }
             }
@@ -22,8 +22,8 @@ public class CanConstruct {
     }
 
     public static void main(String[] args){
-        print(canConstructRec("abcdef", new String[]{"ab", "abc", "cd", "def", "abcd"}));
-        print(canConstruct("abcdef", new String[]{"ab", "abc", "cd", "def", "abcd"}));
+        System.out.println(canConstructRec("abcdef", new String[]{"ab", "abc", "cd", "def", "abcd"}));
+        System.out.println(canConstructRec("abcdef", new String[]{"ab", "abc", "cd", "def", "abcd"}));
     }
 
     private static boolean canConstruct(String targetString, String[] wordBank) {
@@ -38,7 +38,7 @@ public class CanConstruct {
         for ( String word: wordBank){
             if ( targetString.startsWith(word)){
                 String suffix = targetString.substring(word.length());
-                if ( canConstructMemoized(suffix, wordBank, memo) == true){
+                if (canConstructMemoized(suffix, wordBank, memo)){
                     memo.put(targetString, true);
                     return true;
                 }

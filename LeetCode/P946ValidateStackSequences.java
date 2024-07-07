@@ -1,3 +1,7 @@
+package LeetCode;
+
+import java.util.Stack;
+
 class P946ValidateStackSequences {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
         Stack<Integer> stack = new Stack<>();

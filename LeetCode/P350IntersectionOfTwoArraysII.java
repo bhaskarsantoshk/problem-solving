@@ -2,7 +2,7 @@ package LeetCode;
 
 import java.util.*;
 
-public class P35IntersectionOfTwoArraysII {
+public class P350IntersectionOfTwoArraysII {
     public int[] intersectionBruteForce(int[] nums1, int[] nums2) {
         Map<Integer, Integer> count = new HashMap<>();
         for (int num : nums1) {

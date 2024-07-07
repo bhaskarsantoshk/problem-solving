@@ -1,4 +1,6 @@
-class Solution {
+package LeetCode.LeetCode;
+
+class P2582PassThePillow {
     public int passThePillow(int n, int time) {
         if ( n > time ) {
             return time+1;

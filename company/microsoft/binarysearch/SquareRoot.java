@@ -1,4 +1,6 @@
-public class Solution {
+package LeetCode.company.microsoft.binarysearch;
+
+public class SquareRoot {
     public int sqrt(int A) {
         if ( A == 0 ) return 0;
         int start = 1, end = A;

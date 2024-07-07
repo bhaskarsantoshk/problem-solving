@@ -1,6 +1,6 @@
 package company.amazon.leetcode;
 
-import data_structures.stacks_and_queues.Stack;
+import java.util.Stack;
 
 public class P1628DesignAnExpressionTreeWithEvaluateFunction {
 

@@ -1,3 +1,7 @@
+package LeetCode;
+
+import java.util.List;
+
 class P2218MaximumValueofKCoinsFromPiles{
     public int maxValueOfCoins(List<List<Integer>> piles, int k) {
         Integer[][] memo = new Integer[piles.size() + 1][k + 1];

@@ -1,6 +1,6 @@
 package express_prep.amzn.top_voted;
 
-import data_structures.stacks_and_queues.Stack;
+import java.util.Stack;
 
 public class KthSmallestElementInABST {
     public int kthSmallest(TreeNode root, int k) {
