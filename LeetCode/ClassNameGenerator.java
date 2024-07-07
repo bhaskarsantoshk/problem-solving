@@ -31,8 +31,8 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s = "Linked List Cycle II\n";
+        String s = "1518. Water Bottles\n";
         // Expected Output : P392IsSubsequence
-        System.out.println(getClassName(s));
+        System.out.println("P"+getClassName(s));
     }
 }
