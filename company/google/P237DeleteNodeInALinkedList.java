@@ -49,4 +49,22 @@ public class P237DeleteNodeInALinkedList {
         }
         return head;
     }
+
+    public ListNode deleteNodeWithValue ( ListNode head, int val ){
+        if ( head == null ) return head;
+        if ( head.val == val) {
+            head = null;
+            return head;
+        }
+        ListNode cur = head, prev = null;
+        while ( cur != null ){
+            if ( cur.val == val){
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = cur;
+            cur = cur.next;
+        }
+        return head;
+    }
 }
