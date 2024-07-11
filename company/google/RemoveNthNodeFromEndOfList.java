@@ -3,7 +3,7 @@ package company.google;
 import company.microsoft.ListNode;
 
 public class RemoveNthNodeFromEndOfList {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEndBruteForce(ListNode head, int n) {
         int len = 0;
         ListNode cur = head;
         while ( cur != null ){
@@ -23,6 +23,20 @@ public class RemoveNthNodeFromEndOfList {
         return head;
     }
 
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode slow = head, fast = head;
+        for ( int i=0; i<n; i++){
+            fast = fast.next;
+        }
+        if ( fast == null ) return head.next;
+        while ( fast.next != null ){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+
     public static void main(String[] args){
         RemoveNthNodeFromEndOfList obj = new RemoveNthNodeFromEndOfList();
         ListNode head = new ListNode(1);
@@ -30,7 +44,7 @@ public class RemoveNthNodeFromEndOfList {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        ListNode res = obj.removeNthFromEnd(head, 2);
+        ListNode res = obj.removeNthFromEndBruteForce(head, 2);
         ListNode cur = res;
         while ( cur != null ){
             System.out.println(cur.val);
