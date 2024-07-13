@@ -3,6 +3,15 @@ package LeetCode;
 import java.util.*;
 
 public class P2751RobotCollisions {
+
+    // healths = [10,10,15,12]
+    // positions = [3,5,2,6] "RLRL"
+    //
+    // indices = 0 1 2 3
+    // sorted -> 2 0 1 3 ( R R L L )
+    // stack -> 2 0
+    // health[1] = 10, health[0] = 10 both become 0
+    // health[3] = 12, health[2] = 15 health[2] ramains with 14
     public List<Integer> survivedRobotsHealths(int[] positions, int[] healths, String directions) {
         Integer [] ids = new Integer[positions.length];
         for (int i = 0; i < ids.length; i++) {
@@ -15,7 +24,7 @@ public class P2751RobotCollisions {
             if ( c == 'R'){
                 stack.push(id);
             } else {
-                while ( stack.isEmpty() ){
+                while ( stack.isEmpty() && healths[id] >0 ){
                     if ( healths[stack.peek()] > healths[id]){
                         healths[stack.peek()]--;
                         healths[id] = 0;
