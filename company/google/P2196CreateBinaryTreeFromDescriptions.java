@@ -36,6 +36,4 @@ public class P2196CreateBinaryTreeFromDescriptions {
         }
         return map.getOrDefault(root, null);
     }
-
-
 }
