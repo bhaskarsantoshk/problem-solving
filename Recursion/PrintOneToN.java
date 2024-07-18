@@ -1,6 +1,6 @@
 package Recursion;
 
-public class PrintOneToTen {
+public class PrintOneToN {
     public void printNum(int i, int n){
         if ( i > n) return;
         System.out.println(i);
