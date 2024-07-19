@@ -61,7 +61,7 @@ private static int factorial(int n){
     }
 
     private static void reverse(int []a, int start, int end){
-        if ( start> end) return;
+        if ( start>= end) return;
         int temp = a[start];
         a[start] = a[end];
         a[end] = temp;
