@@ -33,3 +33,38 @@ public int sumFunctional(int n){
         return n + sumFunctional(n-1);
 }
 ```
+
+* Factorial
+```Java
+private static int factorial(int n){
+        if ( n == 1){
+            return 1;
+        }
+        return n * factorial(n-1);
+    }
+
+
+    private static int factorialIterative ( int n){
+        int res = 1;
+        for ( int i=1; i<= n; i++){
+            res *= i;
+        }
+        return res;
+    }
+
+```
+
+* Reverse an Array
+```Java
+    public static void reverse(int[] a){
+        reverse(a, 0, a.length-1);
+    }
+
+    private static void reverse(int []a, int start, int end){
+        if ( start> end) return;
+        int temp = a[start];
+        a[start] = a[end];
+        a[end] = temp;
+        reverse(a, start+1, end-1);
+    }
+```

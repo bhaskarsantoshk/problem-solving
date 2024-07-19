@@ -15,3 +15,6 @@ public class PrintNameNTimes {
         printName(i+1, n);
     }
 }
+
+// T -> O(N)
+// S -> O(N)
