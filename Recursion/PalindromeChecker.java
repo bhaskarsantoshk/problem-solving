@@ -10,4 +10,10 @@ public class PalindromeChecker {
         }
         return false;
     }
+
+    public static boolean isPalindrome ( String s, int index){
+        if ( index >= s.length()/2) return true;
+        if ( s.charAt(index) != s.charAt(s.length()-index-1)) return false;
+        return isPalindrome(s, index+1);
+    }
 }
