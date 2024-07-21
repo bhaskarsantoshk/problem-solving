@@ -7,6 +7,7 @@ import java.util.List;
 import static standard_algorithms.Sorting.printArray;
 
 public class AllSubSequences {
+    // T = O(2^N), S = O(N)
     public void printAllSubSequences( int[] arr){
         printAllSubSequences(new ArrayList<Integer>(), arr, 0, arr.length);
     }
