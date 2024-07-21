@@ -96,3 +96,58 @@ public class PalindromeChecker {
     }
 }
 ```
+
+* Multiple Recursion Calls
+* Example: f(5) = f(4) + f(3)
+```Java
+public static int fibonacci(int n){
+        if ( n <= 1){
+            return n;
+        }
+        return fibonacci(n-1)+ fibonacci(n-2);
+}
+```
+* Recursion - Print All Subsequence
+* Subsequence -> list of elements in order
+* Sub-array -> contiguous list of elements
+* if [ 3 1 2 ] is the input array -> {3}, {1}, {2}, {3 1} , {3 2}, {3 1 2}, {} are subsequences
+* We can use the pattern [ take / not take], for example -> 3 1 is [take , take,  not-take]
+* Structure to follow
+```Sudocode
+func (index, arr []){
+    if ( index >= n ) {
+        print array;
+        return
+    }
+    arr.add(arr[index]);
+    func(index+1, arr); // take
+    arr.remove(arr[arr.length-1])
+    func(index+1, arr); // not take
+}
+```
+```Java
+
+public class AllSubSequences {
+    public void printAllSubSequences( int[] arr){
+        printAllSubSequences(new ArrayList<Integer>(), arr, 0, arr.length);
+    }
+
+    private void printAllSubSequences(ArrayList<Integer> list, int[] arr, int index, int length) {
+        if ( index >= length ){
+            System.out.println(list);
+            return;
+        }
+        list.add(arr[index]);
+        printAllSubSequences(list, arr, index+1, length);
+        list.remove(list.size()-1);
+        printAllSubSequences(list, arr, index+1, length);
+    }
+
+    public static void main(String[] args){
+        int [] arr = { 3, 1, 2};
+        AllSubSequences obj = new AllSubSequences();
+        obj.printAllSubSequences(arr);
+    }
+
+}
+```
