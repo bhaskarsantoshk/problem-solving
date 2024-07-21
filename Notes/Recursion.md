@@ -272,3 +272,8 @@ public class CountSubsequencesWithSumK {
 
 * Note: one additional base case we can write to optimze the above 
 * if sum > k return // works only if array contains positive numbers
+
+### Patterns ( taken from Striver's Recursion playlist in Youtube)
+* print -> parameter wise
+* print 1 -> return T/F & avoid further rec calls if you get true
+* count -> ret 1 / 0, add all f() and return
