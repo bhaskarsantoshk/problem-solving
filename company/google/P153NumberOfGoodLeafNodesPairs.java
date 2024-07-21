@@ -2,9 +2,7 @@ package company.google;
 
 import company.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class P153NumberOfGoodLeafNodesPairs {
     int numOfGoodPairs;
@@ -34,5 +32,28 @@ public class P153NumberOfGoodLeafNodesPairs {
             if (d+1 <= distance ) parentList.add(d+1);
         }
         return parentList;
+    }
+
+
+    private Map<Integer, Integer> dfsOptimized(TreeNode root, int distance) {
+        if ( root == null ) return new HashMap<>();
+        if ( root.left == null && root.right == null ) return new HashMap<>(){{put(1,1);}};
+        Map<Integer, Integer> left = dfsOptimized(root.left, distance);
+        Map<Integer, Integer> right = dfsOptimized( root.right, distance);
+        for ( int l : left.keySet()){
+            for ( int r : right.keySet() ){
+                if ( l + r <= distance ) {
+                    numOfGoodPairs+= (left.get(l) * right.get(r));
+                }
+            }
+        }
+        Map<Integer, Integer> parentMap = new HashMap<>();
+        for ( int d : left.keySet()){
+            if (d+1 <= distance ) parentMap.put(d+1, parentMap.getOrDefault(d+1, 0)+left.get(d));
+        }
+        for ( int d : right.keySet()){
+            if (d+1 <= distance ) parentMap.put(d+1, parentMap.getOrDefault(d+1, 0)+right.get(d));
+        }
+        return parentMap;
     }
 }

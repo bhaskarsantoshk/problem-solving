@@ -39,6 +39,7 @@ public class ReverseLinkedList {
     // head here is 3
     // next = 4
     // 5 -> 4 -> 3 etc.
+    // T = O(N), S=O(N)
     public ListNode reverseListRec(ListNode head) {
         if ( head == null || head.next == null ) return head;
         ListNode newHead =  reverseList(head.next);

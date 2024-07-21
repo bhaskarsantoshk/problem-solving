@@ -32,12 +32,11 @@ public class P296StepByStepDirectionsFromABinaryTreeNodeToAnother {
     }
 
     private TreeNode lca (TreeNode root, int p, int q){
-        if ( root == null ) return root;
+        if ( root == null || root.val == p || root.val == q ) return root;
         TreeNode left = lca(root.left, p, q);
         TreeNode right = lca( root.right, p, q);
-        if ( (left != null && right != null ) || ( root.val == p || root.val == q ) ){
-            return root;
-        }
-        return ( left != null ) ? left : right;
+        if ( left == null ) return right;
+        if ( right == null ) return left;
+        return root;
     }
 }
