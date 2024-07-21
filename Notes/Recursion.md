@@ -198,6 +198,8 @@ public class AllSubsequencesWithSumK {
 * Technique to print one subsequences
   * base case should return true / false in the func
   * only if it's false , you can call the second func
+  * similarly, return true if the second func gives true
+  * else return false
 ```Java
 public class AnySubsequencesWithSumK {
     public void printAnySubsequencesWithSumK(int[] arr, int K){
@@ -228,3 +230,45 @@ public class AnySubsequencesWithSumK {
     }
 }
 ```
+### Count All Subsequence of Sum K
+```sudocode
+f() {
+    base case
+        return 1 if condition satisfies
+        return 0 if condition fails
+    // if more func calls req, run a for loop and add it to sum
+    l = f()
+    r = f()
+    return l+r;
+}
+```
+
+```Java
+public class CountSubsequencesWithSumK {
+    public int countSubsequencesWithSumK(int[] arr, int K){
+       return countSubsequencesWithSumK(new ArrayList<Integer>(), arr, 0, 0, K);
+    }
+
+    private int countSubsequencesWithSumK(ArrayList<Integer> list, int[] arr, int index, int sum, int K) {
+        if ( index >= arr.length) {
+            if ( sum == K) return 1;
+            return 0;
+        }
+        list.add(arr[index]);
+        int left = countSubsequencesWithSumK(list, arr, index+1, sum+arr[index], K);
+        list.removeLast();
+        int right = countSubsequencesWithSumK(list, arr, index+1, sum, K);
+        return left+right;
+    }
+
+    public static void main(String[] args){
+        int [] arr = { 1, 2, 1, 4, 3};
+        CountSubsequencesWithSumK obj = new CountSubsequencesWithSumK();
+        System.out.println(obj.countSubsequencesWithSumK(arr, 4));
+    }
+}
+
+```
+
+* Note: one additional base case we can write to optimze the above 
+* if sum > k return // works only if array contains positive numbers
