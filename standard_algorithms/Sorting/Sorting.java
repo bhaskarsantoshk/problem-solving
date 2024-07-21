@@ -1,4 +1,4 @@
-package standard_algorithms;
+package standard_algorithms.Sorting;
 
 public class Sorting {
 

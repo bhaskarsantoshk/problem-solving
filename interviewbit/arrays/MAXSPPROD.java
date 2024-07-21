@@ -2,8 +2,6 @@ package interviewbit.arrays;
 
 import java.util.ArrayList;
 
-import static standard_algorithms.Sorting.printArray;
-
 public class MAXSPPROD {
     public int maxSpecialProduct(ArrayList<Integer> A) {
         int leftSpecial[] = new int[A.size()];
@@ -27,9 +25,9 @@ public class MAXSPPROD {
                 rightSpecial[i] =0;
             }
         }
-        printArray(leftSpecial);
+        //printArray(leftSpecial);
         System.out.println();
-        printArray(rightSpecial);
+        //printArray(rightSpecial);
         System.out.println();
         int prod=1;
         int maxProd = Integer.MIN_VALUE;
