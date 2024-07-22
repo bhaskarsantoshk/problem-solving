@@ -55,4 +55,35 @@ public class BinaryTreeZigzagLevelOrderTraversal {
         }
         return res;
     }
+
+    // Using Stack
+    public List<List<Integer>> zigzagLevelOrderUsingStack(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if ( root == null ) return res;
+        boolean leftToRight = true;
+        Stack<TreeNode> curLevel = new Stack<>();
+        curLevel.push(root);
+        int level = 0;
+
+        while ( !curLevel.isEmpty()){
+            Stack<TreeNode> nextLevel = new Stack<>();
+            res.add( new ArrayList<>());
+            int size = curLevel.size();
+            for ( int i=0; i<size; i++){
+                TreeNode node = curLevel.pop();
+                res.get(level).add(node.val);
+                if ( leftToRight ){
+                    if ( node.left != null ) nextLevel.push(node.left);
+                    if ( node.right != null ) nextLevel.push(node.right);
+                } else {
+                    if ( node.right != null ) nextLevel.push(node.right);
+                    if ( node.left != null ) nextLevel.push(node.left);
+                }
+            }
+            curLevel = nextLevel;
+            level++;
+            leftToRight = !leftToRight;
+        }
+        return res;
+    }
 }
