@@ -47,6 +47,19 @@ public class PopulatingNextRightPointersInEachNode {
         return root;
     }
 
+
+    // Recursive
+
+    public Node connectRec(Node root) {
+        if ( root == null || root.left == null ) return root;
+        root.left.next = root.right;
+        // if it's perfectly balanced binary tree, no need to check right null or not
+        if (root.next != null ) root.right.next = root.next.left;
+        connect(root.left);
+        connect(root.right);
+        return root;
+    }
+
     class Node {
         public int val;
         public Node left;
