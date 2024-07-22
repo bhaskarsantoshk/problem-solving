@@ -1,9 +1,6 @@
 package company.microsoft.trees;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CloneGraph {
     Map<Integer, Node> map = new HashMap<>();
@@ -18,9 +15,23 @@ public class CloneGraph {
         return newNode;
     }
 
-
+    Map<Node, Node> vis = new HashMap<>();
     public Node cloneGraphBFS(Node node){
-        //TODO
+        if ( node == null ) return null;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(node);
+        vis.put(node, new Node(node.val, new ArrayList<>()));
+        while ( !queue.isEmpty() ){
+            Node n = queue.poll();
+            for ( Node neighbor: n.neighbors){
+                if ( !vis.containsKey(neighbor)) {
+                    vis.put(neighbor, new Node(neighbor.val, new ArrayList<>()));
+                    queue.offer(neighbor);
+                }
+                vis.get(n).neighbors.add(vis.get(neighbor));
+            }
+        }
+        return vis.get(node);
     }
 
     class Node {
