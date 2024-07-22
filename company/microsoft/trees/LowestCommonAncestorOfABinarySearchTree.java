@@ -11,4 +11,15 @@ public class LowestCommonAncestorOfABinarySearchTree {
         if ( left != null && right != null) return root;
         return left != null ? left: right;
     }
+
+    public TreeNode lowestCommonAncestorBST(TreeNode root, TreeNode p, TreeNode q) {
+        if ( root == null ) return null;
+        if ( root.val > p.val && root.val > q.val ) {
+            return lowestCommonAncestorBST(root.left, p, q);
+        } else if ( root.val < p.val && root.val < q.val ){
+            return lowestCommonAncestorBST(root.right, p, q);
+        }
+        return root;
+    }
+
 }
