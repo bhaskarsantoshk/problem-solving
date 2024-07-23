@@ -13,4 +13,25 @@ public class P1636SortArrayByIncreasingFrequency {
                 .mapToInt(n->n)
                 .toArray();
     }
+
+
+    public int[] frequencySort2(int[] nums) {
+        Map<Integer, Integer> map = new HashMap();
+
+        for ( int num: nums){
+            map.put(num, map.getOrDefault(num,0)+1);
+        }
+
+        Integer[] numsObj = new Integer[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            numsObj[i] = nums[i];
+        }
+
+        Arrays.sort(numsObj, (a,b)-> (map.get(a) != map.get(b)) ? map.get(a) - map.get(b) : b-a);
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = numsObj[i];
+        }
+
+        return nums;
+    }
 }
