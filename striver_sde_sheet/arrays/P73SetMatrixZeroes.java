@@ -36,7 +36,7 @@ public class P73SetMatrixZeroes {
 
 
     // Slightly oprimized
-    // TODO
+    // T O(N^2) S O(N)
     public void setZeroesWithAuxialiaryArrays(int[][] matrix) {
         int row[] = new int[matrix.length];
         int col[] = new int[matrix[0].length];
@@ -56,4 +56,48 @@ public class P73SetMatrixZeroes {
             }
         }
     }
+
+    // Space Optimized
+    // Instead of taking an additional row array - can we take 1st column as our aux row col[0] = row of n size
+    // Instead of taking an additional column array , can we take 1st row as our aux col row[0] = col of m size
+    // 1st cell  will overlap, so take 1st column as aux row,  take  row [1-n] as aux col, take additional var for col
+    //  int row[] = new int[matrix.length]; - use matrix[...][0]
+    //  int col[] = new int[matrix[0].length]; - use matrix[0][...]
+    public void setZeroes(int[][] matrix) {
+    //    int row[] = new int[matrix.length]; - use matrix[...][0]
+    //    int col[] = new int[matrix[0].length]; - use matrix[0][...]
+        int col0 = 1;
+        for ( int rowIndex=0; rowIndex<matrix.length; rowIndex++){
+            for ( int colIndex=0; colIndex<matrix[0].length; colIndex++){
+                if ( matrix[rowIndex][colIndex] == 0){
+                    // mark ith row
+                    matrix[rowIndex][0] = 0;
+                    // mark jth col
+                    if ( colIndex != 0) {
+                        matrix[0][colIndex] = 0;
+                    } else{
+                        col0 = 0;
+                    }
+                }
+            }
+        }
+
+        for ( int rowIndex=1; rowIndex<matrix.length; rowIndex++){
+            for ( int colIndex=1; colIndex<matrix[0].length; colIndex++){
+                // check for col and row
+                if ( matrix[rowIndex][0] == 0 || matrix[0][colIndex] == 0) matrix[rowIndex][colIndex] = 0;
+            }
+        }
+
+        if ( matrix[0][0] == 0){
+            // everyone in first row will be 0
+            Arrays.fill(matrix[0], 0);
+        }
+        if ( col0 == 0){
+            for ( int rowIndex = 0; rowIndex<matrix.length; rowIndex++){
+                matrix[rowIndex][0] = 0;
+            }
+        }
+    }
+
 }
