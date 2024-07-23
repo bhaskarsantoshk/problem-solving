@@ -17,9 +17,4 @@ public class P26ReverseLinkedList {
         return prev;
     }
 
-    // 1->2->3->4-> null
-    // prev = 1, head =1
-    // next =2,
-    // 2->1
-
 }
