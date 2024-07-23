@@ -37,4 +37,23 @@ public class P73SetMatrixZeroes {
 
     // Slightly oprimized
     // TODO
+    public void setZeroesWithAuxialiaryArrays(int[][] matrix) {
+        int row[] = new int[matrix.length];
+        int col[] = new int[matrix[0].length];
+
+        for ( int rowIndex=0; rowIndex<matrix.length; rowIndex++){
+            for ( int colIndex=0; colIndex<matrix[0].length; colIndex++){
+                if ( matrix[rowIndex][colIndex] == 0){
+                    row[rowIndex] = -1;
+                    col[colIndex] = -1;
+                }
+            }
+        }
+
+        for ( int rowIndex=0; rowIndex<matrix.length; rowIndex++){
+            for ( int colIndex=0; colIndex<matrix[0].length; colIndex++){
+                if ( row[rowIndex] == -1 || col[colIndex] == -1) matrix[rowIndex][colIndex] = 0;
+            }
+        }
+    }
 }
