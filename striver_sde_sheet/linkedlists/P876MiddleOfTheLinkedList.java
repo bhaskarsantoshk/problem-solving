@@ -1,4 +1,4 @@
-package company.google.linkedlists;
+package striver_sde_sheet.linkedlists;
 
 import company.microsoft.ListNode;
 
