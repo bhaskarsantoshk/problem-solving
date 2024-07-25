@@ -89,7 +89,7 @@ public class P2418SortThePeople {
         }
 
         int leftIndex = 0, rightIndex=0;
-        int mergeIndex = 0;
+        int mergeIndex = start;
 
         while ( leftIndex < leftSize && rightIndex < rightSize){
             if ( leftHeights[leftIndex] < rightHeights[rightIndex]){
