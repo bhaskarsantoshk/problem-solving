@@ -2,12 +2,12 @@
 
 ## Question 1
 **What's the best/worst running time for Merge Sort?**
-- **Best and Worst Case:** \(O(n \log n)\)
+- **Best and Worst Case:** \(O(n log n)\)
 - **Explanation:** Merge Sort always divides the list into two halves and then merges them back together in sorted order. This divide-and-conquer approach results in a consistent time complexity of \(O(n \log n)\) in all cases.
 
 ## Question 2
 **What's the average/worst running time for Quick Sort?**
-- **Average Case:** \(O(n \log n)\)
+- **Average Case:** \(O(n log n)\)
 - **Worst Case:** \(O(n^2)\)
 - **Explanation:** Quick Sort works by selecting a 'pivot' element and partitioning the array around the pivot. In the average case, it performs well with \(O(n \log n)\) complexity. However, if the pivot selection is poor (e.g., always the smallest or largest element), it can degrade to \(O(n^2)\).
 
