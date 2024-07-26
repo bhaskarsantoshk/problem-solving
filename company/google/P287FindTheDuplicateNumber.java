@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class P287FindTheDuplicateNumber {
 
-    // T = O(N^2)
+    // T = O(N log N)
     public int findDuplicateBruteForce(int[] nums) {
         Arrays.sort(nums);
         for ( int i=1; i<nums.length; i++){
