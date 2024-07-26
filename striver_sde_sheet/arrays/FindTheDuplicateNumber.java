@@ -1,3 +1,5 @@
+package striver_sde_sheet.arrays;
+
 class FindTheDuplicateNumber {
     public int findDuplicate(int[] nums) {
         if ( nums == null || nums.length == 0) return -1;
