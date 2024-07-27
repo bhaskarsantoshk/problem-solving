@@ -30,6 +30,8 @@ public class P645SetMismatch {
         for ( int num: count){
             if (count[num] == 2) repeat = num;
             if ( count[num] == 0) missing = num;
+            // small optimization
+            if ( repeat != -1 && missing != -1) break;
         }
         return new int[]{repeat, missing};
     }
