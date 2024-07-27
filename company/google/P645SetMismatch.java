@@ -20,7 +20,7 @@ public class P645SetMismatch {
 
     // reduce time complexity to O(N) using hashing
     // Space O(N)
-    public int[] findErrorNums(int[] nums) {
+    public int[] findErrorNumsTimeOptimized(int[] nums) {
         int[] count = new int[nums.length+1];
         for ( int num: nums){
             count[num]++;
@@ -33,6 +33,35 @@ public class P645SetMismatch {
             // small optimization
             if ( repeat != -1 && missing != -1) break;
         }
+        return new int[]{repeat, missing};
+    }
+
+    // Two optimal solutions one using Math and one using XOR
+
+
+    // Math
+    // x = repeat, y = missing
+    // sum of the array - sum of the 1st n natural nums = x-y
+    // sum of the squares of array num - sum of the squares of 1st n natural numbers = x^2 - y^2 , we can get x+y
+    // sum of the above can get us x
+    // and from the x , we can know y
+
+    public int[] findErrorNums(int[] nums) {
+        long n = nums.length;
+        long sumOfFirstN = ((n) * (n+1))/2;
+        long sumOfSquaresOfFirstN = ((n) * (n+1)* (2*n + 1))/6;
+        long sum = 0, xMinusY = 0;
+        for ( int num: nums){
+            sum += num;
+        }
+        xMinusY = sum - sumOfFirstN;
+        long squareSum = 0, xPlusY = 0;
+        for ( int num: nums){
+            squareSum += (long) num *num;
+        }
+        xPlusY = (squareSum - sumOfSquaresOfFirstN)/ (xMinusY);
+        int repeat = (int) (xPlusY+xMinusY)/2;
+        int missing = (int)(xPlusY-repeat);
         return new int[]{repeat, missing};
     }
 }
