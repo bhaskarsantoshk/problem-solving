@@ -1,5 +1,8 @@
 package company.google.arrays;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class P76MinimumWindowSubstring {
 
     // brute force
@@ -27,5 +30,35 @@ public class P76MinimumWindowSubstring {
             }
         }
         return (startIndex >=0 ) ? s.substring(startIndex, startIndex+minLength) : "";
+    }
+
+    public String minWindow(String s, String t) {
+        if ( s == null || s.isEmpty() ) return "";
+        Map<Character, Integer> targetHash = new HashMap<>();
+        for ( char c: t.toCharArray()) targetHash.put(c, targetHash.getOrDefault(c,0)+1);
+
+        int count =0, startIndex = -1, minLength = s.length()+1;
+        int left =0;
+        for ( int right =0; right<s.length(); right++){
+            char c = s.charAt(right);
+            if ( targetHash.containsKey(c)) {
+                if ( targetHash.get(c) > 0 ) count++;
+                targetHash.put(c, targetHash.get(c)-1);
+            }
+            while ( count == t.length() ){
+                if ( minLength > (right-left+1)) {
+                    minLength = right-left+1;
+                    startIndex = left;
+                }
+                char leftChar = s.charAt(left);
+                // shrink left..right
+                if ( targetHash.containsKey(leftChar)) {
+                    targetHash.put(leftChar, targetHash.get(leftChar)+1);
+                    if ( targetHash.get(leftChar) > 0) count--;
+                }
+                left++;
+            }
+        }
+        return startIndex >= 0 ? s.substring(startIndex, startIndex+minLength) : "";
     }
 }
