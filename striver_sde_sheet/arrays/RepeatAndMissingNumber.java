@@ -61,7 +61,7 @@ public class RepeatAndMissingNumber {
         }
         int bitNumber = 0;
         while (true){
-          if ( (xor & ( 1 << bitNumber )) != 0){
+          if ( (xor & ( 1 << bitNumber )) == 0){
               break;
           }
           bitNumber++;
