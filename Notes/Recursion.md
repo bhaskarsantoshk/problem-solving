@@ -156,10 +156,10 @@ public class AllSubSequences {
 * ( TAKE | NOT TAKE ) pattern
 ```sudocode
 f( index, {},arr[], sum, K ){
-   if ( index >= n ) {
-   if ( sum == K ) print array
-   }
-   return;
+     if ( index >= n ) {
+        if ( sum == K ) print array
+        return;
+     }
    
    {}.add(arr[index])
    f( index+1, { .. }, arr[], sum+arr[index], K)
