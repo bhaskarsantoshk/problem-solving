@@ -26,7 +26,7 @@ public class P94BinaryTreeInorderTraversal {
         if ( root == null ) return res;
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
-        while ( !stack.isEmpty() && node != null ){
+        while ( !stack.isEmpty() || node != null ){
             if ( node != null ){
                 stack.push(node);
                 node = node.left;
