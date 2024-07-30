@@ -1,3 +1,5 @@
+package striver_sde_sheet.arrays;
+
 public class Kadane {
     public int maxSubArray(int[] nums) {
         int max = nums[0];
