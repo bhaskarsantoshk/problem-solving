@@ -1,7 +1,7 @@
 package company.google.dynamic_programming;
 
 public class P53MaximumSubarray {
-    
+
     // Brute force
     public int maxSubArray1(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
