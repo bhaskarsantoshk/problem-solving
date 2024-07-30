@@ -7,7 +7,7 @@ import java.util.Stack;
 public class P103BinaryTreeZigzagLevelOrderTraversal {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
-        Stack<TreeNode> curLevel = new Stack<TreeNode>();
+        Stack<TreeNode> curLevel = new Stack<>();
         Stack<TreeNode> nextLevel = new Stack<>();
         if(root == null){
             return result;
