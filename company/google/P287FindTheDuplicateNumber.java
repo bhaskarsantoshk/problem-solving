@@ -23,4 +23,21 @@ public class P287FindTheDuplicateNumber {
        }
        return 0;
     }
+
+    // Most optimal will use LinkedList Cycle method
+    // T O(N), S O(1)
+    public int findDuplicate(int[] nums) {
+        if ( nums == null || nums.length < 2) return 0;
+        int slow = nums[0], fast = nums[0];
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while( slow != fast);
+        slow = nums[0];
+        while ( slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
 }
