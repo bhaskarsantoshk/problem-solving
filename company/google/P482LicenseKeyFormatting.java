@@ -17,7 +17,7 @@ public class P482LicenseKeyFormatting {
             }
         }
         if (!sb.isEmpty() && sb.charAt(sb.length()-1) == '-') sb.deleteCharAt(sb.length()-1);
-        return sb.reverse().toString();
+        return sb.reverse().toString().toUpperCase();
     }
 
     // ahb-oj-18iml-l
