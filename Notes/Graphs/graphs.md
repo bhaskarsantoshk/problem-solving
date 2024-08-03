@@ -428,4 +428,7 @@ DFS traverses each vertex and each edge once, resulting in a linear time complex
 - Recursive implementation is elegant but might face stack overflow for large graphs; iterative implementation using a stack is an alternative.
 - DFS can be used to find paths, connected components, and strongly connected components in a graph.
 
-
+## Disjoint Set
+* Used in Dynamic Graphs
+* To determine if a node is connected to a component in constant time
+* has two methods, findparent and union() - rank and size
