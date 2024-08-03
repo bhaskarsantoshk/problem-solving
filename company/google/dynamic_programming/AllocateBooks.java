@@ -29,4 +29,28 @@ public class AllocateBooks {
         }
         return countStudents;
     }
+
+
+    public static int findPagesBinarySearch(ArrayList<Integer> arr, int n, int m) {
+        if ( arr.size() < m) return -1; // number of students more than number of books
+        int maxArrayElement = 0, sum = 0;
+        for ( int num: arr){
+            maxArrayElement = Math.max( maxArrayElement, num);
+            sum += num;
+        }
+        int start = maxArrayElement, end =  sum;
+        int ans = -1;
+        while ( start <= end ){
+            int mid = start + (end-start)/2;
+            int countStudents = allocatedStudents(arr, mid);
+            if ( countStudents == m) {
+                end = mid-1;
+            } else if ( countStudents < m){
+                end = mid-1;
+            } else {
+                start = mid+1;
+            }
+        }
+        return start;
+    }
 }
