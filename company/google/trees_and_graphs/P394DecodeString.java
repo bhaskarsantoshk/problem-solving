@@ -30,6 +30,34 @@ public class P394DecodeString {
         }
         return currentString;
     }
+
+
+    public String decodeStringOptimized(String s) {
+        Stack<StringBuilder> strStack = new Stack<>();
+        Stack<Integer> numStack = new Stack<>();
+        StringBuilder cur = new StringBuilder();
+        int currentNumber = 0;
+        for ( char c: s.toCharArray()){
+            if ( Character.isDigit(c) ){
+                currentNumber = currentNumber * 10 + (c-'0');
+            } else if ( c == '['){
+                strStack.push(cur);
+                numStack.push(currentNumber);
+                cur = new StringBuilder();
+                currentNumber=0;
+            } else if ( c == ']'){
+                StringBuilder temp = cur;
+                int repeatNum = numStack.pop();
+                cur = strStack.pop();
+                for ( int i=0; i<repeatNum; i++){
+                    cur.append(temp);
+                }
+            } else {
+                cur.append(c);
+            }
+        }
+        return cur.toString();
+    }
 }
 
 /*
