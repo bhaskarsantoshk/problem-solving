@@ -134,6 +134,23 @@ Input: `arr = [10, 13, 12, 14, 15]`
 
 Final `goodStartingIndex`: `2`
 
+## maxProduct
+
+### Gist
+1. **Purpose**: Find the maximum product of a contiguous subarray within an array of integers.
+2. **Handling Different Cases**:
+    - **All Positive Numbers**: The final prefix and suffix products are equal to the maximum product.
+    - **Even Negative Numbers**: Similar to all positive numbers, the final prefix and suffix products are equal to the maximum product.
+    - **Odd Negative Numbers**: The maximum product lies either on the left or right side of the odd negative number.
+    - **Zeros**: The maximum product is found in one of the subarray products that exclude zeros.
+3. **Process**:
+    - Initialize `prefix` and `suffix` products to 1 and `max` to the minimum integer value.
+    - Iterate through the array:
+        - Reset `prefix` and `suffix` to 1 if they become zero.
+        - Check for potential overflow in `prefix` and `suffix`.
+        - Update `prefix` and `suffix` products.
+        - Update `max` with the maximum value between `prefix` and `suffix`.
+4. **Result**: Return the maximum product found during the iteration.
 
 
 
