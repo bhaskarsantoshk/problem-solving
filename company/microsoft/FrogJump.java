@@ -35,5 +35,24 @@ public class FrogJump {
         return dp[n-1];
     }
 
+    public static int frogJumpConstantSpace(int n, int heights[]) {
+        if ( n <= 0) return 0;
+        int ans , prev, prev2;
+        ans = 0;
+        prev = 0;
+        prev2 = 0;
+        for ( int i=1; i<n; i++){
+            int firstStep = prev+Math.abs(heights[i]-heights[i-1]);
+            int secondStep = Integer.MAX_VALUE;
+            if ( i> 1){
+                secondStep = prev2+Math.abs(heights[i]-heights[i-2]);
+            }
+            ans = Math.min(firstStep, secondStep);
+            prev2 = prev;
+            prev = ans;
+        }
+        return ans;
+    }
+
 
 }
