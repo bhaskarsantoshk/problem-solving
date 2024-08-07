@@ -48,4 +48,23 @@ public class P64MinimumPathSum {
         }
         return dp[grid.length-1][grid[0].length-1];
     }
+
+    public int minPathSumTabularSpaceOptimized(int[][] grid) {
+        int[] prev = new int[grid[0].length];
+        prev[0] = grid[0][0];
+        for ( int i=0; i<grid.length; i++){
+            int [] cur = new int[grid[0].length];
+            for ( int j=0; j<grid[0].length; j++){
+                if ( i==0 && j == 0) cur[j] = grid[i][j];
+                else {
+                    int up = Integer.MAX_VALUE, left = Integer.MAX_VALUE;
+                    if ( i > 0) up = grid[i][j]+prev[j];
+                    if ( j > 0) left = grid[i][j] + cur[j-1];
+                    cur[j] = Math.min(up, left);
+                }
+            }
+            prev = cur;
+        }
+        return prev[grid[0].length-1];
+    }
 }
