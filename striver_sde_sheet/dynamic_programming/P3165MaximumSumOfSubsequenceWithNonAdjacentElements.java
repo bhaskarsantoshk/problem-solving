@@ -23,4 +23,36 @@ public class P3165MaximumSumOfSubsequenceWithNonAdjacentElements {
         int notPick = maximumNonAdjacentSumMemoized(nums, index-1, memo);
         return memo[index] = Math.max(pick, notPick);
     }
+
+    public static int maximumNonAdjacentSumTabular(ArrayList<Integer> nums) {
+        if ( nums == null || nums.size() == 0) return 0;
+        if ( nums.size() == 1) return nums.get(0);
+        int dp[] = new int[nums.size()];
+        dp[0] = nums.get(0);
+        int negative = 0;
+        for ( int i=1; i<nums.size(); i++){
+           int pick = nums.get(i);
+           if ( i > 1) pick += dp[i-2];
+           int notPick = dp[i-1];
+           dp[i] = Math.max(pick, notPick);
+        }
+        return dp[nums.size()-1];
+    }
+
+    public static int maximumNonAdjacentSumTabularSpaceOptimization(ArrayList<Integer> nums) {
+        if ( nums == null || nums.size() == 0) return 0;
+        if ( nums.size() == 1) return nums.get(0);
+        int ans , prev , prev2;
+        ans = 0;
+        prev = prev2 = nums.get(0);
+        for ( int i=1; i<nums.size(); i++){
+            int pick = nums.get(i);
+            if ( i > 1) pick += prev2;
+            int notPick = prev;
+            ans = Math.max(pick, notPick);
+            prev2 = prev;
+            prev = ans;
+        }
+        return ans;
+    }
 }
