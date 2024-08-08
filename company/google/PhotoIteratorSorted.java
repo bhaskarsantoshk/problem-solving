@@ -2,7 +2,7 @@ package company.google;
 
 import java.util.*;
 
-public class PhotoIteratorSorted implements Iterator {
+public class PhotoIteratorSorted implements Iterator<String> {
     private final List<String> photos;
     private final List<String> favorites;
     private int favIndex;
@@ -15,26 +15,51 @@ public class PhotoIteratorSorted implements Iterator {
         this.photoIndex = 0;
     }
 
-
-    public static void main(String[] args) {
-        List<String> photos = Arrays.asList("p2", "p3", "p4", "p5", "p6", "p7", "p8", "p10");
-        List<String> favourites = Arrays.asList("p4", "p8", "p10");
-
-        PhotoIterator iterator = new PhotoIterator(photos, favourites);
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-    }
-
     @Override
     public boolean hasNext() {
+        // Check if there are more elements in favorites or photos
         return favIndex < favorites.size() || photoIndex < photos.size();
     }
 
     @Override
-    public Object next() {
-        if ( !hasNext()) throw new NoSuchElementException();
-        if ( favIndex < favorites.size()) return favorites.get(favIndex++);
-        return photos.get(photoIndex++);
+    public String next() {
+        if (!hasNext()) throw new NoSuchElementException();
+
+        // Return the next favorite if available
+        if (favIndex < favorites.size()) {
+            String fav = favorites.get(favIndex);
+            favIndex++;
+
+            // Skip duplicates in favorites
+            while (favIndex < favorites.size() && favorites.get(favIndex).equals(fav)) {
+                favIndex++;
+            }
+            return fav;
+        }
+
+        // Return the next photo if available
+        if (photoIndex < photos.size()) {
+            String photo = photos.get(photoIndex);
+            photoIndex++;
+
+            // Skip duplicates in photos
+            while (photoIndex < photos.size() && photos.get(photoIndex).equals(photo)) {
+                photoIndex++;
+            }
+            return photo;
+        }
+
+        // No more elements to return
+        throw new NoSuchElementException();
+    }
+
+    public static void main(String[] args) {
+        List<String> photos = Arrays.asList("p2", "p3", "p4", "p5", "p6", "p7", "p8", "p10");
+        List<String> favorites = Arrays.asList("p4", "p8", "p10");
+
+        PhotoIteratorSorted iterator = new PhotoIteratorSorted(photos, favorites);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
 }
