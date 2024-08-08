@@ -1107,3 +1107,318 @@ class Solution {
     }
 }
 ```
+# Gist for Adding Two Numbers Represented by Linked Lists
+
+## Problem:
+Given two non-empty linked lists representing two non-negative integers, where the digits are stored in reverse order, add the two numbers and return the sum as a linked list. Each node contains a single digit, and the two numbers do not contain any leading zero, except the number 0 itself.
+
+## Key Insight:
+Traverse both linked lists, summing corresponding digits along with any carry from the previous addition. Store the results in a new linked list.
+
+## Steps:
+
+1. **Initialize Dummy Node and Pointers:**
+   - **Why:** A dummy node simplifies the creation of the result list and handling the carry-over.
+   - **How:** Create a dummy node and a current pointer pointing to it. Initialize carry to 0.
+
+2. **Traverse Lists and Sum Digits:**
+   - **Why:** To add the numbers digit by digit, including any carry from the previous addition.
+   - **How:** Use a `while` loop to traverse both lists and add corresponding digits. If one list is shorter, treat missing digits as 0.
+
+3. **Handle Carry and Create New Nodes:**
+   - **Why:** Each sum might result in a carry, and we need to create new nodes for the result list.
+   - **How:** Calculate the sum of the current digits and the carry. Create a new node with the digit value (sum % 10) and update the carry (sum / 10). Move the current pointer to the new node.
+
+4. **Return Result:**
+   - **Why:** The result list starts from the next node of the dummy node.
+   - **How:** Return `dummy.next`.
+
+## Example:
+
+Consider the input lists `l1 = [2,4,3]` and `l2 = [5,6,4]`:
+
+- The algorithm will produce the result list `[7,0,8]` representing the number 807 (342 + 465).
+
+## Code Implementation:
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
+        int carry = 0;
+        int sum = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            sum = 0;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            sum += carry;
+            cur.next = new ListNode(sum % 10);
+            carry = sum / 10;
+            cur = cur.next;
+        }
+        return dummy.next;
+    }
+}
+```
+
+# Gist for Removing the N-th Node from the End of a Linked List
+
+## Problem:
+Given the head of a linked list and an integer `n`, remove the n-th node from the end of the list and return its head.
+
+## Key Insight:
+Use two pointers (`slow` and `fast`). Move the `fast` pointer `n` steps ahead, then move both pointers until `fast` reaches the end. The `slow` pointer will be at the node just before the one to be removed.
+
+## Steps:
+
+1. **Initialize Pointers:**
+   - **Why:** To traverse the list and find the n-th node from the end.
+   - **How:** Set both `slow` and `fast` pointers to the head of the list.
+
+2. **Move Fast Pointer Ahead:**
+   - **Why:** To create a gap of `n` nodes between the `fast` and `slow` pointers.
+   - **How:** Move the `fast` pointer `n` steps ahead. If `fast` reaches the end, it means we need to remove the head node.
+
+3. **Check if Fast Reached the End:**
+   - **Why:** To handle the edge case where the node to be removed is the head.
+   - **How:** If `fast` is null after moving `n` steps, return `head.next` to remove the head node.
+
+4. **Move Both Pointers:**
+   - **Why:** To find the node just before the one to be removed.
+   - **How:** Move both `slow` and `fast` pointers until `fast.next` is null.
+
+5. **Remove the N-th Node:**
+   - **Why:** To update the links and remove the target node.
+   - **How:** Set `slow.next` to `slow.next.next`.
+
+6. **Return Result:**
+   - **Why:** The head of the modified list.
+   - **How:** Return the head node.
+
+## Example:
+
+Consider the input list `head = [1,2,3,4,5]` and `n = 2`:
+
+- The algorithm will remove the node with value `4`, resulting in the list `[1,2,3,5]`.
+
+## Code Implementation:
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        for (int i = 0; i < n; i++) {
+            fast = fast.next;
+            if (fast == null) break;
+        }
+        if (fast == null) return head.next;
+
+        while (fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+}
+```
+# Gist for Merging Two Sorted Linked Lists
+
+## Problem:
+Given two sorted linked lists, merge them into one sorted linked list.
+
+## Key Insight:
+You can merge the two lists either iteratively or recursively by comparing the values of the nodes and linking them in order.
+
+## Steps for Recursive Approach:
+
+1. **Base Cases:**
+   - **Why:** Handle edge cases where one or both lists are empty.
+   - **How:** Return the non-empty list or null if both are empty.
+
+2. **Recursive Merge:**
+   - **Why:** Compare the values of the current nodes in both lists and recursively merge the rest.
+   - **How:**
+      - If `l1.val < l2.val`, set `l1.next` to the result of merging `l1.next` and `l2`, then return `l1`.
+      - Otherwise, set `l2.next` to the result of merging `l1` and `l2.next`, then return `l2`.
+
+## Steps for Iterative Approach:
+
+1. **Initialize Dummy Node and Pointers:**
+   - **Why:** A dummy node simplifies the process of merging and handling edge cases.
+   - **How:** Create a dummy node and a pointer `cur` pointing to it.
+
+2. **Traverse and Merge Lists:**
+   - **Why:** Compare the current nodes of both lists and attach the smaller node to the result list.
+   - **How:**
+      - Use a `while` loop to traverse both lists.
+      - Compare `l1.val` and `l2.val` and attach the smaller node to `cur.next`.
+      - Move the pointer in the list from which the node was taken.
+
+3. **Attach Remaining Nodes:**
+   - **Why:** One list may have remaining nodes after the other is exhausted.
+   - **How:** Attach the remaining nodes of `l1` or `l2` to `cur.next`.
+
+4. **Return Result:**
+   - **Why:** The merged list starts from the next node of the dummy node.
+   - **How:** Return `result.next`.
+
+## Code Implementation:
+
+```java
+package LeetCode;
+
+public class P21MergeTwoSortedLists {
+    // Recursive approach
+    public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        if (l1.val < l2.val) {
+            l1.next = mergeTwoListsRecursive(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoListsRecursive(l1, l2.next);
+            return l2;
+        }
+    }
+
+    // Iterative approach
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null) return null;
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        ListNode result = new ListNode(0);
+        ListNode cur = result;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        if (l1 != null) {
+            cur.next = l1;
+        }
+        if (l2 != null) {
+            cur.next = l2;
+        }
+        return result.next;
+    }
+}
+```
+# Gist for Copying a Linked List with Random Pointer
+
+## Problem:
+Given a linked list where each node has a `val`, `next`, and `random` pointer, create a deep copy of the list.
+
+## Key Insight:
+Use an interleaved list approach to create the copy and set the random pointers correctly.
+
+## Steps:
+
+1. **Insert Copy Nodes:**
+   - **Why:** To easily set the `random` pointers for the copied nodes.
+   - **How:** Iterate through the original list and insert a copy of each node immediately after the original node. Update the `next` pointers to interleave the original and copied nodes.
+
+2. **Set Random Pointers:**
+   - **Why:** To ensure that the copied nodes have the correct `random` pointers.
+   - **How:** Iterate through the interleaved list. For each original node, set the `random` pointer of the copied node to the next node of the original node's `random` pointer.
+
+3. **Restore Original List and Extract Copy:**
+   - **Why:** To separate the original list from the copied list.
+   - **How:** Use a dummy node to help extract the copied list. Iterate through the interleaved list, restoring the original `next` pointers and building the copied list using the `next` pointers of the copied nodes.
+
+## Example:
+
+Consider the input list:
+Original: 1 -> 2 -> 3
+Random: 1 -> 3, 2 -> 1, 3 -> 2
+
+
+The algorithm will produce a copied list with the same structure and random pointers.
+
+## Code Implementation:
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node copyRandomList(Node head) {
+        if (head == null) return null;
+        
+        // Step 1: Insert copy nodes
+        Node cur = head;
+        while (cur != null) {
+            Node copy = new Node(cur.val);
+            copy.next = cur.next;
+            cur.next = copy;
+            cur = cur.next.next;
+        }
+        
+        // Step 2: Set random pointers
+        cur = head;
+        while (cur != null) {
+            Node copy = cur.next;
+            if (cur.random != null) copy.random = cur.random.next;
+            cur = cur.next.next;
+        }
+        
+        // Step 3: Restore original list and extract copy
+        Node dummy = new Node(0);
+        cur = head;
+        Node copy = dummy;
+        while (cur != null) {
+            copy.next = cur.next;
+            cur.next = cur.next.next;
+            cur = cur.next;
+            copy = copy.next;
+        }
+        return dummy.next;
+    }
+}
+```
