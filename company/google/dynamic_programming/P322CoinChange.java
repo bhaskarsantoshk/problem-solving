@@ -20,7 +20,7 @@ public class P322CoinChange {
         }
         if ( memo[i][target] != -1) return memo[i][target];
 
-        int notTake = 0 + helper(nums, i-1, target, memo);
+        int notTake = helper(nums, i - 1, target, memo);
         int take = (int) 1e9;
         if ( target >= nums[i]){
             take = 1+ helper(nums, i, target-nums[i], memo);
