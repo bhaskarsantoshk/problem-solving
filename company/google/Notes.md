@@ -614,3 +614,496 @@ class Solution {
     }
 }
 ```
+# Gist for Finding Median of Two Sorted Arrays
+
+## Problem:
+Given two sorted arrays `nums1` and `nums2`, find the median of the two sorted arrays. The overall run time complexity should be O(log(min(n,m))), where n and m are the sizes of the two arrays.
+
+## Key Insight:
+Use binary search to partition the arrays such that the elements on the left side of the partition are less than or equal to the elements on the right side, ensuring the median is found efficiently.
+
+## Steps:
+
+1. **Ensure `nums1` is the Smaller Array:**
+   - **Why:** To minimize the binary search range and ensure efficiency.
+   - **How:** Swap `nums1` and `nums2` if `nums1` is longer than `nums2`.
+
+2. **Binary Search Initialization:**
+   - **Why:** To find the correct partition of `nums1` and `nums2`.
+   - **How:** Initialize `start` and `end` for `nums1`'s length.
+
+3. **Binary Search Loop:**
+   - **Partition Indices:**
+      - Calculate `partitionX` for `nums1` and `partitionY` for `nums2` such that the left and right partitions cover all elements.
+   - **Boundary Values:**
+      - Set boundary values `maxLeftX`, `minRightX` for `nums1` and `maxLeftY`, `minRightY` for `nums2`. Use `Integer.MIN_VALUE` and `Integer.MAX_VALUE` for out-of-bound indices.
+
+4. **Check Correct Partition:**
+   - **Why:** To ensure that elements on the left are less than or equal to elements on the right.
+   - **How:** If `maxLeftX <= minRightY` and `maxLeftY <= minRightX`, the correct partition is found.
+      - **Even Total Elements:** If the combined array length is even, the median is the average of the maximum of the left elements and the minimum of the right elements.
+      - **Odd Total Elements:** If the combined array length is odd, the median is the maximum of the left elements.
+
+5. **Adjust Search Range:**
+   - **Why:** To narrow down the correct partition.
+   - **How:** If `maxLeftX > minRightY`, move left by setting `end = partitionX - 1`. If `maxLeftY > minRightX`, move right by setting `start = partitionX + 1`.
+
+## Example:
+
+Consider the input arrays `nums1 = [1, 3]` and `nums2 = [2]`:
+
+- The algorithm will find that the median is `2`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+
+        int x = nums1.length;
+        int y = nums2.length;
+
+        int start = 0, end = x;
+        while (start <= end) {
+            int partitionX = (start + end) / 2;
+            int partitionY = (x + y + 1) / 2 - partitionX;
+
+            int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : nums1[partitionX - 1];
+            int minRightX = (partitionX == x) ? Integer.MAX_VALUE : nums1[partitionX];
+
+            int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : nums2[partitionY - 1];
+            int minRightY = (partitionY == y) ? Integer.MAX_VALUE : nums2[partitionY];
+
+            if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+                if ((x + y) % 2 == 0) {
+                    return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2.0;
+                } else {
+                    return Math.max(maxLeftX, maxLeftY);
+                }
+            } else if (maxLeftX > minRightY) {
+                end = partitionX - 1;
+            } else {
+                start = partitionX + 1;
+            }
+        }
+        return -1;
+    }
+}
+```
+# Gist for Finding the Range of a Target in a Sorted Array
+
+## Problem:
+Given a sorted array `nums` and a target value `target`, find the starting and ending position of the target value. If the target is not found, return `[-1, -1]`.
+
+## Key Insight:
+Use binary search to efficiently find the leftmost (first) and rightmost (last) occurrences of the target.
+
+## Steps:
+
+1. **Edge Case Check:**
+   - **Why:** Handle cases where the input array is null or empty.
+   - **How:** Return `[-1, -1]` if the array is null or has zero length.
+
+2. **Find Leftmost and Rightmost Indices:**
+   - **Why:** Separate the logic to find the first and last occurrence of the target using binary search.
+   - **How:** Use a helper method `findIndex` with a boolean parameter to indicate whether to find the first or last occurrence of the target.
+
+3. **Helper Method: `findIndex`:**
+   - **Binary Search:**
+      - Initialize `start` to 0 and `end` to the length of the array minus one.
+      - Use a while loop to perform binary search until `start` exceeds `end`.
+      - Calculate the midpoint `mid`.
+      - If `nums[mid]` equals the target, update `ans` to `mid`.
+         - If searching for the first occurrence, move the `end` to `mid - 1`.
+         - If searching for the last occurrence, move the `start` to `mid + 1`.
+      - If `nums[mid]` is greater than the target, move the `end` to `mid - 1`.
+      - If `nums[mid]` is less than the target, move the `start` to `mid + 1`.
+
+4. **Return the Result:**
+   - **Why:** The result should be the indices of the first and last occurrences of the target.
+   - **How:** Return the indices found by the two calls to `findIndex`.
+
+## Example:
+
+Consider the input `nums = [5,7,7,8,8,10]` and `target = 8`:
+
+- The algorithm will find that the starting and ending positions of the target are `[3, 4]`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return new int[]{-1, -1};
+        boolean isFirst = true;
+        int leftMost = findIndex(nums, target, isFirst);
+        int rightMost = findIndex(nums, target, false);
+        
+        return new int[] {leftMost, rightMost};
+    }
+    
+    private int findIndex(int[] nums, int target, boolean isFirst) {
+        int start = 0, end = nums.length - 1;
+        int ans = -1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                ans = mid;
+                if (isFirst) end = mid - 1;
+                else start = mid + 1;
+            } else if (nums[mid] > target) end = mid - 1;
+            else start = mid + 1;
+        }
+        return ans;
+    }
+}
+```
+
+# Gist for Merging Intervals
+
+## Problem:
+Given a collection of intervals, merge all overlapping intervals.
+
+## Key Insight:
+Sort the intervals by their start times, then iterate through the sorted list and merge overlapping intervals.
+
+## Steps:
+
+1. **Edge Case Check:**
+   - **Why:** Handle cases where the input array is null or empty.
+   - **How:** Return the input intervals if it is null or has zero length.
+
+2. **Sort Intervals:**
+   - **Why:** Sorting by the start times allows for an efficient merging process.
+   - **How:** Use `Arrays.sort` with a custom comparator to sort intervals based on their starting values.
+
+3. **Initialize Variables:**
+   - **Why:** Track the current interval being merged and store the result.
+   - **How:** Initialize `newInterval` to the first interval and a `List<int[]>` to store merged intervals. Add `newInterval` to the list.
+
+4. **Iterate Through Intervals:**
+   - **Merge Overlapping Intervals:**
+      - **Why:** Merge intervals that overlap by updating the end of the current interval.
+      - **How:** If the start of the current interval is less than or equal to the end of `newInterval`, update `newInterval`'s end to the maximum end of both intervals.
+   - **Add Non-Overlapping Intervals:**
+      - **Why:** When encountering a non-overlapping interval, add the current interval to the result list and update `newInterval`.
+      - **How:** Add the interval to the result list and set `newInterval` to the current interval.
+
+5. **Return Result:**
+   - **Why:** Convert the result list to an array for the final output.
+   - **How:** Use `List.toArray` to convert the list of intervals to a 2D array.
+
+## Example:
+
+Consider the input `intervals = [[1,3],[2,6],[8,10],[15,18]]`:
+
+- The algorithm will merge the intervals to `[[1,6],[8,10],[15,18]]`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null || intervals.length == 0) return intervals;
+        
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        int[] newInterval = intervals[0];
+        List<int[]> res = new ArrayList<>();
+        res.add(newInterval);
+        
+        for (int[] interval : intervals) {
+            // Merge overlapping intervals
+            if (interval[0] <= newInterval[1]) {
+                newInterval[1] = Math.max(interval[1], newInterval[1]);
+            } else {
+                // Add non-overlapping interval to result
+                res.add(interval);
+                newInterval = interval;
+            }
+        }
+        
+        return res.toArray(new int[res.size()][]);
+    }
+}
+```
+
+# Gist for Inserting a New Interval into a Sorted Interval List
+
+## Problem:
+Given a list of non-overlapping intervals sorted by their start time, insert a new interval into the list and merge if necessary.
+
+## Key Insight:
+Iterate through the existing intervals, adding them to the result list. Merge overlapping intervals with the new interval as necessary.
+
+## Steps:
+
+1. **Initialize Result List:**
+   - **Why:** To store the merged intervals.
+   - **How:** Create a `List<int[]>` to store the intervals.
+
+2. **Iterate Through Intervals:**
+   - **Add Non-Overlapping Intervals Before New Interval:**
+      - **Why:** If the current interval ends before the new interval starts, add it to the result list.
+      - **How:** Check if `interval[1] < newInterval[0]` and add the interval to the result list.
+   - **Add and Merge Overlapping Intervals:**
+      - **Why:** If the current interval starts after the new interval ends, add the new interval followed by the current interval and set `newInterval` to null (indicating it has been inserted).
+      - **How:** Check if `interval[0] > newInterval[1]`, add `newInterval` and the current interval to the result list, then set `newInterval` to null.
+      - **Why:** If the current interval overlaps with the new interval, merge them by updating the start and end of the new interval.
+      - **How:** Update `newInterval[0]` to the minimum of `interval[0]` and `newInterval[0]`, and `newInterval[1]` to the maximum of `interval[1]` and `newInterval[1]`.
+
+3. **Add Remaining New Interval:**
+   - **Why:** If the new interval has not been added yet (it overlaps with intervals at the end), add it to the result list.
+   - **How:** Check if `newInterval` is not null and add it to the result list.
+
+4. **Return Result:**
+   - **Why:** Convert the list to a 2D array for the final output.
+   - **How:** Use `List.toArray` to convert the list of intervals to a 2D array.
+
+## Example:
+
+Consider the input `intervals = [[1,3],[6,9]]` and `newInterval = [2,5]`:
+
+- The algorithm will merge the intervals to `[[1,5],[6,9]]`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        List<int[]> res = new ArrayList<>();
+        for (int[] interval : intervals) {
+            // interval.end < newInterval.start
+            if (newInterval == null || interval[1] < newInterval[0]) {
+                res.add(interval);
+            } else if (interval[0] > newInterval[1]) {
+                res.add(newInterval);
+                res.add(interval);
+                newInterval = null;
+            } else {
+                newInterval[0] = Math.min(interval[0], newInterval[0]);
+                newInterval[1] = Math.max(interval[1], newInterval[1]);
+            }
+        }
+        if (newInterval != null) {
+            res.add(newInterval);
+        }
+        return res.toArray(new int[res.size()][]);
+    }
+}
+```
+# Gist for Checking If Two Strings Are Anagrams
+
+## Problem:
+Given two strings `s` and `t`, determine if `t` is an anagram of `s`. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase.
+
+## Key Insight:
+Use an array to count the frequency of each character in both strings and compare the counts.
+
+## Steps:
+
+1. **Initialize Frequency Array:**
+   - **Why:** To store the count of each character.
+   - **How:** Create an array `a` of size 256 (to cover all ASCII characters) initialized to zero.
+
+2. **Count Characters in `s`:**
+   - **Why:** Increment the count for each character in `s` to record their frequencies.
+   - **How:** Loop through each character in `s`, convert it to its ASCII value, and increment the corresponding index in the array.
+
+3. **Count Characters in `t`:**
+   - **Why:** Decrement the count for each character in `t` to compare against the frequencies recorded for `s`.
+   - **How:** Loop through each character in `t`, convert it to its ASCII value, and decrement the corresponding index in the array.
+
+4. **Check Frequency Array:**
+   - **Why:** Ensure all counts are zero, indicating that `t` has the same character frequencies as `s`.
+   - **How:** Loop through the frequency array, and if any value is not zero, return `false`.
+
+5. **Return Result:**
+   - **Why:** If all counts are zero, the strings are anagrams.
+   - **How:** Return `true`.
+
+## Example:
+
+Consider the input strings `s = "anagram"` and `t = "nagaram"`:
+
+- The algorithm will find that `t` is an anagram of `s` and return `true`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        int[] a = new int[256];
+        for (char c : s.toCharArray()) {
+            a[c]++;
+        }
+        for (char c : t.toCharArray()) {
+            a[c]--;
+        }
+        
+        for (int num : a) {
+            if (num != 0) return false;
+        }
+        return true;
+    }
+}
+```
+# Gist for Counting Smaller Elements to the Right
+
+## Problem:
+Given an array `nums`, return a list `res` where `res[i]` is the number of smaller elements to the right of `nums[i]`.
+
+## Key Insight:
+Use a modified merge sort to count the smaller elements efficiently while sorting the array.
+
+## Steps:
+
+1. **Initialize Count Array and Indexes:**
+   - **Why:** To keep track of the count of smaller elements for each element in `nums` and to maintain the original indexes during sorting.
+   - **How:** Create an array `count` of the same length as `nums` initialized to 0, and an array `indexes` storing the original indices of the elements.
+
+2. **Merge Sort:**
+   - **Why:** The merge sort will help in efficiently counting the smaller elements to the right while sorting.
+   - **How:** Use a recursive merge sort function to sort the array while counting the smaller elements.
+
+3. **Merge Function:**
+   - **Count and Sort:**
+      - **Why:** During the merge step, count how many elements from the right half are smaller than the current element from the left half.
+      - **How:** Use two pointers to iterate through the left and right halves. If an element from the right half is smaller, increment the count for the current element from the left half. Merge the elements back into the `indexes` array while updating the counts.
+
+4. **Return Result:**
+   - **Why:** The `count` array contains the required counts of smaller elements to the right for each element in `nums`.
+   - **How:** Convert the `count` array to a list and return it.
+
+## Example:
+
+Consider the input `nums = [5, 2, 6, 1]`:
+
+- The algorithm will find that the counts of smaller elements to the right are `[2, 1, 1, 0]`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    int[] count;
+
+    public List<Integer> countSmaller(int[] nums) {
+        List<Integer> res = new ArrayList<>();     
+        count = new int[nums.length];
+        int[] indexes = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            indexes[i] = i;
+        }
+        mergesort(nums, indexes, 0, nums.length - 1);
+        for (int i = 0; i < count.length; i++) {
+            res.add(count[i]);
+        }
+        return res;
+    }
+
+    private void mergesort(int[] nums, int[] indexes, int start, int end) {
+        if (end <= start) {
+            return;
+        }
+        int mid = (start + end) / 2;
+        mergesort(nums, indexes, start, mid);
+        mergesort(nums, indexes, mid + 1, end);
+        merge(nums, indexes, start, end);
+    }
+
+    private void merge(int[] nums, int[] indexes, int start, int end) {
+        int mid = (start + end) / 2;
+        int left_index = start;
+        int right_index = mid + 1;
+        int rightcount = 0;    	
+        int[] new_indexes = new int[end - start + 1];
+
+        int sort_index = 0;
+        while (left_index <= mid && right_index <= end) {
+            if (nums[indexes[right_index]] < nums[indexes[left_index]]) {
+                new_indexes[sort_index] = indexes[right_index];
+                rightcount++;
+                right_index++;
+            } else {
+                new_indexes[sort_index] = indexes[left_index];
+                count[indexes[left_index]] += rightcount;
+                left_index++;
+            }
+            sort_index++;
+        }
+        while (left_index <= mid) {
+            new_indexes[sort_index] = indexes[left_index];
+            count[indexes[left_index]] += rightcount;
+            left_index++;
+            sort_index++;
+        }
+        while (right_index <= end) {
+            new_indexes[sort_index++] = indexes[right_index++];
+        }
+        for (int i = start; i <= end; i++) {
+            indexes[i] = new_indexes[i - start];
+        }
+    }
+}
+```
+# Gist for Finding the Peak Index in a Mountain Array
+
+## Problem:
+Given a mountain array `arr` (an array where `arr[0] < arr[1] < ... < arr[peak] > ... > arr[n-1]`), find the peak index in the array.
+
+## Key Insight:
+Use binary search to efficiently find the peak index, where the peak is defined as an element that is greater than its neighbors.
+
+## Steps:
+
+1. **Edge Case Checks:**
+   - **Why:** Handle edge cases where the peak might be at the beginning or the end of the array.
+   - **How:**
+      - If the first element is greater than the second, return index `0`.
+      - If the last element is greater than the second last, return index `n-1`.
+
+2. **Binary Search Initialization:**
+   - **Why:** The peak cannot be at the very beginning or end, so initialize binary search between the second and second last elements.
+   - **How:** Set `start` to `1` and `end` to `n-2`.
+
+3. **Binary Search Loop:**
+   - **Why:** Narrow down the search range to find the peak index.
+   - **How:**
+      - Calculate the middle index `mid`.
+      - If `arr[mid]` is greater than both its neighbors (`arr[mid+1]` and `arr[mid-1]`), it is the peak, so return `mid`.
+      - If `arr[mid]` is greater than `arr[mid-1]` but less than `arr[mid+1]`, move the `start` to `mid + 1` (the peak is in the right half).
+      - If `arr[mid]` is less than `arr[mid-1]`, move the `end` to `mid - 1` (the peak is in the left half).
+
+4. **Return Result:**
+   - **Why:** The loop will return the peak index once found.
+   - **How:** If no peak is found (though theoretically impossible with the given problem constraints), return `-1`.
+
+## Example:
+
+Consider the input `arr = [0, 2, 3, 4, 3, 2, 1]`:
+
+- The algorithm will find that the peak index is `3`, where the peak element is `4`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        if (arr[0] > arr[1]) return 0;
+        int n = arr.length - 1;
+        if (arr[n] > arr[n - 1]) return n;
+        int start = 1, end = n - 1;
+        
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            
+            if (arr[mid] > arr[mid + 1] && arr[mid] > arr[mid - 1]) return mid;
+            else if (arr[mid] > arr[mid - 1]) start = mid + 1;
+            else end = mid - 1;
+        }
+        return -1;
+    }
+}
+```
