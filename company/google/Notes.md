@@ -366,3 +366,251 @@ Final `goodStartingIndex`: `2`
    - **Why:** We need to provide a way to get a random element from the set in constant time. The `ArrayList` allows for efficient random access.
    - **How:** Generate a random index using the `Random` object and return the value at that index from the `list`.
 
+# Solution for Finding the Longest Palindromic Substring
+
+## Approach:
+
+1. **Initial Checks:**
+   - **Why:** To handle edge cases where the input string is either null or too short to have a meaningful palindrome.
+   - **How:** If the input string `s` is null or its length is less than 2, return the string itself.
+
+2. **Result Class:**
+   - **Why:** To store the start index and length of the longest palindromic substring found during the process.
+   - **How:** Define an inner class `Result` with fields `start` and `len`, and initialize them appropriately.
+
+3. **Expand Around Center:**
+   - **Why:** To find the longest palindromic substring by expanding around each possible center. This method ensures that both odd and even length palindromes are considered.
+   - **How:** Loop through each character in the string and for each character, expand around it as a single center (for odd length palindromes) and as a pair of centers (for even length palindromes). Use the helper method `expandPalindrome` to perform the expansion and update the result if a longer palindrome is found.
+
+4. **Helper Method `expandPalindrome`:**
+   - **Why:** To expand the palindrome around the given left and right indices and update the result if a longer palindrome is found.
+   - **How:** Expand while the characters at the left and right indices are equal and within bounds. After expansion, check if the current length of the palindrome is greater than the previously recorded length and update the result accordingly.
+
+
+# Solution for Finding the Maximum Subarray Sum
+
+## Approach:
+
+1. **Initial Setup:**
+   - **Why:** Initialize variables to keep track of the current sum of the subarray and the maximum sum found so far.
+   - **How:** Set both `sum` and `max` to the first element of the array. This handles the edge case where the array has only one element.
+
+2. **Iterate Through the Array:**
+   - **Why:** To find the maximum subarray sum, iterate through the array starting from the second element.
+   - **How:** Use a `for` loop starting from index 1.
+
+3. **Update Current Sum:**
+   - **Why:** At each step, decide whether to add the current element to the existing sum or start a new subarray from the current element. This ensures that the subarray sum remains as large as possible.
+   - **How:** Use `Math.max(sum + nums[i], nums[i])` to update the `sum`. This chooses the larger value between continuing with the current subarray or starting a new subarray at the current element.
+
+4. **Update Maximum Sum:**
+   - **Why:** Keep track of the maximum sum encountered so far.
+   - **How:** Use `Math.max(max, sum)` to update the `max` if the current `sum` is greater than the previous `max`.
+
+5. **Return the Result:**
+   - **Why:** The variable `max` will hold the maximum subarray sum after iterating through the array.
+   - **How:** Return the value of `max`.
+
+
+# Solution for Finding the Maximum Profit from Stock Prices
+
+## Approach:
+
+1. **Initial Checks:**
+   - **Why:** Handle edge cases where the input array is null or empty.
+   - **How:** Return 0 if the input array `prices` is null or has a length of 0.
+
+2. **Variable Initialization:**
+   - **Why:** Track the minimum price seen so far and the maximum profit that can be achieved.
+   - **How:** Initialize `minSoFar` to `Integer.MAX_VALUE` to ensure any price will be lower initially. Initialize `maxProfit` to 0.
+
+3. **Iterate Through Prices:**
+   - **Why:** To find the maximum profit by iterating through the array of prices.
+   - **How:** Use a `for` loop to iterate through each price in the array.
+
+4. **Update Minimum Price:**
+   - **Why:** Keep track of the lowest price encountered so far, which is needed to calculate the potential profit at each step.
+   - **How:** Use `Math.min(prices[i], minSoFar)` to update `minSoFar`.
+
+5. **Calculate and Update Maximum Profit:**
+   - **Why:** At each step, calculate the potential profit by subtracting the current minimum price from the current price. Update the maximum profit if the calculated profit is greater than the current maximum profit.
+   - **How:** Use `Math.max(maxProfit, prices[i] - minSoFar)` to update `maxProfit`.
+
+6. **Return the Result:**
+   - **Why:** After iterating through the array, `maxProfit` will hold the maximum profit that can be achieved.
+   - **How:** Return the value of `maxProfit`.
+
+Copy code
+# Solution for Finding the Maximum Product Subarray
+
+## Approach:
+
+1. **Initial Checks:**
+   - **Why:** Handle edge cases where the input array is null or empty.
+   - **How:** Return 0 if the input array `nums` is null or has a length of 0.
+
+2. **Variable Initialization:**
+   - **Why:** Use two variables `prefix` and `suffix` to track the product of subarrays from the beginning and the end of the array, respectively.
+   - **How:** Initialize `prefix` and `suffix` to 1, and `max` to `Integer.MIN_VALUE` to track the maximum product encountered.
+
+3. **Iterate Through Array:**
+   - **Why:** Calculate the product of subarrays starting from both ends to handle negative numbers that might affect the product.
+   - **How:** Use a `for` loop to iterate through the array from both the start and end simultaneously.
+
+4. **Reset Prefix and Suffix:**
+   - **Why:** Reset the `prefix` and `suffix` to 1 if they become 0, to start a new subarray product calculation.
+   - **How:** Use conditions `if (prefix == 0) prefix = 1;` and `if (suffix == 0) suffix = 1;`.
+
+5. **Update Prefix and Suffix:**
+   - **Why:** Multiply the current element to the `prefix` and the element from the end to the `suffix`.
+   - **How:** Update `prefix` with `prefix *= nums[i];` and `suffix` with `suffix *= nums[nums.length - 1 - i];`.
+
+6. **Check for Integer Overflow:**
+   - **Why:** Ensure that the multiplication does not cause an integer overflow.
+   - **How:** Add checks to break the loop if `prefix` or `suffix` exceeds `Integer.MAX_VALUE` divided by the current element.
+
+7. **Update Maximum Product:**
+   - **Why:** Keep track of the maximum product encountered.
+   - **How:** Update `max` with `max = Math.max(max, Math.max(suffix, prefix));`.
+
+8. **Return the Result:**
+   - **Why:** After iterating through the array, `max` will hold the maximum product of a subarray.
+   - **How:** Return the value of `max`.
+
+# Solution for Coin Change Problem Using Memoization
+
+## Approach:
+
+1. **Initialize Memoization Table:**
+   - **Why:** To store intermediate results and avoid redundant calculations.
+   - **How:** Create a 2D array `memo` with dimensions `[coins.length][amount + 1]` and fill it with `-1` to indicate uncomputed states.
+
+2. **Helper Method:**
+   - **Why:** Use a recursive approach with memoization to explore the number of coins needed for each amount.
+   - **How:** Define a helper method that takes the array of coins, the current index, the remaining target amount, and the memoization table as arguments.
+
+3. **Base Case:**
+   - **Why:** Define the base case for recursion to stop when the smallest denomination is reached.
+   - **How:** If the current index is `0`, check if the target amount is divisible by the coin value at index `0`. If it is, return the quotient; otherwise, return a large number (indicating an invalid solution).
+
+4. **Memoization Check:**
+   - **Why:** Avoid redundant calculations by checking if the result for the current state is already computed.
+   - **How:** Return the precomputed result from the memoization table if it is not `-1`.
+
+5. **Recursive Calls:**
+   - **Why:** Explore both possibilities of including or not including the current coin.
+   - **How:** Compute the result for not taking the current coin (`notTake`) by making a recursive call with the previous index. Compute the result for taking the current coin (`take`) by making a recursive call with the same index and the target amount reduced by the coin value. Add `1` to the result of `take` to account for the current coin.
+
+6. **Update Memoization Table:**
+   - **Why:** Store the computed result in the memoization table to avoid redundant calculations.
+   - **How:** Update the memoization table with the minimum value between `take` and `notTake`.
+
+7. **Final Check and Return:**
+   - **Why:** Ensure the final answer is valid.
+   - **How:** If the final answer is greater than or equal to a large number (indicating no solution), return `-1`. Otherwise, return the answer.
+
+## Example:
+
+Consider the input `coins = [1, 2, 5]` and `amount = 11`:
+
+- The algorithm will find that the minimum number of coins needed is `3` (11 = 5 + 5 + 1).
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int[][] memo = new int[coins.length][amount + 1];
+        for (int i = 0; i < memo.length; i++) {
+            Arrays.fill(memo[i], -1);
+        }
+        int ans = helper(coins, coins.length - 1, amount, memo);
+        if (ans >= 1e9) return -1;
+        return ans;
+    }
+
+    private int helper(int[] nums, int i, int target, int[][] memo) {
+        if (i == 0) {
+            if (target % nums[i] == 0) return target / nums[i];
+            return (int) 1e9;
+        }
+        if (memo[i][target] != -1) return memo[i][target];
+
+        int notTake = helper(nums, i - 1, target, memo);
+        int take = (int) 1e9;
+        if (target >= nums[i]) {
+            take = 1 + helper(nums, i, target - nums[i], memo);
+        }
+        return memo[i][target] = Math.min(take, notTake);
+    }
+}
+```
+
+# Gist for Splitting Array into k Subarrays with Minimum Largest Sum
+
+## Problem:
+Given an array `nums` and an integer `k`, split the array into `k` subarrays such that the largest sum among these subarrays is minimized.
+
+## Key Insight:
+Use binary search to determine the minimum possible largest sum for splitting the array into `k` subarrays.
+
+## Steps:
+
+1. **Initial Bounds:**
+   - **Start:** The maximum element in `nums` (since at least one subarray will contain this element).
+   - **End:** The sum of all elements in `nums` (the entire array as one subarray).
+
+2. **Binary Search:**
+   - **Midpoint (`mid`):** The candidate for the maximum allowed subarray sum.
+   - **Count Subarrays:** Determine the number of subarrays required if each subarray sum is limited to `mid`.
+      - Initialize `subArraySum` to 0 and `countOfSubArrays` to 1.
+      - Iterate through `nums`, adding each element to `subArraySum`.
+      - If `subArraySum` exceeds `mid`, start a new subarray and increment `countOfSubArrays`.
+
+3. **Adjust Bounds:**
+   - If the number of subarrays (`countOfSubArrays`) is less than or equal to `k`, adjust `end` to `mid - 1` (try a smaller maximum sum).
+   - If `countOfSubArrays` is greater than `k`, adjust `start` to `mid + 1` (need a larger maximum sum to fit all elements into `k` subarrays).
+
+4. **Result:**
+   - The value of `start` after the binary search loop is the minimum possible largest sum for `k` subarrays.
+
+## Code Snippet:
+
+```java
+class Solution {
+    private int countAllocatedSubArrays(int[] nums, int maxSum) {
+        int countOfSubArrays = 1;
+        int subArraySum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (subArraySum + nums[i] <= maxSum) {
+                subArraySum += nums[i];
+            } else {
+                subArraySum = nums[i];
+                countOfSubArrays++;
+            }
+        }
+        return countOfSubArrays;
+    }
+
+    public int splitArray(int[] nums, int k) {
+        if (nums.length < k) return -1;
+        int maxElementInArray = 0, sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            maxElementInArray = Math.max(nums[i], maxElementInArray);
+            sum += nums[i];
+        }
+
+        int start = maxElementInArray, end = sum;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int countSubArrays = countAllocatedSubArrays(nums, mid);
+            if (countSubArrays <= k) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+}
+```
