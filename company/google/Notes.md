@@ -259,5 +259,110 @@ Final `goodStartingIndex`: `2`
     - If a triple booking is detected, decrement the value at the `start` time and increment the value at the `end` time to revert the changes made during the booking attempt.
     - Remove the entry from the `TreeMap` if the value becomes 0 after reversion.
 
+# Solution for LRUCache Implementation
 
+## Approach:
+
+1. **Node Class:**
+    - Define a `Node` class to represent each entry in the cache. Each node contains a `key`, `val`, and pointers to the previous and next nodes.
+
+2. **Initialize LRUCache:**
+    - Initialize the `LRUCache` with a given capacity.
+    - Create a dummy `head` and `tail` node to facilitate easy addition and removal of nodes.
+    - Initialize a `HashMap` to store the cache entries with their keys and corresponding nodes.
+
+3. **Get Method:**
+    - Check if the key exists in the cache. If it does, retrieve the corresponding node.
+    - Move the accessed node to the head of the linked list to mark it as most recently used.
+    - Return the value of the node. If the key does not exist, return -1.
+
+4. **Put Method:**
+    - If the key already exists in the cache, delete the existing node.
+    - If the cache is at capacity, remove the least recently used node, which is located just before the `tail`.
+    - Insert the new node at the head of the linked list to mark it as most recently used.
+
+5. **Delete Method:**
+    - Remove the node from the linked list and the cache map.
+    - Update the pointers of the previous and next nodes to bypass the deleted node.
+
+6. **Insert Method:**
+    - Add the node to the head of the linked list.
+    - Update the pointers to insert the node correctly.
+    - Add the node to the cache map.
+
+# Solution for MinStack Implementation
+
+## Approach:
+
+1. **Node Class:**
+    - Define a `Node` class to represent each entry in the stack. Each node contains a `val`, the current `min` value, and a pointer to the `next` node.
+
+2. **MinStack Initialization:**
+    - Initialize the `MinStack` with a `head` pointer that will point to the top of the stack.
+
+3. **Push Method:**
+    - When a value is pushed onto the stack, create a new `Node` with the value, the minimum of the current value and the current minimum (if the stack is not empty), and the current head of the stack as the next node.
+    - Update the `head` to point to the new node.
+
+4. **Pop Method:**
+    - Remove the top node from the stack by updating the `head` to point to the next node.
+    - Throw an exception if the stack is empty.
+
+5. **Top Method:**
+    - Return the value of the top node of the stack.
+    - Throw an exception if the stack is empty.
+
+6. **GetMin Method:**
+    - Return the minimum value stored in the top node of the stack.
+    - Throw an exception if the stack is empty.
+# Solution for Serializing and Deserializing a Binary Tree
+
+## Approach:
+
+1. **Serialization:**
+    - Convert the binary tree into a single string using preorder traversal.
+    - Use a `StringBuilder` to construct the serialized string.
+    - For each node, append its value followed by a delimiter (`,`).
+    - Use a special character (`#`) to represent `null` nodes.
+    - Recursively build the string for the left and right subtrees.
+
+2. **Deserialization:**
+    - Convert the serialized string back into a binary tree.
+    - Split the string by the delimiter to get a queue of node values.
+    - Use a queue to facilitate reconstructing the tree in the same order as it was serialized.
+    - Recursively build the tree by dequeuing values and creating nodes. If a `nullPointer` (`#`) is encountered, return `null`.
+
+# Solution for Logger Rate Limiter
+
+## Approach:
+
+1. **Initialization:**
+    - Use a `HashMap` to store the messages and their corresponding timestamps.
+
+2. **shouldPrintMessage Method:**
+    - Check if the message already exists in the log.
+    - If it does, calculate the difference between the current timestamp and the stored timestamp.
+        - If the difference is less than 10 seconds, return `false` indicating the message should not be printed.
+        - If the difference is 10 seconds or more, update the timestamp for the message and return `true`.
+    - If the message does not exist in the log, add it with the current timestamp and return `true`.
+
+# Solution for Randomized Set
+
+## Approach:
+
+1. **Initialization:**
+   - **Why:** We need a data structure that allows for constant-time insertions, deletions, and random access. Using a `HashMap` (`indexMap`) to store the value and its corresponding index in the list allows for efficient lookups. An `ArrayList` is used to store the values, which supports efficient random access and appending/removing elements from the end. A `Random` object is used to generate random indices.
+   - **How:** Initialize the `HashMap`, `ArrayList`, and `Random` object in the constructor.
+
+2. **Insert Method:**
+   - **Why:** We need to ensure that each value is unique in the set. Checking if the value already exists helps prevent duplicates.
+   - **How:** Check if the value already exists in the `indexMap`. If it does, return `false`. If the value does not exist, add it to the `list` and update the `indexMap` with the value and its index. Return `true` indicating the insertion was successful.
+
+3. **Remove Method:**
+   - **Why:** Efficient removal is needed, and the trick is to avoid shifting elements in the list. By replacing the value to be removed with the last element in the list, we can achieve constant-time removal.
+   - **How:** Check if the value exists in the `indexMap`. If it does not, return `false`. If the value exists, retrieve its index and the last element in the `list`. Replace the value to be removed with the last element in the `list`. Update the `indexMap` for the last element with its new index. Remove the last element from the `list` and remove the value from the `indexMap`. Return `true` indicating the removal was successful.
+
+4. **GetRandom Method:**
+   - **Why:** We need to provide a way to get a random element from the set in constant time. The `ArrayList` allows for efficient random access.
+   - **How:** Generate a random index using the `Random` object and return the value at that index from the `list`.
 
