@@ -152,5 +152,112 @@ Final `goodStartingIndex`: `2`
         - Update `max` with the maximum value between `prefix` and `suffix`.
 4. **Result**: Return the maximum product found during the iteration.
 
+### Photo Iterator
+
+**Problem**: Iterate through a list of photos, returning favorites first and then remaining photos, avoiding duplicates.
+
+**Solution**: Use two iterators (one for favorites, one for photos) and a `HashSet` to track seen elements.
+
+**Optimized**: For sorted input, use two pointers to traverse both lists directly, avoiding extra space.
+
+**Java Example**: PhotoIterator class
+
+# Solution to Find the Minimum Area of a Rectangle from Points
+
+## Approach:
+
+1. **Mapping Points:**
+    - Use a `HashMap` to map x-coordinates to sets of y-coordinates. This helps in quickly checking if a point with specific coordinates exists.
+
+2. **Iterating Through Points:**
+    - Iterate through all pairs of points to determine potential rectangles. For a pair of points `(p1, p2)` to form a diagonal of a rectangle, they must have different x and y coordinates.
+    - Check if the other two corners `(p1[0], p2[1])` and `(p2[0], p1[1])` exist using the hash map.
+
+3. **Calculating Area:**
+    - If the points form a rectangle, calculate its area and update the minimum area found.
+
+4. **Edge Case:**
+    - If no rectangle is found, return 0.
+
+# Solution to Find the Secret Word
+
+## Approach:
+
+1. **Random Selection:**
+    - Use a `Random` object to randomly select a word from the list of possible words.
+
+2. **Initialization:**
+    - Initialize an `ArrayList` to store the possible words from the given wordlist.
+
+3. **Guessing Loop:**
+    - Set a maximum of 10 trials for guessing.
+    - In each trial, select a random word from the list of possible words and use the `master.guess` method to get the number of matches.
+    - If the number of matches is 6, the secret word is found, and the method returns.
+
+4. **Filtering Possible Words:**
+    - If the guessed word does not match the secret word, filter the list of possible words to only include words that have the same number of matches with the guessed word.
+    - Update the list of possible words and continue the guessing process.
+
+5. **Helper Method:**
+    - A helper method `countMatches` is used to count the number of matching characters between two words.
+
+# Solution to Determine if One String Can Transform into Another
+
+## Approach:
+
+1. **Index Initialization:**
+    - Initialize two indices, `i` and `j`, to 0. These will be used to traverse the `start` and `end` strings respectively.
+
+2. **Traversing Strings:**
+    - Use a `while` loop to traverse both strings until the end of either string is reached.
+    - Skip all 'X' characters in both strings using nested `while` loops.
+
+3. **Character Comparison:**
+    - After skipping 'X' characters, compare the characters at indices `i` and `j` in the `start` and `end` strings.
+    - If the characters are not the same, return `false`.
+    - If the character is 'L', ensure that it does not move to the right (`i` must be greater than or equal to `j`).
+    - If the character is 'R', ensure that it does not move to the left (`i` must be less than or equal to `j`).
+
+4. **Increment Indices:**
+    - Increment both indices `i` and `j` to continue traversing the strings.
+
+5. **Final Check:**
+    - Return `true` if both indices have reached the end of their respective strings simultaneously, indicating a valid transformation.
+
+# Solution to Count the Number of Jewels in Stones
+
+## Approach:
+
+1. **Frequency Array Initialization:**
+    - Initialize an array `a` of size 128 to store the frequency of characters. This size is chosen because it covers all ASCII characters.
+
+2. **Marking Jewels:**
+    - Iterate through each character in the `jewels` string and increment the corresponding position in the array `a`.
+
+3. **Counting Jewels in Stones:**
+    - Initialize a counter `count` to zero.
+    - Iterate through each character in the `stones` string. For each character, check if it is marked as a jewel in the array `a`.
+    - If it is, increment the `count`.
+
+4. **Returning the Result:**
+    - Return the final value of `count`, which represents the number of jewels found in the `stones`.
+
+# Solution for MyCalendarTwo to Allow Double Bookings
+
+## Approach:
+
+1. **TreeMap Initialization:**
+    - Use a `TreeMap` to store the start and end times of bookings. This will help in efficiently managing and querying the intervals.
+
+2. **Booking Method:**
+    - When a new booking is requested, increment the value at the `start` time and decrement the value at the `end` time in the `TreeMap`.
+    - Traverse the `TreeMap` to calculate the cumulative count of bookings at any given time.
+    - If the cumulative count exceeds 2 at any point, revert the changes made to the `TreeMap` and return `false`, indicating the booking cannot be made as it would cause a triple booking.
+    - If the traversal completes without exceeding a count of 2, return `true`, indicating the booking is successful.
+
+3. **Reverting Changes:**
+    - If a triple booking is detected, decrement the value at the `start` time and increment the value at the `end` time to revert the changes made during the booking attempt.
+    - Remove the entry from the `TreeMap` if the value becomes 0 after reversion.
+
 
 
