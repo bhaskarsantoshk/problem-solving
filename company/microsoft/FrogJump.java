@@ -1,5 +1,6 @@
 package company.microsoft;
 
+import javax.swing.*;
 import java.util.Arrays;
 
 public class FrogJump {
@@ -54,5 +55,21 @@ public class FrogJump {
         return ans;
     }
 
+    // Follow up K jumps
+    // Leetcode 403
+    public static int frogJumpTabularKSteps(int n, int heights[], int k) {
+        int [] dp = new int[n];
+        dp[0] = 0;
+        for ( int i=1; i<n; i++){
+            int min = Integer.MAX_VALUE;
+            for ( int step=1; step<=k && i>=k; step++){
+                min = Math.min(min, dp[i-step]+ Math.abs(heights[i]-heights[i-k]));
+            }
+            dp[i] = min;
+        }
+        return dp[n-1];
+    }
+
+    // reduce further to k space
 
 }

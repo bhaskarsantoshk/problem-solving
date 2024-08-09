@@ -1813,3 +1813,67 @@ class Solution {
     }
 }
 ```
+
+# Gist for Finding Strobogrammatic Numbers
+
+## Problem:
+A strobogrammatic number is a number that looks the same when rotated 180 degrees (upside down). Given an integer `n`, generate all the strobogrammatic numbers of length `n`.
+
+## Key Insight:
+Use a recursive approach to build strobogrammatic numbers by pairing digits that look the same when flipped, and then progressively filling in the number from the outside in.
+
+## Steps:
+
+1. **Initialize the Mapping:**
+   - **Why:** Certain pairs of digits are valid strobogrammatic pairs (e.g., `0-0`, `1-1`, `6-9`, `8-8`, `9-6`).
+   - **How:** Create a 2D array `mapping` where each pair represents a valid strobogrammatic digit pair.
+
+2. **Recursive Helper Function:**
+   - **Why:** To build the strobogrammatic number from the outside in, ensuring that each pair of digits is strobogrammatic.
+   - **How:**
+      - Use a `chars` array to hold the current number being formed.
+      - Recursively place the strobogrammatic pairs at the `start` and `end` positions in the `chars` array.
+      - Move inward by incrementing `start` and decrementing `end`.
+      - If `start > end`, add the current number to the result list, ensuring that it does not start with a `0` unless it’s a single digit.
+
+3. **Handle Edge Cases:**
+   - **Why:** Special cases arise when `n` is 1, where a single digit number is strobogrammatic by itself (e.g., `0`, `1`, `8`).
+   - **How:** Skip pairs like `6-9` and `9-6` when `start == end` because they don’t form valid single-digit strobogrammatic numbers.
+
+4. **Return the Result:**
+   - **Why:** After generating all possible strobogrammatic numbers of length `n`, return the list of results.
+   - **How:** The final list `result` contains all valid strobogrammatic numbers.
+
+## Example:
+
+Consider the input `n = 2`:
+
+- The algorithm will generate the strobogrammatic numbers `["11", "69", "88", "96"]`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public List<String> findStrobogrammatic(int n) {
+        List<String> result = new ArrayList<>();
+        if (n == 0) return result;
+        char[][] mapping = {{'0', '0'}, {'1','1'}, {'6','9'},{'8','8'},{'9','6'}};
+        char[] chars = new char[n];
+        helper(mapping, result, 0, n - 1, chars);
+        return result;
+    }
+    
+    private void helper(char[][] mapping, List<String> result, int start, int end, char[] chars) {
+        if (start > end) {
+            if (chars.length == 1 || chars[0] != '0') result.add(String.valueOf(chars));
+            return;
+        }
+        for (char[] map : mapping) {
+            if (start == end && map[0] != map[1]) continue;
+            chars[start] = map[0];
+            chars[end] = map[1];
+            helper(mapping, result, start + 1, end - 1, chars);
+        }
+    }
+}
+```
