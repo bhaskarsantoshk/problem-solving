@@ -1731,3 +1731,85 @@ class Solution {
     }
 }
 ```
+
+# Gist for Finding the Kth Largest Element Using QuickSelect
+
+## Problem:
+Given an array `nums` and an integer `k`, find the k-th largest element in the array. This is the k-th largest element in the sorted order, not the k-th distinct element.
+
+## Key Insight:
+QuickSelect is an efficient algorithm to find the k-th largest (or smallest) element in an unordered list, which is a variant of the QuickSort algorithm. It works by partially sorting the list and narrowing down the range until the k-th element is found.
+
+## Steps:
+
+1. **Convert Array to List:**
+   - **Why:** QuickSelect is easier to implement with lists because it simplifies partitioning and recursive calls.
+   - **How:** Convert the `nums` array into a `List<Integer>`.
+
+2. **QuickSelect Function:**
+   - **Why:** This function recursively partitions the list around a randomly chosen pivot and narrows down the search range to find the k-th largest element.
+   - **How:**
+      - **Choose a Pivot:** Randomly select an element from the list as the pivot.
+      - **Partition the List:** Divide the list into three parts:
+         - `left`: elements greater than the pivot.
+         - `mid`: elements equal to the pivot.
+         - `right`: elements less than the pivot.
+      - **Recursively Search:**
+         - If `k` is less than or equal to the size of `left`, recursively apply QuickSelect to `left`.
+         - If `k` is greater than the size of `left + mid`, recursively apply QuickSelect to `right` with an adjusted `k`.
+         - If `k` falls within `mid`, return the pivot.
+
+3. **Understanding Adjusted `k`:**
+   - **Why:** When the k-th largest element is not in the `left` list, you need to search in the `right` list with an adjusted value of `k`.
+   - **How:**
+      - **Adjusted `k`:** When moving to the `right` list, the elements in `left` and `mid` are already counted. Therefore, subtract the combined size of `left + mid` from `k` to get the new `k` relative to the `right` list.
+      - **Example:** If `k = 5`, `left.size() = 3`, and `mid.size() = 2`, then `k` would be adjusted to `k - (left.size() + mid.size()) = 5 - (3 + 2) = 0`. Now, you look for the 0-th element in the `right` list, which essentially means you're looking for the smallest element in the `right` list.
+
+4. **Base Case and Termination:**
+   - **Why:** To stop the recursion when the k-th largest element is found.
+   - **How:** If the k-th largest element is within the `mid` list, return the pivot as the result.
+
+## Example:
+
+Consider the input `nums = [3,2,1,5,6,4]` and `k = 2`:
+
+- The algorithm will find that the 2nd largest element is `5`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        List<Integer> list = new ArrayList<>();
+        for (int num : nums) list.add(num);
+        return quickSelect(list, k);
+    }
+
+    private int quickSelect(List<Integer> nums, int k) {
+        int pivotIndex = new Random().nextInt(nums.size());
+        int pivot = nums.get(pivotIndex);
+
+        List<Integer> left = new ArrayList<>();
+        List<Integer> mid = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+        
+        for (int num : nums) {
+            if (num > pivot) {
+                left.add(num);
+            } else if (num < pivot) {
+                right.add(num);
+            } else {
+                mid.add(num);
+            }
+        }
+        
+        if (k <= left.size()) {
+            return quickSelect(left, k);
+        }
+        if (left.size() + mid.size() < k) {
+            return quickSelect(right, k - left.size() - mid.size());
+        }
+        return pivot;
+    }
+}
+```
