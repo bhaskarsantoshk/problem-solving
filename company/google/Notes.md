@@ -1422,3 +1422,312 @@ class Solution {
     }
 }
 ```
+# Gist for Finding the Length of the Longest Substring Without Repeating Characters
+
+## Problem:
+Given a string `s`, find the length of the longest substring without repeating characters.
+
+## Key Insight:
+Use a sliding window approach with two pointers (`left` and `right`) to maintain a window of unique characters, and a hashmap to track the characters' frequencies.
+
+## Steps:
+
+1. **Initialize Variables:**
+   - **Why:** To track the start of the current window (`left`), the maximum length found (`maxLen`), and the frequency of characters in the current window.
+   - **How:** Use `left` to represent the start index of the window, `maxLen` to store the maximum length of the substring found so far, and a `HashMap` to track character frequencies.
+
+2. **Sliding Window with Two Pointers:**
+   - **Why:** To dynamically adjust the window size to ensure all characters within it are unique.
+   - **How:**
+      - Iterate through the string using the `right` pointer.
+      - Add the character at `right` to the map, increasing its frequency.
+      - If the frequency of the character is greater than 1, it means there's a duplicate, so move the `left` pointer to shrink the window until the character's frequency is 1 again.
+
+3. **Update Maximum Length:**
+   - **Why:** To track the maximum length of the substring without repeating characters.
+   - **How:** After adjusting the window, update `maxLen` with the length of the current window (`right - left + 1`).
+
+4. **Return Result:**
+   - **Why:** The maximum length found during the iteration is the answer.
+   - **How:** Return `maxLen`.
+
+## Example:
+
+Consider the input string `"pwwkew"`:
+
+- The algorithm will find the substrings `"pw"` and `"wke"` and return `3` as the length of the longest substring without repeating characters.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int left = 0;
+        int maxLen = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            while (map.get(c) > 1) {
+                char leftChar = s.charAt(left);
+                map.put(leftChar, map.get(leftChar) - 1);
+                left++;
+            }
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+}
+```
+# Gist for Finding the Maximum Water Container Area
+
+## Problem:
+Given an array `height` where each element represents the height of a vertical line, find two lines that together with the x-axis form a container that holds the most water. Return the maximum area of water that the container can hold.
+
+## Key Insight:
+Use the two-pointer technique to maximize the area by starting with the widest possible container and moving the pointers inward.
+
+## Steps:
+
+1. **Initialize Pointers and Max Area:**
+   - **Why:** Start with the two pointers at the beginning and end of the array, representing the widest possible container.
+   - **How:** Set `start` to `0` and `end` to `height.length - 1`. Initialize `maxArea` to `0`.
+
+2. **Calculate Area and Move Pointers:**
+   - **Why:** The area of the container is determined by the shorter line, and the width is the distance between the two pointers.
+   - **How:**
+      - Calculate the current area as `min(height[start], height[end]) * (end - start)` and update `maxArea` if the current area is larger.
+      - Move the pointer that is pointing to the shorter line inward because moving the taller line would not increase the height, and thus can't increase the area.
+
+3. **Continue Until Pointers Meet:**
+   - **Why:** Continue adjusting the pointers until they meet, ensuring all potential container sizes are considered.
+   - **How:** Use a `while` loop that continues as long as `start < end`.
+
+4. **Return Result:**
+   - **Why:** The maximum area found during the iteration is the answer.
+   - **How:** Return `maxArea`.
+
+## Example:
+
+Consider the input array `height = [1,8,6,2,5,4,8,3,7]`:
+
+- The algorithm will find that the maximum area is `49`, formed between the heights `8` and `7` with a width of `7`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        int start = 0, end = height.length - 1;
+        while (start < end) {
+            maxArea = Math.max(Math.min(height[end], height[start]) * (end - start), maxArea);
+            if (height[start] < height[end]) start++;
+            else end--;
+        }
+        return maxArea;
+    }
+}
+```
+# Gist for Finding All Unique Triplets that Sum to Zero
+
+## Problem:
+Given an integer array `nums`, return all the unique triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+
+## Key Insight:
+Use a combination of sorting and two-pointer technique to find all unique triplets that sum to zero. This approach avoids duplicates and efficiently finds the required triplets.
+
+## Steps:
+
+1. **Handle Edge Cases:**
+   - **Why:** To avoid unnecessary computations if the input array is too short.
+   - **How:** Return an empty list if `nums` is null or has fewer than three elements.
+
+2. **Sort the Array:**
+   - **Why:** Sorting the array simplifies the problem by allowing us to use the two-pointer technique and easily avoid duplicates.
+   - **How:** Use `Arrays.sort(nums)` to sort the array in ascending order.
+
+3. **Iterate Through the Array:**
+   - **Why:** To fix one element and find the other two elements using the two-pointer technique.
+   - **How:** Loop through the array with an index `i` from `0` to `nums.length - 2`.
+
+4. **Skip Duplicates for `i`:**
+   - **Why:** To ensure that each triplet is unique and to avoid redundant work.
+   - **How:** Skip the current iteration if `nums[i]` is the same as `nums[i-1]`.
+
+5. **Two-Pointer Technique:**
+   - **Why:** To find pairs that sum with `nums[i]` to zero.
+   - **How:** Initialize two pointers, `start` at `i+1` and `end` at `nums.length - 1`. Calculate the sum of `nums[i] + nums[start] + nums[end]`.
+      - If the sum is zero, add the triplet to the result list.
+      - Move both pointers inward while skipping duplicates.
+      - If the sum is greater than zero, move the `end` pointer inward.
+      - If the sum is less than zero, move the `start` pointer inward.
+
+6. **Return Result:**
+   - **Why:** The list `res` now contains all unique triplets that sum to zero.
+   - **How:** Return `res`.
+
+## Example:
+
+Consider the input array `nums = [-1,0,1,2,-1,-4]`:
+
+- The algorithm will find the triplets `[-1,-1,2]` and `[-1,0,1]` and return them as the result.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.length < 3) return res;
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            int start = i + 1, end = nums.length - 1;
+            while (start < end) {
+                int sum = nums[i] + nums[start] + nums[end];
+                if (sum == 0) {
+                    res.add(Arrays.asList(nums[i], nums[start], nums[end]));
+                    start++; end--;
+                    while (start < end && nums[start] == nums[start - 1]) start++;
+                    while (start < end && nums[end] == nums[end + 1]) end--;
+                } else if (sum > 0) end--;
+                  else start++;
+            }
+        }
+        return res;
+    }
+}
+```
+# Gist for Finding the Next Permutation
+
+## Problem:
+Given an array of integers `nums`, find the next lexicographical permutation of the array. If no such permutation exists (the array is in descending order), rearrange the array into the lowest possible order (ascending).
+
+## Key Insight:
+The problem can be broken down into finding the rightmost pair where the first number is smaller than the second, swapping it with the smallest number larger than it to the right, and then reversing the order of the numbers following the swapped position.
+
+## Steps:
+
+1. **Find the Breakpoint:**
+   - **Why:** The "breakpoint" is the rightmost position where the current element is smaller than the next element, indicating where the order breaks from increasing.
+   - **How:** Iterate backward through the array from the second-last element. If `nums[i] < nums[i + 1]`, mark `i` as the breakpoint and break the loop.
+
+2. **Handle Edge Case (No Breakpoint):**
+   - **Why:** If the array is in descending order, the next permutation is the smallest permutation.
+   - **How:** If no breakpoint is found (i.e., `breakPoint` is `-1`), reverse the entire array and return.
+
+3. **Find the Smallest Element Larger than Breakpoint:**
+   - **Why:** To maintain the next lexicographical order, swap the element at the breakpoint with the smallest element larger than it to the right.
+   - **How:** Iterate backward from the end of the array to find the first element greater than `nums[breakPoint]`, then swap them.
+
+4. **Reverse the Subarray to the Right of Breakpoint:**
+   - **Why:** After the swap, the elements to the right of the breakpoint should be in ascending order to form the next permutation.
+   - **How:** Reverse the subarray starting from `breakPoint + 1` to the end of the array.
+
+## Example:
+
+Consider the input `nums = [1,2,3]`:
+
+- The next permutation is `[1,3,2]`.
+
+For `nums = [3,2,1]`, the next permutation is `[1,2,3]` because the array is in descending order, so the next permutation is the smallest permutation.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int breakPoint = -1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                breakPoint = i;
+                break;
+            }
+        }
+
+        if (breakPoint == -1) {
+            reverse(nums, 0, nums.length - 1);
+            return;
+        }
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] > nums[breakPoint]) {
+                int temp = nums[i];
+                nums[i] = nums[breakPoint];
+                nums[breakPoint] = temp;
+                break;
+            }
+        }
+        reverse(nums, breakPoint + 1, nums.length - 1);
+    }
+
+    private void reverse(int[] a, int start, int end) {
+        while (start < end) {
+            int temp = a[start];
+            a[start++] = a[end];
+            a[end--] = temp;
+        }
+    }
+}
+```
+# Gist for Multiplying Two Large Numbers Represented as Strings
+
+## Problem:
+Given two non-negative integers represented as strings `num1` and `num2`, return the product of the two numbers as a string. The numbers may be large, so you cannot directly convert them to integers for multiplication.
+
+## Key Insight:
+Simulate the multiplication process similar to how you would do it manually, digit by digit, and store the intermediate results in an array.
+
+## Steps:
+
+1. **Initialize Result Array:**
+   - **Why:** To store the intermediate results of the multiplication process.
+   - **How:** Create an integer array `res` with a size equal to the sum of the lengths of `num1` and `num2`. This array will hold the individual digits of the final product.
+
+2. **Simulate Multiplication:**
+   - **Why:** Multiply each digit of `num1` with each digit of `num2` and store the result in the correct position in the `res` array.
+   - **How:**
+      - Loop through each digit of `num1` (from right to left).
+      - Loop through each digit of `num2` (from right to left).
+      - Multiply the digits and add the result to the corresponding position in the `res` array.
+      - Handle the carry-over by distributing it to the next higher position in the array.
+
+3. **Build the Result String:**
+   - **Why:** Convert the digits stored in the `res` array to a string.
+   - **How:** Use a `StringBuilder` to iterate over the `res` array and append non-zero digits to build the final product string.
+
+4. **Handle Edge Case (Zero Product):**
+   - **Why:** If the product is zero, the `res` array may contain leading zeros.
+   - **How:** If the resulting string is empty after removing leading zeros, return "0".
+
+## Example:
+
+Consider the input `num1 = "123"` and `num2 = "456"`:
+
+- The algorithm will multiply the numbers to produce the result `"56088"`.
+
+## Code Implementation:
+
+```java
+class Solution {
+    public String multiply(String num1, String num2) {
+        int[] res = new int[num1.length() + num2.length()];
+        for (int i = num1.length() - 1; i >= 0; i--) {
+            for (int j = num2.length() - 1; j >= 0; j--) {
+                int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                int sum = res[i + j + 1] + mul;
+                res[i + j + 1] = sum % 10;
+                res[i + j] += sum / 10;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int digit : res) {
+            if (!(sb.length() == 0 && digit == 0)) {
+                sb.append(digit);
+            }
+        }
+        return sb.length() == 0 ? "0" : sb.toString();
+    }
+}
+```
