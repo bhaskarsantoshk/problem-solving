@@ -1,4 +1,4 @@
-package Recursion;
+package takeuForward.recursion;
 
 import java.util.Scanner;
 
