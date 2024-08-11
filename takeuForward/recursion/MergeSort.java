@@ -18,23 +18,24 @@ public class MergeSort {
     }
 
     private void merge(int[] nums, int low, int mid, int high) {
-        List<Integer> temp = new ArrayList<>();
         int left = low;
         int right = mid+1;
+        int[] temp = new int[high - low + 1]; // List<Integer> temp = new ArrayList<>();
+        int mergedIndex = 0;
         while ( left <= mid && right <= high){
-            if ( nums[left] < nums[right]){
-                temp.add(nums[left]);
+            if ( nums[left] <= nums[right]){
+                temp[mergedIndex++] = nums[left];
                 left++;
             } else {
-                temp.add(nums[right]);
+                temp[mergedIndex++] = nums[right];
                 right++;
             }
         }
-        while ( left <= mid) temp.add(nums[left++]);
-        while ( right <= high ) temp.add(nums[right++]);
+        while ( left <= mid) temp[mergedIndex++] = nums[left++];
+        while ( right <= high ) temp[mergedIndex++] = nums[right++];
 
         for ( int i=low; i<=high; i++){
-            nums[i] = temp.get(i-low);
+            nums[i] = temp[i-low];
         }
     }
 
