@@ -63,4 +63,45 @@ public class P51NQueens {
         }
         return true;
     }
+
+
+    public List<List<String>> solveNQueensOptimized(int n) {
+        List<List<String>> res = new ArrayList<>();
+        char[][] board = new char[n][n];
+        for (int i=0; i<n ; i++){
+            Arrays.fill(board[i], '.');
+        }
+        int [] currentRow = new int[n];
+        int [] upperDiagonal = new int[ 2*n -1];
+        int [] lowerDiagonal = new int[ 2*n -1 ];
+        solveOptimized( 0, board, res, n, currentRow, upperDiagonal, lowerDiagonal);
+        return res;
+    }
+
+    private void solveOptimized(int col, char[][] board, List<List<String>> res, int n, int[] currentRow, int[] upperDiagonal, int[] lowerDiagonal) {
+        if ( col == n){
+            List<String> list = new ArrayList<>();
+            for ( int i=0; i < n ; i++) {
+                String s = new String(board[i]);
+                list.add(s);
+            }
+            res.add(list);
+            return;
+        }
+
+        for ( int row=0; row<n; row++){
+            if ( currentRow[row] == 0
+                    && lowerDiagonal[row+col] == 0 && upperDiagonal[n-1+col-row] == 0) {
+                board[row][col] = 'Q';
+                currentRow[row] = 1;
+                lowerDiagonal[row+col] = 1;
+                upperDiagonal[n-1+col-row] = 1;
+                solveOptimized(col+1, board, res, n, currentRow, upperDiagonal, lowerDiagonal);
+                board[row][col] = '.';
+                currentRow[row] = 0;
+                lowerDiagonal[row+col] = 0;
+                upperDiagonal[n-1+col-row] = 0;
+            }
+        }
+    }
 }
