@@ -1,4 +1,4 @@
-package takeuForward.recursion;
+package takeUForward.recursion;
 
 public class Fibonacci {
     public static int fibonacci(int n){

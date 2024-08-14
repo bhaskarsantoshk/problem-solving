@@ -1,4 +1,4 @@
-package takeuForward.recursion;
+package takeUForward.recursion;
 
 public class P37SudokuSolver {
     public void solveSudoku(char[][] board) {

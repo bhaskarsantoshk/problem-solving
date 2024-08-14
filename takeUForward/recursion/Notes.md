@@ -37,7 +37,7 @@ Consider the input array `nums = [1, 2, 3]`:
 ## Code Implementation:
 
 ```java
-package takeuForward.recursion;
+package takeUForward.recursion;
 
 import java.util.ArrayList;
 import java.util.List;

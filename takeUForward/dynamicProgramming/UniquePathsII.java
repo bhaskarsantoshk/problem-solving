@@ -1,4 +1,4 @@
-package takeuForward.dynamicProgramming;
+package takeUForward.dynamicProgramming;
 
 import java.util.ArrayList;
 

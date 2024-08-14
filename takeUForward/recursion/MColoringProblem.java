@@ -1,4 +1,4 @@
-package takeuForward.recursion;
+package takeUForward.recursion;
 
 // https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
 

@@ -1,4 +1,4 @@
-package takeuForward.recursion;
+package takeUForward.recursion;
 
 public class PrintNtoOne {
     public void printNum(int n){

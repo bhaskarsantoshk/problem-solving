@@ -1,4 +1,4 @@
-package takeuForward.dynamicProgramming;
+package takeUForward.dynamicProgramming;
 
 // https://bit.ly/3F6q83P
 

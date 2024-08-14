@@ -1,4 +1,4 @@
-package takeuForward.dynamicProgramming;
+package takeUForward.dynamicProgramming;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,8 @@ import java.util.Arrays;
 public class MaximumSumOfNonAdjacentElements {
     public static int maximumNonAdjacentSum(ArrayList<Integer> nums) {
         return f(nums, nums.size()-1);
+
+        // f(index) -> max sum from 0->index non adjacent nums
     }
 
     private static int f(ArrayList<Integer> nums, int index) {

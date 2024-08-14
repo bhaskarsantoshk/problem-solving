@@ -1,6 +1,5 @@
-package takeuForward.dynamicProgramming;
+package takeUForward.dynamicProgramming;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FrogJump {
