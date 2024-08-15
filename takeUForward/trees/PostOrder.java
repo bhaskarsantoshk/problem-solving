@@ -1,5 +1,7 @@
 package takeUForward.trees;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class PostOrder {
@@ -39,5 +41,28 @@ public class PostOrder {
         while (!stack2.isEmpty()) {
             System.out.print(stack2.pop() + " ");
         }
+    }
+
+
+    public List<Integer> postOrderIterativeSingleStack(TreeNode root){
+        if ( root == null ) return null;
+        List<Integer> res = new ArrayList<>();
+        TreeNode currentNode = root;
+        TreeNode lastVisited = null;
+        Stack<TreeNode> stack = new Stack<>();
+        while ( !stack.isEmpty() || currentNode != null){
+            if ( currentNode != null ){
+                stack.push(currentNode);
+                currentNode = currentNode.left;
+            } else {
+                TreeNode peekNode = stack.peek();
+                if ( peekNode.right != null && lastVisited != peekNode.right) currentNode = peekNode.right;
+                else {
+                    res.add(peekNode.val);
+                    lastVisited = stack.pop();
+                }
+            }
+        }
+        return res;
     }
 }
