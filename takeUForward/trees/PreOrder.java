@@ -12,6 +12,14 @@ public class PreOrder {
         preOrder(root.right);
     }
 
+     /*
+              1
+           2     3
+        4     5
+            6    7
+
+         1 2 4 5 6 7 3
+     */
 
     public List<Integer> preorderIterative(TreeNode root) {
         List<Integer> result = new ArrayList<>();
