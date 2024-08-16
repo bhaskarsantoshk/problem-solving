@@ -4,12 +4,14 @@ import java.util.Arrays;
 
 public class FrogJump {
     public static int frogJump(int n, int heights[]) {
-       return frogJump(heights, n-1);
+        // Topdown - pass n-1 as first index
+       return frogJump(heights, n-1); // f(index) is min energy required for frog to reach index from 0.
     }
 
     // f(index) -> energy required to reach index from 0
     private static int frogJump(int[] heights, int index) {
-        if ( index == 0 ) return 0;
+        if ( index == 0 ) return 0; // base condition f(0) - min energy to reach 0 from 0
+
         int firstStep = frogJump( heights, index-1) + Math.abs(heights[index]-heights[index-1]);
         int secondStep = Integer.MAX_VALUE;
         if ( index >= 2 ) secondStep = frogJump( heights, index-2) + Math.abs(heights[index]-heights[index-2]);
