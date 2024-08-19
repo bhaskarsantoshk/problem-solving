@@ -10,7 +10,7 @@ public class P257BinaryTreePaths {
     }
 
     private void preOrder(TreeNode node, List<String> res, String path) {
-        if ( node.left == null && node.right == null) {
+        if ( node.left == null && node.right == null ) {
             res.add(path+node.val);
         }
         if (node.left != null ) preOrder(node.left, res, path+node.val+"->");
