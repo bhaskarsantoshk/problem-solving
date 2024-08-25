@@ -28,7 +28,6 @@ public class P54SpiralMatrix {
                 dir = 2;
                 right--;
             }
-
             else if ( dir == 2 ){
                 for (int i = right; i>= left; i--){
                     result.add( matrix[bottom][i]);
@@ -36,7 +35,6 @@ public class P54SpiralMatrix {
                 dir = 3;
                 bottom--;
             }
-
             else if ( dir == 3){
                 for(int i= bottom; i>= top; i--){
                     result.add(matrix[i][left]);
