@@ -2,10 +2,9 @@ package takeUForward.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.PriorityQueue;
 
-public class DijkstraAlgorithm {
+public class DijkstraAlgorithmUsingPriorityQueue {
     static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
     {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)-> a[0]-b[0]);
