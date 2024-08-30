@@ -75,4 +75,21 @@ public class P01Knapsack {
         }
         return prev[maxWeight];
     }
+
+    static int knapsackTabularSpaceOptimized2(int[] weight, int[] value, int n, int maxWeight) {
+        int [] prev = new int[maxWeight+1];
+        for ( int i=1; i<=maxWeight; i++){
+            if ( weight[0] <= i) prev[i] = value[0];
+            else prev[i] = 0;
+        }
+        for ( int i=1; i<n; i++){
+            for ( int w=maxWeight; w>=0; w--){
+                int notPick = prev[w];
+                int pick = Integer.MIN_VALUE;
+                if ( weight[i] <= w) pick = value[i]+ prev[w-weight[i]];
+                prev[w] = Math.max(pick, notPick);
+            }
+        }
+        return prev[maxWeight];
+    }
 }
