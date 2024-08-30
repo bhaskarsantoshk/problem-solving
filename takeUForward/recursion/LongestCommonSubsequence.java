@@ -48,6 +48,28 @@ public class LongestCommonSubsequence {
                 }
             }
         }
-        return dp[n][m]; 
+        return dp[n][m];
+    }
+
+    public static int lcsTabularSpaceOptimized(String s, String t) {
+        int n = s.length(), m = t.length();
+        int[] prev = new int[m+1];
+        int[] cur = new int[m+1];
+
+        for ( int j=0; j<=m; j++){
+            prev[j] = 0;
+        }
+
+        for ( int i=1; i<=n; i++){
+            for ( int j=1; j<=m ;j++){
+                if ( s.charAt(i-1) == t.charAt(j-1)){
+                    cur[j] = 1 + prev[j-1];
+                } else {
+                    cur[j] = Math.max(prev[j], cur[j-1]);
+                }
+            }
+            prev = (int[]) (cur.clone());
+        }
+        return prev[m];
     }
 }
