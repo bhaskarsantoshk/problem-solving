@@ -72,4 +72,34 @@ public class LongestCommonSubsequence {
         }
         return prev[m];
     }
+
+
+    public static void printLCSTabular(String s, String t) {
+        int n = s.length(), m = t.length();
+        int[][] dp = new int[n+1][m+1];
+        for ( int i=0; i<n; i++){
+            dp[i][0] = 0;
+        }
+        for ( int j=0; j<m; j++){
+            dp[0][j] = 0;
+        }
+
+        int len = dp[n][m];
+        char[] word = new char[len];
+        int index = len-1;
+        int i=n, j=m;
+        while ( i > 0 && j> 0){
+            if ( s.charAt(i-1) == t.charAt(j-1)){
+                word[index] = s.charAt(i-1);
+                index--;
+                i--;
+                j--;
+            } else if (dp[i-1][j] > dp[i][j-1]){
+                i--;
+            } else {
+                j--;
+            }
+        }
+        System.out.println(new String(word));
+    }
 }
