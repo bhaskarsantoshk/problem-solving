@@ -19,7 +19,7 @@ public class DP28LongestPalindromicSubsequence {
             return 1+ lcs(s, t, index1-1, index2-1);
         } // no match
         else {
-            return Math.max( lcs(s, t, index1-1, index2), lcs(s, t, index1, index2-1);
+            return Math.max( lcs(s, t, index1-1, index2), lcs(s, t, index1, index2-1));
         }
     }
 
