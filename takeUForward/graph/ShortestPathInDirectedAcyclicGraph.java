@@ -34,7 +34,7 @@ public class ShortestPathInDirectedAcyclicGraph {
                 if ( distance[node] + wt < distance[v]) distance[v] = distance[node]+wt;
             }
         }
-        
+
         for ( int i=0; i<N; i++){
             if ( distance[i] == (int)1e9) distance[i] = -1;
         }
