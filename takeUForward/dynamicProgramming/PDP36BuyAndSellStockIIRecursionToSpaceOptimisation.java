@@ -61,4 +61,27 @@ public class PDP36BuyAndSellStockIIRecursionToSpaceOptimisation {
         }
         return dp[0][1];
     }
+
+    public static long getMaximumProfitTabulationSpaceOptimized (int n, long[] values) {
+        long[]ahead = new long[2];
+        long[]cur = new long[2];
+        ahead[0] = ahead[1] = 0;
+        for ( int index=n-1; index>=0; index--){
+            for ( int buy=0; buy<=1; buy++){
+                long profit = 0;
+                if ( buy == 1){
+                    long take = -values[index] + ahead[0];
+                    long notTake = ahead[1];
+                    profit = Math.max(take, notTake);
+                } else {
+                    long sell = values[index] + ahead[1];
+                    long notSell = ahead[0];
+                    profit = Math.max(sell, notSell);
+                }
+                cur[buy]  = profit;
+            }
+            ahead = (long[])cur.clone();
+        }
+        return ahead[1];
+    }
 }
