@@ -32,17 +32,20 @@ public class P253MeetingRoomsII {
         }
         Arrays.sort(startTimes);
         Arrays.sort(endTimes);
+        int max =0;
 
         int startPointer = 0, endPointer=0, rooms = 0;
         while ( startPointer <intervals.length){
             if ( startTimes[startPointer] < endTimes[endPointer]){
                 rooms++;
+                startPointer++;
+                max = Math.max(max, rooms);
             } else {
                 endPointer++;
+                rooms--;
             }
-            startPointer++;
         }
-        return rooms;
+        return max;
     }
 }
 
