@@ -12,6 +12,7 @@ public class G47KruskalSAlgorithmMinimumSpanningTreeCAndJava {
 
     static int spanningTree(int V, int E, List<List<int[]>> adj) {
         List<Edge> edges = new ArrayList<>();
+        // O(N+E)
         for ( int i=0; i<V; i++){
             for ( int j=0; j<adj.get(i).size(); j++){
                 int adjNode = adj.get(i).get(j)[0];
@@ -22,8 +23,11 @@ public class G47KruskalSAlgorithmMinimumSpanningTreeCAndJava {
             }
         }
         DisjointSet ds = new DisjointSet(V);
+
+        // O(M log M )
         Collections.sort(edges);
         int mstWt = 0;
+        // O(M * 4 * alpha)
         for ( Edge edge : edges){
             int u = edge.u;
             int v = edge.v;
