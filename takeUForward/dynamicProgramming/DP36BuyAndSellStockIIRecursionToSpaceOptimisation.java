@@ -1,6 +1,6 @@
 package takeUForward.dynamicProgramming;
 
-public class PDP36BuyAndSellStockIIRecursionToSpaceOptimisation {
+public class DP36BuyAndSellStockIIRecursionToSpaceOptimisation {
     public static long getMaximumProfit (int n, long[] values) {
         return getMaximumProfit(0, n, values, true);
     }
