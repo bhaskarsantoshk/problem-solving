@@ -34,4 +34,19 @@ public class DP48MatrixChainMultiplicationMCMPartitionDP {
         }
         return memo[i][j]= min;
     }
+
+    public static int matrixMultiplicationTabular(int[] arr , int N) {
+        int [][] dp = new int[N][N];
+        for ( int i=N-1; i>=1; i--){
+            for ( int j=i+1; j<N; j++){
+                int min = (int) 1e9;
+                for ( int k=i; k<j ; k++){
+                    int steps = arr[i-1]*arr[k]*arr[j] + dp[i][k]+dp[k+1][j];
+                    min = Math.min(min, steps);
+                }
+                dp[i][j] = min;
+            }
+        }
+        return dp[1][N-1];
+    }
 }
