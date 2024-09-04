@@ -362,3 +362,30 @@
     - **DFS**: More intuitive for tasks that require reverse post-order traversal.
 
 4. **Key Point**: Topological sorting only works for **DAGs**. If the graph contains a cycle, topological sorting is not possible.
+
+### Check if a Graph is Bipartite (Using DFS)
+
+1. **Idea**: A graph is bipartite if you can split its vertices into two sets such that there are no edges between vertices of the same set. This can be achieved by coloring the graph using two colors. If two adjacent nodes have the same color, the graph is not bipartite.
+
+---
+
+2. **Steps**:
+    - **Color Array**: Use an array `colors[]` to store the color of each vertex. Initialize all vertices to `-1` (uncolored).
+    - **DFS Traversal**:
+        - Start DFS from each uncolored vertex.
+        - Color the current node with one color (0 or 1).
+        - For each adjacent node:
+            - If the adjacent node is already colored with the same color, return `false` (not bipartite).
+            - If the adjacent node is uncolored, color it with the opposite color and continue DFS.
+        - Repeat this for all components of the graph.
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (DFS traverses all nodes and edges).
+
+4. **Space Complexity**: O(V) (for the color array and DFS recursion stack).
+
+---
+
+**Gist**:
+- Use DFS to color the graph with two colors.
+- If two adjacent nodes have the same color, the graph is not bipartite.
+- If DFS completes without conflicts, the graph is bipartite.
