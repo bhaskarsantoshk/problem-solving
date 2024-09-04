@@ -236,3 +236,85 @@
 - Partition the list into three parts based on a randomly chosen pivot.
 - Recursively select the k-th largest element based on the size of the left and mid partitions.
 - Quickselect ensures efficient selection of the k-th largest element in an average O(N) time complexity.
+
+### Clone Graph (Using BFS)
+
+1. **Idea**: The goal is to create a deep copy of a given graph. Each node must be copied along with all its neighbors. Use BFS to traverse the graph and clone each node.
+
+2. **Steps**:
+    - Use a HashMap `vis` to map each original node to its corresponding cloned node.
+    - **BFS Traversal**:
+        - Start from the input `node` and enqueue it.
+        - For each node dequeued:
+            - For each of its neighbors:
+                - If the neighbor hasn't been visited (i.e., not cloned yet), clone it and add it to the queue.
+                - Add the cloned neighbor to the current node's clone's neighbor list.
+    - Continue this process until all nodes are visited and cloned.
+
+3. **Time Complexity**: O(N + E), where N is the number of nodes and E is the number of edges (since BFS visits each node and edge once).
+
+4. **Space Complexity**: O(N), due to the queue and the map storing the cloned nodes.
+
+**Gist**:
+- Traverse the graph using BFS.
+- Clone each node and its neighbors.
+- Use a map to keep track of cloned nodes and ensure no node is visited more than once.
+
+### Detecting a Cycle in an Undirected Graph (Using BFS and DFS)
+
+1. **Idea**: The goal is to detect if a cycle exists in an undirected graph. A cycle is present if we encounter a node that has already been visited and isn't the parent node during the traversal.
+
+2. **Approaches**:
+
+   #### 1. **BFS Approach**:
+    - **Steps**:
+        - Use a queue where each entry stores the node and its parent.
+        - Start from an unvisited node, mark it as visited, and enqueue it with `-1` as its parent.
+        - For each neighbor of the current node:
+            - If it hasn't been visited, mark it as visited and enqueue it with the current node as its parent.
+            - If it has been visited and it's not the parent of the current node, a cycle is detected.
+    - **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges.
+    - **Space Complexity**: O(V), due to the queue and visited array.
+
+   #### 2. **DFS Approach**:
+    - **Steps**:
+        - Start DFS from an unvisited node.
+        - For each neighbor of the current node:
+            - If it hasn't been visited, recursively call DFS on it.
+            - If it has been visited and isn't the parent, a cycle is detected.
+    - **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges.
+    - **Space Complexity**: O(V), due to recursion stack and visited array.
+
+3. **Key Points**:
+    - In an undirected graph, while traversing, the parent of a node must be tracked to avoid falsely detecting a cycle.
+    - Both BFS and DFS can be used to detect cycles in an undirected graph by carefully checking previously visited nodes.
+
+**Gist**:
+- **BFS**: Use a queue and parent tracking to detect cycles while exploring neighbors.
+- **DFS**: Recursively traverse nodes and track the parent to find cycles.
+- Return true if a cycle is found; otherwise, return false.
+
+### Detecting a Cycle in a Directed Graph (Using Kahn's Algorithm/Topological Sort)
+
+1. **Idea**: In a directed graph, if there is a cycle, we won’t be able to generate a valid topological ordering. Kahn's algorithm (BFS-based topological sorting) can be used to detect cycles. If we can't visit all nodes (i.e., topologically sort all vertices), the graph contains a cycle.
+
+2. **Steps**:
+    - **In-degree Calculation**:
+        - Calculate the in-degree (number of incoming edges) for each vertex.
+    - **Topological Sort**:
+        - Initialize a queue with all vertices having an in-degree of 0 (no incoming edges).
+        - For each vertex dequeued, decrement the in-degree of all its adjacent vertices (i.e., those it points to).
+        - If the in-degree of an adjacent vertex becomes 0, enqueue it.
+        - Track the number of nodes visited.
+    - **Cycle Detection**:
+        - If the number of visited nodes is less than the total number of vertices, the graph contains a cycle (because not all nodes can be topologically sorted).
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (because we process each vertex and edge once).
+
+4. **Space Complexity**: O(V), due to the storage of the in-degree array and the queue for BFS.
+
+**Gist**:
+- Calculate in-degrees for all vertices.
+- Use a queue to process vertices with in-degree 0.
+- Reduce in-degrees of adjacent vertices and enqueue them if their in-degree becomes 0.
+- If all vertices are processed, no cycle exists; otherwise, a cycle is present.
