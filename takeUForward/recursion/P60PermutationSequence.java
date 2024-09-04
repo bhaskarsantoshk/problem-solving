@@ -23,4 +23,18 @@ public class P60PermutationSequence {
         }
         return sb.toString();
     }
+
+    // n = 4 , k = 17
+    // k -> 16th number
+    // 1 ( 6 )
+    // 2 ( 6 )
+    // 3 ( 6 )
+    // 4 ( 6 )
+
+    // 3 ( 1 2 4 )
+    // k = 4 , { 1 2 4}
+    // 3 1 ( 2 )
+    // 3 2 ( 2 )
+    // 3 4 ( 2 )
+    // 3 4 1 2
 }
