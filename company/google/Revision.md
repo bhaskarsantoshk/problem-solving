@@ -42,3 +42,73 @@
     - **Time Complexity**: O(N^2)
     - **Space Complexity**: O(1)
     - **Explanation**: This approach avoids extra space by utilizing the matrix itself for marking.
+### Pascal's Triangle
+
+1. **Recursive Approach**:
+    - **Idea**: Build the triangle row by row, where each element is the sum of the two elements directly above it.
+    - **Steps**:
+        - Start with the first row `[1]`, and for each subsequent row, calculate elements by summing pairs of numbers from the previous row.
+        - Add `1` at both ends of each row.
+    - **Time Complexity**: O(N^2)
+    - **Space Complexity**: O(N^2)
+    - **Explanation**: This approach constructs the triangle by iterating through previous rows, adding elements as needed.
+
+2. **Mathematical Approach (Combinatorics)**:
+    - **Idea**: Each element in row `n` and column `k` of Pascal's Triangle is calculated using the binomial coefficient `nCk`.
+    - **Steps**:
+        - For each row, start with `1` and calculate subsequent elements using the formula:  
+          `ans = ans * (row - col) / col`.
+    - **Time Complexity**: O(N^2)
+    - **Space Complexity**: O(N^2)
+    - **Explanation**: This uses combinatorics to directly calculate each element in the triangle, reducing unnecessary iterations.
+### Next Permutation
+
+1. **Idea**: The goal is to rearrange the numbers into the next lexicographically greater permutation of the given sequence. If that isn't possible, rearrange it as the lowest possible order (i.e., sorted in ascending order).
+
+2. **Steps**:
+    - Find the **breakpoint** where the number at index `i` is less than the number at `i+1`, starting from the right (i.e., traverse from the end).
+    - If no breakpoint is found (i.e., the sequence is in descending order), reverse the array to get the smallest permutation.
+    - If a breakpoint is found:
+        - Find the smallest number greater than `nums[breakpoint]` to the right of the breakpoint.
+        - Swap this number with the number at the breakpoint.
+        - Reverse the part of the array to the right of the breakpoint to get the next permutation.
+
+3. **Time Complexity**: O(N)
+4. **Space Complexity**: O(1) (in-place manipulation)
+
+5. **Explanation**:
+    - The process involves finding the first descending pair from the right, swapping it with the smallest larger number, and then reversing the remaining sequence to ensure the next permutation is obtained.
+### Maximum Subarray (Kadane's Algorithm)
+
+1. **Idea**: The goal is to find the contiguous subarray with the largest sum in a given array of integers.
+
+2. **Steps**:
+    - Initialize `sum` and `max` with the first element of the array.
+    - Traverse through the array:
+        - At each index `i`, decide whether to include the current element in the existing subarray (i.e., add `nums[i]` to `sum`) or start a new subarray from `i`.
+        - Update the `max` value to keep track of the highest subarray sum encountered so far.
+    - This ensures that at every step, we consider the best possible subarray ending at index `i`.
+
+3. **Time Complexity**: O(N)
+4. **Space Complexity**: O(1) (in-place calculations)
+
+5. **Explanation**:
+    - The algorithm efficiently calculates the maximum subarray sum by deciding whether to "carry" the current sum forward or start fresh at each index, ensuring that we always have the best possible subarray sum at each step.
+### Best Time to Buy and Sell Stock
+
+1. **Idea**: The goal is to maximize profit by choosing a day to buy and a day in the future to sell the stock. You can only make one transaction (buy once and sell once).
+
+2. **Steps**:
+    - Initialize `minimum` with the first element of the `prices` list to track the lowest price encountered so far.
+    - Initialize `maxProfit` to `0` to store the maximum profit obtained.
+    - Traverse the list of prices starting from the second day (`i=1`):
+        - Calculate the profit for each day by subtracting the `minimum` price from the current price.
+        - Update `maxProfit` if the current profit is greater than the previous maximum.
+        - Update `minimum` if the current price is lower than the previous minimum price.
+    - This ensures you always buy at the lowest price before selling at a higher price.
+
+3. **Time Complexity**: O(N)
+4. **Space Complexity**: O(1) (in-place calculations)
+
+5. **Explanation**:
+    - The algorithm tracks the lowest price encountered so far and the maximum profit by comparing the current price with that minimum price, ensuring you always maximize the profit by buying low and selling​⬤
