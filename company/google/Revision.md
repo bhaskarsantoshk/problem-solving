@@ -389,3 +389,31 @@
 - Use DFS to color the graph with two colors.
 - If two adjacent nodes have the same color, the graph is not bipartite.
 - If DFS completes without conflicts, the graph is bipartite.
+
+### Check if a Graph is Bipartite (Using BFS)
+
+1. **Idea**: A graph is bipartite if you can divide its vertices into two sets where no two vertices in the same set are adjacent. BFS can be used to color the graph with two colors, and if two adjacent nodes have the same color, the graph is not bipartite.
+
+---
+
+2. **Steps**:
+    - **Color Array**: Use an array `color[]` initialized with `-1` (uncolored) to track the color of each vertex.
+    - **BFS Traversal**:
+        - Start BFS from an uncolored vertex and color it with `0`.
+        - Use a queue to explore the graph.
+        - For each node dequeued, check all its neighbors:
+            - If a neighbor is uncolored, color it with the opposite color of the current node and add it to the queue.
+            - If a neighbor has the same color as the current node, return `false` (graph is not bipartite).
+        - Continue until all nodes are processed.
+    - Repeat the process for all components of the graph.
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (BFS processes each node and edge once).
+
+4. **Space Complexity**: O(V), for the color array and the BFS queue.
+
+---
+
+**Gist**:
+- Use BFS to color the graph in two colors.
+- If two adjacent nodes have the same color, the graph is not bipartite.
+- If BFS completes without conflicts, the graph is bipartite.
