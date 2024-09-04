@@ -49,4 +49,22 @@ public class DP53PalindromePartitioningIIFrontPartition {
         }
         return memo[i]=minCost;
     }
+
+    public static int palindromePartitioningTabular(String str) {
+        int n = str.length();
+        int[] dp = new int[n+1];
+       for ( int i =n-1; i>=0; i--){
+           int minCost = Integer.MAX_VALUE;
+           StringBuilder sb = new StringBuilder();
+           for ( int j=i; j<n; j++){
+               sb.append(str.charAt(j));
+               if ( isPalindrome(sb)){
+                   int cost = 1+ dp[j+1];
+                   minCost = Math.min(minCost, cost);
+               }
+           }
+           dp[i] = minCost;
+       }
+       return dp[0]-1;
+    }
 }
