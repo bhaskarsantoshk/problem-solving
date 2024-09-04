@@ -209,3 +209,30 @@
 - Use a HashMap to count the frequency of elements in a sliding window.
 - As the window slides, remove the element that exits the window and add the element that enters.
 - Track the number of distinct elements by checking the size of the map keys.
+
+### Kth Largest Element (Using Quickselect)
+
+1. **Idea**: Use the Quickselect algorithm, which is an efficient selection algorithm to find the k-th largest element in an unsorted array. It works similarly to QuickSort by using a pivot to partition the array.
+
+2. **Steps**:
+    - **Partition the List**:
+        - Choose a random pivot from the list.
+        - Split the elements into three parts:
+            - `left`: elements greater than the pivot.
+            - `mid`: elements equal to the pivot.
+            - `right`: elements smaller than the pivot.
+    - **Recursive Logic**:
+        - If `k` is less than or equal to the size of `left`, recursively search for the k-th element in the `left` sublist.
+        - If `k` is larger than the size of `left` and `mid`, recursively search for the (adjusted) k-th element in the `right` sublist.
+        - If `k` lies within the size of `mid`, return the pivot.
+
+3. **Time Complexity**:
+    - **Average Case**: O(N)
+    - **Worst Case**: O(N^2) (if the pivot is poorly chosen)
+
+4. **Space Complexity**: O(N) (due to the recursive partitioning of the list into sublists)
+
+**Gist**:
+- Partition the list into three parts based on a randomly chosen pivot.
+- Recursively select the k-th largest element based on the size of the left and mid partitions.
+- Quickselect ensures efficient selection of the k-th largest element in an average O(N) time complexity.
