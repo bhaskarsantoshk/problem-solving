@@ -159,3 +159,53 @@
 - Use a max-heap for the smaller half and a min-heap for the larger half.
 - Balance both heaps so that their sizes differ by at most 1.
 - If heaps are balanced, the median is the average of both tops; otherwise, it's the top of the larger heap.
+
+### Kth Largest Element in a Stream (Using Min-Heap)
+
+1. **Idea**: Maintain a min-heap of size `k` that holds the `k` largest elements encountered so far. The root of the heap will always be the k-th largest element.
+
+2. **Steps**:
+   - **Constructor (`KthLargest`)**:
+      - Initialize a min-heap (`pq`) to store the `k` largest elements.
+      - Add elements from the input `nums` array to the heap.
+      - If the heap size exceeds `k`, remove the smallest element (the root of the heap) to ensure it only contains the `k` largest elements.
+   - **Add Method (`add`)**:
+      - Add the new value (`val`) to the heap.
+      - If the heap size exceeds `k`, remove the smallest element (the root).
+      - Return the root of the heap, which is the k-th largest element.
+
+3. **Time Complexity**:
+   - **Constructor**: O(N log k), where N is the number of elements in the `nums` array, and `log k` is the time complexity for inserting into the heap.
+   - **Add Method**: O(log k) for inserting a new element into the heap and maintaining its size.
+
+4. **Space Complexity**: O(k) (heap space for storing `k` elements)
+
+**Gist**:
+- Use a min-heap of size `k` to keep track of the `k` largest elements.
+- The root of the heap is always the k-th largest element.
+- When adding a new element, insert it into the heap and remove the smallest element if the heap exceeds size `k`.
+
+### Distinct Numbers in a Window
+
+1. **Idea**: Given an array `A` and a window size `B`, find the number of distinct elements in every sliding window of size `B`.
+
+2. **Steps**:
+    - Initialize a result list (`result`) to store the number of distinct elements in each window.
+    - Use a HashMap (`map`) to keep track of the frequency of elements in the current window.
+    - **First Window**:
+        - Add the first `B` elements to the map and count distinct elements (size of the map keys).
+    - **Sliding the Window**:
+        - For each new window starting from index `B`, remove the element that goes out of the window (at `i-B`) from the map.
+        - Decrement its count, and if the count reaches 0, remove the element from the map.
+        - Add the new element (at index `i`) to the map and update its count.
+        - Append the current number of distinct elements (size of map keys) to the result.
+
+3. **Time Complexity**: O(N), where N is the length of the array `A`.
+    - Each insertion and removal from the HashMap takes O(1), and the sliding window operates over all elements in the array.
+
+4. **Space Complexity**: O(B) for storing elements in the HashMap, where `B` is the window size.
+
+**Gist**:
+- Use a HashMap to count the frequency of elements in a sliding window.
+- As the window slides, remove the element that exits the window and add the element that enters.
+- Track the number of distinct elements by checking the size of the map keys.
