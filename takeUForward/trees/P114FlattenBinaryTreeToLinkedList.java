@@ -18,8 +18,7 @@ public class P114FlattenBinaryTreeToLinkedList {
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while ( !stack.isEmpty() ){
-            TreeNode cur = stack.peek();
-            stack.pop();
+            TreeNode cur = stack.pop();
             if ( cur.right != null) stack.push(cur.right);
             if ( cur.left != null ) stack.push(cur.left);
             if ( !stack.isEmpty()) cur.right = stack.peek();
