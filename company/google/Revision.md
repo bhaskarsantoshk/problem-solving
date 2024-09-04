@@ -318,3 +318,47 @@
 - Use a queue to process vertices with in-degree 0.
 - Reduce in-degrees of adjacent vertices and enqueue them if their in-degree becomes 0.
 - If all vertices are processed, no cycle exists; otherwise, a cycle is present.
+
+### Topological Sort (Using BFS and DFS)
+
+1. **Idea**: Topological sorting of a Directed Acyclic Graph (DAG) is a linear ordering of its vertices such that for every directed edge (u → v), vertex `u` comes before `v`. This can be achieved using both BFS (Kahn's Algorithm) and DFS.
+
+---
+
+#### 1. **BFS Approach (Kahn's Algorithm)**:
+- **Steps**:
+    - **In-degree Calculation**: Calculate the in-degree (number of incoming edges) for each vertex.
+    - **Queue Initialization**: Enqueue all vertices with in-degree 0 (no incoming edges).
+    - **BFS Processing**:
+        - Dequeue a vertex and add it to the topological ordering.
+        - For each adjacent vertex, reduce its in-degree by 1.
+        - If the in-degree of an adjacent vertex becomes 0, enqueue it.
+- **Time Complexity**: O(V + E)
+- **Space Complexity**: O(V) (for queue and in-degree array)
+
+**Gist**:
+- Calculate in-degrees for vertices, enqueue those with in-degree 0, process each vertex in BFS order, and reduce in-degrees of its neighbors.
+- If an in-degree becomes 0, enqueue the neighbor.
+- The order of processed nodes is the topological sort.
+
+---
+
+#### 2. **DFS Approach**:
+- **Steps**:
+    - Perform a DFS from each unvisited vertex.
+    - After exploring all neighbors of a vertex, push it onto a stack.
+    - Once all vertices are processed, pop elements from the stack to get the topological order (reverse post-order).
+- **Time Complexity**: O(V + E)
+- **Space Complexity**: O(V) (for recursion stack and the result stack)
+
+**Gist**:
+- Perform DFS from each unvisited vertex, pushing vertices onto the stack after all their neighbors are processed.
+- The stack contains the topological order once DFS completes.
+
+---
+
+3. **When to Use**:
+    - **BFS (Kahn's Algorithm)**: Easier to understand and implement, especially for cycle detection (if all nodes cannot be sorted, the graph has a cycle).
+    - **DFS**: More intuitive for tasks that require reverse post-order traversal.
+
+4. **Key Point**: Topological sorting only works for **DAGs**. If the graph contains a cycle, topological sorting is not possible.
