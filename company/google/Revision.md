@@ -111,4 +111,51 @@
 4. **Space Complexity**: O(1) (in-place calculations)
 
 5. **Explanation**:
-    - The algorithm tracks the lowest price encountered so far and the maximum profit by comparing the current price with that minimum price, ensuring you always maximize the profit by buying low and selling​⬤
+    - The algorithm tracks the lowest price encountered so far and the maximum profit by comparing the current price with that minimum price, ensuring you always maximize the profit by buying low and selling.
+### Flatten Binary Tree to Linked List
+
+1. **Intuitive Iterative Approach (Using Stack)**:
+   - **Idea**: Use a stack to simulate pre-order traversal (root → left → right), ensuring that `root.right` points to the next node in the pre-order sequence.
+   - **Steps**:
+      - Push the `root` onto the stack.
+      - While the stack is not empty:
+         - Pop the current node (`cur`).
+         - Push the right child, then the left child (if they exist). This ensures that the left child will be processed first.
+         - Set `cur.right = stack.peek()` (the next node in pre-order, which is now at the top of the stack).
+         - Set `cur.left = null` to simulate flattening the tree.
+      - Continue this until the stack is empty.
+   - **Key Intuition**: By processing the left child first (since it's pushed after the right), and then setting `cur.right` to the top of the stack, we ensure that the left subtree is connected correctly to the right side of the flattened tree.
+
+2. **Time Complexity**: O(N)
+3. **Space Complexity**: O(N) (for the stack)
+
+**Gist**:
+- Push `root` to stack, then for each node, process the right and left.
+- Set `cur.right = stack.peek()` (next node in pre-order) and `cur.left = null`.
+
+### Median Finder (Using Two Heaps)
+
+1. **Idea**: Use two heaps (a max-heap and a min-heap) to keep track of the median dynamically as new numbers are added.
+   - **Max-Heap** (`maxHeap`): Stores the smaller half of the numbers, allowing access to the maximum number in this half.
+   - **Min-Heap** (`minHeap`): Stores the larger half of the numbers, allowing access to the minimum number in this half.
+
+2. **Steps**:
+   - **Adding a Number**:
+      - If the new number is smaller than or equal to the top of the `maxHeap`, add it to the `maxHeap`.
+      - Otherwise, add it to the `minHeap`.
+      - Balance the heaps:
+         - If one heap has more than one extra element compared to the other, move an element from the larger heap to the smaller one.
+   - **Finding the Median**:
+      - If one heap has more elements than the other, the median is the top element of the larger heap.
+      - If both heaps have the same number of elements, the median is the average of the tops of both heaps.
+
+3. **Time Complexity**:
+   - **Adding a Number**: O(log N) (due to heap insertion)
+   - **Finding the Median**: O(1)
+
+4. **Space Complexity**: O(N) (for storing numbers in the heaps)
+
+**Gist**:
+- Use a max-heap for the smaller half and a min-heap for the larger half.
+- Balance both heaps so that their sizes differ by at most 1.
+- If heaps are balanced, the median is the average of both tops; otherwise, it's the top of the larger heap.
