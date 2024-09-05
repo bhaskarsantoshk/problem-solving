@@ -14,7 +14,7 @@
 - **Cycles:**
   - **Undirected Cyclic Graph:** At least one cycle in an undirected graph.
   - **Directed Acyclic Graph (DAG):** Directed graph without cycles.
-  - **Directed Cyclic Graph (DAG):** Directed graph with at least one cycle.
+  - **Directed Cyclic Graph (DCG):** Directed graph with at least one cycle.
 
 ## Paths
 - A sequence of nodes where each node is reachable, appears once, and adjacent nodes have an edge between them.
