@@ -417,3 +417,37 @@
 - Use BFS to color the graph in two colors.
 - If two adjacent nodes have the same color, the graph is not bipartite.
 - If BFS completes without conflicts, the graph is bipartite.
+
+### Shortest Path in a Directed Acyclic Graph (DAG) Using Topological Sort
+
+1. **Idea**: In a **Directed Acyclic Graph (DAG)**, we can compute the shortest path from a source vertex to all other vertices by performing **Topological Sort** and then relaxing the edges in that order. The advantage is that once a vertex is processed, no shorter path to it will be found later.
+
+---
+
+2. **Steps**:
+    - **Graph Representation**:
+        - The graph is represented as an adjacency list, where each entry holds pairs representing the destination vertex and the edge weight.
+
+    - **Step 1: Topological Sort**:
+        - Perform a topological sort using DFS.
+        - The idea is to process nodes in an order where every node appears before all nodes to which it has outgoing edges.
+        - For this, use a DFS-based approach to generate the topological order of the nodes.
+
+    - **Step 2: Relax Edges**:
+        - Initialize a `distance[]` array with a large value (∞ or `1e9`) to represent unreachable vertices.
+        - Set the distance of the source node to `0`.
+        - For each node in topologically sorted order, update the distances of its adjacent nodes using edge relaxation (i.e., update the shortest path).
+
+    - **Step 3: Handle Unreachable Nodes**:
+        - If a node's distance remains as `1e9`, set it to `-1` to indicate that the node is unreachable from the source.
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (due to topological sort and edge relaxation).
+
+4. **Space Complexity**: O(V + E), for storing the graph and the distance array.
+
+---
+
+**Gist**:
+- Perform topological sort using DFS on the DAG.
+- Relax edges in topological order to find the shortest path.
+- If a node remains unreachable from the source, set its distance to `-1`.
