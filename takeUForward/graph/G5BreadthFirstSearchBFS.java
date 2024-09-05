@@ -23,3 +23,7 @@ public class G5BreadthFirstSearchBFS {
         return result;
     }
 }
+
+// Time complexity:
+// BFS runs for all nodes, a node goes once into queue, and run for it's degrees.
+// T : O(V+2E), S = O(N)
