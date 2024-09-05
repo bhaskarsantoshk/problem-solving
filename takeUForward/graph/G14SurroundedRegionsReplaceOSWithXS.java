@@ -1,6 +1,6 @@
 package takeUForward.graph;
 
-public class ReplaceOSWithXS {
+public class G14SurroundedRegionsReplaceOSWithXS {
     static char[][] fill(int n, int m, char a[][])
     {
         char[][] res = new char[n][m];

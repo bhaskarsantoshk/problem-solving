@@ -2,7 +2,7 @@ package takeUForward.graph;
 
 import java.util.*;
 
-public class ShortestPathInUndirectedGraph {
+public class G28ShortestPathInUndirectedGraphWithUnitWeights {
     public int[] shortestPath(int[][] edges,int n,int m ,int src) {
         List<Integer>[] G = new ArrayList[n];
         for ( int i=0; i<n; i++) G[i] = new ArrayList<>();

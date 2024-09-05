@@ -3,7 +3,7 @@ package takeUForward.graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class NumberOfEnclaves {
+public class G15NumberOfEnclavesMultiSourceBFS {
     int[][] dirs = {{0,1}, {1,0}, {-1,0}, {0,-1}};
     int numberOfEnclaves(int[][] grid) {
         int n = grid.length, m = grid[0].length;

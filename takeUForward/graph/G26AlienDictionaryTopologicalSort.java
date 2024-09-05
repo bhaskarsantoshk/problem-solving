@@ -2,7 +2,7 @@ package takeUForward.graph;
 
 import java.util.*;
 
-public class AlienDictionary {
+public class G26AlienDictionaryTopologicalSort {
     public String findOrder(String[] dict, int n, int k) {
         Set<Integer>[] G = new HashSet[k];
         for ( int i=0; i<k; i++) G[i] = new HashSet<>();

@@ -2,7 +2,7 @@ package takeUForward.graph;
 
 import java.util.*;
 
-public class EventualSafeStatesWithTopologicalSort {
+public class G25FindEventualSafeStatesBFSTopologicalSort {
     List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj) {
         int [] indegree = new int[V];
         List<List<Integer>> adjRev = new ArrayList<>();

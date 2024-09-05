@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-public class ShortestPathInDirectedAcyclicGraph {
+public class G27ShortestPathInDirectedAcyclicGraphTopologicalSort {
     public int[] shortestPath(int N,int M, int[][] edges) {
         List<int[]>[] G = new ArrayList[N];
         for ( int i=0; i<N; i++){

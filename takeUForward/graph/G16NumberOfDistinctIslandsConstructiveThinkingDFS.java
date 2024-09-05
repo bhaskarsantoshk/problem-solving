@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class NumberOfDistinctIslands {
+public class G16NumberOfDistinctIslandsConstructiveThinkingDFS {
     int countDistinctIslands(int[][] grid) {
         int n = grid.length, m = grid[0].length;
         Set<List<String>> set = new HashSet<>();

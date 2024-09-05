@@ -3,7 +3,7 @@ package takeUForward.graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventualSafeStates {
+public class G20FindEventualSafeStatesDFS {
     List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj) {
         boolean[] vis = new boolean[V];
         boolean[] pathVis = new boolean[V];
