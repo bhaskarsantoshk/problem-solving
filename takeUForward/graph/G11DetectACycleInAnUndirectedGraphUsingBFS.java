@@ -34,4 +34,23 @@ public class G11DetectACycleInAnUndirectedGraphUsingBFS {
         }
         return false;
     }
+
+    private boolean isCycleBFSWithoutStoringParent(int source, ArrayList<ArrayList<Integer>> adj, boolean[] vis) {
+        Queue<Integer> q = new LinkedList<>(); // [ node, parent ]
+        q.offer(source);
+        vis[source] = true;
+        while ( !q.isEmpty()){
+            int node = q.poll();
+            int count = 0;
+            for ( int adjNode : adj.get(node)){
+                if ( !vis[adjNode]) {
+                    q.offer(adjNode);
+                } else {
+                    count++;
+                }
+            }
+            if ( count > 1 ) return false;
+        }
+        return false;
+    }
 }
