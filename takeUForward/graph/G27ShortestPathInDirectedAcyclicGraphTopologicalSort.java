@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+// Step 1 : Do a topological sort
+// Step2: take nodes one by one and relax the edges
+
 public class G27ShortestPathInDirectedAcyclicGraphTopologicalSort {
     public int[] shortestPath(int N,int M, int[][] edges) {
         List<int[]>[] G = new ArrayList[N];
