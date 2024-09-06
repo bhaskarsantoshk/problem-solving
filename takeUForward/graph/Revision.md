@@ -284,3 +284,96 @@
 * check what to return in case of cycle , don't return null blindly
 * Use a Set for graph, not list, as the edges will repeat if there are multiple words
 * same with indegrees, calculate once you done with Graph
+
+### Shortest Path in a Directed Acyclic Graph (DAG) Using DFS-based Topological Sort
+
+1. **Idea**:
+    - Given a Directed Acyclic Graph (DAG) with weighted edges, the shortest path from a source to all other vertices can be efficiently found using **Topological Sort**.
+    - Once the nodes are processed in topologically sorted order, we can relax the edges to compute the shortest path.
+
+---
+
+2. **Steps**:
+
+    - **Step 1: Build the Graph**:
+        - Represent the graph using an adjacency list, where each node points to its adjacent node along with the weight of the edge.
+
+    - **Step 2: Perform Topological Sort (DFS-based)**:
+        - Perform DFS for each unvisited node.
+        - Once all its adjacent nodes have been visited, push the node onto a stack (this ensures that all dependencies are processed before the node itself).
+
+    - **Step 3: Relax the Edges**:
+        - Initialize the distance array with a large value (`1e9`), except for the source node, which is set to 0.
+        - Pop nodes from the stack and for each node, update the shortest distance for its adjacent nodes (relax the edges).
+
+    - **Step 4: Handle Unreachable Nodes**:
+        - If any node remains unreachable from the source, set its distance to `-1`.
+
+---
+
+3. **Time Complexity**:
+    - **Graph Construction**: O(M), where M is the number of edges.
+    - **Topological Sort (DFS)**: O(V + E), where V is the number of vertices and E is the number of edges.
+    - **Relaxation of Edges**: O(V + E).
+    - **Overall Complexity**: O(V + E), where V is the number of vertices and E is the number of edges.
+
+4. **Space Complexity**: O(V + E) for storing the adjacency list, distance array, and the stack.
+
+---
+
+**Gist**:
+- Perform **DFS-based topological sort** to process the nodes in a valid order.
+- Use this order to **relax the edges** and compute the shortest path from the source.
+- Handle nodes that are unreachable from the source by setting their distance to `-1`.
+
+## Typical mistakes to avoid
+* do not forget to create Graph with edges as int[] as it will have v and wt
+* while iterating adjacent nodes, make sure to consider the array
+* take 1e9 instead of INT MAX in distance array, int overflow will not happen while doing relaxation of edges
+* Do not forget to mark distance[src] = 0
+* use DFS+ stack for Topological sort ( easy to implement)
+
+### Shortest Path in an Undirected Graph with Unit Weights (Using BFS)
+
+1. **Idea**:
+   - In an **undirected graph** with **unit weights** (i.e., all edges have a weight of 1), the shortest path from a source node to all other nodes can be efficiently computed using **Breadth-First Search (BFS)**.
+   - BFS guarantees that nodes are processed in order of increasing distance from the source.
+
+---
+
+2. **Steps**:
+
+   - **Step 1: Graph Representation**:
+      - Represent the graph using an adjacency list, where each node points to its connected neighbors.
+
+   - **Step 2: Initialize Distance Array**:
+      - Create a `distance[]` array initialized to a large value (`1e9`) to represent infinite distances.
+      - Set the distance of the source node `src` to 0, as the distance from the source to itself is zero.
+
+   - **Step 3: BFS Traversal**:
+      - Start BFS from the source node.
+      - For each node dequeued, check all its adjacent nodes.
+      - If the distance to an adjacent node can be improved (i.e., `distance[node] + 1 < distance[adjNode]`), update the distance and enqueue the adjacent node.
+
+   - **Step 4: Handle Unreachable Nodes**:
+      - After BFS, if any node's distance is still `1e9`, it means the node is unreachable from the source, so set its distance to `-1`.
+
+---
+
+3. **Time Complexity**:
+   - **Graph Construction**: O(M), where M is the number of edges.
+   - **BFS Traversal**: O(V + 2E), where V is the number of vertices and E is the number of edges. Each edge is considered twice since the graph is undirected.
+
+4. **Space Complexity**: O(V + 2E) for storing the adjacency list and the queue.
+
+---
+
+**Gist**:
+- Use **BFS** to explore the graph level by level, updating the shortest distance to each node.
+- If any node remains unreachable from the source, set its distance to `-1`.
+- BFS guarantees that nodes are processed in the order of increasing distance from the source in graphs with unit weights.
+
+## Typical mistakes to avoid
+* While constructing graph, do not forget to add edges both ways if it's an undirected Graph
+* no need of vis array, use distance array as vis array
+* when distance array got updated, add the adjNode to queue because we got lesser distance than prev path or we didn't cover this path 
