@@ -15,16 +15,6 @@ public class UndirectedGraphCycle {
         return false;
     }
 
-    public boolean isCycleDFS(int V, ArrayList<ArrayList<Integer>> adj) {
-        boolean []vis = new boolean[V];
-        for ( int i=0; i<V; i++){
-            if ( !vis[i]){
-                if ( isCycleDFS(adj, vis, i,-1)) return true;
-            }
-        }
-        return false;
-    }
-
     private boolean isCycleBFS(ArrayList<ArrayList<Integer>> adj, boolean[] vis, int src, int V) {
         Queue<int[]> q = new LinkedList<>();
         vis[src] = true;
@@ -39,6 +29,16 @@ public class UndirectedGraphCycle {
                 } else {
                     if (adjNode != parent) return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    public boolean isCycleDFS(int V, ArrayList<ArrayList<Integer>> adj) {
+        boolean []vis = new boolean[V];
+        for ( int i=0; i<V; i++){
+            if ( !vis[i]){
+                if ( isCycleDFS(adj, vis, i,-1)) return true;
             }
         }
         return false;
