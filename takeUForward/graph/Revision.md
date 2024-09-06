@@ -175,3 +175,112 @@
 - Use BFS to traverse the graph, keeping track of the parent for each node.
 - If you encounter a visited neighbor that isn't the parent, a cycle exists.
 - Return true if a cycle is found; otherwise, return false.
+
+### Topological Sort (Using DFS)
+
+1. **Idea**: Topological sorting of a Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every directed edge `u → v`, vertex `u` comes before `v`. DFS is used to ensure that once a vertex is visited, all its dependencies (adjacent vertices) are processed before it.
+
+---
+
+2. **Steps**:
+    - **Visited Array**: Use a boolean array `vis[]` to track whether each vertex has been visited.
+    - **DFS Traversal**:
+        - For each unvisited node, perform DFS to explore its adjacent nodes.
+        - After exploring all adjacent nodes of a vertex, push the vertex onto a stack (this ensures that the dependencies are processed before the vertex).
+    - **Result Construction**:
+        - Once DFS completes, the stack will have the vertices in topologically sorted order. Pop elements from the stack to form the final result.
+    - **Cycle Detection**:
+        - If the stack size does not match the number of vertices (i.e., some nodes were not added due to cycles), return `{-1}` to indicate a cycle, as topological sorting is only possible in DAGs.
+
+---
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (DFS processes each vertex and edge once).
+
+4. **Space Complexity**: O(V), for the recursion stack and the stack used for the topological order.
+
+---
+
+**Gist**:
+- Use DFS to visit all nodes and push them onto a stack after all their dependencies are processed.
+- If any node is part of a cycle, return `{-1}`.
+- Pop from the stack to get the topological order.
+### Detecting a Cycle in a Directed Graph Using Kahn's Algorithm (Topological Sort with BFS)
+
+1. **Idea**: In a directed graph, if we can perform a **Topological Sort** of all the vertices, the graph is **acyclic** (i.e., it does not contain any cycles). Kahn's Algorithm (BFS-based topological sort) can be used to detect a cycle in a directed graph by checking if all vertices can be processed. If any vertices are left unprocessed, it indicates the presence of a cycle.
+
+---
+
+2. **Steps**:
+    - **In-degree Calculation**:
+        - For each vertex, calculate its **in-degree** (the number of edges directed towards it).
+    - **Queue Initialization**:
+        - Enqueue all vertices with **in-degree 0** (vertices with no incoming edges).
+    - **BFS Traversal**:
+        - Process each vertex by dequeuing it, adding it to the result list, and reducing the in-degree of all its adjacent vertices.
+        - If any adjacent vertex's in-degree becomes zero, enqueue it.
+    - **Cycle Detection**:
+        - After processing, if the size of the result list (the topological sort) is less than the number of vertices `V`, this means that there are vertices that could not be processed due to a cycle. In such cases, return `true` indicating a cycle.
+        - If all vertices are processed, return `false` (no cycle).
+
+---
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (BFS processes each vertex and edge once).
+
+4. **Space Complexity**: O(V), for storing the in-degree array and the BFS queue.
+
+---
+
+**Gist**:
+- Calculate in-degrees for all vertices.
+- Use BFS (Kahn's Algorithm) to process vertices with in-degree 0.
+- If all vertices are processed, the graph is acyclic; otherwise, a cycle exists.
+
+### Alien Dictionary Problem (Using Topological Sort)
+
+1. **Idea**:
+    - Given a sorted dictionary of alien words, we need to find the order of characters in the alien language.
+    - The problem can be solved by comparing adjacent words in the dictionary and deducing the relative order of characters.
+
+---
+
+2. **Steps**:
+
+    - **Step 1: Build the Graph**:
+        - Treat each character as a node.
+        - For each pair of adjacent words (`s1`, `s2`), compare characters until you find the first mismatch.
+        - If `s1[i] != s2[i]`, this implies that `s1[i]` comes before `s2[i]` in the alien dictionary. Add an edge from `s1[i]` to `s2[i]` in the graph.
+        - Skip the rest of the characters once a difference is found.
+
+    - **Step 2: Calculate In-degrees**:
+        - Track the in-degree (number of incoming edges) for each character using an array.
+
+    - **Step 3: Topological Sort (Kahn's Algorithm)**:
+        - Enqueue all characters with in-degree 0 (no dependencies).
+        - Process each character by reducing the in-degree of its neighbors and enqueue the neighbors when their in-degree becomes 0.
+        - Append characters to the result in the order they are processed.
+
+    - **Step 4: Check for Cycles**:
+        - If the result length is less than `k` (number of characters in the alien language), it means there’s a cycle (invalid order), and return an empty string.
+
+---
+
+3. **Time Complexity**:
+    - **Graph Construction**: O(N * min(L1, L2)), where N is the number of words, and L1, L2 are the lengths of the compared words.
+    - **Topological Sort**: O(V + E), where V is the number of unique characters (vertices) and E is the number of edges in the graph.
+    - Overall, the complexity is **O(N * L + V + E)**.
+
+4. **Space Complexity**: O(V + E), for storing the graph and in-degree array.
+
+---
+
+**Gist**:
+- Build a directed graph from adjacent words in the dictionary by comparing characters.
+- Use topological sort to determine the correct order of characters.
+- If the topological sort doesn't cover all characters, the dictionary is inconsistent, and a cycle exists.
+
+## Typical mistakes to avoid
+* while comparing the chars, just check if they are equal or not. if not, remember first char did come before second char 
+* no need to compare them with < or >
+* check what to return in case of cycle , don't return null blindly
+* Use a Set for graph, not list, as the edges will repeat if there are multiple words
+* same with indegrees, calculate once you done with Graph
