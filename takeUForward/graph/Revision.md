@@ -72,7 +72,7 @@
 - If any adjacent vertices have the same color, the graph is not bipartite.
 - Return true if the graph can be successfully colored; otherwise, return false.
 
-## Typipcal mistakes to avoid
+## Typical mistakes to avoid
 * not returning false if the dfs fail ( in both dfs calls)
 * passing node instead of adjNode
 
@@ -105,10 +105,73 @@
 - If two adjacent nodes have the same color, return false (not bipartite).
 - If BFS completes without conflicts, return true (graph is bipartite).
 
-## Typipcal mistakes to avoid
+## Typical mistakes to avoid
 * don't mis type node and adjNodes
 * take the parameter as start, node as q.poll()
 * don't forget for ( int adjNode: adj.get(node))
 * don't need to pass in the color from caller func if it's a BFS, always start with 0 color
 * use colors[adjNode] as 1-colors[node] , not some color variable if colors[adjNode] is -1
 * if ( colors[adjNode] == colors[node]) return false
+
+### Detecting a Cycle in an Undirected Graph (Using DFS)
+
+1. **Idea**: In an undirected graph, a cycle exists if during DFS traversal, we visit a node that has already been visited and is not the parent of the current node.
+
+---
+
+2. **Steps**:
+    - **Visited Array**: Use a boolean array `vis[]` to keep track of visited nodes.
+    - **DFS Traversal**:
+        - Start DFS from any unvisited node.
+        - For each adjacent node:
+            - If it hasn't been visited, recursively call DFS on it.
+            - If it has been visited and is not the parent of the current node, a cycle is detected.
+    - Repeat the process for all components of the graph to ensure that no part of the graph is missed.
+
+---
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (DFS visits every node and edge once).
+
+4. **Space Complexity**: O(V), for the recursion stack and visited array.
+
+---
+
+**Gist**:
+- Use DFS to traverse the graph, checking if any adjacent node is visited and is not the parent.
+- If such a node is found, a cycle exists.
+- Return true if a cycle is detected; otherwise, return false.
+
+## Typical mistakes to avoid
+* not passing the parent node in DFS call 
+* not terminating based on DFS result
+* not running DFS for all nodes
+* nested DFS call should include cur node as parent and adjacent node as it's main node
+
+### Detecting a Cycle in an Undirected Graph (Using BFS)
+
+1. **Idea**: In an undirected graph, a cycle exists if during BFS traversal, we visit a node that has already been visited and it is not the parent of the current node.
+
+---
+
+2. **Steps**:
+    - **Visited Array**: Use a boolean array `vis[]` to track visited nodes.
+    - **BFS Traversal**:
+        - Start BFS from any unvisited node, enqueueing it with its parent (`-1` for the starting node).
+        - For each node dequeued:
+            - Explore its neighbors.
+            - If a neighbor hasn't been visited, mark it visited and enqueue it, passing the current node as the parent.
+            - If a neighbor has been visited and is not the parent of the current node, a cycle is detected.
+    - Repeat the process for all components of the graph.
+
+---
+
+3. **Time Complexity**: O(V + E), where V is the number of vertices and E is the number of edges (BFS visits every node and edge once).
+
+4. **Space Complexity**: O(V), for the queue and visited array.
+
+---
+
+**Gist**:
+- Use BFS to traverse the graph, keeping track of the parent for each node.
+- If you encounter a visited neighbor that isn't the parent, a cycle exists.
+- Return true if a cycle is found; otherwise, return false.
