@@ -41,3 +41,6 @@ public class G10RottenOranges {
         return (fresh == rotten) ? max: -1;
     }
 }
+
+// T: O(N*N) + O(N*M*4)
+// S: O(N*M)
