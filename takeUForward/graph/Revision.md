@@ -377,3 +377,239 @@
 * While constructing graph, do not forget to add edges both ways if it's an undirected Graph
 * no need of vis array, use distance array as vis array
 * when distance array got updated, add the adjNode to queue because we got lesser distance than prev path or we didn't cover this path 
+
+### Dijkstra’s Algorithm (Using Priority Queue)
+
+1. **Idea**:
+    - **Dijkstra’s Algorithm** is used to find the shortest path from a source node `S` to all other nodes in a graph with non-negative weights.
+    - A **priority queue (min-heap)** is used to always process the node with the currently known shortest distance.
+    - As we process each node, we relax the edges to its neighbors by updating their shortest known distances.
+
+---
+
+2. **Steps**:
+
+    - **Step 1: Initialize Distance Array**:
+        - Create a `distance[]` array initialized to a large value (`1e9`) to represent infinity.
+        - Set the distance of the source node `S` to `0`, as the distance from the source to itself is zero.
+
+    - **Step 2: Min-Heap (Priority Queue)**:
+        - Use a priority queue (min-heap) to store pairs of the form `<distance, node>`. Initially, enqueue the source node with a distance of `0`.
+
+    - **Step 3: Process the Nodes**:
+        - While the priority queue is not empty:
+            - Dequeue the node with the smallest distance.
+            - For each adjacent node (neighbor):
+                - If the current known distance to the adjacent node can be improved (i.e., `distance[adjNode] > distance[node] + edgeWeight`), update the distance and enqueue the adjacent node with the new distance.
+
+    - **Step 4: Handle Unreachable Nodes**:
+        - After processing, if any node's distance is still `1e9`, set its distance to `-1`, indicating that the node is unreachable from the source.
+
+---
+
+3. **Time Complexity**:
+    - **Priority Queue Operations**: O((V + E) log V), where V is the number of vertices and E is the number of edges.
+    - **Overall Complexity**: O((V + E) log V).
+
+4. **Space Complexity**: O(V + E) for storing the adjacency list and the priority queue.
+
+---
+
+**Gist**:
+- Use Dijkstra's Algorithm with a **priority queue** to efficiently find the shortest path from the source node to all other nodes.
+- **Relax the edges** of each node by updating the shortest known distances to its neighbors.
+- If a node remains unreachable, set its distance to `-1`.
+
+### Bellman-Ford Algorithm
+
+1. **Idea**:
+    - **Bellman-Ford Algorithm** is used to find the shortest path from a source node `S` to all other nodes in a graph. It works for graphs with **negative weights** and can detect **negative weight cycles**.
+    - The algorithm relaxes all edges up to `V-1` times (where `V` is the number of vertices).
+    - If after `V-1` relaxations, any further relaxation occurs, it indicates the presence of a **negative weight cycle**.
+
+---
+
+2. **Steps**:
+
+    - **Step 1: Initialization**:
+        - Create a `distance[]` array initialized to a large value (`1e8`), representing infinite distances.
+        - Set the distance of the source node `S` to `0`.
+
+    - **Step 2: Relaxation of Edges (V-1 times)**:
+        - For each edge `(u, v, wt)`, check if the current distance to `v` can be minimized by using edge `(u → v)` (i.e., `distance[u] + wt < distance[v]`).
+        - If it can be minimized, update `distance[v] = distance[u] + wt`.
+
+    - **Step 3: Check for Negative Cycles**:
+        - After `V-1` relaxations, do a final pass through all edges.
+        - If any edge can still be relaxed (i.e., distance can be minimized further), it means there is a **negative weight cycle** in the graph, and return `{-1}` to indicate the presence of such a cycle.
+
+    - **Step 4: Return Distance Array**:
+        - If no negative weight cycle is found, return the `distance[]` array containing the shortest path from the source to all other vertices.
+
+---
+
+3. **Time Complexity**:
+    - **Relaxation Process**: O(V * E), where V is the number of vertices and E is the number of edges.
+    - **Overall Complexity**: O(V * E) due to the V-1 relaxations and a final cycle detection pass.
+
+4. **Space Complexity**: O(V) for storing the distance array.
+
+---
+
+**Gist**:
+- Relax all edges **V-1 times** to ensure the shortest path is computed.
+- If any edge can still be relaxed in the **Vth pass**, there is a **negative weight cycle**.
+- Bellman-Ford is useful for graphs with **negative weights** and **cycle detection**.
+
+## Typical mistakes to avoid
+* do not forget to mark distance[Source] = 0
+* first loop is from 0 to V-1 , nested loop should iterate over all edges
+
+### Floyd-Warshall Algorithm
+
+1. **Idea**:
+    - The **Floyd-Warshall Algorithm** is used to find the shortest path between all pairs of nodes in a graph.
+    - It works on a dynamic programming approach where we iteratively improve the solution by considering every node as an intermediate node.
+    - It works for graphs with negative weights but cannot handle negative weight cycles.
+
+---
+
+2. **Steps**:
+
+    - **Step 1: Initialize Distance Matrix**:
+        - Initialize a `distance[][]` matrix based on the input adjacency matrix:
+            - If `matrix[i][j] == -1`, this means there's no direct path between `i` and `j`, so set `distance[i][j]` to infinity (`1e9`).
+            - For diagonal elements (`distance[i][i]`), set them to `0`, as the shortest distance from any node to itself is `0`.
+
+    - **Step 2: Dynamic Programming (Go Via Nodes)**:
+        - Iterate over all possible intermediate nodes `via`. For each pair of nodes `(i, j)`:
+            - If the path `i → via → j` is shorter than the direct path `i → j`, update `distance[i][j]`:
+              ```java
+              distance[i][j] = min(distance[i][j], distance[i][via] + distance[via][j])
+              ```
+
+    - **Step 3: Check for Negative Cycles**:
+        - If any diagonal element `distance[i][i]` becomes negative after the computation, it indicates the presence of a **negative weight cycle**.
+        - In this implementation, an exception is thrown if a negative cycle is found.
+
+    - **Step 4: Update Unreachable Paths**:
+        - After all iterations, if any distance remains as infinity (`1e9`), it means that the corresponding node pair is unreachable, so set it to `-1`.
+
+---
+
+3. **Time Complexity**:
+    - **O(V^3)**, where V is the number of vertices. This is because there are three nested loops: one for intermediate nodes, one for the source node, and one for the destination node.
+
+4. **Space Complexity**:
+    - **O(V^2)** for storing the distance matrix.
+
+---
+
+**Gist**:
+- Use the **Floyd-Warshall Algorithm** to find the shortest paths between all pairs of nodes.
+- For each node pair `(i, j)`, check if the path through an intermediate node is shorter than the direct path.
+- If any diagonal element becomes negative, it means there's a **negative cycle**.
+
+## Typical mistakes to avoid
+* If you don't want to make changes to marix array, don't just do distance = matrix at the end, copy element by element in two loops
+* If there are no negative edges , apply Dijkstra from each source . This would take N * E log V lesser than N^3
+
+### Prim's Algorithm for Minimum Spanning Tree (MST)
+
+1. **Idea**:
+    - **Prim’s Algorithm** is used to find the **Minimum Spanning Tree (MST)** in a weighted, undirected graph. An MST is a subset of edges that connects all the vertices with the minimum possible total edge weight.
+    - The algorithm starts from an arbitrary node and grows the MST by adding the smallest available edge that connects the tree to a vertex outside the MST.
+
+---
+
+2. **Steps**:
+
+    - **Step 1: Initialize the Priority Queue (Min-Heap)**:
+        - Use a priority queue (min-heap) to always pick the edge with the smallest weight.
+        - Push the starting node (usually node 0) with weight 0 into the queue.
+
+    - **Step 2: Build the MST**:
+        - Extract the minimum weight edge from the priority queue.
+        - If the node connected by this edge has already been visited, skip it (to avoid cycles).
+        - Otherwise, add the node to the MST and mark it as visited.
+        - For every unvisited adjacent node of the current node, push the edge to the adjacent node into the priority queue.
+
+    - **Step 3: Check for MST Completion**:
+        - After processing all edges, check if the number of nodes added to the MST is equal to the total number of vertices (`V`).
+        - If not all nodes are added, return `-1`, indicating that the graph is disconnected, and an MST cannot be formed.
+
+    - **Step 4: Return the Sum of Weights**:
+        - Return the total sum of the edge weights in the MST.
+
+---
+
+3. **Time Complexity**:
+    - **O((V + E) log V)**, where V is the number of vertices and E is the number of edges.
+    - Each vertex is added to the priority queue once, and each edge is processed once.
+
+4. **Space Complexity**:
+    - **O(V + E)** for storing the adjacency list and the priority queue.
+
+---
+
+**Gist**:
+- Use a **priority queue** to always pick the edge with the smallest weight that connects a node outside the MST.
+- If all vertices are added to the MST, return the total weight.
+- If some vertices remain unconnected, return `-1` to indicate a disconnected graph.
+
+## Typical Mistakes to avoid
+* Iterate over the input carefully, don't consider everything as List<>[] G
+* Make sure to see the order ( node, wt ) while adding and retrieving from queue, use a class to avoid confusion
+* Make sure to see the order while accessing things from graph
+* Do not add vis array within the for loop , add it while popping from PQ after filtering the vis.
+
+## Kosaraju’s Algorithm for SCC (Strongly Connected Components)
+
+### Steps:
+
+1. **Step 1: Perform DFS to determine the finishing order of vertices**:
+    - Perform **DFS** on the original graph and push each vertex to a stack **after finishing its DFS** (when all its adjacent nodes are processed).
+    - This stack will have nodes in decreasing order of their finish times.
+
+2. **Step 2: Reverse the Graph**:
+    - Reverse all the edges of the original graph to create a **transposed (reverse) graph**.
+
+3. **Step 3: Process vertices in the order of the stack**:
+    - Reset the visited array.
+    - Now, perform **DFS** on the reversed graph, starting from the vertices in the order they were finished (popped from the stack).
+    - Each DFS call on the reversed graph will give one **Strongly Connected Component (SCC)**.
+
+4. **Count the SCCs**:
+    - Count how many times a new DFS is triggered on the reversed graph, as each new DFS indicates a new SCC.
+
+---
+
+### Time Complexity:
+- **O(V + E)**, where `V` is the number of vertices and `E` is the number of edges.
+    - First DFS takes O(V + E) time.
+    - Reversing the graph takes O(V + E) time.
+    - Second DFS (on the transposed graph) takes O(V + E) time.
+
+### Space Complexity:
+- **O(V + E)** for storing the graph and the transposed graph.
+- **O(V)** for the visited array and stack.
+
+---
+
+### Code Breakdown:
+
+1. **DFS on the original graph**:
+    - Store vertices in a stack in the order of their DFS completion.
+
+2. **Reverse the graph**:
+    - Reverse all edges to get the transposed graph.
+
+3. **DFS on the reversed graph**:
+    - Process vertices in the order of the stack and count SCCs.
+
+---
+
+### Example Use Case:
+- **Find SCCs** in a directed graph to determine which nodes are part of a cycle or influence other nodes strongly.
+
+Kosaraju’s Algorithm is efficient for identifying SCCs in directed graphs.
