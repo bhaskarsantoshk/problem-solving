@@ -394,7 +394,7 @@ public class DFS {
         dfs(1, graph, visited);
     }
 }
-
+```
 ## Time Complexity of DFS
 
 The time complexity of Depth-First Search (DFS) is typically expressed in terms of the number of vertices (nodes) and edges in the graph.
@@ -432,3 +432,83 @@ DFS traverses each vertex and each edge once, resulting in a linear time complex
 * Used in Dynamic Graphs
 * To determine if a node is connected to a component in constant time
 * has two methods, findparent and union() - rank and size
+
+# Minimum Spanning Tree (MST)
+
+A **Minimum Spanning Tree (MST)** is a subgraph of a graph that connects all vertices together without any cycles and 
+with the minimum possible total edge weight. MSTs are widely used in network design, clustering, and approximation algorithms.
+
+## Properties of MST:
+1. **Connected:** The MST includes all vertices of the graph.
+2. **Acyclic:** The MST contains no cycles.
+3. **Minimal Weight:** The sum of the edge weights in the MST is minimized.
+4. **Unique (for distinct weights):** If all edge weights are distinct, the MST is unique.
+5. N nodes and N-1 edges
+
+
+# Disjoint Set
+* Does u and v belong to same component ? DFS/BFS takes V+E to determine , DS can find it in constant time
+* Used in Dynamic Graphs, graph changing at every step
+* Two options -> Finding Parent, Union
+* need rank/size array, parent array
+* Union operation ( findParent )
+    * Find ultimate parent of u and v
+    * Connect smaller rank/ size to larger rank/size
+    * Path compression ( update the parent of smaller rank/ size with the one with bigger rank / size )
+    * size is more intuitive
+* Find Parent
+  * if u == parent[u]-> return u
+  * int uParent = findParent( parent[u])
+  * parent[u] = uParent 
+  * everyone connected will have the same ultimate parent
+# Kruskal's Algorithm - Quick Revision Pointers
+
+## 1. Edge Sorting
+- Start by sorting all edges based on their weights in **non-decreasing order**.
+- Time complexity for sorting: **O(E log E)**, where `E` is the number of edges.
+
+## 2. Disjoint Set (Union-Find)
+- **Find**: Efficiently determine the **root/parent** of a node.
+- **Union by Size/Rank**: Combine two sets by attaching the smaller tree under the larger one to maintain balanced trees.
+- **Path Compression**: While performing `find`, update the parent of each node to point directly to the root, flattening the tree for faster future operations.
+
+## 3. Cycle Detection
+- Only add an edge if its vertices belong to **different sets** (i.e., no cycle will form).
+- If they are already in the same set, **skip the edge**.
+
+## 4. MST Construction
+- Add edges to the MST until you have added exactly **V-1 edges** (where `V` is the number of vertices).
+- Stop early once the MST is fully constructed.
+
+## 5. Time Complexity
+- **Sorting edges**: **O(E log E)**.
+- **Union-Find operations** (Find and Union): **O(E log V)**.
+- Overall time complexity: **O(E log V)**.
+
+## 6. Common Pitfalls
+- Ensure the graph is **connected**; if not, the MST cannot be formed.
+- Handle edge cases like **single-node graphs** or **graphs with no edges**.
+
+---
+
+## Quick Reminders:
+- **Union-Find** is crucial for detecting and avoiding cycles.
+- **Path compression** and **union by size** optimize the performance of the Disjoint Set.
+- The MST will always have **V-1 edges** for a connected graph.
+
+# Strongly Connected Components
+* In a component, Every pair of nodes/ vertex are reachable from each other.
+
+# Kosaraju's Algorithm to find SCC
+* Intuition: 
+  * Let's say there are 4 SCC components
+  * SCC1 -> SCC2 -> SCC3 -> SCC4
+  * If you reverse the edges, you will not be able reach from one SCC to another
+  * The thought process is to stop each individual SCC to reach others
+  * Reversing all edges will do the work
+  * and which vertex to sort in order to determine an SSC, we can do that based on DFS completion time
+* Algorithm:
+  * Sort the nodes based on their DFS completion time, this will give the order components of SCCs 
+  * Reverse the Graph
+  * Do a second DFS on the reversed Graph using above sorted nodes - you will get SCCs
+
