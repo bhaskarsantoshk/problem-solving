@@ -21,16 +21,16 @@ public class G42FloydWarshallAlgorithm {
            }
        }
 
-//       for ( int i=0; i<n; i++){
-//           if ( matrix[i][i] < 0) {
-//               // Cycle exists.
-//           }
-//       }
+       for ( int i=0; i<n; i++){
+           if ( matrix[i][i] < 0) {
+               // Cycle exists.
+               throw new IllegalStateException("Negative Cycle");
+           }
+       }
 
         for ( int i=0; i<n; i++){
             for ( int j=0; j<n; j++){
                 if ( matrix[i][j] == (int)1e9) matrix[i][j] = -1;
-                if ( i == j) matrix[i][j] = 0;
             }
         }
     }
