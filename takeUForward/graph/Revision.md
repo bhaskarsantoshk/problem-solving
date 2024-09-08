@@ -563,6 +563,54 @@
 * Make sure to see the order while accessing things from graph
 * Do not add vis array within the for loop , add it while popping from PQ after filtering the vis.
 
+
+## Kruskal's Algorithm for Minimum Spanning Tree (MST)
+
+### Key Concepts:
+
+1. **Graph Representation**:
+   - The graph is represented as an adjacency list, where each node has a list of adjacent nodes and the corresponding edge weights.
+
+2. **Kruskal’s Algorithm**:
+   - Kruskal’s algorithm is a **greedy algorithm** that finds the MST of a graph by sorting all edges in non-decreasing order of their weights and adding them to the MST if they don’t form a cycle.
+   - To prevent cycles, we use the **Disjoint Set (Union-Find)** data structure.
+
+3. **Disjoint Set (Union-Find)**:
+   - Used to keep track of which vertices are connected in the MST. It supports two operations:
+      - **Find**: To determine the set (or parent) a vertex belongs to.
+      - **Union**: To merge two sets.
+   - The **union by size** strategy ensures that the smaller tree is attached to the root of the larger tree, keeping the tree flat and making the operations efficient.
+
+---
+
+### Steps in the Code:
+
+1. **Convert Adjacency List to Edge List**:
+   - Traverse the adjacency list to create a list of edges. Each edge is represented as a triplet `(u, v, weight)` where `u` and `v` are vertices and `weight` is the edge weight.
+
+2. **Sort the Edges**:
+   - Sort all the edges based on their weights in non-decreasing order.
+
+3. **Initialize the Disjoint Set**:
+   - Use the **Disjoint Set** data structure to track the connected components and avoid cycles.
+
+4. **Iterate Over Edges**:
+   - For each edge, check if the vertices `u` and `v` are in different sets (i.e., they don't form a cycle).
+   - If they are in different sets, add the edge to the MST and unite the sets.
+
+5. **Return the Total MST Weight**:
+   - The total weight of the MST is accumulated and returned after processing all edges.
+
+---
+
+### Time Complexity:
+- **O(N + E)** for building the edge list, where `N` is the number of vertices and `E` is the number of edges.
+- **O(M log M)** for sorting the edges, where `M` is the total number of edges.
+- **O(M * 4 * α)** for the Disjoint Set operations (union-find with path compression), where `α` is the inverse Ackermann function, which grows very slowly and can be treated as constant for practical purposes.
+
+### Space Complexity:
+- **O(N + E)** for storing the graph and Disjoint Set data.
+
 ## Kosaraju’s Algorithm for SCC (Strongly Connected Components)
 
 ### Steps:
@@ -724,46 +772,4 @@ Kosaraju’s Algorithm is efficient for identifying SCCs in directed graphs.
     - Perform a **depth-first search (DFS)** on the binary tree and match the tree nodes with the linked list values using the KMP pattern matching.
     - For each node, compare its value with the corresponding value from the linked list (using the KMP technique). If the values match, continue the search recursively down the left and right subtrees.
     - If the linked list values are exhausted (i.e., fully matched), return `true`.
-### Key Points for Merge Sort Implementation
-
-- **Recursive Split**: Divide the array recursively until each part has 1 element.
-
-- **Mid Calculation**: `mid = low + (high - low) / 2`.
-
-- **Merge Step**: Use two pointers (`left`, `right`) to merge sorted halves into a temporary list.
-
-- **Handle Remaining**: Append any leftover elements from either half.
-
-- **Copy Back**: Copy the merged list back to the original array.
-
-### Key Points for Combination Sum Recursion Implementation
-
-- **Base Case**: If `index >= n`, check if `target == 0`. If true, add the current list to the result.
-
-- **Take the Element**: If `target >= candidates[index]`, add `candidates[index]` to the list and recursively call for the reduced target on the same index.
--  Do not increment the index here as we can use as many numbers as we want
-- Do not forget to add >= ( not just >)
-
-- **Backtrack**: After exploring, remove the last added element to backtrack.
-
-- **Skip the Element**: Call the recursive function without including the current element (`index + 1`).
-
-### Key Points for Combination Sum II Recursion Implementation
-
-- **Sort the Array**: Sort `candidates` to easily skip duplicates later.
-
-- **Base Case**: If `index == candidates.length` and `remain == 0`, add the current list to the result.
-
-- - **Recusrive function** : Recusrive function will run from i = index  to n-1 ( Not a take /not take example)
-
-- **Skip Duplicates**: Use `i != index && candidates[i] == candidates[i-1]` to avoid processing the same number in the same recursive level.
-
-- **Take the Element**: If `remain >= candidates[i]`, add the element and recursively call for the reduced target.
-
-- **Break Early**: Stop further exploration when `remain < candidates[i]` as subsequent numbers are larger.
-
-* Don't mistake it for take / not take example
-* Time complexity explanation -> if all numbers are unique , there will be 2^n subsequences , so T = o(2^n * k) , k is avg length of subseq
-
-
 
