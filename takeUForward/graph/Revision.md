@@ -613,3 +613,125 @@
 - **Find SCCs** in a directed graph to determine which nodes are part of a cycle or influence other nodes strongly.
 
 Kosaraju’s Algorithm is efficient for identifying SCCs in directed graphs.
+
+
+## Critical Connections in a Network (Bridges) using Tarjan's Algorithm
+
+### Problem Overview:
+- We are given a network of `n` servers and `connections` between them. A **critical connection** (bridge) is an edge that, when removed, would make the graph disconnected.
+- The goal is to find all such critical connections (bridges).
+
+---
+
+### Key Concepts:
+
+1. **DFS Traversal**:
+    - We perform a DFS traversal, exploring all nodes and marking them as visited.
+
+2. **Discovery Time**:
+    - Track the **discovery time** (`time[]`) of each node during DFS traversal. This represents when the node is first visited.
+
+3. **Low-Link Values**:
+    - Use a `low[]` array to keep track of the **lowest point** (i.e., the earliest visited node) that can be reached from the subtree rooted at the current node.
+    - This helps in determining if the connection (edge) between the current node and its adjacent node is a bridge.
+
+4. **Bridge Condition**:
+    - If the **low-link value** of an adjacent node is **greater than** the discovery time of the current node, it means there is no other way to reach this adjacent node except through the current node, making the edge a **bridge**.
+
+---
+
+### Steps:
+
+1. **Graph Construction**:
+    - Convert the list of `connections` to an adjacency list for easy traversal.
+
+2. **DFS with Tarjan’s Algorithm**:
+    - For each node, perform a DFS to explore its neighbors. Track both **discovery times** and **low-link values**.
+    - After visiting all adjacent nodes, check if there is any adjacent node whose `low[]` value is greater than the current node's `time[]`. If yes, mark this edge as a **bridge**.
+
+---
+
+### Time Complexity:
+- **O(V + E)**, where `V` is the number of vertices (nodes) and `E` is the number of edges (connections). Each edge and vertex is visited once.
+
+### Space Complexity:
+- **O(V + E)**, for storing the graph and auxiliary arrays like `time[]`, `low[]`, and `vis[]`.
+
+---
+
+## Check if a Linked List is a Subpath of a Binary Tree
+
+### Problem Overview:
+- Given a **singly-linked list** and a **binary tree**, the task is to determine if the linked list exists as a downward path (root to leaf) in the binary tree.
+- The path can start from any node in the tree, and it must follow the exact order of nodes from the linked list.
+
+---
+
+### Key Concepts:
+
+1. **Linked List**:
+    - Traverse each node in the linked list sequentially.
+
+2. **Binary Tree**:
+    - Each node has up to two children: left and right.
+    - We need to search the tree to find paths that match the linked list.
+
+---
+
+### Algorithm:
+
+1. **Base Case**:
+    - If the `head` of the linked list is `null`, return `true` (an empty list is a subpath).
+    - If the `root` of the binary tree is `null` and the list still has nodes, return `false`.
+
+2. **DFS Search**:
+    - **dfs(ListNode head, TreeNode root)**:
+        - This function checks if the current node in the linked list (`head`) matches the current node in the binary tree (`root`).
+        - If they match, recursively check the next node in the linked list (`head.next`) with both the left and right children of the tree node.
+
+3. **Search Entire Tree**:
+    - For each node in the binary tree, initiate a DFS search using `isSubPath`:
+        - Try to match the list starting from the current root, left child, and right child recursively.
+## Checking Linked List as a Subpath in a Binary Tree using KMP Algorithm
+
+### Problem Overview:
+- Given a **singly-linked list** and a **binary tree**, we need to determine if the linked list exists as a downward path (from root to leaf) in the binary tree.
+- The problem is tackled using the **Knuth-Morris-Pratt (KMP) algorithm**, typically used for string matching, to efficiently match the linked list with the path in the binary tree.
+
+---
+
+### Key Concepts:
+
+1. **KMP Algorithm**:
+    - The **KMP algorithm** is used for pattern matching in strings. It efficiently skips unnecessary comparisons using a **longest prefix-suffix (LPS)** table.
+    - In this problem, the linked list is treated as the **pattern** to search for in the binary tree's node values.
+
+2. **LPS Array**:
+    - The **LPS table** helps us store the length of the longest proper prefix of the pattern that is also a suffix, which is used to skip comparisons.
+    - The LPS array is computed for the values in the linked list, allowing us to optimize the comparison between the linked list and the binary tree.
+
+---
+
+### Steps:
+
+1. **Convert Linked List to Array**:
+    - The linked list is converted into an array to be used as the pattern for the KMP search.
+
+2. **Compute the LPS Array**:
+    - Compute the LPS table for the linked list values to optimize pattern matching using the KMP algorithm.
+
+3. **DFS with KMP Search**:
+    - Perform a **depth-first search (DFS)** on the binary tree and match the tree nodes with the linked list values using the KMP pattern matching.
+    - For each node, compare its value with the corresponding value from the linked list (using the KMP technique). If the values match, continue the search recursively down the left and right subtrees.
+    - If the linked list values are exhausted (i.e., fully matched), return `true`.
+### Key Points for Merge Sort Implementation
+
+- **Recursive Split**: Divide the array recursively until each part has 1 element.
+
+- **Mid Calculation**: `mid = low + (high - low) / 2`.
+
+- **Merge Step**: Use two pointers (`left`, `right`) to merge sorted halves into a temporary list.
+
+- **Handle Remaining**: Append any leftover elements from either half.
+
+- **Copy Back**: Copy the merged list back to the original array.
