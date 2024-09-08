@@ -61,17 +61,17 @@ Consider a graph with 5 nodes and 6 edges:
 
 ### Java Code
 ```java
-int n = 5; // Number of nodes
-int m = 6; // Number of edges
-int[][] G = new int[n + 1][n + 1];
-
-// Read edges
-for (int i = 0; i < m; i++) {
-    int x = scanner.nextInt();
-    int y = scanner.nextInt();
-    G[x][y] = 1;
-    G[y][x] = 1;
-}
+//int n = 5; // Number of nodes
+//int m = 6; // Number of edges
+//int[][] G = new int[n + 1][n + 1];
+//
+//// Read edges
+//for (int i = 0; i < m; i++) {
+//    int x = scanner.nextInt();
+//    int y = scanner.nextInt();
+//    G[x][y] = 1;
+//    G[y][x] = 1;
+//}
 ```
 **Space Complexity:** O(n^2)
 
@@ -81,25 +81,25 @@ Each list contains the nodes adjacent to the corresponding node.
 
 **Java Code:**
 ```java
-import java.util.ArrayList;
-import java.util.List;
-
-int n = 5; // Number of nodes
-int m = 6; // Number of edges
-List<Integer>[] adjList = new ArrayList[n + 1];
-
-// Initialize the adjacency list
-for (int i = 1; i <= n; i++) {
-    adjList[i] = new ArrayList<>();
-}
-
-// Read edges
-for (int i = 0; i < m; i++) {
-    int x = scanner.nextInt();
-    int y = scanner.nextInt();
-    adjList[x].add(y);
-    adjList[y].add(x);
-}
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//int n = 5; // Number of nodes
+//int m = 6; // Number of edges
+//List<Integer>[] adjList = new ArrayList[n + 1];
+//
+//// Initialize the adjacency list
+//for (int i = 1; i <= n; i++) {
+//    adjList[i] = new ArrayList<>();
+//}
+//
+//// Read edges
+//for (int i = 0; i < m; i++) {
+//    int x = scanner.nextInt();
+//    int y = scanner.nextInt();
+//    adjList[x].add(y);
+//    adjList[y].add(x);
+//}
 ```
 **Space Complexity:** O(n + m), where n is the number of nodes and m is the number of edges.
 
@@ -511,4 +511,13 @@ with the minimum possible total edge weight. MSTs are widely used in network des
   * Sort the nodes based on their DFS completion time, this will give the order components of SCCs 
   * Reverse the Graph
   * Do a second DFS on the reversed Graph using above sorted nodes - you will get SCCs
+# Bridges in Graph
+* An edge on whose removal , Graph will be broken down into separate components
 
+# Tarjan's Algorithm
+* Time of insertion ( DFS time of insertion) 
+* and Min lowest time of insertion of all adjacent nodes except Parent
+# Articulation Points
+* Node when removed devides the graph into multiple components
+* Time of insertion ( DFS time of insertion)
+* and Min lowest time of insertion of all adjacent nodes except Parent and visited nodes
