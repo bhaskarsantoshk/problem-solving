@@ -376,3 +376,128 @@ private void solveOptimized(char[][] board, int col, List<List<String>> result, 
 	•	Use backtracking to place queens on the board.
 	•	In the optimized solution, use arrays to track the occupied rows and diagonals.
 	•	Backtrack if no valid placement is found for the current configuration.
+
+
+## Backtracking / Iterative Approach
+### K-th Permutation Sequence
+- **Goal**: Find the k-th permutation sequence of numbers `1` to `n`.
+- **Approach**:
+  1. Precompute the factorials for reducing the problem size iteratively.
+  2. Generate the k-th permutation by selecting appropriate elements based on the quotient and remainder when dividing `k` by factorial values.
+  3. Remove selected elements from the list and continue with the reduced set.
+
+- **Time Complexity**: `O(n^2)` (iterating over the numbers and adjusting the list)
+- **Space Complexity**: `O(n)` (for storing the numbers and result)
+
+```java
+public class L18KThPermutationSequence {
+    public String getPermutation(int n, int k) {
+        List<Integer> nums = new ArrayList<>();
+        int fact = 1;
+
+        // Prepare list of numbers and compute (n-1)!
+        for (int i = 0; i < n; i++) {
+            nums.add(i + 1);
+            if (i < n - 1) {
+                fact *= (i + 1);
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        k--;  // Convert to zero-indexed
+
+        // Build the k-th permutation
+        while (true) {
+            sb.append(nums.get(k / fact));  // Select the element
+            nums.remove(k / fact);  // Remove from list
+            if (nums.isEmpty()) break;
+
+            k = k % fact;  // Update k
+            fact = fact / nums.size();  // Update factorial
+        }
+
+        return sb.toString();
+    }
+}
+```
+### Key Explanation:
+
+	•	The array nums holds the numbers from 1 to n.
+	•	Use k / fact to determine which number to pick at each step.
+	•	After picking a number, remove it from the list and continue with the remaining numbers.
+	•	Update k and fact as you narrow down the problem space.
+
+
+## Divide and Conquer
+### Count Inversions in an Array
+- **Goal**: Count the number of inversions in an array, where an inversion is defined as two indices `i` and `j` such that `i < j` and `a[i] > a[j]`.
+- **Approach**:
+  1. Use the **Merge Sort** technique to divide the array into halves.
+  2. Count inversions during the merge step when elements from the right half are smaller than elements from the left half.
+  3. Every time an element from the right half is smaller, all remaining elements in the left half are greater (forming inversions).
+
+- **Time Complexity**: `O(n log n)` (merge sort complexity)
+- **Space Complexity**: `O(n)` (for temporary array)
+
+### Code:
+
+```java
+public class CountInversionsInAnArray {
+    static int count = 0;
+
+    public static int numberOfInversions(int[] a, int n) {
+        count = 0;
+        mergeSort(a, 0, n - 1);
+        return count;
+    }
+
+    private static void mergeSort(int[] a, int low, int high) {
+        if (low >= high) return;
+        int mid = low + (high - low) / 2;
+        mergeSort(a, low, mid);
+        mergeSort(a, mid + 1, high);
+        merge(a, low, mid, high);
+    }
+
+    private static void merge(int[] a, int low, int mid, int high) {
+        int left = low;
+        int right = mid + 1;
+        List<Integer> temp = new ArrayList<>();
+
+        // Merge and count inversions
+        while (left <= mid && right <= high) {
+            if (a[left] <= a[right]) {
+                temp.add(a[left]);
+                left++;
+            } else {
+                temp.add(a[right]);
+                count += mid - left + 1;  // Inversions detected
+                right++;
+            }
+        }
+
+        // Add remaining elements from left and right halves
+        while (left <= mid) {
+            temp.add(a[left]);
+            left++;
+        }
+
+        while (right <= high) {
+            temp.add(a[right]);
+            right++;
+        }
+
+        // Copy back the merged elements
+        for (int i = low; i <= high; i++) {
+            a[i] = temp.get(i - low);
+        }
+    }
+}
+
+```
+
+### Key Points:
+
+	•	Inversion Counting: When a[left] > a[right], all elements from left to mid form inversions with a[right].
+	•	Merge Step: Count inversions while merging two halves.
+	•	Divide and Conquer: Merge sort helps count inversions efficiently by dividing the problem into subproblems.
