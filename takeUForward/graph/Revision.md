@@ -735,3 +735,35 @@ Kosaraju’s Algorithm is efficient for identifying SCCs in directed graphs.
 - **Handle Remaining**: Append any leftover elements from either half.
 
 - **Copy Back**: Copy the merged list back to the original array.
+
+### Key Points for Combination Sum Recursion Implementation
+
+- **Base Case**: If `index >= n`, check if `target == 0`. If true, add the current list to the result.
+
+- **Take the Element**: If `target >= candidates[index]`, add `candidates[index]` to the list and recursively call for the reduced target on the same index.
+-  Do not increment the index here as we can use as many numbers as we want
+- Do not forget to add >= ( not just >)
+
+- **Backtrack**: After exploring, remove the last added element to backtrack.
+
+- **Skip the Element**: Call the recursive function without including the current element (`index + 1`).
+
+### Key Points for Combination Sum II Recursion Implementation
+
+- **Sort the Array**: Sort `candidates` to easily skip duplicates later.
+
+- **Base Case**: If `index == candidates.length` and `remain == 0`, add the current list to the result.
+
+- - **Recusrive function** : Recusrive function will run from i = index  to n-1 ( Not a take /not take example)
+
+- **Skip Duplicates**: Use `i != index && candidates[i] == candidates[i-1]` to avoid processing the same number in the same recursive level.
+
+- **Take the Element**: If `remain >= candidates[i]`, add the element and recursively call for the reduced target.
+
+- **Break Early**: Stop further exploration when `remain < candidates[i]` as subsequent numbers are larger.
+
+* Don't mistake it for take / not take example
+* Time complexity explanation -> if all numbers are unique , there will be 2^n subsequences , so T = o(2^n * k) , k is avg length of subseq
+
+
+
