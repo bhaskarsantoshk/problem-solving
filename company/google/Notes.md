@@ -1877,3 +1877,142 @@ class Solution {
     }
 }
 ```
+
+## Safest Path in a Grid
+
+### Problem Overview:
+- Given a grid with values `0` and `1`, where `1` represents a dangerous location (enemy) and `0` represents a safe location, the goal is to find the **safest path** from the top-left corner `(0, 0)` to the bottom-right corner `(n-1, n-1)`.
+- The **safeness factor** of a path is defined as the minimum distance from any point on the path to the nearest danger (a `1` in the grid). We need to maximize this safeness factor.
+
+---
+
+### Approach:
+
+1. **BFS to Calculate Distance from Danger (`1`)**:
+   - Use a **multi-source BFS** starting from all the `1` cells in the grid to compute the **minimum distance from any point to the nearest `1`**.
+   - We store this distance in a 2D array called `distance[][]`, where each cell stores the distance from the nearest danger (`1`).
+
+2. **Maximize Safeness Factor with Priority Queue**:
+   - After computing the distance from danger, we use a **priority queue (max-heap)** to traverse the grid from the top-left corner `(0, 0)` to the bottom-right corner `(n-1, n-1)`.
+   - At each step, we try to maximize the safeness factor of the path by always moving towards the cell that has the highest distance from danger.
+   - The **priority queue** helps in greedily choosing the path with the highest safeness factor.
+
+---
+
+### Steps:
+
+1. **Initialize the Distance Array**:
+   - Set all distances to a large value (e.g., `1e9`), except for cells with `1` (which are set to `0`).
+
+2. **BFS (Multi-source)**:
+   - Start a BFS from all cells containing `1` simultaneously and propagate the minimum distance to all neighboring cells.
+
+3. **Max-Heap (Priority Queue)**:
+   - Use a priority queue to store cells along with their safeness factor. Start with `(distance[0][0], 0, 0)` from the top-left corner.
+   - At each step, pop the cell with the highest safeness factor, update its neighbors, and push them to the queue if not visited.
+
+4. **Return the Safeness Factor**:
+   - When the bottom-right corner is reached, return the safeness factor of that path.
+
+---
+
+### Time Complexity:
+- **BFS**: O(n^2), where `n` is the grid size.
+- **Priority Queue Traversal**: O(n^2 log n) due to the priority queue operations.
+- **Overall Time Complexity**: O(n^2 log n).
+
+### Space Complexity:
+- **O(n^2)** for the `distance` array and the priority queue.
+
+---
+
+### Code Explanation:
+
+```java
+class Solution {
+    public int maximumSafenessFactor(List<List<Integer>> grid) {
+        int n = grid.size();
+        
+        // Base case: if the start or end are dangerous
+        if (grid.get(0).get(0) == 1 || grid.get(n - 1).get(n - 1) == 1) {
+            return 0;
+        }
+        
+        int[][] distance = new int[n][n];
+        for (int[] row : distance) Arrays.fill(row, (int) 1e9);
+        
+        // Step 1: Compute distance from the nearest danger (1) using BFS
+        bfs(grid, distance, n);
+        
+        // Step 2: Max-Heap (Priority Queue) to find the safest path
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[0] - a[0]); // Max-Heap on safeness factor
+        pq.offer(new int[] { distance[0][0], 0, 0 }); // Start from top-left
+        
+        boolean[][] vis = new boolean[n][n];
+        
+        while (!pq.isEmpty()) {
+            int[] cell = pq.poll();
+            int safeness = cell[0], row = cell[1], col = cell[2];
+            
+            // If we reached the bottom-right corner, return the safeness factor
+            if (row == n - 1 && col == n - 1) {
+                return safeness;
+            }
+            
+            vis[row][col] = true;
+            
+            // Explore neighbors
+            for (int[] dir : dirs) {
+                int newRow = row + dir[0];
+                int newCol = col + dir[1];
+                
+                if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < n && !vis[newRow][newCol]) {
+                    int newSafeness = Math.min(safeness, distance[newRow][newCol]);
+                    pq.offer(new int[] { newSafeness, newRow, newCol });
+                    vis[newRow][newCol] = true;
+                }
+            }
+        }
+        
+        return -1;
+    }
+
+    private int[][] dirs = { { 0, 1 }, { 1, 0 }, { -1, 0 }, { 0, -1 } };
+
+    private void bfs(List<List<Integer>> grid, int[][] distance, int n) {
+        Queue<int[]> q = new LinkedList<>();
+        
+        // Start BFS from all danger cells (1s)
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid.get(i).get(j) == 1) {
+                    distance[i][j] = 0;
+                    q.offer(new int[] { i, j });
+                }
+            }
+        }
+
+        // BFS propagation
+        while (!q.isEmpty()) {
+            int[] cell = q.poll();
+            int dist = distance[cell[0]][cell[1]];
+            
+            for (int[] dir : dirs) {
+                int newRow = cell[0] + dir[0];
+                int newCol = cell[1] + dir[1];
+                
+                if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < n && distance[newRow][newCol] > 1 + dist) {
+                    distance[newRow][newCol] = 1 + dist;
+                    q.offer(new int[] { newRow, newCol });
+                }
+            }
+        }
+    }
+}
+```
+
+### Key Takeaways:
+
+	1.	Multi-source BFS: Compute the minimum distance from every cell to the nearest danger (1) using BFS.
+	2.	Priority Queue (Max-Heap): Maximize the safeness factor by always picking the path with the highest safeness factor.
+	3.	Efficient Path Finding: The combination of BFS and priority queue ensures that the solution is both optimal and efficient.
