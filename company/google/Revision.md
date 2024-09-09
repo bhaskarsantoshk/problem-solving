@@ -452,3 +452,12 @@
 - Relax edges in topological order to find the shortest path.
 - If a node remains unreachable from the source, set its distance to `-1`.
 
+## Four Sum Problem
+
+1. Sort the array and use two nested loops to fix the first two numbers.
+2. For the remaining two numbers, use a two-pointer approach (start and end).
+3. Check the sum of the four numbers:
+    - If it equals the target, add the combination to the result.
+    - If greater than the target, move the end pointer left.
+    - If less than the target, move the start pointer right.
+4. Skip duplicate elements to avoid redundant combinations.
