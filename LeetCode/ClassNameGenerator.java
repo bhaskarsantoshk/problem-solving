@@ -23,7 +23,7 @@ public class ClassNameGenerator {
     }
 
     private static boolean isSpecialCharacter(char c) {
-        return !isAlphabet(c) && !(c>='1' && c<='9') ;
+        return !isAlphabet(c) && !(c>='0' && c<='9') ;
     }
 
     private static boolean isAlphabet(char c) {
@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s = "43. Multiply Strings\n";
+        String s ="Longest Increasing Subsequence";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
