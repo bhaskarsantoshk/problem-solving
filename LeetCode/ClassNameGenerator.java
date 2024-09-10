@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Longest Increasing Subsequence";
+        String s ="399. Evaluate Division";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
