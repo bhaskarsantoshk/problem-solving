@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="399. Evaluate Division";
+        String s ="85. Maximal Rectangle";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
