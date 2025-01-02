@@ -1,7 +1,7 @@
 package company.karat;
 
 public class P383RansomNote {
-    
+
     public boolean canConstruct(String ransomNote, String magazine) {
         int [] freq = new int[26];
         for ( char c: magazine.toCharArray()) freq[c-'a']++;
