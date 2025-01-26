@@ -10,6 +10,13 @@ public class FindMinimumInRotatedSortedArray {
         while ( low <= high ){
             int mid = low + (high-low)/2;
 
+            // optimized
+            // if the search space is already sorted, arr[low] will be the smallest in that search space
+            if ( arr[low] <= arr[high]){
+                ans = Math.min(ans, arr[low]);
+                break;
+            }
+
             if ( arr[low] <= arr[mid] ){
                 ans = Math.min( ans, arr[low]);
                 low = mid+1;
