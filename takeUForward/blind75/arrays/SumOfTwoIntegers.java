@@ -14,5 +14,6 @@ public class SumOfTwoIntegers {
     //       0
     // if there is a 1 + 1 -> there will be left shift of 1
     // 1 0 or 0 1 or 1 1 -> (p^q) + (p&q) << 1
+    // https://stackoverflow.com/a/15450315/5070050
 
 }
