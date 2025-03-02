@@ -1,4 +1,4 @@
-package takeUForward.blind75.arrays;
+package takeUForward.blind75.bitManipulation;
 
 public class SumOfTwoIntegers {
     public int getSum(int a, int b) {
