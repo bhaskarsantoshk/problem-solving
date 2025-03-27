@@ -7,6 +7,18 @@ public class P7ReverseAnArray {
         for ( int num: a){
             System.out.print(num+" ");
         }
+        System.out.println();
+        a= new int[]{1, 2, 3, 4, 2};
+        reverse(a, 0);
+        for ( int num: a){
+            System.out.print(num+" ");
+        }
+    }
+
+    private static void reverse(int[] a, int i) {
+        if ( i >= a.length/2) return;
+        swap(a, i, a.length-i-1);
+        reverse(a, i+1);
     }
 
     private static void reverse(int[] a, int l, int r) {
