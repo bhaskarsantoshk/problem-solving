@@ -19,4 +19,8 @@ public class P10PrintAllSubsequences {
         sb.deleteCharAt(sb.length()-1);
         printSubsequences(i+1, sb, input);
     }
+    // T : O(N * 2^N)
+    // S: O(N)
 }
+
+
