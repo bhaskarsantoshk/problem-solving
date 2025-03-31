@@ -14,17 +14,19 @@ public class P16CombinationSum {
                                          ArrayList<Integer> list) {
         if ( index == candidates.length){
             if ( target == 0){
-                ans.add(new ArrayList<>(list));
+                ans.add(new ArrayList<>(list)); // o(k)
             }
             return;
         }
         if ( candidates[index] <= target) {
             list.add(candidates[index]);
-            findCombinations(candidates, index, target - candidates[index], ans, list);
+            findCombinations(candidates, index, target - candidates[index], ans, list); // 2^t
             list.remove(list.size() - 1);
         }
         findCombinations(candidates, index+1, target, ans, list);
     }
 }
+// T: O(K * 2^T)
+// S: O(K*X)
 
 // https://www.naukri.com/code360/problems/combination-sum_981296?leftPanelTabValue=PROBLEM
