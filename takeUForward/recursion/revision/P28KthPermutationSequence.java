@@ -16,7 +16,7 @@ public class P28KthPermutationSequence {
         while (true){
             sb.append(nums.get(k/fact));
             nums.remove(k/fact);
-            if ( nums.size() == 0) break;
+            if (nums.isEmpty()) break;
             k = k % fact;
             fact = fact/nums.size();
         }
