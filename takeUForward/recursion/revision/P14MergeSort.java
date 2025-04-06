@@ -26,6 +26,12 @@ public class P14MergeSort {
                 temp.add(arr[right++]);
             }
         }
+        while ( left <= mid ){
+            temp.add(arr[left++]);
+        }
+        while ( right <= high ){
+            temp.add(arr[right++]);
+        }
         int index = 0;
         for ( int i=low; i<=high; i++){
             arr[i] = temp.get(index++); // temp.get(i-low);
