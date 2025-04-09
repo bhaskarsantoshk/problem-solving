@@ -16,6 +16,7 @@ public class P10InsertBeforeX {
                 cur.next = newNode;
                 break;
             }
+            cur = cur.next;
         }
         return head;
     }
