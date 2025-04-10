@@ -2,7 +2,7 @@ package takeUForward.linkedlists;
 
 import takeUForward.linkedlists.doubly_linked_list.ListNode;
 
-public class DeleteHeadOfDLL {
+public class P12DeleteHeadOfDLL {
     public ListNode deleteHead(ListNode head) {
         if ( head == null) return null;
         if ( head.next == null) return null;
