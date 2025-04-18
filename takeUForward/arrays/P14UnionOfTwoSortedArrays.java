@@ -55,8 +55,8 @@ public class P14UnionOfTwoSortedArrays {
         }
 
         int[] res = new int[list.size()];
-        for ( int i=0; i<res.length; i++){
-            res[i] = list.get(i);
+        for ( int ind=0; ind<res.length; ind++){
+            res[ind] = list.get(ind);
         }
         return res;
     }
