@@ -47,7 +47,32 @@ public class TreeTraversals {
         return res;
     }
 
+    class BinaryTreeNode<T> {
+        T data;
+        BinaryTreeNode<T> left;
+        BinaryTreeNode<T> right;
+
+        public BinaryTreeNode(T data) {
+            this.data = data;
+        }
+    }
+    /*
+    BinaryTreeNode<T> can hold any data type you want — Integer, String, Double, even custom objects.
+    BinaryTreeNode<Integer> root = new BinaryTreeNode<>(5);
+    BinaryTreeNode<String> root = new BinaryTreeNode<>("Hello");
+     */
+
     public static ArrayList<Integer> preorderTraversal(BinaryTreeNode<Integer> root) {
-        
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<BinaryTreeNode> stack = new Stack<>();
+        if ( root == null ) return res;
+        stack.push(root);
+        while (!stack.isEmpty()){
+            BinaryTreeNode node = stack.pop();
+            res.add((Integer) node.data);
+            if ( node.right != null) stack.push(node.right);
+            if ( node.left != null) stack.push(node.left);
+        }
+        return res;
     }
 }
