@@ -3,6 +3,7 @@ package takeUForward.trees.revision3;
 import books.EPI.BinaryTrees.BinaryTreeNode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -75,4 +76,45 @@ public class TreeTraversals {
         }
         return res;
     }
+
+    class TreeNodeGeneric<T> {
+        T data;
+        TreeNodeGeneric<T> left;
+        TreeNodeGeneric<T> right;
+
+        public TreeNodeGeneric() {
+            this.data = null;
+            this.left = null;
+            this.right = null;
+        }
+
+        public TreeNodeGeneric(T x) {
+            this.data = x;
+            this.left = null;
+            this.right = null;
+        }
+
+        public TreeNodeGeneric(T x, TreeNodeGeneric<T> left, TreeNodeGeneric<T> right) {
+            this.data = x;
+            this.left = left;
+            this.right = right;
+        }
+    };
+
+    public static List<Integer> postorderTraversal(TreeNodeGeneric<Integer> root) {
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNodeGeneric> stack = new Stack<>();
+        if ( root == null ) return res;
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNodeGeneric node = stack.pop();
+            res.add((Integer)node.data);
+            if ( node.left != null) stack.push(node.left);
+            if ( node.right != null) stack.push(node.right);
+        }
+        Collections.reverse(res);
+        return res;
+    }
+
+
 }
