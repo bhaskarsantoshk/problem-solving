@@ -1,8 +1,9 @@
 package takeUForward.trees;
 
 public class TreeNode {
-    TreeNode left, right;
-    int val;
+    public TreeNode left;
+    public TreeNode right;
+    public int val;
     TreeNode ( int val ){
         this.val = val;
     }
