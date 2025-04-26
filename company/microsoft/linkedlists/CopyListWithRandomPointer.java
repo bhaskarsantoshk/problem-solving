@@ -7,7 +7,7 @@ public class CopyListWithRandomPointer {
     // Store original and copy Nodes mapping
     // T = O(N), S= O(N)
     public Node copyRandomListUsingHashMap(Node head) {
-        if ( head == null || head.next == null ) return head;
+        if ( head == null  ) return head;
         Map<Node, Node> map = new HashMap<>();
         Node cur = head;
         while ( cur != null ){

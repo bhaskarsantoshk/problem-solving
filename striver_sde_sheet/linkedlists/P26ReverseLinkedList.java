@@ -4,7 +4,7 @@ import striver_sde_sheet.ListNode;
 
 public class P26ReverseLinkedList {
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseListStack(ListNode head) {
         if ( head == null || head.next == null) return head;
         ListNode prev = null;
         ListNode cur = head;

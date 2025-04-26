@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="85. Maximal Rectangle";
+        String s ="Implement Queue using Arrays\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }

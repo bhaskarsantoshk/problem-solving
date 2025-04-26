@@ -61,7 +61,7 @@ public class IntersectionOfTwoLinkedLists {
     // T = O ( N1 + N2 )
     // diff between l1 and l2 = d
     // by the time l1 reaches null, l2 is d steps away from null
-    // when l2 reaches null, l1 is 2 steps ahead in other LL
+    // when l2 reaches null, l1 is d steps ahead in other LL
     // now they both start at same level, so we can compare
     public ListNode getIntersectionNodeOptimized(ListNode headA, ListNode headB) {
         if ( headA == null || headB == null ) return null;

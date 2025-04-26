@@ -22,7 +22,7 @@ public class QuickSort {
 
         while ( i <= j){
             while ( i <= high && nums[i] <= pivot) i++;
-            while ( j >= low && nums[i] > pivot) j--;
+            while ( j >= low && nums[j] > pivot) j--;
             if ( i < j){
                 swap(nums, i ,j);
             }
