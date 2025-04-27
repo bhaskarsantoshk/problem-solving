@@ -4,10 +4,10 @@ public class P1HeapifyMinHeap {
     public void heapify(int[] nums, int ind, int val) {
         if (nums[ind] > val){
             nums[ind] = val;
-            heapifyUp(nums, ind);
+            heapifyDown(nums, ind);
         } else {
             nums[ind] = val;
-            heapifyDown(nums, ind);
+            heapifyUp(nums, ind);
         }
     }
 
