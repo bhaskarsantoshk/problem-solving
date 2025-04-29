@@ -1,4 +1,4 @@
-package takeUForward.binaryTrees;
+package takeUForward.trees.revision;
 
 import takeUForward.trees.TreeNode;
 
