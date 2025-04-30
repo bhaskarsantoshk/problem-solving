@@ -5,7 +5,7 @@ import takeUForward.trees.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MaximumDepthInBT {
+public class P1MaximumDepthInBT {
     public int maxDepth(TreeNode root) {
         if ( root == null) return 0;
         int lh = maxDepth(root.left);

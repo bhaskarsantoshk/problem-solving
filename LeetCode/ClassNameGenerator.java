@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Implement Queue using Arrays\n";
+        String s ="12Diameter of Binary Tree\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }

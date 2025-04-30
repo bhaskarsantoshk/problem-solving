@@ -1,13 +1,10 @@
-package takeUForward.binaryTrees;
+package takeUForward.trees.revision;
 
-import takeUForward.trees.Inorder;
 import takeUForward.trees.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
-public class P2CheckIfTwoTreesAreIdenticalOrNot {
+public class P10CheckIfTwoTreesAreIdenticalOrNot {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if ( p == null && q == null) return true;
         if ( p == null || q == null) return false;
