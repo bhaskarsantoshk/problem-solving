@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Generate Paranthesis";
+        String s ="Check if there exists a subsequence with sum K";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
