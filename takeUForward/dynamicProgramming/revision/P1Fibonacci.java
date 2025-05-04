@@ -1,5 +1,7 @@
 package takeUForward.dynamicProgramming.revision;
 
+import java.util.Arrays;
+
 public class P1Fibonacci {
     int fib(int n){
         if(n<=1) return n;
@@ -8,6 +10,7 @@ public class P1Fibonacci {
 
     int fibMemoIzed(int n){
         int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
         return fib(n, dp);
     }
 
