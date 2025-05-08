@@ -1,4 +1,4 @@
-package takeUForward.binaryTrees;
+package takeUForward.dynamicProgramming.revision;
 
 import java.util.Arrays;
 

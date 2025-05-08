@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check if there exists a subsequence with sum K";
+        String s ="Ninja's training";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }

@@ -2,8 +2,6 @@ package takeUForward.dynamicProgramming.revision;
 
 import java.util.Arrays;
 
-import static Recursion.TwentyIntegers.n;
-
 public class P5MaximumSumOfNonAdjacentElements {
     public int nonAdjacent(int[] nums) {
         // f(index) = max sum of non-adjacent elements from [0 -index]
