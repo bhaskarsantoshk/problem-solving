@@ -1,9 +1,8 @@
 package takeUForward.math;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class P1PrintAllPrimesTillN {
+public class P4PrintAllPrimesTillN {
     public ArrayList<Integer> primeTillN(int n) {
         int[] prime = new int[n+1];
         for ( int i=2; i<=n; i++) prime[i] =1;

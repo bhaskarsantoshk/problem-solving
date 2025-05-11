@@ -2,7 +2,7 @@ package takeUForward.math;
 
 import java.util.ArrayList;
 
-public class P3CountPrimesInRangeLToR {
+public class P6CountPrimesInRangeLToR {
     public ArrayList<Integer> primesInRange(ArrayList<int[]> queries) {
         int n = 100001;
         int[] primes = new int[n];
