@@ -47,4 +47,20 @@ public class P8GridUniquePaths {
         }
         return dp[m-1][n-1];
     }
+
+    public int uniquePathsSpaceOptimized(int m, int n) {
+        int[] prev = new int[n];
+        for ( int i=0; i<m; i++){
+            int[] cur = new int[n];
+            for ( int j=0; j<n; j++){
+                if ( i==0 && j==0) cur[0] = 1;
+                else {
+                    cur[j] = prev[j];
+                    if ( j > 0) cur[j] += cur[j-1];
+                }
+            }
+            prev = cur;
+        }
+        return prev[n-1];
+    }
 }
