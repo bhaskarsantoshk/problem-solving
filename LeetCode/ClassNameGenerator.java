@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Ninja's training";
+        String s ="LCM of two numbers";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
