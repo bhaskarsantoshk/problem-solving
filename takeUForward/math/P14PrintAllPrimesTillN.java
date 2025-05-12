@@ -2,7 +2,7 @@ package takeUForward.math;
 
 import java.util.ArrayList;
 
-public class P4PrintAllPrimesTillN {
+public class P14PrintAllPrimesTillN {
     public ArrayList<Integer> primeTillN(int n) {
         int[] prime = new int[n+1];
         for ( int i=2; i<=n; i++) prime[i] =1;
