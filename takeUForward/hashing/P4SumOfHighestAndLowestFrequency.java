@@ -1,4 +1,4 @@
-package takeUForward.math;
+package takeUForward.hashing;
 
 import java.util.HashMap;
 import java.util.Map;
