@@ -3,7 +3,7 @@ package takeUForward.math;
 import java.util.ArrayList;
 import java.util.List;
 
-public class P5PrimeFactorisationOfANumber {
+public class P15PrimeFactorisationOfANumber {
     public List<List<Integer>> primeFactors(int[] queries) {
         List<List<Integer>> res = new ArrayList<>();
         for ( int num: queries){
