@@ -5,7 +5,7 @@ package takeUForward.dynamicProgramming.revision;
 
 import java.util.Arrays;
 
-public class P9MinimumPathsum {
+public class P10MinimumPathsum {
     public int minFallingPathSum(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
