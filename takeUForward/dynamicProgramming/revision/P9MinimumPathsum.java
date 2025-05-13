@@ -70,7 +70,7 @@ public class P9MinimumPathsum {
         int[] prev = new int[n];
         prev[0] = grid[0][0];
         for ( int i=0; i<m; i++){
-            int[] cur = new int[n]
+            int[] cur = new int[n];
             for ( int j=0; j<n; j++){
                 if ( i==0 && j == 0) cur[j] = grid[0][0]; // Never forget base ase
                 else {
