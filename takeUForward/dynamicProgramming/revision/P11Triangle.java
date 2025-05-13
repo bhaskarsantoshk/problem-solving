@@ -52,4 +52,22 @@ public class P11Triangle {
         }
         return dp[0][0];
     }
+
+    public int minTriangleSumSpaceOptimized(int[][] triangle) {
+        int m = triangle.length;
+        int [] prev = new int[triangle[m-1].length];
+        for ( int i=m-1; i>=0; i--){
+            int[] cur = new int[triangle[i].length];
+            for ( int j=triangle[i].length-1; j>=0; j--){
+                if ( i == m-1) cur[j] = triangle[i][j];
+                else {
+                    int down = triangle[i][j]+ prev [j];
+                    int diag = triangle[i][j]+ prev [j+1];
+                    cur[j] = Math.min(down, diag);
+                }
+            }
+            prev = cur;
+        }
+        return prev[0];
+    }
 }
