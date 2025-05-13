@@ -33,4 +33,23 @@ public class P11Triangle {
         int diag = triangle[i][j]+ f(i+1, j+1, triangle, dp);
         return dp[i][j]= Math.min(down, diag);
     }
+
+    public int minTriangleSumTabular(int[][] triangle) {
+        int m = triangle.length;
+        int [][] dp = new int[m][];
+        for ( int i=0; i<m; i++) {
+            dp[i] = new int[triangle[i].length];
+        }
+        for ( int i=m-1; i>=0; i--){
+            for ( int j=triangle[i].length-1; j>=0; j--){
+                if ( i == m-1) dp[i][j] = triangle[i][j];
+                else {
+                    int down = triangle[i][j]+ dp[i+1] [j];
+                    int diag = triangle[i][j]+ dp[i+1] [j+1];
+                    dp[i][j] = Math.min(down, diag);
+                }
+            }
+        }
+        return dp[0][0];
+    }
 }
