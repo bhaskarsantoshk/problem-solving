@@ -47,4 +47,54 @@ public class P12MinimumFallingSum {
 
         return dp[i][j]= Math.min( Math.min(ld, rd), up);
     }
+
+    public int minFallingPathTabular(int[][] matrix) {
+
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int [][] dp = new int[n][m];
+        for ( int j=0; j<m; j++) dp[0][j] = matrix[0][j];
+        for ( int i=1; i<n; i++){
+            for ( int j=0; j<m; j++){
+                int up = matrix[i][j] + dp[i-1][j];
+                int ld = (int) 1e9;
+                int rd = (int) 1e9;
+                if ( j > 0) ld = matrix[i][j] + dp[i-1][j-1];
+                if ( j < m-1) rd = matrix[i][j] + dp[i-1][j+1];
+
+                dp[i][j] = Math.min( up , Math.min(ld, rd) );
+            }
+        }
+        int min = dp[n-1][0];
+        for ( int i=1; i<m; i++){
+            min = Math.min(min, dp[n-1][i]);
+        }
+        return min;
+    }
+
+    public int minFallingPathSpaceOptimized(int[][] matrix) {
+
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int [] prev = new int[m];
+        for ( int j=0; j<m; j++) prev[j] = matrix[0][j];
+        for ( int i=1; i<n; i++){
+            int []cur = new int[m];
+            for ( int j=0; j<m; j++){
+                int up = matrix[i][j] + prev[j];
+                int ld = (int) 1e9;
+                int rd = (int) 1e9;
+                if ( j > 0) ld = matrix[i][j] + prev[j-1];
+                if ( j < m-1) rd = matrix[i][j] + prev[j+1];
+
+                cur[j] = Math.min( up , Math.min(ld, rd) );
+            }
+            prev = cur;
+        }
+        int min = prev[0];
+        for ( int i=1; i<m; i++){
+            min = Math.min(min, prev[i]);
+        }
+        return min;
+    }
 }
