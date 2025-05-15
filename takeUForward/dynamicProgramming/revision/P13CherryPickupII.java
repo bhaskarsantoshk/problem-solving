@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class P13CherryPickupII {
     public int cherryPickup(int[][] matrix) {
         int n = matrix.length;
-        int m = matrix[0].length-1;
+        int m = matrix[0].length;
         return f(0, 0,0, matrix);
     }
 
@@ -29,7 +29,7 @@ public class P13CherryPickupII {
 
     public int cherryPickupMemoized(int[][] matrix) {
         int n = matrix.length;
-        int m = matrix[0].length-1;
+        int m = matrix[0].length;
         int[][][] dp= new int[n][m][m];
         for ( int i=0; i<n; i++){
             for ( int j=0; j<m; j++){
@@ -56,5 +56,44 @@ public class P13CherryPickupII {
             }
         }
         return dp[i][j1][j2] = max;
+    }
+
+    public int cherryPickupTabulation(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[][][] dp= new int[n][m][m];
+
+
+        // base case from rec
+        for ( int j1=0; j1<m; j1++){
+            for ( int j2=0; j2<m; j2++){
+                if ( j1 == j2) dp[n-1][j1][j2] = matrix[n-1][j1];
+                else dp[n-1][j1][j2] = matrix[n-1][j1] + matrix[n-1][j2];
+            }
+        }
+
+        // express all
+        for ( int i=n-2; i>=0; i--){
+            for ( int j1=0; j1<m; j1++){
+                for ( int j2=0; j2<m; j2++){
+                    // copy reccurrence and adjust boundary
+                    int max = 0;
+                    for ( int dj1=-1;dj1<=1; dj1++){
+                        for ( int dj2=-1; dj2<=1;dj2++){
+                            int value =0;
+                            if ( j1 == j2) value =  matrix[i][j1];
+                            else value = matrix[i][j1] +  matrix[i][j2];
+                            if ( j1 + dj1 >=0 && j1+dj1 < m && j2+dj2 >=0 && j2+dj2 <m){
+                                value+= dp[i+1] [j1+dj1] [j2+dj2];
+                                max = Math.max(max, value);
+                            }
+
+                        }
+                    }
+                    dp[i][j1][j2] = max;
+                }
+            }
+        }
+        return dp[0][0][m-1];
     }
 }
