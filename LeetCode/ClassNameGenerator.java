@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Best time to buy and sell stock II";
+        String s ="Pre, Post, Inorder in one traversal";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
