@@ -46,4 +46,32 @@ public class P16BestTimeToBuyAndSellStockIII {
         }
         return dp[index][buy][cap] =profit;
     }
+
+    public int stockBuySellTabular(int[] arr, int n) {
+        int[][] ahead = new int [2][3];
+        int [][] cur = new int [2][3];
+        for ( int buy = 0; buy <=1; buy++){
+            for ( int cap=0; cap<=2; cap++){
+                ahead[buy][cap] = 0;
+            }
+        }
+        int profit = 0;
+        for ( int index=n-1; index>=0; index--){
+            for ( int buy=0; buy<=1; buy++){
+                for ( int cap=2; cap>0; cap--){
+                    if ( buy == 1){
+                        profit = Math.max ( -arr[index] + ahead[0][cap],
+                                ahead[1][cap]);
+                    } else {
+                        profit = Math.max( arr[index]+ ahead[1][cap-1],
+                                ahead[0][cap]);
+                    }
+                    cur[buy][cap] = profit;
+                }
+            }
+            ahead = cur;
+        }
+
+        return ahead[1][2];
+    }
 }
