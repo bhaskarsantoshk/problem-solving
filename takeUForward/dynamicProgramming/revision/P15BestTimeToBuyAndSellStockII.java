@@ -2,7 +2,7 @@ package takeUForward.dynamicProgramming.revision;
 
 import java.util.Arrays;
 
-public class PBestTimeToBuyAndSellStockII {
+public class P15BestTimeToBuyAndSellStockII {
     public int stockBuySell(int[] arr, int n) {
         return f(0, true, arr, n);
     }
