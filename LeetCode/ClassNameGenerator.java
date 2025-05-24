@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="19Subset sum equals to target\n";
+        String s ="21Partition a set into two subsets with minimum absolute sum difference\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
