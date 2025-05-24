@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="22 Count subsets with sum K\n";
+        String s ="23 Count partitions with given difference\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
