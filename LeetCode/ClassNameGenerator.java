@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="240 and 1 Knapsack\n";
+        String s ="25Minimum coins\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
