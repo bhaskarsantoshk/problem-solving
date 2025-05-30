@@ -1,6 +1,6 @@
 package takeUForward.graph.revision2;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class P15FindEventualSafeStates {
     public int[] eventualSafeNodes(int V, int[][] adj) {
@@ -38,5 +38,39 @@ public class P15FindEventualSafeStates {
         pathVis[node] = false;
         check[node] = true;
         return false;
+    }
+
+    public int[] eventualSafeNodesBFS(int V, int[][] adj) {
+        List<Set<Integer>> adjacencyList = new ArrayList<>();
+        for ( int i=0; i<V; i++) adjacencyList.add(new HashSet<>());
+        int[] inDegree = new int[V];
+        for ( int i=0; i<V; i++){
+            for ( int adjNode: adj[i]){
+                adjacencyList.get(adjNode).add(i);
+                inDegree[i]++;
+            }
+        }
+        boolean[] vis = new boolean[V];
+        Queue<Integer> queue = new LinkedList<>();
+        for ( int i=0; i<V; i++) {
+            if ( inDegree[i] == 0) queue.offer(i);
+        }
+
+        List<Integer> list = new ArrayList<>();
+
+        while (!queue.isEmpty()){
+            int node = queue.poll();
+            list.add(node);
+            for ( int adjNode: adjacencyList.get(node)){
+                inDegree[adjNode]--;
+                if ( inDegree[adjNode] == 0) queue.offer(adjNode);
+            }
+        }
+        int [] ans = new int[list.size()];
+        for ( int i=0; i<ans.length; i++){
+            ans[i] = list.get(i);
+        }
+        Arrays.sort(ans);
+        return ans;
     }
 }
