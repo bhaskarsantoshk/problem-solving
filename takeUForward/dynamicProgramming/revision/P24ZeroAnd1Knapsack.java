@@ -2,7 +2,7 @@ package takeUForward.dynamicProgramming.revision;
 
 import java.util.Arrays;
 
-public class P240And1Knapsack {
+public class P24ZeroAnd1Knapsack {
     public int knapsack01(int[] wt, int[] val, int n, int W) {
         return f(n-1, wt, val, W);
     }
