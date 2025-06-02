@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="31Longest Increasing Subsequence\n";
+        String s ="Largest Odd Number in a String\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
