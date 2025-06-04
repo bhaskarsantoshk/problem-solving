@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Largest Odd Number in a String\n";
+        String s ="29Coin change II\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
