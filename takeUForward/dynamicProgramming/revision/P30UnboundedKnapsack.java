@@ -39,4 +39,19 @@ public class P30UnboundedKnapsack {
         }
         return dp[index][w] = Math.max(take, notTake);
     }
+
+    public int unboundedKnapsackTabular(int[] wt, int[] val, int n, int W) {
+        int [][] dp = new int[n+1][W+1];
+        for ( int index=n-1; index>=0; index--){
+            for ( int w=0; w<=W; w++){
+                int notTake = dp[index+1][w];
+                int take = 0;
+                if ( w-wt[index] >=0){
+                    take = dp[index][w-wt[index]]+val[index];
+                }
+                dp[index][w] = Math.max(take, notTake);
+            }
+        }
+        return dp[0][W];
+    }
 }
