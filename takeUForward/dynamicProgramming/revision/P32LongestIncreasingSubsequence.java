@@ -2,7 +2,7 @@ package takeUForward.dynamicProgramming.revision;
 
 import java.util.Arrays;
 
-public class P31LongestIncreasingSubsequence {
+public class P32LongestIncreasingSubsequence {
     public int LIS(int[] nums) {
         return f(nums.length-1, nums.length, nums);
     }
