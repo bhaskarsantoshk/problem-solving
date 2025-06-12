@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class LargestDivisibleSubset {
+public class P34LargestDivisibleSubset {
     public List<Integer> largestDivisibleSubset(int[] nums) {
         Arrays.sort(nums);
         // 1 2 4 5 8 9 16 32 18 40
