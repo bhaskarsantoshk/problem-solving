@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="42Minimum insertions or deletions to convert string A to B\n";
+        String s ="43 Shortest common supersequence\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
