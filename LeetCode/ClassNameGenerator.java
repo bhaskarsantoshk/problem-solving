@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="43 Shortest common supersequence\n";
+        String s ="44Distinct subsequences\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
