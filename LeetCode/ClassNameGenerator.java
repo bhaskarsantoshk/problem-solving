@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Print Longest Increasing Subsequence\n";
+        String s ="41Minimum insertions to make string palindrome\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
