@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="41Minimum insertions to make string palindrome\n";
+        String s ="42Minimum insertions or deletions to convert string A to B\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
