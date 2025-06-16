@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="45Edit distance\n";
+        String s ="46Wildcard matching\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
