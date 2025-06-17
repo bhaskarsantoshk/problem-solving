@@ -34,4 +34,21 @@ public class P47MatrixChainMultiplication {
         }
         return dp[i][j]=min;
     }
+
+    public int matrixMultiplicationTabular(int[] nums) {
+        int n = nums.length;
+        int [][] dp = new int[n][n];
+        for ( int i=0; i<n; i++) dp[i][i] = 0;
+        for ( int i=n-1; i>=1; i--){
+            for ( int j=i+1; j<n; j++){
+                int min = (int)1e9;
+                for ( int k=i; k<=j-1; k++){
+                    int steps = nums[i-1] * nums[k]* nums[j] + dp[i][k] + dp[k+1][j];
+                    min = Math.min(steps, min);
+                }
+                dp[i][j]=min;
+            }
+        }
+        return dp[1][n-1];
+    }
 }
