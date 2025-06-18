@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="50Palindrome partitioning II\n";
+        String s ="3Number of Subarrays with Sum K\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
