@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="49Burst balloons\n";
+        String s ="50Palindrome partitioning II\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
