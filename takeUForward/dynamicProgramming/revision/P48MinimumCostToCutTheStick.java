@@ -32,8 +32,8 @@ public class P48MinimumCostToCutTheStick {
         cuts.add(n);
         Collections.sort(cuts);
         int x = cuttings.size();
-        int [][] dp = new int[x][x];
-        for ( int i=0; i<x; i++) Arrays.fill(dp[i], -1);
+        int [][] dp = new int[x+1][x+1];
+        for ( int i=0; i<=x; i++) Arrays.fill(dp[i], -1);
         return f(1, cuttings.size(), cuts, dp);
     }
 
@@ -46,5 +46,28 @@ public class P48MinimumCostToCutTheStick {
             min = Math.min(cost, min);
         }
         return dp[i][j]=min;
+    }
+
+    public int minCostTabular(int n, List<Integer> cuts) {
+        List<Integer> cuttings = new ArrayList<>();
+        cuttings.add(0);
+        for ( Integer num: cuts) cuttings.add(num);
+        cuttings.add(n);
+        Collections.sort(cuttings);
+        int c = cuttings.size()-2;
+
+        int [][] dp = new int[c+2][c+2];
+        for ( int i=c; i>=1; i--){
+            for ( int j=1; j<=c; j++){
+                if ( i > j) continue;
+                int min = (int) 1e9;
+                for ( int k=i; k<=j; k++){
+                    int cost = cuttings.get(j+1)-cuttings.get(i-1)+ dp[i][k-1] + dp[k+1][j];
+                    min = Math.min(cost, min);
+                }
+                dp[i][j]=min;
+            }
+        }
+        return dp[1][c];
     }
 }
