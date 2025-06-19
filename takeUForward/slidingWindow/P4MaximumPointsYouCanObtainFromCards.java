@@ -1,4 +1,4 @@
-package takeUForward.twoPointers;
+package takeUForward.slidingWindow;
 
 public class P4MaximumPointsYouCanObtainFromCards {
     public int maxScore(int[] cardScore, int k) {
