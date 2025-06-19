@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="5Longest Substring Without Repeating Characters\n\n\n";
+        String s ="6Max Consecutive Ones III";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
