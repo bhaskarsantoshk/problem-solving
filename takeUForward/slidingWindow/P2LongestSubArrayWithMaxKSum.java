@@ -1,4 +1,4 @@
-package takeUForward.twoPointers;
+package takeUForward.slidingWindow;
 
 public class P2LongestSubArrayWithMaxKSum {
     public int longestSubArrayWithMaxKSum(int [] arr, int k){
