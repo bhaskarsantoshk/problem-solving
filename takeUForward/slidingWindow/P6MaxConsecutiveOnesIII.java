@@ -1,4 +1,4 @@
-package takeUForward.twoPointers;
+package takeUForward.slidingWindow;
 
 public class P6MaxConsecutiveOnesIII {
     public int longestOnes(int[] nums, int k) {
