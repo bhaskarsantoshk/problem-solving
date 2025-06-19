@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="3Number of Subarrays with Sum K\n";
+        String s ="4Maximum Points You Can Obtain from Cards\n\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
