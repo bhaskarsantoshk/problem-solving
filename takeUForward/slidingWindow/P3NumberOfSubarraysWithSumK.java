@@ -1,4 +1,4 @@
-package takeUForward.twoPointers;
+package takeUForward.slidingWindow;
 
 public class P3NumberOfSubarraysWithSumK {
     public int numSubarraysWithSum(int[] A, int k) {
