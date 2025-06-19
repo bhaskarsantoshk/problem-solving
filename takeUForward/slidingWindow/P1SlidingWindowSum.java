@@ -1,4 +1,4 @@
-package takeUForward.twoPointers;
+package takeUForward.slidingWindow;
 
 public class P1SlidingWindowSum {
     public static int maxSumWindowK(int[] arr, int k) {
