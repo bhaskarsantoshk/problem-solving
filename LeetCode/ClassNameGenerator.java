@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="4Maximum Points You Can Obtain from Cards\n\n";
+        String s ="5Longest Substring Without Repeating Characters\n\n\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
