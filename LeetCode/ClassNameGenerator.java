@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="7Fruit Into Baskets";
+        String s ="8Longest Substring With At Most K Distinct Characters";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
