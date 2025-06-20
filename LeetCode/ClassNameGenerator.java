@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="10Minimum Window Substring\n";
+        String s ="11Number of Substrings Containing All Three Characters\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
