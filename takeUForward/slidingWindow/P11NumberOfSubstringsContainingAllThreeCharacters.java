@@ -1,5 +1,7 @@
 package takeUForward.slidingWindow;
 
+import java.util.Arrays;
+
 public class P11NumberOfSubstringsContainingAllThreeCharacters {
     public int numberOfSubstrings(String s) {
        int result = 0;
@@ -30,6 +32,18 @@ public class P11NumberOfSubstringsContainingAllThreeCharacters {
                     break;
                 }
             }
+        }
+        return result;
+    }
+
+    public int numberOfSubstringsOptimal(String s) {
+        int result = 0;
+        int n = s.length();
+        int []lastSeen = new int[3];
+        Arrays.fill(lastSeen, -1);
+        for ( int i=0; i<n; i++){
+            lastSeen[s.charAt(i)-'a'] = i;
+            result += 1+ Math.max(Math.max(lastSeen[0], lastSeen[1]), lastSeen[2]);
         }
         return result;
     }
