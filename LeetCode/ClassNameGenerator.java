@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="13Count Subarray sum Equals K \n";
+        String s ="14Count number of Nice subarrays\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
