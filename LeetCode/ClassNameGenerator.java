@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="2Minimum number of bracket reversals to make an expression balanced\n";
+        String s ="3Count and say";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
