@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="1Reverse every word in a string\n";
+        String s ="2Minimum number of bracket reversals to make an expression balanced\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
