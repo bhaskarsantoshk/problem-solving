@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="14Count number of Nice subarrays\n";
+        String s ="1Reverse every word in a string\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
