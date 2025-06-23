@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="3Count and say";
+        String s ="4Rabin Karp Algorithm";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
