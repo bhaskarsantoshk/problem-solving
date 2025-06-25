@@ -1,6 +1,9 @@
 package takeUForward.graph.revision2;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class P14DetectACycleInADirectedGraph {
     public boolean isCyclic(int V, List<List<Integer>> adj) {
@@ -25,5 +28,26 @@ public class P14DetectACycleInADirectedGraph {
         }
         pathVis[node] = false;
         return false;
+    }
+
+    public boolean isCyclicBFS(int V, List<List<Integer>> adj) {
+        int[] inDegree = new int[V];
+        Queue<Integer> queue = new LinkedList<>();
+        for ( int i=0; i<V; i++){
+            for ( int adjNode: adj.get(i)) inDegree[adjNode]++;
+        }
+        for ( int i=0; i<V; i++) {
+            if ( inDegree[i] == 0) queue.offer(i);
+        }
+        List<Integer> topoSort = new ArrayList<>();
+        while ( !queue.isEmpty()){
+            int node = queue.poll();
+            topoSort.add(node);
+            for ( int adjNode: adj.get(node)){
+                inDegree[adjNode]--;
+                if ( inDegree[adjNode] == 0) queue.offer(adjNode);
+            }
+        }
+        return topoSort.size() != V;
     }
 }
