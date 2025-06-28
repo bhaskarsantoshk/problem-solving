@@ -27,4 +27,25 @@ public class P5ZFunction {
         }
         return Z;
     }
+
+
+    private int[] computeZFunctionOptimal(String s) {
+        int[] Z = new int[s.length()];
+        int n = s.length();
+        int l = 0, r=0;
+        for ( int i=1; i<n; i++){
+            if ( i > r) {
+                while (i + Z[i] < n && s.charAt(i + Z[i]) == s.charAt(Z[i])) Z[i]++;
+                l = i;
+                r=i+Z[i]-1;
+            } else {
+                if ( i+Z[i-l] <= r) Z[i] = Z[i-l];
+                else {
+                    Z[i] = r-i+1;
+                    while (i + Z[i] < n && s.charAt(i + Z[i]) == s.charAt(Z[i])) Z[i]++;
+                }
+            }
+        }
+        return Z;
+    }
 }
