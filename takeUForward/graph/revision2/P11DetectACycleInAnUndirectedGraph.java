@@ -33,4 +33,22 @@ public class P11DetectACycleInAnUndirectedGraph {
         }
         return false;
     }
+
+    public boolean isCycleDFS(int V, List<Integer>[] adj) {
+        boolean [] vis = new boolean[V];
+        for ( int i=0; i<V; i++){
+            if ( !vis[i] && dfsIsCycle(adj, i, -1,  vis)) return true;
+        }
+        return false;
+    }
+
+    private boolean dfsIsCycle(List<Integer>[] adj, int node, int parent, boolean[] vis) {
+        vis[node] = true;
+        for ( int adjNode: adj[node]){
+            if ( !vis[adjNode]) {
+                if ( dfsIsCycle(adj, adjNode, node, vis)) return true;
+            } else if ( adjNode != parent) return true;
+        }
+        return false;
+    }
 }
