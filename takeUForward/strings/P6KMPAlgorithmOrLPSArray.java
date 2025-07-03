@@ -27,4 +27,30 @@ public class P6KMPAlgorithmOrLPSArray {
         return lps;
     }
 
+    private int[] getLPSOptimal(String s) {
+        int n = s.length();
+        int[] lps = new int[n];
+        int i=1, j=0;
+        while ( i < n){
+            if (s.charAt(i) == s.charAt(j)) {
+                lps[i] = j + 1;
+                i++;
+                j++;
+            } else {
+                // Trace back j pointer till it does not match
+                while (j > 0 && s.charAt(i) != s.charAt(j)) {
+                    j = lps[j - 1];
+                }
+
+                // If a match is found
+                if (s.charAt(i) == s.charAt(j)) {
+                    lps[i] = j + 1;
+                    j++;
+                }
+                i += 1;
+            }
+        }
+        return lps;
+    }
+
 }
