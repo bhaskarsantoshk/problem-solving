@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="6KMP Algorithm or LPS array\n";
+        String s ="Longest happy prefix\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
