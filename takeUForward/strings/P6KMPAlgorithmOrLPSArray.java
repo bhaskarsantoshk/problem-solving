@@ -18,7 +18,7 @@ public class P6KMPAlgorithmOrLPSArray {
         int n = s.length();
         int[] lps = new int[n];
         for ( int i=1; i<n; i++){
-            for( int len =1; len<n; len++){
+            for( int len =1; len<=i; len++){
                 if ( s.substring(0, len).equals(s.substring(i-len+1, i+1))){
                     lps[i] = len;
                 }
