@@ -1,4 +1,4 @@
-package takeUForward.linkedlists.revision;
+package takeUForward.linkedlists.revision.singly_linked_list;
 
 public class P4DeletionOfTheKthElementOfLL {
     public ListNode deleteKthNode(ListNode head, int k) {
