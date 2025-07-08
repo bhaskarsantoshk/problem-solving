@@ -1,4 +1,4 @@
-package takeUForward.linkedlists.revision;
+package takeUForward.linkedlists.revision.singly_linked_list;
 
 import java.util.ArrayList;
 import java.util.List;
