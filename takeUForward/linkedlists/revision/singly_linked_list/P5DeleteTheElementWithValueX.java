@@ -1,4 +1,4 @@
-package takeUForward.linkedlists.revision;
+package takeUForward.linkedlists.revision.singly_linked_list;
 
 public class P5DeleteTheElementWithValueX {
     public ListNode deleteNodeWithValueX(ListNode head, int X) {
