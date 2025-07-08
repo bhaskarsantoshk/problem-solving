@@ -1,4 +1,4 @@
-package takeUForward.linkedlists.revision;
+package takeUForward.linkedlists.revision.singly_linked_list;
 
 public class P8InsertionAtTheKthPositionOfLL {
     public ListNode insertAtKthPosition(ListNode head, int X, int K) {
