@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="14Insert node before head in DLL\n";
+        String s ="18Convert Array to DLL\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
