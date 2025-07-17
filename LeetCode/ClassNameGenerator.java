@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="9Surrounded Regions";
+        String s ="10Number of distinct islands";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
