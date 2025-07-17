@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="10Number of distinct islands";
+        String s ="36. Valid Sudoku";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
