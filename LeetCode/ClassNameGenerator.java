@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="36. Valid Sudoku";
+        String s ="212. Word Search II";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
