@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="212. Word Search II";
+        String s ="1160. Find Words That Can Be Formed by Characters";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
