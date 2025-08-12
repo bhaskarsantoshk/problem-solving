@@ -48,6 +48,6 @@ public class Triangle {
                 dp[i][j] = Math.min(down, diag);
             }
         }
-        return dp[n-1][n-1];
+        return dp[0][0];
     }
 }
