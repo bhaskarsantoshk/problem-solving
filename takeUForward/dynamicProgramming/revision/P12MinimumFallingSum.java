@@ -14,7 +14,7 @@ public class P12MinimumFallingSum {
     }
 
     private int f(int[][] matrix, int i, int j) {
-        if ( j < 0 || j >= matrix.length) return -(int)1e9;
+        if ( j < 0 || j >= matrix[0].length) return (int)1e9;
         if ( i == 0) return matrix[i][j];
 
         int up = matrix[i][j] + f(matrix, i-1, j);
