@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="212. Word Search II\n";
+        String s ="9Minimum Falling Path Sum";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
