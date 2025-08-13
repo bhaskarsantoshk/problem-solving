@@ -6,7 +6,7 @@ public class P13CherryPickupII {
     public int cherryPickup(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
-        return f(0, 0,0, matrix);
+        return f(0, 0,m-1, matrix);
     }
 
     private int f(int i, int j1, int j2, int[][] matrix) {
