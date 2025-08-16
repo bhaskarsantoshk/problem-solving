@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="13Topological sort or Kahn's algorithm\n";
+        String s ="15Find eventual safe states\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
