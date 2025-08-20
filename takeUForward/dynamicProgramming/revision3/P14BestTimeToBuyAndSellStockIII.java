@@ -45,4 +45,25 @@ public class P14BestTimeToBuyAndSellStockIII {
         }
         return dp[day][buy][cap] = profit;
     }
+
+    public int stockBuySellDP(int[] arr, int n) {
+        int [][][] dp = new int[n+1][2][3];
+
+        for ( int day=n-1; day>=0; day--){
+            for ( int buy=0; buy<=1; buy++){
+                for ( int cap=0; cap<=2; cap++){
+                    int profit = 0;
+                    if ( buy == 1){
+                        profit = Math.max ( -arr[day]+dp[day+1][0][cap], dp[day+1][1][cap]);
+                    } else {
+                        profit = dp[day+1][0][cap];
+                        if ( cap >= 1 ) profit = Math.max(arr[day]+dp[day+1][1][cap-1], profit);
+                    }
+                    dp[day][buy][cap] = profit;
+                }
+            }
+        }
+
+        return dp[0][1][2];
+    }
 }
