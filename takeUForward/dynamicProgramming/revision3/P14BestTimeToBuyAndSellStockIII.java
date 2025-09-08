@@ -66,4 +66,44 @@ public class P14BestTimeToBuyAndSellStockIII {
 
         return dp[0][1][2];
     }
+
+    public int stockBuySellRecNby4(int[] arr, int n) {
+        return f(0, 1, 2, arr ); // day, buy, cap
+    }
+
+    // N*4 solution
+    private int f(int day, int transaction, int []prices ){
+        if ( day == prices.length || transaction == 4) return 0;
+        int profit = 0;
+        if ( transaction % 2 == 0){
+            profit = Math.max ( -prices[day]+f(day+1, transaction+1, prices),
+                    f(day+1, transaction, prices));
+        } else {
+            profit = Math.max(prices[day]+f(day+1, transaction+1, prices),
+                    f(day+1, transaction, prices));
+        }
+        return profit;
+    }
+
+    public int stockBuySellRecNby4Memo(int[] arr, int n) {
+        int [][] dp = new int[n+1][4];
+        for ( int i=0; i<n; i++){
+            Arrays.fill(dp[i], -1);
+        }
+        return f(0, 0, arr, dp);
+    }
+
+    private int f(int day, int transaction, int []prices , int[][] dp){
+        if ( day == prices.length || transaction == 4) return 0;
+        if ( dp[day][transaction] != -1) return dp[day][transaction];
+        int profit = 0;
+        if ( transaction % 2 == 0){
+            profit = Math.max ( -prices[day]+f(day+1, transaction+1, prices, dp),
+                    f(day+1, transaction, prices, dp));
+        } else {
+            profit = Math.max(prices[day]+f(day+1, transaction+1, prices, dp),
+                    f(day+1, transaction, prices, dp));
+        }
+        return dp[day][transaction] = profit;
+    }
 }
