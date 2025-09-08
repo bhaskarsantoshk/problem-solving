@@ -106,4 +106,21 @@ public class P14BestTimeToBuyAndSellStockIII {
         }
         return dp[day][transaction] = profit;
     }
+
+    public int stockBuySellNby4DP(int[] prices, int n) {
+        int [][] dp = new int[n+1][5];
+        for(int day=n-1; day>=0; day--){
+            for ( int transaction=3; transaction>=0; transaction--){
+                int profit = 0;
+                if ( transaction % 2 == 0){
+                    profit = Math.max ( -prices[day]+dp[day+1][transaction+1], dp[day+1][transaction]);
+                } else {
+                    profit = Math.max(prices[day]+dp[day+1][transaction+1], dp[day+1][transaction]);
+                }
+                dp[day][transaction] = profit;
+            }
+        }
+        return dp[0][0];
+    }
+
 }
