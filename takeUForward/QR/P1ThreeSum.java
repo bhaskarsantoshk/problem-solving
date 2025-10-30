@@ -32,8 +32,10 @@ public class P1ThreeSum {
                     cur.add(nums[left]);
                     cur.add(nums[right]);
                     res.add(cur);
-                    while ( left > 0 && left < right && nums[left] == nums[left-1]) left++;
-                    while ( right < nums.length-1 && left < right && nums[right] == nums[right+1]) right--;
+                    int leftVal = nums[left];
+                    int rightVal = nums[right];
+                    while ( left < right && nums[left] == leftVal) left++;
+                    while ( left < right && nums[right] == rightVal) right--;
                 } else if ( nums[i]+ nums[left]+ nums[right] > 0) right--;
                 else left ++;
             }
