@@ -10,8 +10,8 @@ public class P5FindTheRepeatingAndMissingNumber {
         int xMinusY = Math.toIntExact(sumOfArray - sumOfN);
         long sumOfSquaresofArray = 0;
         long sumOfSquaresofN = 0;
-        for ( int num: nums) sumOfSquaresofArray += (num*num) ;
-        sumOfSquaresofN = ((long) n * (n+1) * ((2L *n)+1))/6;
+        for ( int num: nums) sumOfSquaresofArray += (long)num * num ;
+        sumOfSquaresofN = ((long) n * (n + 1) * ((2L * n) + 1))/6;
         int xPlusY = Math.toIntExact(sumOfSquaresofArray - sumOfSquaresofN)/ xMinusY;
         int repeatingNum = (xPlusY+xMinusY)/2;
         int missingNum = xPlusY-repeatingNum;
