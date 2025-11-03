@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="3Kadane's Algorithm";
+        String s ="5 Find the repeating and missing number\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
