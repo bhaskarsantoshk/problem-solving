@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="5 Find the repeating and missing number\n";
+        String s ="6 Maximum Product Subarray in an Array";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
