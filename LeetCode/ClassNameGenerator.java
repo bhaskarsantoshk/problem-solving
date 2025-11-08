@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="9Koko eating bananas";
+        String s ="10Aggressive Cows";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
