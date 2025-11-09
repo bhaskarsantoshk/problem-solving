@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="10Aggressive Cows";
+        String s ="11Median of 2 sorted arrays\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
