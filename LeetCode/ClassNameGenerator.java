@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="12Count subarrays with given xor K\n\n";
+        String s ="15Single Number - III";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
