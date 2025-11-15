@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="18Job sequencing Problem";
+        String s ="22Sort a LL of 0's 1's and 2's";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
