@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check if LL is palindrome or not";
+        String s ="24Find the starting point in LL";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
