@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="25Reverse LL in group of given size K";
+        String s ="37Bottom view of BT";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
