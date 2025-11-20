@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="37Bottom view of BT";
+        String s ="38Construct a BT from Preorder and Inorder\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
