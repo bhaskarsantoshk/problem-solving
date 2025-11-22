@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="39Minimum time taken to burn ...\n";
+        String s ="40Morris Inorder Traversal\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
