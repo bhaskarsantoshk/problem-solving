@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="40Morris Inorder Traversal\n";
+        String s ="42Inorder successor and predecessor in BST\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
