@@ -1,3 +1,5 @@
+package takeUForward.QR;
+
 import java.util.*;
 
 class P50AlienDictionary {
@@ -98,24 +100,5 @@ class P50AlienDictionary {
         
         // Return the answer
         return ans.toString();
-    }
-    
-    public static void main(String[] args) {
-        
-        int N = 5, K = 4;
-        String[] dict = {
-            "baa", "abcd", "abca", "cab", "cad"
-        };
-        
-        /* Creating an instance of 
-        Solution class */
-        Solution sol = new Solution();
-        
-        /* Function call to determine order of 
-        letters based on alien dictionary */
-        String ans = sol.findOrder(dict, N, K);
-        
-        // Output
-        System.out.println("The order to characters as per alien dictionary is: " + ans);
     }
 }
