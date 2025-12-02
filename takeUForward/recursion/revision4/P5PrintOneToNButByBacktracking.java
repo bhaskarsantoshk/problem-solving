@@ -2,7 +2,7 @@ package takeUForward.recursion.revision4;
 
 import java.util.Scanner;
 
-public class P4PrintOneToNButByBacktracking {
+public class P5PrintOneToNButByBacktracking {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
