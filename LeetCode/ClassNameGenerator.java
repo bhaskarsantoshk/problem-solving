@@ -31,9 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Bitwise OR of Adjacent Elements\n" +
-                "\n" +
-                "\n";
+        String s ="The Number of Ways to Make the Sum";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
