@@ -31,7 +31,9 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="The Number of Ways to Make the Sum";
+        String s ="Expression Add Operators\n" +
+                "\n" +
+                "\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
