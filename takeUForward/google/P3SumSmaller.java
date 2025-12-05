@@ -1,5 +1,7 @@
 package takeUForward.google;
 
+import java.util.Arrays;
+
 public class P3SumSmaller {
     public int threeSumSmaller(int[] nums, int target) {
        int count = 0;
@@ -11,5 +13,22 @@ public class P3SumSmaller {
            }
        }
        return count;
+    }
+
+    public int threeSumSmallerTwoPointer(int[] nums, int target) {
+        int count = 0;
+        Arrays.sort(nums);
+        for ( int i=0; i < nums.length-2; i++){
+            int l = i+1, r = nums.length-1;
+            while ( l < r){
+                if ( nums[i] + nums[l] + nums[r] < target){
+                    count+= r-l;
+                    l++;
+                } else {
+                    r--;
+                }
+            }
+        }
+        return count;
     }
 }
