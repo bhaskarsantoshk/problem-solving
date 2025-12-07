@@ -1,47 +1,48 @@
 package takeUForward.google;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class P4KeysKeyboard {
     public int maxA(int n) {
-        return helper(n, 0, 0);
-    }
-
-    private int helper(int n, int screen, int buffer) {
-        if ( n <= 0) return screen;
-        int pressA = helper(n-1, screen+1, buffer);
-        int pressCTRLv = helper(n-1, screen+buffer, buffer);
-
-        int pressCtrlACtrlC = 0;
-        if ( n >= 2){
-            pressCtrlACtrlC = helper(n-2, screen, screen);
+        if ( n <=0 ) return 0;
+        if ( n <=5 ) return n;
+        int best = maxA(n-1)+1;
+        for ( int i=1; i<=n-3; i++){
+            best = Math.max(best, (i+1)*maxA(n-i-2));
         }
-        return Math.max(Math.max(pressA, pressCTRLv), pressCtrlACtrlC);
+        return best;
     }
-
 
     public int maxAMemoized(int n) {
-         Map<String, Integer> memo = new HashMap<>();
-        return helper(n, 0, 0, memo);
+       int[] dp = new int[n+1];
+        Arrays.fill(dp, -1);
+       return maxAMemoized(n, dp);
     }
 
-    private int helper(int n, int screen, int buffer, Map<String, Integer> memo) {
-        if (n <= 0) return screen;
-
-        String key = n + "|" + screen + "|" + buffer;
-        if (memo.containsKey(key)) return memo.get(key);
-
-        int pressA = helper(n - 1, screen + 1, buffer);
-        int pressCTRLv = helper(n - 1, screen + buffer, buffer);
-
-        int pressCtrlACtrlC = 0;
-        if (n >= 2) {
-            pressCtrlACtrlC = helper(n - 2, screen, screen);
+    private int maxAMemoized(int n, int[] dp) {
+        if ( n <=0 ) return 0;
+        if ( n <=5 ) return n;
+        if ( dp[n] != -1) return dp[n];
+        int best = maxAMemoized(n-1, dp)+1;
+        for ( int i=1; i<=n-3; i++){
+            best = Math.max(best, (i+1)*maxAMemoized(n-i-2, dp));
         }
+        return dp[n]= best;
+    }
 
-        int result = Math.max(Math.max(pressA, pressCTRLv), pressCtrlACtrlC);
-        memo.put(key, result);
-        return result;
+    public int maxADP(int n) {
+        if ( n <= 5) return n;
+        int[] dp = new int[n+1];
+        for ( int i=1; i<=5; i++) dp[i] = i;
+        for ( int key=6; key<=n; key++){
+            int best = dp[key-1]+1;
+            for ( int i=1; i<=key-3; i++){
+                best = Math.max(best, (i+1)*dp[key-i-2]);
+                dp[key] = best;
+            }
+        }
+        return dp[n];
     }
 }
