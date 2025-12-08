@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Add Two Polynomials Represented as Linked Lists\n";
+        String s ="All Paths from Source Lead to Destination\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
