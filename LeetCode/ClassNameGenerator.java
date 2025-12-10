@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Find row with maximum 1's\n";
+        String s ="Floor and Ceil in a BST\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
