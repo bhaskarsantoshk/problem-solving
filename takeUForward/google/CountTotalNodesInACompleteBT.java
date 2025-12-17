@@ -19,4 +19,30 @@ public class CountTotalNodesInACompleteBT {
         int right = countNodes(root.right);
         return left + right + 1;
     }
+
+    public int countNodesOptimal(TreeNode root) {
+        if ( root == null ) return 0;
+        int leftHeight = getLeftHeight( root);
+        int rightHeight = getRightHeigt(root);
+        if ( leftHeight == rightHeight) return (1 << leftHeight)-1;
+        return 1+ countNodesOptimal(root.left) + countNodesOptimal(root.right);
+    }
+
+    private int getRightHeigt(TreeNode root) {
+        int count  = 0;
+        while (root != null){
+            root = root.right;
+            count++;
+        }
+        return count;
+    }
+
+    private int getLeftHeight(TreeNode root) {
+        int count  = 0;
+        while (root != null){
+            root = root.left;
+            count++;
+        }
+        return count;
+    }
 }
