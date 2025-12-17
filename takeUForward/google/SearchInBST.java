@@ -1,5 +1,5 @@
 package takeUForward.google;
-import takeUForward.google.common_ds.TreeNode
+import takeUForward.google.common_ds.TreeNode;
 
 public class SearchInBST {
     public TreeNode searchBST(TreeNode root, int val) {
