@@ -5,7 +5,7 @@ import takeUForward.google.common_ds.TreeNode;
 public class CountTotalNodesInACompleteBT {
     int count = 0;
     public int countNodes(TreeNode root) {
-        if ( root == null ) return null;
+        if ( root == null ) return 0;
         count++;
         countNodes(root.left);
         countNodes(root.right);
