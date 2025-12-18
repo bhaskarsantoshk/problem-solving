@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Count total nodes in a complete BT\n\n";
+        String s ="Check if a Number is Power of 2 or Not\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
