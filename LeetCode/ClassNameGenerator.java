@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check if a Number is Power of 2 or Not\n";
+        String s ="Check If Two Expression Trees are Equivalent\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
