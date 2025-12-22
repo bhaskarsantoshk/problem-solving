@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check If Two Expression Trees are Equivalent\n";
+        String s ="Closest Binary Search Tree Value\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
