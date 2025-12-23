@@ -36,7 +36,6 @@ public class ClosestBinarySearchTreeValue {
         helper(root.right, target, res, diff);
     }
 
-
     public int closestValueOptimal(TreeNode root, double target) {
         int closestValue = root.val;
         while ( root != null ){
