@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Print the matrix in spiral manner\n";
+        String s ="Check if String is Palindrome or Not\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
