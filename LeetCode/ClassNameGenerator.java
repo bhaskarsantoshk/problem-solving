@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Rearrange array elements by sign\n\n";
+        String s ="Print the matrix in spiral manner\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
