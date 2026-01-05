@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check if a Number is Prime or Not\n";
+        String s ="Check if the Array is Sorted II";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
