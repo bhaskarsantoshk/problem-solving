@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check if String is Palindrome or Not\n";
+        String s ="Check if a Number is Prime or Not\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
