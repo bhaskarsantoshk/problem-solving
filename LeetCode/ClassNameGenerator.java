@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Check if the Array is Sorted II";
+        String s ="Floor and Ceil in Sorted Array\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
