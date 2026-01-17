@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Floor and Ceil in Sorted Array\n";
+        String s ="First and last occurrence\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
