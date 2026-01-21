@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Distance of nearest cell having one";
+        String s ="Number of distinct islands\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
