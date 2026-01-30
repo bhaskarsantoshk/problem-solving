@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="424. Longest Repeating Character Replacement";
+        String s ="Detect a cycle in a directed graph\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
