@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Topological sort or Kahn's algorithm";
+        String s ="424. Longest Repeating Character Replacement";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
