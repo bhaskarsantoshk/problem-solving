@@ -1,6 +1,8 @@
 package takeUForward.graph.cycles;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class TopologicalSortOrKahnSAlgorithm {
@@ -26,5 +28,31 @@ public class TopologicalSortOrKahnSAlgorithm {
             }
         }
         stack.push(node);
+    }
+
+
+    public int[] topoSortBFS(int V, List<List<Integer>> adj) {
+        int[] indegree = new int[V];
+        Queue<Integer> queue = new LinkedList<>();
+        for ( int u=0; u<V; u++){
+            for ( int v: adj.get(u) ){
+                indegree[v]++;
+            }
+
+        }
+        for ( int u=0; u<V; u++){
+            if ( indegree[u] == 0) queue.offer(u);
+        }
+        int [] res = new int[V];
+        int index = 0;
+        while (!queue.isEmpty()){
+            int node = queue.poll();
+            res[index++] = node;
+            for ( int adjNode: adj.get(node)){
+                indegree[adjNode]--;
+                if ( indegree[adjNode] == 0) queue.offer(adjNode);
+            }
+        }
+        return res;
     }
 }
