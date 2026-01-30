@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Bipartite graph";
+        String s ="Topological sort or Kahn's algorithm";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
