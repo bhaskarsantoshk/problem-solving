@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Find eventual safe states\n\n";
+        String s ="22Count all subsequences with sum K\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
