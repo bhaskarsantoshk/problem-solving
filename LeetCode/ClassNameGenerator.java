@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="22Count all subsequences with sum K\n";
+        String s ="25Subsets I";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
