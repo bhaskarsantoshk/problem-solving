@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="25Subsets I";
+        String s ="Alien Dictionary";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
