@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Alien Dictionary";
+        String s ="Shortest path in DAG\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
