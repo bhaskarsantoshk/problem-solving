@@ -15,7 +15,7 @@ public class P130SurroundedRegions {
             }
         }
 
-        int [][] dirs = { {1,0}, {0,1}, {-1,0}, {0,-1}}
+        int [][] dirs = { {1,0}, {0,1}, {-1,0}, {0,-1}};
 
         while ( !queue.isEmpty()){
             int[] node = queue.poll();
