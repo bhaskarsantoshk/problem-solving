@@ -12,7 +12,7 @@ public class P5RomanToInteger {
             map.put(romanNums[i], nums[i]);
         }
         int ans = 0;
-        for ( int i=0; i<s.length-1; i++) {
+        for ( int i=0; i<s.length()-1; i++) {
             char first = s.charAt(i);
             char second = s.charAt(i + 1);
             if (map.get(first) < map.get(second)) ans -= map.get(first);
