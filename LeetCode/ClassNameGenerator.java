@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="2  Longest Substring Without Repeating Characters\n";
+        String s =" 3 String to Integer (atoi)\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
