@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Shortest path in undirected graph with unit weights\n";
+        String s ="2  Longest Substring Without Repeating Characters\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
