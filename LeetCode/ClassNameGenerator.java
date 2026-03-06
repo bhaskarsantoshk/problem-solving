@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s =" 11  Minimum Window Substring\n";
+        String s =" 31Letter Combinations of a Phone Number\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
