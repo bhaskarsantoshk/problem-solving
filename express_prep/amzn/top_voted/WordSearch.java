@@ -16,6 +16,8 @@ public class WordSearch {
         return false;
     }
 
+    int[][] dirs = {{-1,0}, {0,-1}, {1,0}, {0,1}};
+
     private boolean exist(char[][] board, int i, int j, String word, int index) {
         if (index == word.length()) return true;
         if (i < 0 || i >= board.length || j < 0 || j >= board.length || board[i][j] != word.charAt(index)) {
