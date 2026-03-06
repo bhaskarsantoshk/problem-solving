@@ -3,7 +3,7 @@ package company.apple;
 import java.util.ArrayList;
 import java.util.List;
 
-public class P60FizzBuzz {
+public class P61FizzBuzz {
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<String>();
         for (int i=1; i<=n; i++){
