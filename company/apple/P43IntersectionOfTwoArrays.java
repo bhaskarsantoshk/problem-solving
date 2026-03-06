@@ -1,17 +1,17 @@
 package company.apple;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class P43IntersectionOfTwoArrays {
     public int[] intersection(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for ( int num: nums1) map.put(num, map.getOrDefault(num,0)+1);
-        List<Integer> intersection = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
+        for ( int num: nums1) set.add(num);
+        Set<Integer> intersection = new HashSet<>();
         for ( int num: nums2){
-            if ( map.containsKey(num) && map.get(num) > 0) {
-                intersection.add(num);
-                map.put(num, map.get(num)-1);
-            }
+            if ( set.contains(num)) intersection.add(num);
         }
         int res[] = new int[intersection.size()];
         int index = 0;
