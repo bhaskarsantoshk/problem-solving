@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s =" 31Letter Combinations of a Phone Number\n";
+        String s =" 46K Closest Points to Origin";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
