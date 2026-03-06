@@ -1,6 +1,6 @@
 package company.apple;
 
-public class P30MaxDiameterOfABinaryTree {
+public class P33MaxDiameterOfABinaryTree {
     int max = 0;
     public int diameterOfBinaryTree(TreeNode root) {
         if ( root == null) return 0;
