@@ -26,7 +26,7 @@ public class P55InsertDeleteGetRandomO1 {
             int index = map.get(val);
             // swap with last element in list
             Collections.swap(list, index, list.size()-1);
-            map.put(list.get(index), index)
+            map.put(list.get(index), index);
             list.remove(list.size()-1);
             map.remove(val);
             return true;
