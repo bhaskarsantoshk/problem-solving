@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s =" 46K Closest Points to Origin";
+        String s =" 55Insert Delete GetRandom O(1)";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
