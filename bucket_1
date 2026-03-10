@@ -1,0 +1,87 @@
+# Leetcode Top Interview Questions Easy
+    >   First element will be present at index 0, then you compare from i=1 till the length of the array. If nums[i] != nums[i-1], then you add to nums[index] and increment index.                                    
+    > right rotation and k is non negative integer. k = k % length. do the following operations: reverse(nums, 0, len); reverse(nums, 0, k-1); reverse(nums, k, len);
+    > Do an XOR of all
+    > traverse the array, when you encounter a number < 9, increment the number by one and return. else number will be 0 and continue. at the end, create a result array with length one more than the previous, make the first digit 1 and return.                        
+    > Use HashMap<Number, Index> 
+
+
+    > Take 26 character array, a[c-'a']++ for array a, a[c-'a']-- for array b. Check if there are no non zero elements in the end
+    > Brute Force
+    > if the node is null, return. if node.next is null, make node = null and return. else node.data = node.next.data, node.next = node.next.next
+    > 
+    > XOR of all numbers and then xor with 1 to n
+
+* https://leetcode.com/discuss/interview-experience/1148076/amazon-sde2-bangalore-april-2021-offer-repost
+
+       * https://leetcode.com/submissions/detail/436004130/
+       at the end, return result.next. 
+    * use Map to store index as key and value as number, for each number check if target - num exists. if yes, return res [map.get(target-num), current index]
+    * [explanation](https://www.youtube.com/watch?v=LPFhl65R7ww)
+    the fill the table for length more than 3, keep track of max length and sub string.
+    check until you get digits, keep calculating the number while checking overflow, 
+    * 900,400, 90, 40, 4 - because these are exceptions
+6. Roman to Integer
+    * add map.get(c) to sum, prev = c.
+    * For every closed bracket , check if stack is not empty and popped value is matching else return false
+    * Add all the first nodes of lists.
+    * Create a HashSet 
+    * create a res, temp list, start as 0, remaining as target
+    * backtracking
+    * create a list of arrays, add the first array. compare every new array's 2nd element with the 1st elemnt of the array before.
+    * rotate - fast.next = res.next
+    Approach 1:
+15. Word Search
+    * Bottom up
+    * return the last cell ( bottom right) 
+    * base case is when root is null ( return true ) 
+    * Approach 2: Iterative
+    * follow iterative inorder way, before going for root.right, check if pre is not null , if yes, check if root.val <= pre.val - return false
+    * p.val == q.val && call rec on p.left, q.left && p.right && q.right
+    * while q is empty, poll two nodes, and check if the values are equal. add f.left, s.left and f.right s.right to queue.
+        * s.val == t.val && isSymmetric(s.left, t.right) && isSymmetric(s.right, t.left)
+19. Binary Tree Level Order Traversal
+    * each time loop ends, add temp list to res
+    * find the mid point, create the root, call rec function on root.left = rec(head, mid), root.right = rec(mid.next, tail)
+    * Call a helper function with root which will connect the nodes
+            * check if cur.right is not null and cur.next is not null, if yes, cur.right.next = cur.next.left
+22. Best Time to Buy and Sell Stock
+    * return maxProfit
+    * Use DFS to calculate the solution
+    * Create a Set with all the words given in the list
+        * create a set to store next level words
+                * check if it's part of dictionary, if yes, add to nextLevel set
+    * return distance
+    * Constructor: assign capacity, head and tail.
+    * remove: cache.remove(node.key), remove node between head and tail
+    * Using a Linked List
+        *  head = new Node(val, Math.min(val, head.min), head) if head is not null)
+    * getMin() : return head.min
+    * dfs(): check for boundary conditions, mark grid[i][j] = '0', call dfs on all 4 directions
+    * degree of each nodes  
+        * take out a course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
+    * degree of each nodes  
+    * now while queue is not empty:
+    * Create a TrieNode class with member varaibles - children (= new TrieNode[26]), isWord = false;
+            * move node to node.children[c-'a]
+            * if index == len, return node.isWord
+            * else: return node.children[c-'a'] != null && match (,index+1,) 
+    * Build a Trie: 
+
+    * create a helper function which has if conditions with num < billion, million, thousand, hundren, twenty and ten
+    
+    * Optimized Solution:
+            * live to live -> 1
+        * board[i][j]%=2;
+34. Find Median from Data Stream
+        * initalize min and max heap
+        * the above step is to make sure both will have same size or only a gap of 1.
+    * create a lis[] array
+        * traverse all it's prev elements to update lis
+36.
+38. Mine Sweeper
+    * get mineCount 
+39. Diameter of Binary Tree
+    * maxDepth = num of nodes until it's leaf ( Math.max (left, right) + 1)
+    * Find maxRepeatedLetter and it's count, if count > (len+1)/2, return ""
+         
