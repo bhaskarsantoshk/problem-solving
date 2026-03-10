@@ -1,0 +1,87 @@
+
+2. Best Time to Buy and Sell Stock II
+4. Contains Duplicate
+6. Intersection of Two Arrays II
+8. Move Zeroes
+10. Valid  Sudoku
+12. Reverse String
+14. First Unique Character in a String
+16. Valid Palindrome
+19. Longest Common Prefix
+21. Remove Nth Node From End of List
+40. FizzBuzz
+51.    
+###Sources:
+* [Amazon Final Interview Questions | SDE1](https://leetcode.com/discuss/interview-question/488887/Amazon-Final-Interview-Questions-or-SDE1)
+0. Merge two sorted lists
+       
+       
+2. Median of two sorted arrays
+3. Longest Palindromic Substring
+4. String to Integer (atoi)
+    if overflow , return INT_MAX/MIN based on the sign.
+    * Remember L C D M for 50,100,500,1000
+    * Store I,V,X,L,C,D,M and their respective values in a map
+    * reason for deducting twice is because we are adding blindly the value in next step.
+    * at the end, return true if stack is empty.
+    * Create the res pointer and cur pointer, For each poll, add the next elements. 
+    * iterate through rows and cols, check if we already added a num in same row(i)/col(j)/grid (i/3+" "+j/3)
+    * inside backtrack, see if remain is 0, then add list to res. if rem is less than 0, return.
+    * base condition is when start >= len, swap, backtrack, swap
+    * if it's more, merge. else add the new interval to res. 
+    * res.next = slow.next ( modified head)
+    * call recursive function on height-1, width-1 i.e bottom right cell
+    * for each character in the cell, call a rec function on 4 directions once the first character matches
+    * if row == 0 and col == 0, continue
+16. Validate Binary Search Tree
+    * if root.val is less than or equal to long.min or greater than or equal to long.max - return false
+    
+17. Same Tree
+    
+18. Symmetric Tree
+    * Approach 2: Iterative
+    * Create a List<List>
+
+    * return root
+    * start = root, while start is not null, cur = start, 
+            * move cur to cur.next
+    * Use Kadane algorithm
+23. Word Ladder II
+    * see the solution if you can't recall / solve
+    * Create a set to go by each level. first level will have only beginWord.
+        * from str[] i 0 till n:
+        * if next level is empty, return 0
+25. LRU Cache
+    * Create a Node ( int: key, val, Node: prev, next)
+    * put : check if cache contains key, remove it. check if cache size reaches capacity: remove the node. insert the node.
+    * operations: push, pop, top, getMin
+        * head = new Node(val, val, null) if head is null
+
+    * return num of islands
+    * add all independent courses to queue ( i.e degree of course is 0)
+    * return completedCourses == numOfCourses ( boolean )
+    * add all independent courses to queue ( i.e degree of course is 0)
+        * take out a course, res[completedCourses] = course, completedCourses++, get each connected course and see if the degree is 0, which means it can be completed, so add to queue
+    * Add word : assign node = root, 
+            * at the end of loop, node.isWord = true
+            * if word[index] == '.'
+            * return false at the end
+        * have a TrieNode class - member variables: 26 Childs, String word
+32. Integer to English Words 
+    * inside if, call the fun recursively num/billion + " Billion "+ func(num%billion) and so on
+
+        * Update the board in place , consider the below state changes:
+            * dead to dead -> 0
+        * Look at the code for more information
+    * Median will likely between max of lower half and min of upper half
+        * store num in maxHeap if it's empty or maxHeap.poll() > num ( this means we are storing lower values)
+        * at the end if maxHeap size is high , return maxHeap.peek() else if - vice -versa
+    * fill 1 since all elements are lis of size 1
+        * keep track of max
+
+    * if borad[x][y] == 'M', mark it as 'X' and return
+    * if mineCount is positive, update it and return
+    * Use maxDepth approach
+    
+    * create a res[len of string]
+
