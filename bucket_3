@@ -1,0 +1,86 @@
+1. Remove Duplicates From Sorted Array:  
+    >   It involves as many transactions as you can. whenever price of day i is greater than day i-1, add the difference to profit. 
+    > Sort the array. Check if nums[i] == nums[i+1]
+    > Use HashMap, add the intersection to array list 
+    > index = 0, when you encounter a non zero number, a[index++] = number, at the end mark all numbers from index to length as 0. 
+
+    > start and end approach
+
+    > Write a method that checks for only alpha numeric, and use start and end way to check if the string is a palindrome.
+    > Take the first string, check if all the other strings contain this part - if not reduce suffix by one character while traversing. 
+    > travese fast node from head till length n, now start slow(at head or before one dummy node) and fast until fast reaches null. delete the link at slow. return head.     
+    > First check will be divisible by both
+
+
+* []
+       * Recursive approach: Base conditions: If l1 is null, return l2. If l2 is null, return l1.
+       * Iterative approach: base conditions, create a cur pointer with -1 as val, assign it to result
+       * https://leetcode.com/submissions/detail/540793128/   
+    * Do a binary search on the smaller array to find a partition point such that 
+    * Approach 1: O ( N^2 ): Create a 2 d array, row will be start , column will be end of string. 
+    * First check for empty string, trim both trailing and ending spaces, 
+5. Integer to Roman 
+    * Loop through the above numbers in descending order,Append roman strings to result for the respective values while dedcuting the value
+    * Store A with 0
+7. Valid Parentheses 
+8. Merge k Sorted Lists
+    * return res.next
+10. Combination Sum
+    * loop through start to length of nums, each time remove cand[i] from rem.
+12. Merge Intervals
+13. Rotate List
+    * slow.next = null // cut the cycle
+    * base case is 0,0
+    * base condition will be when the index matches word length or if i and j are out of boundaries    
+    * fill zeroth row and zeroth column straight away by adding prev cell vcalue
+    * Approach 1: Recursive.
+    * recurive call on root.left, long.min , root.val && root.right, root.val , long.max
+    [Learn Iterative way of Inorder traversal and tackle several tree problems.](https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)) 
+    * Approach 1: Recursion
+    * Approach 2: Iterative
+    * Approach 1: Recursive
+        * Use a Queue. add p and q.
+    * Create a Queue, add root
+20. Convert Sorted List to Binary Search Tree
+21. Populating Next Right Pointers in Each Node
+        * while cur is not null, 
+        * move start to start.left (i.e next level)
+    * initially minPrice = prices[0], maxProfit = 0
+    * Pre-requisite : Word Ladder I
+24. Word Ladder I
+    * distance = 1
+            * from c 'a' to 'z':
+        * distance++
+    * Initial setup: Constructor, put and get methods
+    * get: if cache contains the key, remove the node, insert node back , return node.value . else return -1.
+    
+    * Create a Node with val, min and Next.
+    * pop() : head = head.next
+27. Number of Islands
+28. Course Schedule
+    * completedCoursess =0, this keeps track of each completed course
+29. Course Schedule II
+    * create res[] with size numOfCourses
+    * return completedCourses == numOfCourses ? res: new int[0]
+        * go through each char, 
+        * Search :
+                * Go through all children of node, and see if node.children[i] != null and match(,index+1,) is true:
+
+        * traverse each word, build trieNode tree, at the end, set the String word to word.
+    * create ones [ "", "one", "two" ... "nine"]
+    * base case will be one[num] based
+33. Game of Life
+            * live to dead -> 2
+        * if live cells are 3 and borad[i][j] = 0, it becomes live in the next transition, but marking this as 1 will disturb the results. similarly, if live cells are less than 2 or more than 3 and board[i][j] = 1, it becomes 0 in the next iteration , so we will mark it as 2 . and we use the strategy of board[i][j]%2 at the end of iterating the whole board.
+
+    * store lower values in minHeap and higher values in maxHeap
+        * else store in minHeap
+        * if both are equal , return (peek+peek)/2.0
+    * initialize max with 1
+    * return max
+37.
+    * else call dfs (board, x, y, m ,n, dirs-8 directions)
+    * if mineCount 0, call dfs on 8 directions
+    * while calculating maxDepth of each node, update max ( = Math.max(left+right, max), where left and right are maxDepths)
+40. Reorganize String
+    * update index=0 to count ( index+=2)
