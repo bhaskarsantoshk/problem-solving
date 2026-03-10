@@ -1,0 +1,86 @@
+
+3. Rotate Array
+5. Single Number
+7. Plus one 
+9. Two Sum
+11. Rotate Image
+13. Reverse Integer
+15. Valid Anagram
+18. Implement strStr
+20. Delete Node in a Linked List
+22. Reversed Linked List
+50. Missing Number
+# Leetcode Amazon Interview Questions
+* https://leetcode.com/discuss/study-guide/1149636/Amazon-LPs-Compiled
+### Problems
+       if l1.val is less than l2.val, l1 will be the head. l1.next will be the return of merge of l1.next and l2- vice versa. 
+       move the cur pointer based on the l1.val and l2.val. do this until l1 and l2 are not null, later cur.next will be the leftover list.
+1. Two Sum
+    every element on the left side is less than or equal to every element on the right side for two arrays
+    fill the diagonal i.e single length palindromes, the diagonal above the main one will be two length palindromes
+    calculate sign
+    * Have a string array of roman numbers for 1000,900,500,400,100,90,50,40,10,9,5,4,1
+    * If the number is less, move to next value 
+    * initially assign A to prev. Iterate through all roman chars in the string left to right, if map.get(c) is greater than map.get(prev), sum -= 2* map.get(c)
+    * Create a stack, iterate through all characters, for each open bracket - push the respective closed bracket.
+    * Create a MinHeap with size equal to length of the lists. 
+9. Valid Sudoku
+    * backtracking 
+11. Permutations
+    * sort the intervals based on first element
+    * create res (res.next = head) , slow and fast. Find len (fast), find the the node before rotation ( len - k%len) (slow)
+14. Minimum Path Sum
+    * recusrive function gets called on row 0, col 0 or non zero row and col. 
+    DP: 
+    * fill non zeroth row and col by adding min of top and left cell value.
+    * Make a rec call with root, long.min and long.max
+    
+    
+    * base cases: if p is null or q is null, return p is null && q is null.
+    * Use a Queue. add p and q.
+        * Call rec on left and right sub trees
+       * while q is empty, poll two nodes, and check if the values are equal. add f.left, s.right and f.right s.left to queue.                        
+    * while queue is not empty, loop through queue size (also level size), add val of popped node to temp list, add left and right of popped node to queue
+    * Use Recursion, pass the head and null in main call
+    * The gist is to connect all nodes by moving to each level
+            * check if cur.left is not null, if yes, cur.left.next = cur.right
+
+    * keep track of minPrice and maxProfit through i = 1 to N
+    * calculate nodeNeighbors , distanceFromBeginWord using BFS
+    * BFS is the main algorithm
+    * For all words in the level: 
+                * form a string with str[i] = c
+        * level = nextLevel
+    * Member variables : head, tail ( for boundaries ), HashMap to act as cache, capacity( max size)
+    * insert: cache.put(node.key, node), insert the node between head and tail
+26. Min Stack  
+    * For push, append node at the front. 
+    * top() : return head.val
+    * go through each char on the grid, if you find '1', call DFS , increase num of Islands 
+    * Create a Graph  ( an array of array lists )
+    * now while queue is not empty:
+    * Create a Graph  ( an array of array lists )
+    * completedCoursess =0, this keeps track of each completed course
+30. Add and Search Word - Data structure design
+            * if there is no trieNode within node's children, if it's null, create one
+            * call match(word.toCharArray(), 0, root)
+                    * return true
+31. Word Search II
+    * Go through each cell in the board, and use trie to check if we can form the word with adjacent cells using DFS, if the word is found ( make sure to handle going through cycle / not visiting the same node again), add the word to result, and mark the word to null in the trie. 
+    * create tens ["", "ten", "twenty", ... "ninety"]
+    * make sure the string formation works better ( go with trim wherever required)
+    * Brute Force: Create a new 2 D array, count live cells for each cell in board for 8 adjecent cells and fill the values by applying the rules.
+            * dead to live -> 3
+        * since we mark live cell as 2 in a condition, we will count live cells for both 1 and 2 values. 
+
+    * Solution:
+        * if you see any of min or max heap size is greater than +1 of the other, poll one num and add it
+35. Longest Increasing Subsequence
+    * traverse each element:
+
+
+    * Inside dfs: return if x and y are boundaries and board[x][y] !='E'
+
+    * by definition, Diameter is the max num of edges between two nodes,not the num of nodes hence we are not adding a +1
+    * create a hash[26]
+    * update each character at index (index+=2, if index reaches max, index=1)
