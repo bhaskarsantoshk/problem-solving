@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s =" 55Insert Delete GetRandom O(1)";
+        String s =" Find Minimum in Rotated Sorted Array";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
