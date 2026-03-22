@@ -1,25 +1,42 @@
 package company.microsoft.dynamic_programming;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LongestIncreasingSubsequence {
-    int max = Integer.MIN_VALUE;
     public int lengthOfLIS(int[] nums) {
-        backtrack(nums, nums.length-1, new ArrayList<Integer>());
-        return max;
+        return f(nums, 0, -1);
     }
 
-    private void backtrack(int[] nums, int index, ArrayList<Integer> list) {
-        if ( index <= 0) {
-            return;
+    private int f(int[] nums, int index, int prevIndex) {
+        if ( index == nums.length) {
+            return 0;
         }
+        int notTake = f(nums, index+1, prevIndex);
+        int take =0;
+        if ( prevIndex == -1 || nums[index] > nums[prevIndex]){
+            take = 1 + f(nums, index+1, index);
+        }
+        return Math.max(take, notTake);
+    }
 
-        if ( list.isEmpty() || list.get(list.size()-1) > nums[index]){
-            list.add(nums[index]);
-            max = Math.max(max, list.size());
-            backtrack(nums, index-1, list);
+    public int lengthOfLISMemo(int[] nums) {
+        int n = nums.length;
+        int[][] memo = new int[n+1][n+1];
+        for ( int i=0;i<=n; i++) Arrays.fill(memo[i], -1);
+        return f(nums, 0, -1, memo);
+    }
+
+    private int f(int[] nums, int index, int prevIndex, int[][] memo) {
+        if ( index == nums.length) {
+            return 0;
         }
-        list.removeLast();
-        backtrack(nums, index-1, list);
+        if (memo[index+1][prevIndex+1] != -1) return memo[index+1][prevIndex+1];
+        int notTake = f(nums, index+1, prevIndex, memo);
+        int take =0;
+        if ( prevIndex == -1 || nums[index] > nums[prevIndex]){
+            take = 1 + f(nums, index+1, index, memo);
+        }
+        return  memo[index+1][prevIndex+1] = Math.max(take, notTake);
     }
 }
