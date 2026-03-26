@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s =" 868. Binary Gap";
+        String s =" 1461. Check If a String Contains All Binary Codes of Size K";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
