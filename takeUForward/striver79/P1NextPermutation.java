@@ -2,7 +2,7 @@ package takeUForward.striver79;
 
 import java.util.*;
 
-public class NextPermutation {
+public class P1NextPermutation {
     public void nextPermutation(int[] nums) {
         List<List<Integer>> all = new ArrayList<>();
         int[] original = nums.clone();
