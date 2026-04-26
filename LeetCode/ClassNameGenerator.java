@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s =" 1461. Check If a String Contains All Binary Codes of Size K";
+        String s ="P3Count subarrays with given xor K";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
