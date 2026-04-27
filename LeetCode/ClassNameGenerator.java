@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="P3Count subarrays with given xor K";
+        String s ="6Find the repeating and missing number\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
