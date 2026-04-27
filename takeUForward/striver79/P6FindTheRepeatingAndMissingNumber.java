@@ -30,7 +30,7 @@ public class P6FindTheRepeatingAndMissingNumber {
         return new int[] { repeating, missing};
     }
 
-    public int[] findMissingRepeatingNumbersOptimal(int[] nums) {
+    public int[] findMissingRepeatingNumbersOptimal1(int[] nums) {
         int n = nums.length;
         long sumOfN =  ((long) n * (n+1))/2;
         long sumOfSquareN = ((long) n * (n+1)* (2L *n+1))/6;
@@ -47,5 +47,38 @@ public class P6FindTheRepeatingAndMissingNumber {
         long missing = xPlusy-repeat;
 
         return new int[]{Math.toIntExact(repeat), Math.toIntExact(missing)};
+    }
+
+    public int[] findMissingRepeatingNumbersOptimal2(int[] nums) {
+        int n = nums.length;
+        int xor = 0;
+        for ( int i=0; i<n; i++){
+            xor ^= nums[i];
+            xor ^= (i+1);
+        }
+        int bitNo = 0;
+        while ( true ){
+            if ( (xor & (1 << bitNo)) != 0) break;
+            bitNo++;
+        }
+        int zero = 0;
+        int one = 0;
+        for ( int i=0; i < n; i++){
+            if ( (nums[i] & ( 1 << bitNo)) != 0) one ^= nums[i];
+            else zero ^= nums[i];
+        }
+        for ( int i=1; i<=n; i++){
+            if ( (i & (1 << bitNo)) != 0) one ^= i;
+            else zero ^= i;
+        }
+
+        int count = 0;
+        for ( int i=0; i<nums.length; i++){
+            if ( zero == nums[i]) count++;
+        }
+        if ( count == 2){
+            return new int[]{zero, one};
+        }
+        return new int[]{one, zero};
     }
 }
