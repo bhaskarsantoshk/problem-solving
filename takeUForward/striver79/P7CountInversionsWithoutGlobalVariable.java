@@ -3,7 +3,7 @@ package takeUForward.striver79;
 import java.util.ArrayList;
 import java.util.List;
 
-public class P8CountInversionsWithoutGlobalVariable {
+public class P7CountInversionsWithoutGlobalVariable {
 
     public long numberOfInversionsOptimal(int[] nums) {
         return mergeSort(nums, 0, nums.length-1);
