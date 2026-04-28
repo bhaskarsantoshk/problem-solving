@@ -3,7 +3,7 @@ package takeUForward.striver79;
 import java.util.ArrayList;
 import java.util.List;
 
-public class P8CountInversions {
+public class P7CountInversions {
 
     public long numberOfInversions(int[] nums) {
         int count = 0;
