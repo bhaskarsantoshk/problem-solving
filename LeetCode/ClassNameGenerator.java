@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="8Maximum Product Subarray in an Array";
+        String s ="9Search in rotated sorted array-II\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
