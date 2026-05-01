@@ -31,7 +31,9 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="10Find minimum in Rotated Sorted Array\n";
+        String s ="11Peak element in Array\n" +
+                "\n" +
+                "\n\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
