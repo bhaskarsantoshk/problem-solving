@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="11Peak element in Array\n" +
+        String s ="3. Longest Substring Without Repeating Characters" +
                 "\n" +
                 "\n\n";
         // Expected Output : P392IsSubsequence
