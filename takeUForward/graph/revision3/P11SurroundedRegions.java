@@ -15,7 +15,7 @@ public class P11SurroundedRegions {
 //        } That allocates an entirely new matrix on the heap. If the board is large, you now have two full character matrices in memory
         for ( int i=0; i<n; i++){
             for (int j=0; j<m; j++){
-                if( ( i==0 || i==n-1 || j==0 || j== m-1 ) && !vis[i][j] && grid[i][j] == 'O'){
+                if( ( i==0 || i==n-1 || j==0 || j== m-1 ) && !vis[i][j] && mat[i][j] == 'O'){
                     // dfs(i,j, mat, n, m, vis);
                     bfs(i,j, mat, n, m, vis);
                 }
