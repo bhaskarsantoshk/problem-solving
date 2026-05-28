@@ -2,7 +2,7 @@ package takeUForward.graph.revision3;
 
 import java.util.List;
 
-public class P16DetectACycleInADirectedGraph {
+public class P16DetectACycleInADirectedGraphDFS {
     public boolean isCyclic(int N, List<List<Integer>> adj) {
         boolean[] vis = new boolean[N];
         boolean[] pathVis = new boolean[N];
