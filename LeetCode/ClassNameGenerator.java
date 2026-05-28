@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="10Distance of nearest cell having one\n";
+        String s ="11Surrounded Regions\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
