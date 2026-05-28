@@ -31,9 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="4. Median of Two Sorted Arrays" +
-                "\n" +
-                "\n\n";
+        String s ="8Detect a cycle in an undirected graph";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
