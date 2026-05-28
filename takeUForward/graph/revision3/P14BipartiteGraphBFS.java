@@ -1,7 +1,7 @@
 package takeUForward.graph.revision3;
 import java.util.*;
 
-public class P14BipartiteGraph {
+public class P14BipartiteGraphBFS {
     public boolean isBipartite(int V, List<List<Integer>> edges) {
         List<Integer>[] g = new ArrayList[V];
         for ( int i=0; i<V; i++) g[i] = new ArrayList<>();
