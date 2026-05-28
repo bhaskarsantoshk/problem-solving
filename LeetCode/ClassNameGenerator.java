@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="3. Longest Substring Without Repeating Characters" +
+        String s ="4. Median of Two Sorted Arrays" +
                 "\n" +
                 "\n\n";
         // Expected Output : P392IsSubsequence
