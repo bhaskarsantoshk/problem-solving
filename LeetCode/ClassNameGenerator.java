@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="8Detect a cycle in an undirected graph";
+        String s ="10Distance of nearest cell having one\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
