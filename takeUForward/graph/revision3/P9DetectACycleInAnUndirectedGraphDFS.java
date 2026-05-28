@@ -1,10 +1,8 @@
 package takeUForward.graph.revision3;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
-public class P8DetectACycleInAnUndirectedGraphDFS {
+public class P9DetectACycleInAnUndirectedGraphDFS {
     public boolean isCycle(int V, List<Integer>[] adj) {
         boolean[] vis = new boolean[V];
         for ( int i=0; i<V; i++){
