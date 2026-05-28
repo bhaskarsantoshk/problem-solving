@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="11Surrounded Regions\n";
+        String s ="12Number of enclaves\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
