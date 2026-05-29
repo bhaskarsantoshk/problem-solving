@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="24Alien Dictionary\n";
+        String s ="25Shortest path in undirected graph with unit weights\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
