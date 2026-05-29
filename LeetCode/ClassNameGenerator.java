@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="22Find eventual safe states\n";
+        String s ="24Alien Dictionary\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
