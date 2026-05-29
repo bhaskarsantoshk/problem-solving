@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class P20CourseScheduleII {
+public class P21CourseScheduleII {
     public int[] findOrder(int N, int[][] arr) {
         List<Integer>[] g = new ArrayList[N];
         for ( int i=0; i<N; i++){
