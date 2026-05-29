@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class P22FindEventualSafeStates {
+public class P22FindEventualSafeStatesDFS {
     public int[] eventualSafeNodes(int V, int[][] adj) {
         List<Integer> res = new ArrayList<>();
         boolean[] vis = new boolean[V];
