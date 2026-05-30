@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="26Shortest path in DAG\n";
+        String s ="27Dijkstra's algorithm using Priority Queue";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
