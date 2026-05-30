@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="25Shortest path in undirected graph with unit weights\n";
+        String s ="26Shortest path in DAG\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
