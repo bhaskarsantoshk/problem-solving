@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="12Detect a loop in LL\n";
+        String s ="14Find the starting point in LL\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
