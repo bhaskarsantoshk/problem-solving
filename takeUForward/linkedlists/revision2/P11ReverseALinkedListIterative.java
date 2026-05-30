@@ -32,4 +32,13 @@ public class P11ReverseALinkedListIterative {
         }
         return prev;
     }
+
+    public ListNode reverseListRecursive(ListNode head) {
+        if ( head == null || head.next == null) return head;
+        ListNode newHead = reverseListRecursive(head.next);
+        ListNode next = head.next;
+        next.next = head;
+        head.next = null;
+        return newHead;
+    }
 }
