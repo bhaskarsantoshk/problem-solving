@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="9Reverse a Doubly Linked List\n";
+        String s ="10Find Middle of Linked List\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
