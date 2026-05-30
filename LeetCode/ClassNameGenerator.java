@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="29Path with minimum effort\n";
+        String s ="5Search in Linked List\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
