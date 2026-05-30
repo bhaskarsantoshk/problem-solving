@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="5Search in Linked List\n";
+        String s ="7Insert node before head in Doubly Linked List\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
