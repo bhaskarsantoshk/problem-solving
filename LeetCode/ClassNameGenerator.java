@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="17Network Delay Time\n";
+        String s ="32Number of ways to arrive at destination\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
