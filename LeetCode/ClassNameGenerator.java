@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="200. Number of Islands";
+        String s ="1167. Minimum Cost to Connect Sticks";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
