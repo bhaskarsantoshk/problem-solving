@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="787. Cheapest Flights Within K Stops\n";
+        String s ="200. Number of Islands";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
