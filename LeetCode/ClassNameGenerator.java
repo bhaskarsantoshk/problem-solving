@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="35Floyd warshall algorithm\n";
+        String s ="787. Cheapest Flights Within K Stops\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
