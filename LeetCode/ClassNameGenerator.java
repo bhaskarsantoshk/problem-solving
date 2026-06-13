@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="395. Longest Substring with At Least K Repeating Characters";
+        String s ="1966. Binary Searchable Numbers in an Unsorted Array";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
