@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="1966. Binary Searchable Numbers in an Unsorted Array";
+        String s ="33. Search in Rotated Sorted Array";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
