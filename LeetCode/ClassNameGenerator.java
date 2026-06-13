@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="209. Minimum Size Subarray Sum";
+        String s ="395. Longest Substring with At Least K Repeating Characters";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
