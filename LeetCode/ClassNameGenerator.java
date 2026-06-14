@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="33. Search in Rotated Sorted Array";
+        String s ="421. Maximum XOR of Two Numbers in an Array";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
