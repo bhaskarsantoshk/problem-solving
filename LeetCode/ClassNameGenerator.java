@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="922. Sort Array By Parity II";
+        String s ="1475. Final Prices With a Special Discount in a Shop";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
