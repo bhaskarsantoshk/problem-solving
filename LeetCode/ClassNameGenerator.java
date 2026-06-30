@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="    Maximum Distance-Value Product";
+        String s ="98. Validate Binary Search Tree";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
