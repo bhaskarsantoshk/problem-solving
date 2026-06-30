@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="237. Delete Node in a Linked List\n";
+        String s ="    Maximum Distance-Value Product";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
