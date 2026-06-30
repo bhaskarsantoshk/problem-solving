@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="99. Recover Binary Search Tree";
+        String s ="1029. Two City Scheduling";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
