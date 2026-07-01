@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="98. Validate Binary Search Tree";
+        String s ="993. Cousins in Binary Tree";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
