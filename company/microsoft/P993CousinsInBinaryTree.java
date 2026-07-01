@@ -45,7 +45,7 @@ public class P993CousinsInBinaryTree {
                 if (node.right != null) queue.offer(node.right);
             }
             if ( foundX && foundY ) return true;
-            if ( foundX || foundX) return false;
+            if ( foundX || foundY) return false;
         }
         return false;
     }
