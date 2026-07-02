@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="993. Cousins in Binary Tree";
+        String s ="Find the city with the smallest number of neighbors\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
