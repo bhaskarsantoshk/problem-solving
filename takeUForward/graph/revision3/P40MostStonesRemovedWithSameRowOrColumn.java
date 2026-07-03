@@ -34,7 +34,7 @@ public class P40MostStonesRemovedWithSameRowOrColumn {
         private List<Integer> rank = new ArrayList<>();
 
         DisjointSet(int n){
-            for ( int i=0; i<n; i++){
+            for ( int i=0; i<=n; i++){
                 parent.add(i);
                 size.add(1);
                 rank.add(0);
