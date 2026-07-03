@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="40Most stones removed with same row or column\n";
+        String s ="41Accounts merge\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
