@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="48Kosaraju's algorithm\n\n";
+        String s ="297. Serialize and Deserialize Binary Tree";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
