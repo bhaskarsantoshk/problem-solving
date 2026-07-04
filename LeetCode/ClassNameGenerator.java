@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="41Accounts merge\n";
+        String s ="47Articulation point in graph\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
