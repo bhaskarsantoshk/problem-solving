@@ -1,86 +1,63 @@
 package company.microsoft;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LRUCache {
-    private Hashtable<Integer, DListNode> cache = new Hashtable<>();
-    private int count;
-    private int capacity;
-    private DListNode head, tail;
 
+    Node head, tail;
+    int capacity;
+    Map<Integer, Node> cache;
 
+    class Node{
+        int key, value;
+        Node prev, next;
+        Node ( int key, int value){
+            this.key = key;
+            this.value = value;
+        }
+        Node(){
+        }
+    }
     public LRUCache(int capacity) {
-        this.count = 0;
-        this.capacity = capacity;
-        head = new DListNode();
-        head.prev = null;
-        tail= new DListNode();
-        tail.next = null;
-        head.next = tail;
-        tail.prev = head;
+        this.cache = new HashMap<>(capacity);
+        this.head = new Node();
+        this.tail = new Node();
+        this.head.next = tail;
+        this.tail.prev = head;
     }
 
     public int get(int key) {
-        DListNode node = cache.get(key);
-        if(node == null){
-            return -1;
+        if ( cache.containsKey(key)){
+            Node node = cache.get(key);
+            delete(node);
+            insert(node);
+            return node.value;
         }
-        this.moveToHead(node);
-        return node.value;
+        return -1;
     }
 
-    private void moveToHead(DListNode node) {
-        this.removeNode(node);
-        this.addNode(node);
+    private void insert(Node node) {
+        cache.put(node.key, node);
+        Node next = head.next;
+        node.next = next;
+        next.prev = node;
+        node.prev = head;
+        head.next = next;
     }
 
-    private void removeNode(DListNode node) {
-        DListNode prev = node.prev;
-        DListNode next = node.next;
+    private void delete(Node node) {
+        cache.remove(node.key);
+        Node next = node.next;
+        Node prev = node.prev;
         prev.next = next;
         next.prev = prev;
     }
 
-
-    public void set(int key, int value) {
-        DListNode node = cache.get(key);
-        if(node == null){
-            DListNode newNode = new DListNode();
-            newNode.key = key;
-            newNode.value = value;
-            this.cache.put(key, newNode);
-            this.addNode(newNode);
-            ++count;
-
-            if(count> capacity){
-                DListNode toBeDeletedNode= this.popTail();
-                this.cache.remove(toBeDeletedNode.key);
-                --count;
-            }
-        }
-        else{
-            node.value = value;
-            this.moveToHead(node);
-        }
-    }
-
-    private DListNode popTail() {
-        DListNode result = tail.prev;
-        this.removeNode(result);
-        return result;
-    }
-
-    class DListNode{
-        int key;
-        int value;
-        DListNode prev;
-        DListNode next;
-    }
-
-    private void addNode(DListNode node){
-        node.prev = head;
-        node.next= head.next;
-        head.next.prev= node;
-        head.next= node;
+    public void put(int key, int value) {
+        if ( cache.containsKey(key)) delete(cache.get(key));
+        if ( cache.size() == capacity) delete(tail.prev);
+        Node node = new Node(key, value);
+        insert(node);
     }
 }
