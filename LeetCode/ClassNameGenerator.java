@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="297. Serialize and Deserialize Binary Tree";
+        String s ="953. Verifying an Alien Dictionary";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
