@@ -33,7 +33,7 @@ public class G9SurroundedRegions {
 
     int [][] dirs = {{-1,0}, {0,-1}, {1,0}, {0,1}};
 
-    private void dfs(int row, int col, boolean[][] vis, int[][] res) {
+    private void dfs(int row, int col, boolean[][] vis, char[][] res) {
         vis[row][col] = true;
         for ( int [] dir: dirs){
             int nRow = row + dir[0];
