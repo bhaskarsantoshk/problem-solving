@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="Number of enclaves\n";
+        String s ="G6Cycle Detection in Undirected Graph (bfs)";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
