@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G9Surrounded Regions\n";
+        String s ="G14Detect a cycle in a directed graph\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
