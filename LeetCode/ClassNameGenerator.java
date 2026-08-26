@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G24Shortest path in DAG\n";
+        String s ="G26Shortest Distance in a Binary Maze\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
