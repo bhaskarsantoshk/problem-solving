@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G31Minimum multiplications to reach end\n";
+        String s ="G32Bellman ford algorithm\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
