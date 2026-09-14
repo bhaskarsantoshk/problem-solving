@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G34Find the city with the smallest number of neighbors\n";
+        String s ="G35 Prim's Algorithm Find MST";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
