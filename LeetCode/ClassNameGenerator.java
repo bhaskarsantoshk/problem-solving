@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G35 Prim's Algorithm Find MST";
+        String s ="G36Disjoint Set";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
