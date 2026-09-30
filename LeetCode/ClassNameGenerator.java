@@ -31,7 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G36Disjoint Set";
+        String s ="G38Number of operations to make network connected";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
