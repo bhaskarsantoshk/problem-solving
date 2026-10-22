@@ -31,7 +31,8 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="G38Number of operations to make network connected";
+        String s ="41Making a large island\n" +
+                "\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
