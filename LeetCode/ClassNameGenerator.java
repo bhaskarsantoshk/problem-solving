@@ -31,8 +31,7 @@ public class ClassNameGenerator {
     }
 
     public static void main(String[] args){
-        String s ="41Making a large island\n" +
-                "\n";
+        String s ="42Most stones removed with same row or column\n";
         // Expected Output : P392IsSubsequence
         System.out.println("P"+getClassName(s));
     }
