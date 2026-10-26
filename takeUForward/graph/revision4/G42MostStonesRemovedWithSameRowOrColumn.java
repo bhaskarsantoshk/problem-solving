@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class G4242MostStonesRemovedWithSameRowOrColumn {
+public class G42MostStonesRemovedWithSameRowOrColumn {
     public int maxRemove(int[][] stones, int n) {
         int maxRows =0,  maxCols = 0;
         for ( int[] stone: stones){
